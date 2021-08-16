@@ -5,8 +5,8 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Home from './Components/Home';
-import Note from './Components/Note';
+import Home from './Components/Home/Home';
+import NoteCreator from './Components/NoteCreator/NoteCreator';
   
 
 export default class Container extends React.Component {
@@ -27,14 +27,14 @@ export default class Container extends React.Component {
                                 <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <Link to="/note">Create note</Link>
+                                <Link to="/noteCreator">Create note</Link>
                             </li>
                         </ul>
                     </nav>
 
                     <Switch>
-                        <Route path="/Note">
-                            <Note />
+                        <Route path="/NoteCreator">
+                            <NoteCreator />
                         </Route>
                         <Route path="/">
                             <Home />
