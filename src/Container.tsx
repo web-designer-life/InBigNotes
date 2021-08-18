@@ -1,16 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
-import Home from './Components/Home/Home';
+import Home from './Components/Home/HomeComponent';
 import NoteCreator from './Components/NoteCreator/NoteCreator';
-  
 
-export default class Container extends React.Component {
-    constructor(props) {
+export default class Container extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.state = {
 

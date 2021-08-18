@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
+import * as React from 'react';
 import { GlobalStyle } from './Components/Style/GlobalStyle';
 import Container from './Container';
+import './App.css';
 
 class App extends React.Component {
     render() {
@@ -12,6 +12,6 @@ class App extends React.Component {
             </>
         );
     }
-}
-
+};
+  
 export default App;

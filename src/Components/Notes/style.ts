@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import Checkbox from "react-custom-checkbox";
 
 const List = styled.ul`
     display: flex;
@@ -9,7 +7,7 @@ const List = styled.ul`
     padding: 0 50px; 
 `;
 
-const Item = styled.li`
+const Note = styled.li`
     position: relative;
     list-style-type: none;
     width: 440px;
@@ -24,13 +22,13 @@ const Item = styled.li`
     }
 `;
 
-const ItemHeader = styled.div`
+const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
 
-const ItemTitle = styled.h3`
+const Title = styled.h3`
     height: 61px;
     white-space: nowrap;
     overflow: hidden;
@@ -43,7 +41,7 @@ const ItemTitle = styled.h3`
     color: #5A5A5A;
 `;
 
-const ItemText = styled.p`
+const Text = styled.p`
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -56,26 +54,4 @@ const ItemText = styled.p`
     color: #787878;
 `;
 
-export const ListItem = ({ itemList }) => (
-    <List>
-        {itemList.map(item =>(
-            <Item
-                key={item.id}
-            >
-                <ItemHeader>
-                    <ItemTitle>{item.title}</ItemTitle>
-                    <Checkbox
-                        checked={false}
-                        icon={<img src={require("../../../public/assets/icons/arrow.png")} style={{ width: 54 }} />}
-                        borderColor="#0047FF"
-                        borderWidth={5}
-                        borderRadius={20}
-                        size={80}
-                        style={{ cursor: "pointer" }}
-                    />
-                </ItemHeader>
-                <ItemText>{item.text}</ItemText>
-            </Item>
-        ))}
-    </List>
-);
+export { List, Note, Header, Title, Text };

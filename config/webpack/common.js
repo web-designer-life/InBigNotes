@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-  entry: `${paths.src}/index.js`,
+  entry: `${paths.src}/index.tsx`,
   output: {
     path: paths.build,
     filename: 'js/[name].bundle.js',
@@ -25,10 +25,7 @@ module.exports = {
     }
   },
   resolve: {
-    alias: {
-      '@': `${paths.src}/modules`
-    },
-    extensions: ['.js', '.jsx', ".ts", ".tsx"]
+    extensions: [".js", ".ts", ".tsx"],
   },
   devtool: 'source-map',
   experiments: {
@@ -39,7 +36,11 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: "awesome-typescript-loader",
+        exclude: /node_modules/,
+        resolve: {
+          extensions: ['.ts', '.tsx', '.js', '.json'],
+        },
+        use: 'ts-loader',
       },
       {
         test: /\.(js|jsx)$/,
