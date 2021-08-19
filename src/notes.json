@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1, 
+        "title": "School", 
+        "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+        "created_at": "2020-02-07T21:32:56z",
+        "updated_at": "2021-02-19T14:32:56z"
+    },
+    {
+        "id": 2, 
+        "title": "Home", 
+        "text": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layoutIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layoutIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout", 
+        "created_at": "2020-02-07T21:32:56z",
+        "updated_at": "2021-02-19T14:32:56z"
+    },
+    {
+        "id": 3, 
+        "title": "Docs", 
+        "text": "Contrary to popular belief, Lorem Ipsum is not simply random text.", 
+        "created_at": "2020-02-07T21:32:56z",
+        "updated_at": "2021-02-19T14:32:56z"
+    },
+    {
+        "id": 4, 
+        "title": "It is a long established fact that a reader will be distracted by the readable content", 
+        "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+        "created_at": "2020-02-07T21:32:56z",
+        "updated_at": "2021-02-19T14:32:56z"
+    }
+]
