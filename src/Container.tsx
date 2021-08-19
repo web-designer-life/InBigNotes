@@ -8,8 +8,14 @@ import {
 import Home from './Components/Home/HomeComponent';
 import NoteCreator from './Components/NoteCreator/NoteCreator';
 
-export default class Container extends React.Component<any, any> {
-    constructor(props: any) {
+interface Props {
+}
+
+interface State {
+}
+
+export default class Container extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
 

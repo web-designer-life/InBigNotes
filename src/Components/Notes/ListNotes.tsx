@@ -2,13 +2,21 @@ import * as React from 'react';
 import Checkbox from 'react-custom-checkbox';
 import { List, Note, Header, Title, Text } from './style';
 
+interface Note {
+    id: number, 
+    title: string, 
+    text: string,
+    created_at: string,
+    updated_at: string
+}
+
 interface Props {
-    notes: any
+    notes: Array<Note>
 }
 
 export const ListNotes: React.FC<Props> = ({ notes }) => (
     <List>
-        {notes.map((note: any) =>(
+        {notes.map((note: Note) =>(
             <Note
                 key={note.id}
             >
