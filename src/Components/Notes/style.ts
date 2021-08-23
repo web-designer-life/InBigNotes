@@ -38,6 +38,7 @@ const Title = styled.h3`
     font-size: 48px;
     line-height: 61px;
     margin: 0;
+    width: auto;
     color: #5A5A5A;
 `;
 

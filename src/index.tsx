@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { store } from './store/configureStore';
+import configureStore from './store/configureStore';
 import App from './App';
 import './index.css';
+
+const store = configureStore('[]');
 
 ReactDOM.render(
     <React.StrictMode>
