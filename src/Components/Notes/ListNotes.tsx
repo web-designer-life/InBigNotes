@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Checkbox from 'react-custom-checkbox';
-import { List, Note, Header, Title, Text } from './style';
+import NoteComponent from './NoteComponent';
+import { List } from './style';
 
 interface Note {
     id: number, 
@@ -17,23 +17,10 @@ interface Props {
 export const ListNotes: React.FC<Props> = ({ notes }) => (
     <List>
         {notes.map((note: Note) =>(
-            <Note
+            <NoteComponent 
                 key={note.id}
-            >
-                <Header>
-                    <Title>{note.title}</Title>
-                    <Checkbox
-                        checked={false}
-                        icon={<img src={require("../../../public/assets/icons/arrow.png")} style={{ width: 54 }} />}
-                        borderColor="#0047FF"
-                        borderWidth={5}
-                        borderRadius={20}
-                        size={80}
-                        style={{ cursor: "pointer" }}
-                    />
-                </Header>
-                <Text>{note.text}</Text>
-            </Note>
+                note={note}
+            />
         ))}
     </List>
 );
