@@ -8,11 +8,11 @@ interface Note {
     text: string,
     created_at: string,
     updated_at: string
-}
+};
 
 interface Props {
     note: Note
-}
+};
 
 type State = {
     checked: boolean;
@@ -24,10 +24,12 @@ export default class NoteComponent extends React.Component<Props, State> {
     };
 
     render() {
+        const { title, text } = this.props.note;
+
         return (
             <Note>
                 <Header>
-                    <Title>{this.props.note.title}</Title>
+                    <Title>{title}</Title>
                     <Checkbox
                         checked={this.state.checked}
                         onChange={(evt) => {
@@ -37,7 +39,7 @@ export default class NoteComponent extends React.Component<Props, State> {
                         }}
                     />
                 </Header>
-                <Text>{this.props.note.text}</Text>
+                <Text>{text}</Text>
             </Note>
         )
     }

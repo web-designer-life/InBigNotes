@@ -8,4 +8,4 @@ export default class NoteCreater extends React.Component {
             </div>
         )
     }
-}
+};

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { CheckboxContainer, Icon, HiddenCheckbox, StyledCheckbox } from './style';
 
 interface Props {

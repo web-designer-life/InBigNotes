@@ -1,14 +1,17 @@
-import { FETCH_NOTES_PENDING, FETCH_NOTES_SUCCESS } from '../actions/index';
+import actions from '../actions';
 
-const reducer = (state = {}, action: any) => {
+export const initialState = {
+    notes: [],
+    isLoading: false,
+};
+
+export function rootReducer(state = initialState, action: any) {
     switch (action.type) {
-        case FETCH_NOTES_PENDING:
-            return { ...state, loading: true };
-        case FETCH_NOTES_SUCCESS:
-            return { ...state, notes: action.notes, loading: false }
+        case actions.FETCH_NOTES_PENDING:
+            return {...state, isLoading: true};
+        case actions.FETCH_NOTES_SUCCESS:
+            return {...state, notes: action.payload, isLoading: false};
         default:
             return state;
     }
 };
-
-export default reducer;

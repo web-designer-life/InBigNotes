@@ -8,11 +8,11 @@ interface Note {
     text: string,
     created_at: string,
     updated_at: string
-}
+};
 
 interface Props {
     notes: Array<Note>
-}
+};
 
 export const ListNotes: React.FC<Props> = ({ notes }) => (
     <List>

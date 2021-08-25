@@ -54,8 +54,12 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg|eot|ttf|woff2?)$/i,
-        type: 'asset'
-      }
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ]
+      },
     ]
   },
   plugins: [
