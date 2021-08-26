@@ -25,7 +25,7 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: [".js", ".ts", ".tsx"],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   devtool: 'source-map',
   experiments: {
@@ -45,21 +45,20 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        loader: 'babel-loader',
+        options: { presets: ['@babel/env'] }
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(jpe?g|png|gif|svg|eot|ttf|woff2?)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ]
-      },
+        test: /\.(png|jpe?g|gif|jp2|webp|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]',
+        },
+      }
     ]
   },
   plugins: [

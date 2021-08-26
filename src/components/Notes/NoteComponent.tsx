@@ -1,17 +1,10 @@
 import * as React from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import { Note, Header, Title, Text } from './style';
-
-interface Note {
-    id: number, 
-    title: string, 
-    text: string,
-    created_at: string,
-    updated_at: string
-};
+import { Note as INote } from '../../interfaces';
 
 interface Props {
-    note: Note
+    note: INote,
 };
 
 type State = {
@@ -21,7 +14,7 @@ type State = {
 export default class NoteComponent extends React.Component<Props, State> {
     state = { 
         checked: false 
-    };
+    }
 
     render() {
         const { title, text } = this.props.note;

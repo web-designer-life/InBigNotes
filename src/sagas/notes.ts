@@ -10,5 +10,5 @@ function* fetchNotes() {
 };
 
 export default function notesSaga() {
-    return all([ takeEvery(actions.FETCH_NOTES_PENDING, fetchNotes) ]) 
+    return all([ takeEvery(actions.FETCH_NOTES_PENDING, fetchNotes) ]);
 };

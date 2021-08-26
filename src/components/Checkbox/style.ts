@@ -5,7 +5,7 @@ const CheckboxContainer = styled.div`
     vertical-align: middle;
 `;
 
-const Icon = styled.svg`
+const Icon = styled.img`
     width: 54px;
     height: 40px;
     fill: none;
@@ -32,7 +32,6 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
     background: #FFFFFF;
     border-radius: 20px;
     border: 5px solid #0047FF;
-    transition: all 150ms;
 
     ${Icon} {
         visibility: ${(props) => (props.checked ? "visible" : "hidden")};

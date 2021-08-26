@@ -1,17 +1,10 @@
 import * as React from 'react';
 import NoteComponent from './NoteComponent';
 import { List } from './style';
-
-interface Note {
-    id: number, 
-    title: string, 
-    text: string,
-    created_at: string,
-    updated_at: string
-};
+import { Note } from '../../interfaces';
 
 interface Props {
-    notes: Array<Note>
+    notes: Array<Note>,
 };
 
 export const ListNotes: React.FC<Props> = ({ notes }) => (

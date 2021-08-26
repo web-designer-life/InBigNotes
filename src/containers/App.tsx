@@ -11,16 +11,9 @@ import { Home } from '../components/Home/Home';
 import NoteCreator from '../components/NoteCreator/NoteCreator';
 import { Loader } from '../components/Loader/Loader';
 import { fetchNotes } from '../actions/notes';
+import { Note } from '../interfaces';
 
 import './App.css';
-
-interface Note {
-    id: number, 
-    title: string, 
-    text: string,
-    created_at: string,
-    updated_at: string
-};
 
 interface Props {
     notes?: Array<Note>,
@@ -60,7 +53,7 @@ class App extends React.Component<Props> {
                     </div>
                 </Router>
             </>
-        );
+        )
     }
 };
 
@@ -75,7 +68,7 @@ const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNotesAction: () => dispatch(fetchNotes()),
     }
-}
+};
   
 export default connect(
     mapStateToProps,

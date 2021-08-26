@@ -1,14 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { ListNotes } from '../Notes/ListNotes';
-
-interface Note {
-    id: number, 
-    title: string, 
-    text: string,
-    created_at: string,
-    updated_at: string,
-};
+import { Note } from '../../interfaces';
 
 interface Props {
     notes?: Array<Note>,
@@ -19,7 +12,7 @@ export class Home extends React.Component<Props> {
     static propTypes: { 
         notes: PropTypes.Validator<any[]>; 
         fetchNotes: PropTypes.Validator<(...args: any[]) => any>; 
-    };
+    }
 
     onBtnClick = () => {
         this.props.fetchNotes();
