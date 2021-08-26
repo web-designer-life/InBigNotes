@@ -11,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         margin: 0;
-        background-color: #f0f0f0;
-        font-family: Lora, sans-serif;
+        background-color: #ffffff;
+        font-family: 'Lora', 'Arial', sans-serif;
         font-size: 20px;
         color: black;
     }
@@ -30,20 +30,17 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
     }
     h1, h2, h3 {
-        font-family: Lora;
+        font-family: 'Lora', 'Arial', sans-serif;
         padding: 0;
         margin: 0;
     }
     p {
-        font-family: Lora;
+        font-family: 'Lora', 'Arial', sans-serif;
         padding: 0;
         margin: 0;
     }
     button {
         cursor: pointer;    
-    }
-    label {
-        cursor: pointer;
     }
     input, button {
         font: inherit;

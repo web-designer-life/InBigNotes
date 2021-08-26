@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
 const Background = styled.div`
-    position: absolute;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +13,7 @@ const Background = styled.div`
     height: 100%;
     background-color: #000000;
     opacity: .7;
-    z-index: 100;
+    z-index: 999;
 `;
 
 const LoaderContent = styled.div`

@@ -4,7 +4,7 @@ const List = styled.ul`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 50px; 
+    padding: 50px 50px 30px 50px; 
 `;
 
 const Note = styled.li`
@@ -12,7 +12,7 @@ const Note = styled.li`
     list-style-type: none;
     width: 440px;
     height: 250px;
-    margin: 50px 0 0 0;
+    margin: 0 0 20px 0;
     padding: 30px;
     background: #FFFFFF;
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import ControlPanel from '../ControlPanel/ControlPanel';
 import { ListNotes } from '../Notes/ListNotes';
 import { Note } from '../../interfaces';
 
@@ -14,7 +15,7 @@ export class Home extends React.Component<Props> {
         fetchNotes: PropTypes.Validator<(...args: any[]) => any>; 
     }
 
-    onBtnClick = () => {
+    componentDidMount() {
         this.props.fetchNotes();
     }
 
@@ -22,17 +23,15 @@ export class Home extends React.Component<Props> {
         const notes = this.props.notes;
         
         return (
+            (notes && notes.length !== 0) ? 
             <>
-            {
-                (notes && notes.length !== 0) ? 
+                <ControlPanel />
                 <ListNotes 
                     notes={notes}
-                />: 
-                <p>No notes</p>
-            }
-
-                <button onClick={this.onBtnClick}>Add notes</button>
+                />
             </>
+            : 
+            <p>No notes</p>
         )
     }
 };

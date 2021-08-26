@@ -14,6 +14,10 @@ export class Loader extends React.Component<Props> {
 
     render() {
         const isLoading = this.props.isLoading;
+
+        isLoading ? 
+        document.body.style.overflow = 'hidden' : 
+        document.body.style.overflow = 'unset';
         
         return (
             isLoading ?

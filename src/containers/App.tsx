@@ -32,6 +32,7 @@ class App extends React.Component<Props> {
                 <Router>
                     <div>
                         <nav>
+                            <h1>InBigNotes</h1>
                             <ul>
                                 <li>
                                     <Link to="/">Home</Link>
@@ -53,7 +54,7 @@ class App extends React.Component<Props> {
                     </div>
                 </Router>
             </>
-        )
+        );
     }
 };
 

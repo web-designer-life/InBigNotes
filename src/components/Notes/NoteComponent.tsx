@@ -7,13 +7,9 @@ interface Props {
     note: INote,
 };
 
-type State = {
-    checked: boolean;
-};
-
-export default class NoteComponent extends React.Component<Props, State> {
+export default class NoteComponent extends React.Component<Props> {
     state = { 
-        checked: false 
+        checked: false, 
     }
 
     render() {
