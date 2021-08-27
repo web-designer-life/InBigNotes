@@ -9,7 +9,7 @@ module.exports = merge(common, {
   mode: 'production',
   entry: {
     index: {
-      import: `${paths.src}/index.js`,
+      import: `${paths.src}/index.tsx`,
       dependOn: ['react']
     },
     react: ['react', 'react-dom']
