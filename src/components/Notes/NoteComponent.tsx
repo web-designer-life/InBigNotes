@@ -5,30 +5,36 @@ import { Note as INote } from '../../interfaces';
 
 interface Props {
     note: INote,
+    selectedNotes?: Number[],
+    addSelectedNote(note: INote): Function,
+    removeUnselectedNote(note: INote): Function,
 };
 
 export default class NoteComponent extends React.Component<Props> {
-    state = { 
-        checked: false, 
-    }
-
     render() {
-        const { title, text } = this.props.note;
+        const { 
+            note, 
+            selectedNotes,
+            addSelectedNote, 
+            removeUnselectedNote 
+        } = this.props;
 
         return (
             <Note>
                 <Header>
-                    <Title>{title}</Title>
+                    <Title>{note.title}</Title>
                     <Checkbox
-                        checked={this.state.checked}
-                        onChange={(evt) => {
-                            this.setState({
-                                checked: evt.target.checked
-                            })
+                        checked={
+                            !!selectedNotes?.includes(note.id)
+                        }
+                        onChange={() => {
+                            selectedNotes?.includes(note.id) ?
+                            removeUnselectedNote(note) :
+                            addSelectedNote(note)
                         }}
                     />
                 </Header>
-                <Text>{text}</Text>
+                <Text>{note.text}</Text>
             </Note>
         )
     }

@@ -10,20 +10,37 @@ import { connect } from 'react-redux'
 import { Home } from '../components/Home/Home';
 import NoteCreator from '../components/NoteCreator/NoteCreator';
 import { Loader } from '../components/Loader/Loader';
-import { fetchNotes } from '../actions/notes';
+import { fetchNotes, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../store/actions/notes';
 import { Note } from '../interfaces';
+import { DeleteNotesButton } from '../components/Buttons/DeleteNotesButton';
 
 import './App.css';
 
 interface Props {
-    notes?: Array<Note>,
+    notes?: Note[],
     isLoading: Boolean,
-    fetchNotesAction(): any,
+    selectedNotes?: Number[],
+    fetchNotesAction(): Function,
+    deleteNotesAction(notes: Note[]): Function,
+    addSelectedNoteAction(note: Note): Function,
+    removeUnselectedNoteAction(note: Note): Function,
+    selectAllNotesAction(notes: Note[]): Function,
+    unselectAllNotesAction(): Function,
 };
 
 class App extends React.Component<Props> {
     render() {
-        const { notes, isLoading, fetchNotesAction } = this.props;
+        const { 
+            notes, 
+            isLoading, 
+            selectedNotes,
+            fetchNotesAction,
+            deleteNotesAction, 
+            addSelectedNoteAction, 
+            removeUnselectedNoteAction,
+            selectAllNotesAction,
+            unselectAllNotesAction,
+        } = this.props;
 
         return (
             <>
@@ -41,6 +58,12 @@ class App extends React.Component<Props> {
                                     <Link to="/noteCreator">Create note</Link>
                                 </li>
                             </ul>
+                            <DeleteNotesButton 
+                                notes={notes}
+                                selectedNotes={selectedNotes}
+                                deleteNotes={deleteNotesAction}
+                                unselectAllNotes={unselectAllNotesAction}
+                            />
                         </nav>
 
                         <Switch>
@@ -48,7 +71,15 @@ class App extends React.Component<Props> {
                                 <NoteCreator />
                             </Route>
                             <Route path="/">
-                                <Home notes={notes} fetchNotes={fetchNotesAction}/>
+                                <Home 
+                                    notes={notes} 
+                                    selectedNotes={selectedNotes}
+                                    fetchNotes={fetchNotesAction} 
+                                    addSelectedNote={addSelectedNoteAction} 
+                                    removeUnselectedNote={removeUnselectedNoteAction}
+                                    selectAllNotes={selectAllNotesAction}
+                                    unselectAllNotes={unselectAllNotesAction}
+                                />
                             </Route>
                         </Switch>
                     </div>
@@ -62,16 +93,22 @@ const mapStateToProps = (store: any) => {
     return {
         notes: store.notes,
         isLoading: store.isLoading,
+        selectedNotes: store.selectedNotes,
     }
 };
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNotesAction: () => dispatch(fetchNotes()),
+        deleteNotesAction: (notes: Note[]) => dispatch(deleteNotes(notes)),
+        addSelectedNoteAction: (note: Note) => dispatch(addSelectedNote(note)),
+        removeUnselectedNoteAction: (note: Note) => dispatch(removeUnselectedNote(note)),
+        selectAllNotesAction: (notes: Note[]) => dispatch(selectAllNotes(notes)),
+        unselectAllNotesAction: () => dispatch(unselectAllNotes()),
     }
 };
   
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(App);

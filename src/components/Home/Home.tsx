@@ -1,42 +1,51 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import { ListNotes } from '../Notes/ListNotes';
 import { Note } from '../../interfaces';
 
 interface Props {
-    notes?: Array<Note>,
-    fetchNotes(): any,
+    notes?: Note[],
+    selectedNotes?: Number[],
+    fetchNotes(): Function,
+    addSelectedNote(note: Note): Function,
+    removeUnselectedNote(note: Note): Function,
+    selectAllNotes(notes: Note[]): Function,
+    unselectAllNotes(): Function,
 };
 
 export class Home extends React.Component<Props> {
-    static propTypes: { 
-        notes: PropTypes.Validator<any[]>; 
-        fetchNotes: PropTypes.Validator<(...args: any[]) => any>; 
-    }
-
     componentDidMount() {
         this.props.fetchNotes();
     }
 
     render() {
-        const notes = this.props.notes;
-        
+        const { 
+            notes, 
+            selectedNotes,
+            addSelectedNote, 
+            removeUnselectedNote,
+            selectAllNotes,
+            unselectAllNotes, 
+        } = this.props;
+
         return (
             (notes && notes.length !== 0) ? 
             <>
-                <ControlPanel />
+                <ControlPanel 
+                    notes={notes}
+                    selectedNotes={selectedNotes}
+                    selectAllNotes={selectAllNotes}
+                    unselectAllNotes={unselectAllNotes}
+                />
                 <ListNotes 
                     notes={notes}
+                    selectedNotes={selectedNotes}
+                    addSelectedNote={addSelectedNote}
+                    removeUnselectedNote={removeUnselectedNote}
                 />
             </>
-            : 
-            <p>No notes</p>
+            :
+            null
         )
     }
-};
-
-Home.propTypes = {
-    notes: PropTypes.array.isRequired,
-    fetchNotes: PropTypes.func.isRequired,
 };

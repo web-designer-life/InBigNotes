@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { Background, LoaderContent, LoaderText } from './style';
 import loader from '../../images/loader.gif';
 
@@ -8,10 +7,6 @@ interface Props {
 };
 
 export class Loader extends React.Component<Props> {
-    static propTypes: { 
-        isLoading: PropTypes.Validator<boolean>; 
-    }
-
     render() {
         const isLoading = this.props.isLoading;
 
@@ -30,8 +25,4 @@ export class Loader extends React.Component<Props> {
             null
         )
     }
-};
-
-Loader.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
 };
