@@ -9,13 +9,6 @@ export const GlobalStyle = createGlobalStyle`
     *::after {
         box-sizing: inherit;
     }
-    body {
-        margin: 0;
-        background-color: #ffffff;
-        font-family: 'Lora', 'Arial', sans-serif;
-        font-size: 20px;
-        color: black;
-    }
     img {
         max-width: 100%;
         height: auto;

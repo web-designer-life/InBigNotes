@@ -4,7 +4,7 @@ import { RedButton } from './style';
 
 interface Props {
     notes?: Note[],
-    selectedNotes?: Number[],
+    selectedNotes?: string[],
     deleteNotes(notes: Note[]): Function,
     unselectAllNotes(): Function,
 };
@@ -22,10 +22,9 @@ export class DeleteNotesButton extends React.Component<Props> {
             selectedNotes?.length ?
             <RedButton 
                 onClick={() => {
-                    const completeNotes = notes?.filter((note: Note) => !selectedNotes?.some((selectedNote: Number) => note.id === selectedNote)) || [];
+                    const completeNotes = notes?.filter((note: Note) => !selectedNotes?.some((selectedNote: String) => note.id === selectedNote)) || [];
 
                     unselectAllNotes();
-
                     deleteNotes(completeNotes);
                 }}
             >

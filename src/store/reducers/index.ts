@@ -20,6 +20,17 @@ export function rootReducer(state = initialState, action: any) {
                 notes: action.payload, 
                 isLoading: false,
             };
+        case actions.ADD_NOTE_PENDING:
+            return {
+                ...state, 
+                notes: action.notes,
+                isLoading: true,
+            };
+        case actions.ADD_NOTE_SUCCESS:
+            return {
+                ...state, 
+                isLoading: false,
+            };
         case actions.DELETE_NOTES_PENDING:
             return {
                 ...state, 

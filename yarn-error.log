@@ -1,34 +1,34 @@
 Arguments: 
-  /home/yulbarysau/.nvm/versions/node/v14.17.4/bin/node /home/yulbarysau/.nvm/versions/node/v14.17.4/bin/yarn add ts-styled-plugin
+  C:\Program Files\nodejs\node.exe C:\Users\Xiaomi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/react-uuid --dev
 
 PATH: 
-  /home/yulbarysau/.nvm/versions/node/v14.17.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Xiaomi\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\7-Zip;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files\Git\cmd;.;C:\Program Files\Java\jdk-14.0.2\bin";C:\Program Files\Common Files\Autodesk Shared;C:\Program Files\Microsoft SQL Server\120\Tools\Binn;D:\ЗКИ\flutter\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\nodejs;C:\Users\Xiaomi\AppData\Roaming\npm;C:\Python39\Scripts;C:\Python39;C:\Users\Xiaomi\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;D:\ЗКИ\flutter\bin;D:\WebStorm 2021.1.1\bin;C:\Program Files\nodejs;C:\Users\Xiaomi\AppData\Roaming\npm
 
 Yarn version: 
-  1.22.11
+  1.22.10
 
 Node version: 
-  14.17.4
+  16.2.0
 
 Platform: 
-  linux x64
+  win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/ts-styled-plugin: Not found
-      at Request.params.callback [as _callback] (/home/yulbarysau/.nvm/versions/node/v14.17.4/lib/node_modules/yarn/lib/cli.js:66992:18)
-      at Request.self.callback (/home/yulbarysau/.nvm/versions/node/v14.17.4/lib/node_modules/yarn/lib/cli.js:140763:22)
-      at Request.emit (events.js:400:28)
-      at Request.<anonymous> (/home/yulbarysau/.nvm/versions/node/v14.17.4/lib/node_modules/yarn/lib/cli.js:141735:10)
-      at Request.emit (events.js:400:28)
-      at IncomingMessage.<anonymous> (/home/yulbarysau/.nvm/versions/node/v14.17.4/lib/node_modules/yarn/lib/cli.js:141657:12)
-      at Object.onceWrapper (events.js:519:28)
-      at IncomingMessage.emit (events.js:412:35)
-      at endReadableNT (internal/streams/readable.js:1317:12)
-      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+  Error: https://registry.yarnpkg.com/@types%2freact-uuid: Not found
+      at Request.params.callback [as _callback] (C:\Users\Xiaomi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
+      at Request.self.callback (C:\Users\Xiaomi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
+      at Request.emit (node:events:365:28)
+      at Request.<anonymous> (C:\Users\Xiaomi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
+      at Request.emit (node:events:365:28)
+      at IncomingMessage.<anonymous> (C:\Users\Xiaomi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
+      at Object.onceWrapper (node:events:471:28)
+      at IncomingMessage.emit (node:events:377:35)
+      at endReadableNT (node:internal/streams/readable:1312:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
-    "name": "InBigNotes",
+    "name": "in-big-notes",
     "version": "1.0.0",
     "main": "index.js",
     "repository": "git@github.com:web-designer-life/InBigNotes.git",
@@ -42,11 +42,13 @@ npm manifest:
       "@babel/preset-typescript": "^7.15.0",
       "@types/react-dom": "^17.0.9",
       "@types/react-router-dom": "^5.1.8",
+      "@types/redux-logger": "^3.0.9",
       "@types/styled-components": "^5.1.12",
       "awesome-typescript-loader": "^5.2.1",
       "babel-loader": "^8.2.2",
       "copy-webpack-plugin": "^9.0.1",
       "css-loader": "^6.2.0",
+      "file-loader": "^6.2.0",
       "html-webpack-plugin": "^5.3.2",
       "imagemin-webpack-plugin": "^2.4.2",
       "jest": "^27.0.6",
@@ -63,11 +65,13 @@ npm manifest:
       "@reduxjs/toolkit": "^1.6.1",
       "@types/jest": "^27.0.0",
       "react": "^17.0.2",
-      "react-custom-checkbox": "^2.0.0",
       "react-dom": "^17.0.2",
       "react-redux": "^7.2.4",
       "react-router-dom": "^5.2.0",
+      "react-uuid": "^1.0.2",
+      "redux-logger": "^3.0.6",
       "redux-saga": "^1.1.3",
+      "redux-saga-effects": "^1.1.0",
       "reselect": "^4.0.0",
       "styled-components": "^5.3.0",
       "typescript": "^4.3.5"
@@ -1614,6 +1618,13 @@ Lockfile:
       "@types/scheduler" "*"
       csstype "^3.0.2"
   
+  "@types/redux-logger@^3.0.9":
+    version "3.0.9"
+    resolved "https://registry.yarnpkg.com/@types/redux-logger/-/redux-logger-3.0.9.tgz#9193b3d51bb6ab98d25514ba7764e4f98a64d3ec"
+    integrity sha512-cwYhVbYNgH01aepeMwhd0ABX6fhVB2rcQ9m80u8Fl50ZODhsZ8RhQArnLTkE7/Zrfq4Sz/taNoF7DQy9pCZSKg==
+    dependencies:
+      redux "^4.0.0"
+  
   "@types/scheduler@*":
     version "0.16.2"
     resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
@@ -3153,6 +3164,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
     integrity sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=
   
+  deep-diff@^0.3.5:
+    version "0.3.8"
+    resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
+    integrity sha1-wB3mPvsO7JeYgB1Ax+Da4ltYLIQ=
+  
   deep-equal@^1.0.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.1.tgz#b5c98c942ceffaf7cb051e24e1434a25a2e6076a"
@@ -3915,6 +3931,14 @@ Lockfile:
     dependencies:
       escape-string-regexp "^1.0.5"
       object-assign "^4.1.0"
+  
+  file-loader@^6.2.0:
+    version "6.2.0"
+    resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-6.2.0.tgz#baef7cf8e1840df325e4390b4484879480eebe4d"
+    integrity sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==
+    dependencies:
+      loader-utils "^2.0.0"
+      schema-utils "^3.0.0"
   
   file-type@5.2.0, file-type@^5.2.0:
     version "5.2.0"
@@ -5798,6 +5822,15 @@ Lockfile:
       emojis-list "^3.0.0"
       json5 "^1.0.1"
   
+  loader-utils@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.0.tgz#e4cace5b816d425a166b5f097e10cd12b36064b0"
+    integrity sha512-rP4F0h2RaWSvPEkD7BLDFQnvSf+nK+wr3ESUjNTyAGobqrijmW92zc+SO6d4p4B1wh7+B/Jg1mkQe5NYUEHtHQ==
+    dependencies:
+      big.js "^5.2.2"
+      emojis-list "^3.0.0"
+      json5 "^2.1.2"
+  
   locate-path@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
@@ -6993,11 +7026,6 @@ Lockfile:
       iconv-lite "0.4.24"
       unpipe "1.0.0"
   
-  react-custom-checkbox@^2.0.0:
-    version "2.0.0"
-    resolved "https://registry.yarnpkg.com/react-custom-checkbox/-/react-custom-checkbox-2.0.0.tgz#2c5a027832320723b46b0a4444be3744e518ddd9"
-    integrity sha512-YWwYEfQOMGmWUTHqLE9NHKxToGhxEN/DnYUqNuuFDDhxKqlrx5hyuePwLKn2pzFLmWTOkVNeeTD/L2SW1vaggQ==
-  
   react-dom@^17.0.2:
     version "17.0.2"
     resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
@@ -7057,6 +7085,11 @@ Lockfile:
       react-is "^16.6.0"
       tiny-invariant "^1.0.2"
       tiny-warning "^1.0.0"
+  
+  react-uuid@^1.0.2:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/react-uuid/-/react-uuid-1.0.2.tgz#c77cea91cf38eafb1aaa7910f92621b2ed91b969"
+    integrity sha512-5e0GM16uuQj9MdRJlZ0GdLC8LKMwpU9PIqYmF27s3fIV2z+rLyASTaiW4aKzSY4DyGanz+ImzsECkftwGWfAwA==
   
   react@^17.0.2:
     version "17.0.2"
@@ -7133,6 +7166,18 @@ Lockfile:
     version "2.13.9"
     resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.9.tgz#6b764e8028b507adcb75a1cae790f71e6be08ae7"
     integrity sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==
+  
+  redux-logger@^3.0.6:
+    version "3.0.6"
+    resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
+    integrity sha1-91VZZvMJjzyIYExEnPC69XeCdL8=
+    dependencies:
+      deep-diff "^0.3.5"
+  
+  redux-saga-effects@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/redux-saga-effects/-/redux-saga-effects-1.1.0.tgz#fba610e988eb8bef7a6e58008d9ec54943870a5f"
+    integrity sha1-+6YQ6Yjri+96blgAjZ7FSUOHCl8=
   
   redux-saga@^1.1.3:
     version "1.1.3"

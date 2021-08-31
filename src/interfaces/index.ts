@@ -1,7 +1,7 @@
 export interface Note {
-    id: number, 
+    id: string, 
     title: string, 
     text: string,
-    created_at: string,
-    updated_at: string,
+    created_at: Number,
+    updated_at: Number
 };

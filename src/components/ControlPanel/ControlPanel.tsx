@@ -5,7 +5,7 @@ import { Wrapper, SelectAllWrapper, Title } from './style';
 
 interface Props {
     notes?: Note[],
-    selectedNotes?: Number[],
+    selectedNotes?: string[],
     selectAllNotes(notes: Note[]): Function,
     unselectAllNotes(): Function,
 }

@@ -1,23 +1,23 @@
 import * as React from 'react';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import { ListNotes } from '../Notes/ListNotes';
+import { RouterWrapper, Logo, Wrapper } from '../../containers/style';
+import { CreateNoteButton } from '../../components/Buttons/CreateNoteButton';
+import { DeleteNotesButton } from '../../components/Buttons/DeleteNotesButton';
 import { Note } from '../../interfaces';
+import { Link } from 'react-router-dom';
 
 interface Props {
     notes?: Note[],
-    selectedNotes?: Number[],
-    fetchNotes(): Function,
+    selectedNotes?: string[],
+    deleteNotes(notes: Note[]): Function,
     addSelectedNote(note: Note): Function,
     removeUnselectedNote(note: Note): Function,
     selectAllNotes(notes: Note[]): Function,
-    unselectAllNotes(): Function,
+    unselectAllNotes(): Function
 };
 
 export class Home extends React.Component<Props> {
-    componentDidMount() {
-        this.props.fetchNotes();
-    }
-
     render() {
         const { 
             notes, 
@@ -25,12 +25,29 @@ export class Home extends React.Component<Props> {
             addSelectedNote, 
             removeUnselectedNote,
             selectAllNotes,
-            unselectAllNotes, 
+            unselectAllNotes,
+            deleteNotes
         } = this.props;
 
         return (
             (notes && notes.length !== 0) ? 
             <>
+                <RouterWrapper>
+                    <Logo>InBigNotes</Logo>
+                    <Wrapper>
+                        <Link to="/note">
+                            <CreateNoteButton
+                                selectedNotes={selectedNotes}
+                            />
+                        </Link>
+                        <DeleteNotesButton 
+                            notes={notes}
+                            selectedNotes={selectedNotes}
+                            deleteNotes={deleteNotes}
+                            unselectAllNotes={unselectAllNotes}
+                        />
+                    </Wrapper>
+                </RouterWrapper>
                 <ControlPanel 
                     notes={notes}
                     selectedNotes={selectedNotes}
@@ -45,7 +62,22 @@ export class Home extends React.Component<Props> {
                 />
             </>
             :
-            null
+            <RouterWrapper>
+                <Logo>InBigNotes</Logo>
+                <Wrapper>
+                    <Link to="/note">
+                        <CreateNoteButton
+                            selectedNotes={selectedNotes}
+                        />
+                    </Link>
+                    <DeleteNotesButton 
+                        notes={notes}
+                        selectedNotes={selectedNotes}
+                        deleteNotes={deleteNotes}
+                        unselectAllNotes={unselectAllNotes}
+                    />
+                </Wrapper>
+            </RouterWrapper>
         )
     }
 };

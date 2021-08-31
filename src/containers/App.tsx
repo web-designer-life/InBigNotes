@@ -4,23 +4,20 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Home } from '../components/Home/Home';
-import NoteCreator from '../components/NoteCreator/NoteCreator';
+import { Note as NotePage} from '../components/Note/Note';
 import { Loader } from '../components/Loader/Loader';
-import { fetchNotes, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../store/actions/notes';
+import { fetchNotes, addNote, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../store/actions/notes';
 import { Note } from '../interfaces';
-import { DeleteNotesButton } from '../components/Buttons/DeleteNotesButton';
-
-import './App.css';
 
 interface Props {
-    notes?: Note[],
+    notes: Note[],
     isLoading: Boolean,
-    selectedNotes?: Number[],
+    selectedNotes?: string[],
     fetchNotesAction(): Function,
+    addNoteAction(notes: Note[]): Function,
     deleteNotesAction(notes: Note[]): Function,
     addSelectedNoteAction(note: Note): Function,
     removeUnselectedNoteAction(note: Note): Function,
@@ -29,12 +26,16 @@ interface Props {
 };
 
 class App extends React.Component<Props> {
+    componentDidMount() {
+        this.props.fetchNotesAction();
+    }
+
     render() {
         const { 
             notes, 
             isLoading, 
             selectedNotes,
-            fetchNotesAction,
+            addNoteAction,
             deleteNotesAction, 
             addSelectedNoteAction, 
             removeUnselectedNoteAction,
@@ -47,42 +48,25 @@ class App extends React.Component<Props> {
                 <GlobalStyle />
                 <Loader isLoading={isLoading}/>
                 <Router>
-                    <div>
-                        <nav>
-                            <h1>InBigNotes</h1>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <Link to="/noteCreator">Create note</Link>
-                                </li>
-                            </ul>
-                            <DeleteNotesButton 
+                    <Switch>
+                        <Route path="/Note">
+                            <NotePage  
                                 notes={notes}
-                                selectedNotes={selectedNotes}
-                                deleteNotes={deleteNotesAction}
-                                unselectAllNotes={unselectAllNotesAction}
+                                addNote={addNoteAction}
                             />
-                        </nav>
-
-                        <Switch>
-                            <Route path="/NoteCreator">
-                                <NoteCreator />
-                            </Route>
-                            <Route path="/">
-                                <Home 
-                                    notes={notes} 
-                                    selectedNotes={selectedNotes}
-                                    fetchNotes={fetchNotesAction} 
-                                    addSelectedNote={addSelectedNoteAction} 
-                                    removeUnselectedNote={removeUnselectedNoteAction}
-                                    selectAllNotes={selectAllNotesAction}
-                                    unselectAllNotes={unselectAllNotesAction}
-                                />
-                            </Route>
-                        </Switch>
-                    </div>
+                        </Route>
+                        <Route path="/" exact>
+                            <Home 
+                                notes={notes} 
+                                selectedNotes={selectedNotes}
+                                addSelectedNote={addSelectedNoteAction} 
+                                removeUnselectedNote={removeUnselectedNoteAction}
+                                selectAllNotes={selectAllNotesAction}
+                                unselectAllNotes={unselectAllNotesAction}
+                                deleteNotes={deleteNotesAction}
+                            />
+                        </Route>
+                    </Switch>
                 </Router>
             </>
         );
@@ -100,6 +84,7 @@ const mapStateToProps = (store: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNotesAction: () => dispatch(fetchNotes()),
+        addNoteAction: (notes: Note[]) => dispatch(addNote(notes)),
         deleteNotesAction: (notes: Note[]) => dispatch(deleteNotes(notes)),
         addSelectedNoteAction: (note: Note) => dispatch(addSelectedNote(note)),
         removeUnselectedNoteAction: (note: Note) => dispatch(removeUnselectedNote(note)),

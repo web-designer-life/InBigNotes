@@ -5,7 +5,7 @@ import { Note as INote } from '../../interfaces';
 
 interface Props {
     note: INote,
-    selectedNotes?: Number[],
+    selectedNotes?: string[],
     addSelectedNote(note: INote): Function,
     removeUnselectedNote(note: INote): Function,
 };

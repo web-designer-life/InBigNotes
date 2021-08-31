@@ -5,6 +5,11 @@ export const fetchNotes = () => ({
     type: actions.FETCH_NOTES_PENDING,
 });
 
+export const addNote = (notes: Note[]) => ({
+    type: actions.ADD_NOTE_PENDING,
+    notes,
+});
+
 export const deleteNotes = (notes: Note[]) => ({
     type: actions.DELETE_NOTES_PENDING,
     notes,
