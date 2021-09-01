@@ -1,15 +1,30 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
 import { Note as INote } from '../../interfaces';
 import { BackToMenuButton } from '../Buttons/BackToMenuButton';
 import { SaveNoteButton } from '../Buttons/SaveNoteButton';
 import { CancelNoteButton } from '../Buttons/CancelNoteButton';
+import { fetchNotes, addNote, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../../store/actions/notes';
+import { connect } from 'react-redux';
 import { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper } from './style';
 
 interface Props {
-    note?: INote,
+    note?: INote,    
     notes: INote[],
-    addNote(notes: INote[]): Function
+    isLoading: Boolean,
+    selectedNotes?: string[],
+    fetchNotesAction(): Function,
+    addNoteAction(notes: INote[]): Function,
+    deleteNotesAction(notes: INote[]): Function,
+    addSelectedNoteAction(note: INote): Function,
+    removeUnselectedNoteAction(note: INote): Function,
+    selectAllNotesAction(notes: INote[]): Function,
+    unselectAllNotesAction(): Function,
 };
 
 interface State {
@@ -45,8 +60,9 @@ export class Note extends React.Component<Props, State> {
     render() {
         const { 
             notes,
-            addNote 
+            addNoteAction 
         } = this.props;
+
         return (
             <NoteForm onSubmit={this.handleSubmit}>
                 <NoteTitle 
@@ -72,7 +88,7 @@ export class Note extends React.Component<Props, State> {
                         <SaveNoteButton 
                             noteInfo={this.state}
                             notes={notes}
-                            addNote={addNote}
+                            addNote={addNoteAction}
                         />
                         <CancelNoteButton />
                     </NoteButtonsWrapper>
@@ -81,3 +97,27 @@ export class Note extends React.Component<Props, State> {
         )
     }
 };
+
+const mapStateToProps = (store: any) => {
+    return {
+        notes: store.notes,
+        isLoading: store.isLoading,
+    }
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        fetchNotesAction: () => dispatch(fetchNotes()),
+        addNoteAction: (notes: INote[]) => dispatch(addNote(notes)),
+        deleteNotesAction: (notes: INote[]) => dispatch(deleteNotes(notes)),
+        addSelectedNoteAction: (note: INote) => dispatch(addSelectedNote(note)),
+        removeUnselectedNoteAction: (note: INote) => dispatch(removeUnselectedNote(note)),
+        selectAllNotesAction: (notes: INote[]) => dispatch(selectAllNotes(notes)),
+        unselectAllNotesAction: () => dispatch(unselectAllNotes()),
+    }
+};
+  
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Note);

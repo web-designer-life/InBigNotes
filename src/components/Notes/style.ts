@@ -4,15 +4,22 @@ const List = styled.ul`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 50px 50px 30px 50px; 
+    padding: 50px 50px 30px 50px;
 `;
 
 const Note = styled.li`
     position: relative;
-    list-style-type: none;
-    width: 440px;
-    height: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 0 20px 0;
+    width: 100%;
+`;
+
+const NoteInfo = styled.li`
+    list-style-type: none;
+    height: 170px;
+    width: 1690px;
     padding: 30px;
     background: #FFFFFF;
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
@@ -43,10 +50,9 @@ const Title = styled.h3`
 `;
 
 const Text = styled.p`
+    white-space: nowrap;
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
     font-style: normal;
     font-weight: bold;
     font-size: 21px;
@@ -55,4 +61,4 @@ const Text = styled.p`
     color: #787878;
 `;
 
-export { List, Note, Header, Title, Text };
+export { List, Note, NoteInfo, Header, Title, Text };

@@ -26,8 +26,8 @@ export class SaveNoteButton extends React.Component<Props> {
                 onClick={() => {
                     const note = {                    
                         id: uuidv4(),
-                        title: noteInfo.title,
-                        text: noteInfo.text,
+                        title: noteInfo.title.trim(),
+                        text: noteInfo.text.trim(),
                         created_at: Date.now(),
                         updated_at: Date.now()
                     };

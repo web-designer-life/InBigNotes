@@ -5,23 +5,23 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Home } from '../components/Home/Home';
-import { Note as NotePage} from '../components/Note/Note';
+import Note from '../components/Note/Note';
 import { Loader } from '../components/Loader/Loader';
 import { fetchNotes, addNote, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../store/actions/notes';
-import { Note } from '../interfaces';
+import { Note as INote } from '../interfaces';
 
 interface Props {
-    notes: Note[],
+    notes: INote[],
     isLoading: Boolean,
     selectedNotes?: string[],
     fetchNotesAction(): Function,
-    addNoteAction(notes: Note[]): Function,
-    deleteNotesAction(notes: Note[]): Function,
-    addSelectedNoteAction(note: Note): Function,
-    removeUnselectedNoteAction(note: Note): Function,
-    selectAllNotesAction(notes: Note[]): Function,
+    addNoteAction(notes: INote[]): Function,
+    deleteNotesAction(notes: INote[]): Function,
+    addSelectedNoteAction(note: INote): Function,
+    removeUnselectedNoteAction(note: INote): Function,
+    selectAllNotesAction(notes: INote[]): Function,
     unselectAllNotesAction(): Function,
 };
 
@@ -35,7 +35,7 @@ class App extends React.Component<Props> {
             notes, 
             isLoading, 
             selectedNotes,
-            addNoteAction,
+            //addNoteAction,
             deleteNotesAction, 
             addSelectedNoteAction, 
             removeUnselectedNoteAction,
@@ -50,10 +50,10 @@ class App extends React.Component<Props> {
                 <Router>
                     <Switch>
                         <Route path="/Note">
-                            <NotePage  
-                                notes={notes}
-                                addNote={addNoteAction}
-                            />
+                            <Note />
+                        </Route>
+                        <Route path={`/Note/:id`}>
+                            <Note />
                         </Route>
                         <Route path="/" exact>
                             <Home 
@@ -84,11 +84,11 @@ const mapStateToProps = (store: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNotesAction: () => dispatch(fetchNotes()),
-        addNoteAction: (notes: Note[]) => dispatch(addNote(notes)),
-        deleteNotesAction: (notes: Note[]) => dispatch(deleteNotes(notes)),
-        addSelectedNoteAction: (note: Note) => dispatch(addSelectedNote(note)),
-        removeUnselectedNoteAction: (note: Note) => dispatch(removeUnselectedNote(note)),
-        selectAllNotesAction: (notes: Note[]) => dispatch(selectAllNotes(notes)),
+        addNoteAction: (notes: INote[]) => dispatch(addNote(notes)),
+        deleteNotesAction: (notes: INote[]) => dispatch(deleteNotes(notes)),
+        addSelectedNoteAction: (note: INote) => dispatch(addSelectedNote(note)),
+        removeUnselectedNoteAction: (note: INote) => dispatch(removeUnselectedNote(note)),
+        selectAllNotesAction: (notes: INote[]) => dispatch(selectAllNotes(notes)),
         unselectAllNotesAction: () => dispatch(unselectAllNotes()),
     }
 };
