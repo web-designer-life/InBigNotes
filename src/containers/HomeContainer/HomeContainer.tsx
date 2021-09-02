@@ -34,7 +34,7 @@ export default class HomeContainer extends React.Component<Props> {
         
         return (
             <>
-                {
+                {   
                     isLoading ?
                     <Loader 
                         isLoading={isLoading}
