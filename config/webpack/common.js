@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-  entry: `${paths.src}/index.js`,
+  entry: `${paths.src}/index.tsx`,
   output: {
     path: paths.build,
     filename: 'js/[name].bundle.js',
@@ -25,10 +25,7 @@ module.exports = {
     }
   },
   resolve: {
-    alias: {
-      '@': `${paths.src}/modules`
-    },
-    extensions: ['.js', '.jsx', ".ts", ".tsx"]
+    extensions: ['.js', '.ts', '.tsx'],
   },
   devtool: 'source-map',
   experiments: {
@@ -39,21 +36,28 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: "awesome-typescript-loader",
+        exclude: /node_modules/,
+        resolve: {
+          extensions: ['.ts', '.tsx', '.js', '.json'],
+        },
+        use: 'ts-loader',
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        loader: 'babel-loader',
+        options: { presets: ['@babel/env'] }
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(jpe?g|png|gif|svg|eot|ttf|woff2?)$/i,
-        type: 'asset'
+        test: /\.(png|jpe?g|gif|jp2|webp|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]',
+        },
       }
     ]
   },
