@@ -2,27 +2,23 @@ import * as React from 'react';
 import { Background, LoaderContent, LoaderText } from './style';
 import loader from '../../images/loader.gif';
 
-interface Props {
-    isLoading: Boolean,
-};
-
-export class Loader extends React.Component<Props> {
+export default class Loader extends React.Component {
     render() {
-        const isLoading = this.props.isLoading;
+        const {
+            isLoading
+        } = this.props;
 
         isLoading ? 
         document.body.style.overflow = 'hidden' : 
         document.body.style.overflow = 'unset';
         
         return (
-            isLoading ?
             <Background>
                 <LoaderContent>
                     <img src={loader} width={100} height={100} alt="Loading" />
                     <LoaderText>Loading...</LoaderText>
                 </LoaderContent>
-            </Background> :
-            null
+            </Background>
         )
     }
 };

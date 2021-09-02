@@ -4,8 +4,7 @@ import { Note as INote } from '../../interfaces';
 import { BackToMenuButton } from '../Buttons/BackToMenuButton';
 import { SaveNoteButton } from '../Buttons/SaveNoteButton';
 import { CancelNoteButton } from '../Buttons/CancelNoteButton';
-import { fetchNotes, addNote, updateNote, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../../store/actions/notes';
-import { connect } from 'react-redux';
+import { addNote } from '../../store/actions/notes';
 import { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper } from './style';
 
 interface Props {
@@ -15,6 +14,7 @@ interface Props {
     selectedNotes?: string[],
     fetchNotesAction(): Function,
     onSubmit(note: INote): Function,
+    addNote(notes: INote[]): Function,
     deleteNotesAction(notes: INote[]): Function,
     addSelectedNoteAction(note: INote): Function,
     removeUnselectedNoteAction(note: INote): Function,
@@ -51,13 +51,14 @@ export default class Note extends React.Component<Props, State> {
     handleSubmit(evt: any) {
         evt.preventDefault();
 
-        
+        //
     };
 
     render() {
         const { 
             notes,
-            onSubmit 
+            onSubmit,
+            addNote
         } = this.props;
 
         return (
@@ -85,7 +86,7 @@ export default class Note extends React.Component<Props, State> {
                         <SaveNoteButton 
                             noteInfo={this.state}
                             notes={notes}
-                            //
+                            addNote={addNote}
                         />
                         <CancelNoteButton />
                     </NoteButtonsWrapper>

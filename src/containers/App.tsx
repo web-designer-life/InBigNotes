@@ -5,7 +5,7 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
-import { Home } from '../components/Home/Home';
+import HomeContainer from './HomeContainer';
 import NoteCreation from './NoteCreation/NoteCreation';
 import NoteView from './NoteView/NoteView';
 
@@ -18,7 +18,7 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/Note/create" component={NoteCreation} />
                         <Route path={`/Note/:id`} component={NoteView} />
-                        <Route path="/" exact component={Home} />
+                        <Route path="/" exact component={HomeContainer} />
                     </Switch>
                 </Router>
             </>

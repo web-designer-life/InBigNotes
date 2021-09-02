@@ -3,9 +3,9 @@ import { fetchNote, updateNote } from '../../store/actions/notes';
 import NoteView from './NoteView';
 import { Note } from '../../interfaces';
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (store: any) => {
     return {
-        isLoading: state.isLoading,
+        isLoading: store.isLoading,
     }
 };
 

@@ -17,7 +17,7 @@ interface Props {
     unselectAllNotes(): Function
 };
 
-export class Home extends React.Component<Props> {
+export default class Home extends React.Component<Props> {
     render() {
         const { 
             notes, 
@@ -35,7 +35,7 @@ export class Home extends React.Component<Props> {
                 <RouterWrapper>
                     <Logo>InBigNotes</Logo>
                     <Wrapper>
-                        <Link to="/note">
+                        <Link to="/note/create">
                             <CreateNoteButton
                                 selectedNotes={selectedNotes}
                             />
@@ -62,22 +62,25 @@ export class Home extends React.Component<Props> {
                 />
             </>
             :
-            <RouterWrapper>
-                <Logo>InBigNotes</Logo>
-                <Wrapper>
-                    <Link to="/note">
-                        <CreateNoteButton
+            <>
+                <RouterWrapper>
+                    <Logo>InBigNotes</Logo>
+                    <Wrapper>
+                        <Link to="/note/create">
+                            <CreateNoteButton
+                                selectedNotes={selectedNotes}
+                            />
+                        </Link>
+                        <DeleteNotesButton 
+                            notes={notes}
                             selectedNotes={selectedNotes}
+                            deleteNotes={deleteNotes}
+                            unselectAllNotes={unselectAllNotes}
                         />
-                    </Link>
-                    <DeleteNotesButton 
-                        notes={notes}
-                        selectedNotes={selectedNotes}
-                        deleteNotes={deleteNotes}
-                        unselectAllNotes={unselectAllNotes}
-                    />
-                </Wrapper>
-            </RouterWrapper>
+                    </Wrapper>
+                </RouterWrapper>
+                <p>No notes</p>
+            </>
         )
     }
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Note from '../../components/Note/Note';
-import { Loader } from '../../components/Loader/Loader';
+import Loader from '../../components/Loader/Loader';
 import { Note as INote } from '../../interfaces';
 
 interface Props {
@@ -21,10 +21,9 @@ export default class NoteView extends React.Component<Props> {
             updateNoteAction
         } = this.props;
 
-        console.log(this.props)
         return (
             <>
-                <Loader isLoading={isLoading}/>
+                <Loader />
                 {/* <Note onSubmit={updateNote}/> */}
             </>
         );
