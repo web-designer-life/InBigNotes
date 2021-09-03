@@ -1,20 +1,15 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import Note from '../../components/Note/Note';
 import Loader from '../../components/Loader/Loader';
 import { Note as INote } from '../../interfaces';
 
 interface Props {
     isLoading: Boolean,
-    fetchNotesAction(): Function,
+    fetchNoteAction(id: string): Function,
     updateNoteAction(note: INote): Function,
 };
 
 export default class NoteView extends React.Component<Props> {
-    componentDidMount() {
-        this.props.fetchNotesAction()
-    }
-
     render() {
         const { 
             isLoading, 
@@ -22,10 +17,12 @@ export default class NoteView extends React.Component<Props> {
         } = this.props;
 
         return (
-            <>
-                <Loader />
-                {/* <Note onSubmit={updateNote}/> */}
-            </>
+            isLoading ?
+            <Loader /> :
+            <Note 
+                fetchNote={fetchNoteAction}
+                onSubmit={updateNoteAction}
+            />
         );
     }
 };

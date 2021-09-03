@@ -36,9 +36,7 @@ export default class HomeContainer extends React.Component<Props> {
             <>
                 {   
                     isLoading ?
-                    <Loader 
-                        isLoading={isLoading}
-                    /> :
+                    <Loader /> :
                     <Home 
                         notes={notes}
                         selectedNotes={selectedNotes}

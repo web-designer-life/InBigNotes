@@ -4,14 +4,6 @@ import loader from '../../images/loader.gif';
 
 export default class Loader extends React.Component {
     render() {
-        const {
-            isLoading
-        } = this.props;
-
-        isLoading ? 
-        document.body.style.overflow = 'hidden' : 
-        document.body.style.overflow = 'unset';
-        
         return (
             <Background>
                 <LoaderContent>

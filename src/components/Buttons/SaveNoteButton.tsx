@@ -8,8 +8,7 @@ interface Props {
         title: string,
         text: string
     },
-    notes: Note[],
-    addNote(notes: Note[]): Function
+    addOrUpdateNote(note: Note): Function
 };
 
 export class SaveNoteButton extends React.Component<Props> {

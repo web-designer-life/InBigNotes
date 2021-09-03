@@ -4,22 +4,11 @@ import { Note as INote } from '../../interfaces';
 import { BackToMenuButton } from '../Buttons/BackToMenuButton';
 import { SaveNoteButton } from '../Buttons/SaveNoteButton';
 import { CancelNoteButton } from '../Buttons/CancelNoteButton';
-import { addNote } from '../../store/actions/notes';
 import { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper } from './style';
 
 interface Props {
-    note?: INote,    
-    notes: INote[],
-    isLoading: Boolean,
-    selectedNotes?: string[],
-    fetchNotesAction(): Function,
+    fetchNote?(id: string): Function,
     onSubmit(note: INote): Function,
-    addNote(notes: INote[]): Function,
-    deleteNotesAction(notes: INote[]): Function,
-    addSelectedNoteAction(note: INote): Function,
-    removeUnselectedNoteAction(note: INote): Function,
-    selectAllNotesAction(notes: INote[]): Function,
-    unselectAllNotesAction(): Function,
 };
 
 interface State {
@@ -56,9 +45,7 @@ export default class Note extends React.Component<Props, State> {
 
     render() {
         const { 
-            notes,
             onSubmit,
-            addNote
         } = this.props;
 
         return (
@@ -85,8 +72,7 @@ export default class Note extends React.Component<Props, State> {
                     <NoteButtonsWrapper>
                         <SaveNoteButton 
                             noteInfo={this.state}
-                            notes={notes}
-                            addNote={addNote}
+                            addOrUpdateNote={onSubmit}
                         />
                         <CancelNoteButton />
                     </NoteButtonsWrapper>

@@ -16,7 +16,7 @@ const Note = styled.li`
     width: 100%;
 `;
 
-const NoteInfo = styled.li`
+const NoteInfo = styled.div`
     list-style-type: none;
     height: 170px;
     width: 1690px;
