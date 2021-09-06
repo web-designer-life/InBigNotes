@@ -6,6 +6,7 @@ import { Note } from '../../interfaces';
 const mapStateToProps = (store: any) => {
     return {
         isLoading: store.isLoading,
+        note: store.note,
     }
 };
 

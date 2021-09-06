@@ -5,6 +5,7 @@ export const initialState = {
     notes: [],
     isLoading: false,
     selectedNotes: [],
+    note: {},
 };
 
 export function rootReducer(state = initialState, action: any) {
@@ -20,10 +21,22 @@ export function rootReducer(state = initialState, action: any) {
                 notes: action.payload, 
                 isLoading: false,
             };
+        case actions.FETCH_NOTE_PENDING:
+            return {
+                ...state, 
+                id: action.id,
+                isLoading: true,
+            };
+        case actions.FETCH_NOTE_SUCCESS:
+            return {
+                ...state, 
+                note: action.payload, 
+                isLoading: false,
+            };
         case actions.ADD_NOTE_PENDING:
             return {
                 ...state, 
-                notes: action.notes,
+                note: action.note,
                 isLoading: true,
             };
         case actions.ADD_NOTE_SUCCESS:

@@ -12,7 +12,7 @@ const mapStateToProps = (store: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        addNoteAction: (notes: Note[]) => dispatch(addNote(notes)),
+        addNoteAction: (note: Note) => dispatch(addNote(note)),
     }
 };
  

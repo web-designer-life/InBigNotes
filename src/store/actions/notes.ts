@@ -6,13 +6,13 @@ export const fetchNotes = () => ({
 });
 
 export const fetchNote = (id: string) => ({
-    type: actions.FETCH_NOTES_PENDING,
-    id
+    type: actions.FETCH_NOTE_PENDING,
+    id,
 });
 
-export const addNote = (notes: Note[]) => ({
+export const addNote = (note: Note) => ({
     type: actions.ADD_NOTE_PENDING,
-    notes,
+    note,
 });
 
 export const updateNote = (note: Note) => ({

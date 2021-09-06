@@ -8,15 +8,14 @@ interface Props {
         title: string,
         text: string
     },
-    addOrUpdateNote(note: Note): Function
+    addOrUpdateNote(note: Note): Function,
 };
 
 export class SaveNoteButton extends React.Component<Props> {
     render() {
         const { 
             noteInfo,
-            notes,
-            addNote
+            addOrUpdateNote,
         } = this.props;
 
         return (
@@ -28,13 +27,10 @@ export class SaveNoteButton extends React.Component<Props> {
                         title: noteInfo.title.trim(),
                         text: noteInfo.text.trim(),
                         created_at: Date.now(),
-                        updated_at: Date.now()
+                        updated_at: Date.now(),
                     };
 
-                    const completeNotes = notes.slice();
-                    completeNotes.push(note);
-
-                    addNote(completeNotes);
+                    addOrUpdateNote(note);
                 }}
             >
                 Save

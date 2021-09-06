@@ -5,19 +5,22 @@ import { Note as INote } from '../../interfaces';
 
 interface Props {
     isLoading: Boolean,
-    addNoteAction(notes: INote[]): Function,
+    addNoteAction(note: INote): Function,
 };
 
 export default class NoteCreation extends React.Component<Props> {
     render() {
         const { 
             isLoading, 
+            addNoteAction,
         } = this.props;
 
         return (
             isLoading ?
             <Loader /> :
-            <Note onSubmit={addNoteAction}/>
+            <Note 
+                onSubmit={addNoteAction}
+            />
         );
     }
 };

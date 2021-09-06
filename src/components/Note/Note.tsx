@@ -7,6 +7,7 @@ import { CancelNoteButton } from '../Buttons/CancelNoteButton';
 import { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper } from './style';
 
 interface Props {
+    note?: INote,
     fetchNote?(id: string): Function,
     onSubmit(note: INote): Function,
 };
@@ -21,8 +22,10 @@ export default class Note extends React.Component<Props, State> {
         super(props);
 
         this.state = {
-            title: this.props.note ? this.props.note.title : '',
-            text: this.props.note ? this.props.note.text : '',
+            // title: this.props.note ? this.props.note.title : '',
+            // text: this.props.note ? this.props.note.text : '',
+            title: '',
+            text: '',
         };
 
         this.handleChange = this.handleChange.bind(this);
