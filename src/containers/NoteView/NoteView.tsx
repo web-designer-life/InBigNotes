@@ -24,18 +24,14 @@ export default class NoteView extends React.Component<Props> {
         const { 
             note,
             isLoading, 
-            fetchNoteAction,
             updateNoteAction,
         } = this.props;
-
-        console.log(note)
 
         return (
             isLoading ?
             <Loader /> :
             <Note 
                 note={note}
-                fetchNote={fetchNoteAction}
                 onSubmit={updateNoteAction}
             />
         );

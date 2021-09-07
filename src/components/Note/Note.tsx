@@ -8,28 +8,32 @@ import { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper 
 
 interface Props {
     note?: INote,
-    fetchNote?(id: string): Function,
     onSubmit(note: INote): Function,
 };
 
 interface State {
     title: string,
     text: string,
-}
+};
 
 export default class Note extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
         this.state = {
-            // title: this.props.note ? this.props.note.title : '',
-            // text: this.props.note ? this.props.note.text : '',
             title: '',
             text: '',
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    };
+    
+    componentDidMount() {
+        this.setState({
+            title: this.props.note ? this.props.note.title : '',
+            text: this.props.note ? this.props.note.text : '',
+        });
     };
 
     handleChange(evt: { target: { name: string; value: string; }; }) {
@@ -40,6 +44,13 @@ export default class Note extends React.Component<Props, State> {
         } as Pick<State, keyof State>);
     };
 
+    handleCancelChanges() {
+        this.setState({
+            title: this.props.note ? this.props.note.title : '',
+            text: this.props.note ? this.props.note.text : '',
+        });
+    }
+
     handleSubmit(evt: any) {
         evt.preventDefault();
 
@@ -48,6 +59,7 @@ export default class Note extends React.Component<Props, State> {
 
     render() {
         const { 
+            note,
             onSubmit,
         } = this.props;
 
@@ -74,10 +86,15 @@ export default class Note extends React.Component<Props, State> {
                     </Link>
                     <NoteButtonsWrapper>
                         <SaveNoteButton 
+                            note={note}
                             noteInfo={this.state}
                             addOrUpdateNote={onSubmit}
                         />
-                        <CancelNoteButton />
+                        <CancelNoteButton               
+                            note={note}
+                            noteInfo={this.state}
+                            // onClick={this.handleCancelChanges}
+                        />
                     </NoteButtonsWrapper>
                 </NoteControlsWrapper>
             </NoteForm>

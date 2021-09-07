@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GlobalStyle } from '../components/Style/GlobalStyle';
+import { GlobalStyle } from '../globalStyle';
 import {
     BrowserRouter as Router,
     Switch,
