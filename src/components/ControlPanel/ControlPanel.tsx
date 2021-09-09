@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Note } from '../../interfaces';
 import Checkbox from '../Checkbox/Checkbox';
-import { Wrapper, SelectAllWrapper, Title } from './style';
+import { 
+    Wrapper, 
+    SelectAllWrapper, 
+    Title 
+} from './style';
 
 interface Props {
     notes?: Note[],
@@ -11,12 +15,29 @@ interface Props {
 }
 
 export default class ControlPanel extends React.Component<Props> {
-    render() {
+    constructor(props: Props) {
+        super(props);
+
+        this.handleSelectOrUnselectNotes = this.handleSelectOrUnselectNotes.bind(this);
+    };
+
+    handleSelectOrUnselectNotes() {
         const { 
             notes, 
             selectedNotes,
             selectAllNotes, 
-            unselectAllNotes 
+            unselectAllNotes,
+        } = this.props;
+
+        selectedNotes?.length === notes?.length ?
+        unselectAllNotes() :
+        selectAllNotes(notes || [])
+    };
+
+    render() {
+        const { 
+            notes, 
+            selectedNotes,
         } = this.props;
 
         return (
@@ -25,14 +46,8 @@ export default class ControlPanel extends React.Component<Props> {
                 <SelectAllWrapper>
                     <Title>Select all</Title>
                     <Checkbox
-                        checked={
-                            selectedNotes?.length === notes?.length
-                        }
-                        onChange={() => {
-                            selectedNotes?.length === notes?.length ?
-                            unselectAllNotes() :
-                            selectAllNotes(notes || [])
-                        }}
+                        checked={selectedNotes?.length === notes?.length}
+                        onChange={this.handleSelectOrUnselectNotes}
                     />
                 </SelectAllWrapper>
             </Wrapper>

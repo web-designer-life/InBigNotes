@@ -1,12 +1,17 @@
 import React from 'react';
-import { CheckboxContainer, Icon, HiddenCheckbox, StyledCheckbox } from './style';
+import { 
+    CheckboxContainer, 
+    Icon, 
+    HiddenCheckbox, 
+    StyledCheckbox, 
+} from './style';
 import checkMark from '../../images/check-mark.svg';
 
 interface Props {
-    className?: string;
-    checked: boolean;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    labelWrap?: boolean;
+    className?: string,
+    checked: boolean,
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    labelWrap?: boolean,
 };
 
 const Checkbox: React.FC<Props> = ({

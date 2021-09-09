@@ -4,11 +4,16 @@ import Loader from '../../components/Loader/Loader';
 import { Note as INote } from '../../interfaces';
 
 interface Props {
-    isLoading: Boolean,
+    isLoading: boolean,
     addNoteAction(note: INote): Function,
+    resetStoreAction(): Function,
 };
 
 export default class NoteCreation extends React.Component<Props> {
+    componentWillUnmount() {
+        this.props.resetStoreAction();
+    }
+
     render() {
         const { 
             isLoading, 
@@ -19,7 +24,8 @@ export default class NoteCreation extends React.Component<Props> {
             isLoading ?
             <Loader /> :
             <Note 
-                onSubmit={addNoteAction}
+                typeName="Save"
+                addOrUpdateNote={addNoteAction}
             />
         );
     }

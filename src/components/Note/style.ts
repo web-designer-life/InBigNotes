@@ -47,4 +47,10 @@ const NoteButtonsWrapper = styled.div`
     width: 570px;
 `;
 
-export { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper };
+export { 
+    NoteForm, 
+    NoteTitle, 
+    NoteText, 
+    NoteControlsWrapper, 
+    NoteButtonsWrapper, 
+};

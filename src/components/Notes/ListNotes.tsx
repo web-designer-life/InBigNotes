@@ -14,7 +14,7 @@ export const ListNotes: React.FC<Props> = ({
     notes, 
     selectedNotes, 
     addSelectedNote, 
-    removeUnselectedNote 
+    removeUnselectedNote, 
 }) => (
     <List>
         {notes.map((note: Note) =>(

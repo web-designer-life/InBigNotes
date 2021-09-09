@@ -61,4 +61,11 @@ const Text = styled.p`
     color: #787878;
 `;
 
-export { List, Note, NoteInfo, Header, Title, Text };
+export { 
+    List, 
+    Note, 
+    NoteInfo, 
+    Header, 
+    Title, 
+    Text,
+};

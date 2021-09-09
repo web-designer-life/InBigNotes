@@ -16,7 +16,7 @@ export const addNote = (note: Note) => ({
 });
 
 export const updateNote = (note: Note) => ({
-    type: actions.ADD_NOTE_PENDING,
+    type: actions.UPDATE_NOTE_PENDING,
     note,
 });
 
@@ -42,4 +42,8 @@ export const selectAllNotes = (notes: Note[]) => ({
 
 export const unselectAllNotes = () => ({
     type: actions.UNSELECT_ALL_NOTES,
+});
+
+export const resetStore = () => ({
+    type: actions.RESET_STORE,
 });

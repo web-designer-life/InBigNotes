@@ -1,8 +1,13 @@
-import { delay, put, all, takeEvery } from 'redux-saga/effects';
+import { 
+    delay, 
+    put, 
+    all, 
+    takeEvery, 
+} from 'redux-saga/effects';
 import { Note } from '../../interfaces';
 import actions from '../actions';
 
-type Params = { id: string, note: Note, notes: Note[], type: string }
+type Params = { id: string, note: Note, notes: Note[], type: string };
 
 function* fetchNotes() {
     yield delay(1500);
@@ -32,7 +37,20 @@ function* addNote({ note }: Params) {
     localStorage.setItem('notes', JSON.stringify(notes));
 
     yield put({ type: actions.ADD_NOTE_SUCCESS });
-    yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
+};
+
+function* updateNote({ note }: Params) {
+    yield delay(1500);
+
+    const notes = JSON.parse(localStorage.getItem('notes')!) || [];
+
+    const modifiedNotes = notes.filter((elem: Note) => elem.id !== note.id);
+
+    modifiedNotes.push(note);
+
+    localStorage.setItem('notes', JSON.stringify(modifiedNotes));
+
+    yield put({ type: actions.UPDATE_NOTE_SUCCESS });
 };
 
 function* deleteNotes({ notes }: Params) {
@@ -49,6 +67,7 @@ export default function notesSaga() {
         takeEvery(actions.FETCH_NOTES_PENDING, fetchNotes),
         takeEvery(actions.FETCH_NOTE_PENDING, fetchNote),
         takeEvery(actions.ADD_NOTE_PENDING, addNote),
+        takeEvery(actions.UPDATE_NOTE_PENDING, updateNote),
         takeEvery(actions.DELETE_NOTES_PENDING, deleteNotes),
     ]);
 };

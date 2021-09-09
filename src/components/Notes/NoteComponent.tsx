@@ -1,8 +1,15 @@
 import * as React from 'react';
 import Checkbox from '../Checkbox/Checkbox';
-import { Note, NoteInfo, Header, Title, Text } from './style';
+import { 
+    Note, 
+    NoteInfo, 
+    Header, 
+    Title, 
+    Text 
+} from './style';
 import { Note as INote } from '../../interfaces';
 import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants';
 
 interface Props {
     note: INote,
@@ -11,36 +18,45 @@ interface Props {
     removeUnselectedNote(note: INote): Function,
 };
 
-export default class NoteComponent extends React.Component<Props> {
-    render() {
+export default class NoteComponent extends React.Component<Props> { 
+    constructor(props: Props) {
+        super(props);
+
+        this.handleSelectOrUnselectNote = this.handleSelectOrUnselectNote.bind(this);
+    };
+
+    handleSelectOrUnselectNote() {
         const { 
             note, 
             selectedNotes,
             addSelectedNote, 
-            removeUnselectedNote 
+            removeUnselectedNote,
+        } = this.props;
+
+        selectedNotes?.includes(note.id) ?
+        removeUnselectedNote(note) :
+        addSelectedNote(note)
+    };
+    
+    render() {
+        const { 
+            note, 
+            selectedNotes,
         } = this.props;
 
         return (
             <Note>
-                <NoteInfo>
-                    <Link 
-                        to={`note/${note.id}`}
-                    >
+                <Link to={`${ROUTES.NOTE}/${note.id}`}>
+                    <NoteInfo>
                         <Header>
                             <Title>{note.title}</Title>
                         </Header>
                         <Text>{note.text}</Text>
-                    </Link>
-                </NoteInfo>
+                    </NoteInfo>
+                </Link>
                 <Checkbox
-                    checked={
-                        !!selectedNotes?.includes(note.id)
-                    }
-                    onChange={() => {
-                        selectedNotes?.includes(note.id) ?
-                        removeUnselectedNote(note) :
-                        addSelectedNote(note)
-                    }}
+                    checked={!!selectedNotes?.includes(note.id)}
+                    onChange={this.handleSelectOrUnselectNote}
                 />
             </Note>
         )

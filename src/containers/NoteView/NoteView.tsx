@@ -6,18 +6,23 @@ import { Note as INote } from '../../interfaces';
 interface Props {
     match: {
         params: {
-            id: string,
+            noteId: string,
         }
     },
     note: INote,
-    isLoading: Boolean,
+    isLoading: boolean,
     fetchNoteAction(id: string): Function,
     updateNoteAction(note: INote): Function,
+    resetStoreAction(): Function,
 };
 
 export default class NoteView extends React.Component<Props> {
     componentDidMount() {
-        this.props.fetchNoteAction(this.props.match.params.id);
+        this.props.fetchNoteAction(this.props.match.params.noteId);
+    }
+
+    componentWillUnmount() {
+        this.props.resetStoreAction();
     }
 
     render() {
@@ -31,8 +36,9 @@ export default class NoteView extends React.Component<Props> {
             isLoading ?
             <Loader /> :
             <Note 
+                typeName="Update"
                 note={note}
-                onSubmit={updateNoteAction}
+                addOrUpdateNote={updateNoteAction}
             />
         );
     }

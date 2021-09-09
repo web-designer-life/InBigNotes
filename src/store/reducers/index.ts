@@ -44,6 +44,17 @@ export function rootReducer(state = initialState, action: any) {
                 ...state, 
                 isLoading: false,
             };
+        case actions.UPDATE_NOTE_PENDING:
+            return {
+                ...state, 
+                note: action.note,
+                isLoading: true,
+            };
+        case actions.UPDATE_NOTE_SUCCESS:
+            return {
+                ...state, 
+                isLoading: false,
+            };
         case actions.DELETE_NOTES_PENDING:
             return {
                 ...state, 
@@ -64,7 +75,7 @@ export function rootReducer(state = initialState, action: any) {
             return {
                 ...state,
                 selectedNotes: state.selectedNotes.filter((index) => (index !== action.note.id)),
-            }
+            };
         case actions.SELECT_ALL_NOTES:
             return {
                 ...state, 
@@ -74,7 +85,9 @@ export function rootReducer(state = initialState, action: any) {
             return {
                 ...state,
                 selectedNotes: [],
-            }
+            };
+        case actions.RESET_STORE: 
+            return initialState;
         default:
             return state;
     }

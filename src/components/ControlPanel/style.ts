@@ -21,4 +21,8 @@ const Title = styled.p`
     color: #5A5A5A;
 `;
 
-export { Wrapper, SelectAllWrapper, Title };
+export { 
+    Wrapper, 
+    SelectAllWrapper, 
+    Title,
+};

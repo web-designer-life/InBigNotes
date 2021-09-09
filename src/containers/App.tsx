@@ -8,6 +8,7 @@ import {
 import HomeContainer from './HomeContainer';
 import NoteCreation from './NoteCreation';
 import NoteView from './NoteView';
+import { ROUTES } from '../constants';
 
 export default class App extends React.Component {
     render() {
@@ -16,9 +17,9 @@ export default class App extends React.Component {
                 <GlobalStyle />
                 <Router>
                     <Switch>
-                        <Route path="/Note/create" component={NoteCreation} />
-                        <Route path={`/Note/:id`} component={NoteView} />
-                        <Route path="/" exact component={HomeContainer} />
+                        <Route path={ROUTES.NOTE_CREATE} component={NoteCreation} />
+                        <Route path={`${ROUTES.NOTE}/:noteId`} component={NoteView} />
+                        <Route path={ROUTES.HOME} exact component={HomeContainer} />
                     </Switch>
                 </Router>
             </>

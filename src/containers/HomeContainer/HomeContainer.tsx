@@ -5,7 +5,7 @@ import { Note } from '../../interfaces';
 
 interface Props {
     notes?: Note[],
-    isLoading: Boolean,
+    isLoading: boolean,
     selectedNotes?: string[],
     fetchNotesAction(): Function,
     deleteNotesAction(notes: Note[]): Function,
@@ -13,12 +13,17 @@ interface Props {
     removeUnselectedNoteAction(note: Note): Function,
     selectAllNotesAction(notes: Note[]): Function,
     unselectAllNotesAction(): Function,
+    resetStoreAction(): Function,
 };
 
 export default class HomeContainer extends React.Component<Props> {  
     componentDidMount() {
         this.props.fetchNotesAction();
-    }  
+    } 
+    
+    componentWillUnmount() {
+        this.props.resetStoreAction();
+    } 
 
     render() {
         const {
@@ -29,7 +34,7 @@ export default class HomeContainer extends React.Component<Props> {
             addSelectedNoteAction,
             removeUnselectedNoteAction,
             selectAllNotesAction,
-            unselectAllNotesAction
+            unselectAllNotesAction,
         } = this.props;
         
         return (

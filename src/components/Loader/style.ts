@@ -31,4 +31,8 @@ const LoaderText = styled.p`
     color: #FFFFFF;
 `;
 
-export { Background, LoaderContent, LoaderText };
+export { 
+    Background, 
+    LoaderContent, 
+    LoaderText,
+};

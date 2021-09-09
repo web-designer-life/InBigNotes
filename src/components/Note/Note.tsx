@@ -1,14 +1,21 @@
 import * as React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { Note as INote } from '../../interfaces';
-import { BackToMenuButton } from '../Buttons/BackToMenuButton';
-import { SaveNoteButton } from '../Buttons/SaveNoteButton';
-import { CancelNoteButton } from '../Buttons/CancelNoteButton';
-import { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper } from './style';
+import { 
+    NoteForm, 
+    NoteTitle, 
+    NoteText, 
+    NoteControlsWrapper, 
+    NoteButtonsWrapper 
+} from './style';
+import Button, { ButtonTypes } from '../Button/Button';
+import { ROUTES } from '../../constants';
 
 interface Props {
+    typeName: string,
     note?: INote,
-    onSubmit(note: INote): Function,
+    addOrUpdateNote(note: INote): Function,
 };
 
 interface State {
@@ -26,14 +33,12 @@ export default class Note extends React.Component<Props, State> {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCancelChanges = this.handleCancelChanges.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     };
     
     componentDidMount() {
-        this.setState({
-            title: this.props.note ? this.props.note.title : '',
-            text: this.props.note ? this.props.note.text : '',
-        });
+        this.handleCancelChanges();
     };
 
     handleChange(evt: { target: { name: string; value: string; }; }) {
@@ -44,56 +49,94 @@ export default class Note extends React.Component<Props, State> {
         } as Pick<State, keyof State>);
     };
 
-    handleCancelChanges() {
-        this.setState({
-            title: this.props.note ? this.props.note.title : '',
-            text: this.props.note ? this.props.note.text : '',
-        });
-    }
+    handleCheckSaveOrUpdateChanges() {
+        const { title, text } = this.state;
+        const { note } = this.props;
 
-    handleSubmit(evt: any) {
+        return (
+            ((title.trim() !== '' && text.trim() !== '') 
+            && (title.trim() !== note?.title || text.trim() !== note?.text))
+        );
+    };
+
+    handleCheckCancelChanges() {
+        const { title, text } = this.state;
+        const { note } = this.props;
+
+        return (
+            ((title.trim() !== note?.title && note?.title) || (text.trim() !== note?.text && note?.text))
+            || ((title.trim() !== '' && !note?.title) || (text.trim() !== '' && !note?.text))
+        );
+    };
+
+    handleCancelChanges() {
+        const { note } = this.props;
+
+        this.setState({
+            title: note?.title || '',
+            text: note?.text || '',
+        });
+    };
+
+    onSubmit(evt: any) {
         evt.preventDefault();
 
-        //
+        const { addOrUpdateNote } = this.props;
+        const { title, text } = this.state;
+
+        const note = {                    
+            id: this.props.note?.id || uuidv4(),
+            title: title.trim(),
+            text: text.trim(),
+            created_at: this.props.note?.created_at || Date.now(),
+            updated_at: Date.now(),
+        };
+
+        addOrUpdateNote(note);
     };
 
     render() {
-        const { 
-            note,
-            onSubmit,
-        } = this.props;
+        const { typeName } = this.props;
+        const { title, text } = this.state;
 
         return (
-            <NoteForm onSubmit={this.handleSubmit}>
+            <NoteForm onSubmit={this.onSubmit}>
                 <NoteTitle 
                     type="text"
                     name="title"
-                    value={this.state.title} 
+                    value={title} 
                     onChange={this.handleChange} 
                     placeholder="Title" 
                     required 
                 />
                 <NoteText 
                     name="text"
-                    value={this.state.text} 
+                    value={text} 
                     onChange={this.handleChange} 
                     placeholder="Text" 
                     required 
                 />
                 <NoteControlsWrapper>
-                    <Link to="/">
-                        <BackToMenuButton />
+                    <Link to={ROUTES.HOME}>
+                        <Button 
+                            type={ButtonTypes.Button}
+                            text="Back"
+                            color="red"
+                        />
                     </Link>
                     <NoteButtonsWrapper>
-                        <SaveNoteButton 
-                            note={note}
-                            noteInfo={this.state}
-                            addOrUpdateNote={onSubmit}
+                        <Button 
+                            type={ButtonTypes.Submit}
+                            disabled={!this.handleCheckSaveOrUpdateChanges()}
+                            text={typeName}
+                            color="green"
                         />
-                        <CancelNoteButton               
-                            note={note}
-                            noteInfo={this.state}
-                            // onClick={this.handleCancelChanges}
+                        <Button               
+                            type={ButtonTypes.Reset}
+                            disabled={!this.handleCheckCancelChanges()}
+                            onClick={this.handleCancelChanges}
+                            text="Cancel"
+                            color="red"
                         />
                     </NoteButtonsWrapper>
                 </NoteControlsWrapper>

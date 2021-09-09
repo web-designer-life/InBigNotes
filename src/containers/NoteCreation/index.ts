@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchNotes, addNote } from '../../store/actions/notes';
+import { addNote, resetStore } from '../../store/actions/notes';
 import NoteCreation from './NoteCreation';
 import { Note } from '../../interfaces';
 
@@ -13,6 +13,7 @@ const mapStateToProps = (store: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         addNoteAction: (note: Note) => dispatch(addNote(note)),
+        resetStoreAction: () => dispatch(resetStore()),
     }
 };
  

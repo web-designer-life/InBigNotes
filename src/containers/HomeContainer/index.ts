@@ -1,5 +1,13 @@
 import { connect } from 'react-redux';
-import { fetchNotes, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../../store/actions/notes';
+import { 
+    fetchNotes, 
+    deleteNotes, 
+    addSelectedNote, 
+    removeUnselectedNote, 
+    selectAllNotes, 
+    unselectAllNotes, 
+    resetStore, 
+} from '../../store/actions/notes';
 import HomeContainer from './HomeContainer';
 import { Note } from '../../interfaces';
 
@@ -19,6 +27,7 @@ const mapDispatchToProps = (dispatch: any) => {
         removeUnselectedNoteAction: (note: Note) => dispatch(removeUnselectedNote(note)),
         selectAllNotesAction: (notes: Note[]) => dispatch(selectAllNotes(notes)),
         unselectAllNotesAction: () => dispatch(unselectAllNotes()),
+        resetStoreAction: () => dispatch(resetStore()),
     }
 };
  
