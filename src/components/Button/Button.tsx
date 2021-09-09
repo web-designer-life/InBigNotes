@@ -8,6 +8,7 @@ export enum ButtonTypes {
 };
 
 interface Props {
+    form?: string,
     type: ButtonTypes | undefined,
     disabled?: boolean,
     onClick?: () => void,

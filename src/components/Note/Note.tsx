@@ -23,6 +23,8 @@ interface State {
     text: string,
 };
 
+const ADD_OR_UPDATE_NOTE_FORM = 'addOrUpdateNote';
+
 export default class Note extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -100,7 +102,7 @@ export default class Note extends React.Component<Props, State> {
         const { title, text } = this.state;
 
         return (
-            <NoteForm onSubmit={this.onSubmit}>
+            <NoteForm onSubmit={this.onSubmit} id={ADD_OR_UPDATE_NOTE_FORM}>
                 <NoteTitle 
                     type="text"
                     name="title"
@@ -126,6 +128,7 @@ export default class Note extends React.Component<Props, State> {
                     </Link>
                     <NoteButtonsWrapper>
                         <Button 
+                            form={ADD_OR_UPDATE_NOTE_FORM}
                             type={ButtonTypes.Submit}
                             disabled={!this.handleCheckSaveOrUpdateChanges()}
                             text={typeName}
