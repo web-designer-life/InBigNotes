@@ -44,7 +44,7 @@ export default class ControlPanel extends React.Component<Props> {
             <Wrapper>
                 <p>Sort By</p>
                 <SelectAllWrapper>
-                    <Title>Select all</Title>
+                    <Title>Select all {selectedNotes?.length ? `(${selectedNotes?.length})` : ''}</Title>
                     <Checkbox
                         checked={selectedNotes?.length === notes?.length}
                         onChange={this.handleSelectOrUnselectNotes}
