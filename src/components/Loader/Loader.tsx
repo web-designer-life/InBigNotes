@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { 
-    Background, 
-    LoaderContent, 
+    LoaderBackground, 
+    LoaderContainer, 
     LoaderText 
 } from './style';
 import loader from '../../images/loader.gif';
@@ -9,8 +9,8 @@ import loader from '../../images/loader.gif';
 export default class Loader extends React.Component {
     render() {
         return (
-            <Background>
-                <LoaderContent>
+            <LoaderBackground>
+                <LoaderContainer>
                     <img 
                         src={loader} 
                         width={100} 
@@ -18,8 +18,8 @@ export default class Loader extends React.Component {
                         alt="Loading" 
                     />
                     <LoaderText>Loading...</LoaderText>
-                </LoaderContent>
-            </Background>
+                </LoaderContainer>
+            </LoaderBackground>
         )
     }
 };

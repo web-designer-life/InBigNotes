@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Background = styled.div`
+const LoaderBackground = styled.div`
     position: fixed;
     top: 0;
     right: 0;
@@ -16,7 +16,7 @@ const Background = styled.div`
     z-index: 999;
 `;
 
-const LoaderContent = styled.div`
+const LoaderContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +32,7 @@ const LoaderText = styled.p`
 `;
 
 export { 
-    Background, 
-    LoaderContent, 
+    LoaderBackground, 
+    LoaderContainer, 
     LoaderText,
 };
