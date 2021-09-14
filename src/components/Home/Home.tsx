@@ -6,11 +6,11 @@ import {
     Logo, 
     Wrapper 
 } from '../../containers/style';
-import Button, { ButtonTypes } from '../Button/Button';
+import Button from '../Button/Button';
 import { Note } from '../../interfaces';
 import { Link } from 'react-router-dom';
 import { EmptyListNotes } from './style';
-import { ROUTES } from '../../constants';
+import { ROUTES, BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
 
 interface Props {
     notes?: Note[],
@@ -65,18 +65,18 @@ export default class Home extends React.Component<Props> {
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
-                                type={ButtonTypes.Button}
+                                type={BUTTON_TYPES.Button}
                                 disabled={!!selectedNotes?.length}
                                 text="Create"
-                                color="green"
+                                color={BUTTON_COLORS.Green}
                             />
                         </Link>
                         <Button 
-                            type={ButtonTypes.Button}
+                            type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleDeleteNotes}
                             text="Delete"
-                            color="red"
+                            color={BUTTON_COLORS.Red}
                         />
                     </Wrapper>
                 </RouterWrapper>
@@ -100,18 +100,18 @@ export default class Home extends React.Component<Props> {
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
-                                type={ButtonTypes.Button}
+                                type={BUTTON_TYPES.Button}
                                 disabled={!!selectedNotes?.length}
                                 text="Create"
-                                color="green"
+                                color={BUTTON_COLORS.Green}
                             />
                         </Link>
                         <Button
-                            type={ButtonTypes.Button}
+                            type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleDeleteNotes}
                             text="Delete"
-                            color="red"
+                            color={BUTTON_COLORS.Red}
                         />
                     </Wrapper>
                 </RouterWrapper>

@@ -9,8 +9,8 @@ import {
     NoteControlsWrapper, 
     NoteButtonsWrapper 
 } from './style';
-import Button, { ButtonTypes } from '../Button/Button';
-import { ROUTES } from '../../constants';
+import Button from '../Button/Button';
+import { ROUTES, BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
 
 interface Props {
     typeName: string,
@@ -121,25 +121,25 @@ export default class Note extends React.Component<Props, State> {
                 <NoteControlsWrapper>
                     <Link to={ROUTES.HOME}>
                         <Button 
-                            type={ButtonTypes.Button}
+                            type={BUTTON_TYPES.Button}
                             text="Back"
-                            color="red"
+                            color={BUTTON_COLORS.Red}
                         />
                     </Link>
                     <NoteButtonsWrapper>
                         <Button 
                             form={ADD_OR_UPDATE_NOTE_FORM}
-                            type={ButtonTypes.Submit}
+                            type={BUTTON_TYPES.Submit}
                             disabled={!this.handleCheckSaveOrUpdateChanges()}
                             text={typeName}
-                            color="green"
+                            color={BUTTON_COLORS.Green}
                         />
                         <Button               
-                            type={ButtonTypes.Reset}
+                            type={BUTTON_TYPES.Reset}
                             disabled={!this.handleCheckCancelChanges()}
                             onClick={this.handleCancelChanges}
                             text="Cancel"
-                            color="red"
+                            color={BUTTON_COLORS.Red}
                         />
                     </NoteButtonsWrapper>
                 </NoteControlsWrapper>

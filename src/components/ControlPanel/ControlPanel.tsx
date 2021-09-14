@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Note } from '../../interfaces';
 import Checkbox from '../Checkbox/Checkbox';
+import Filter from '../Filter/Filter';
 import { 
     Wrapper, 
     SelectAllWrapper, 
@@ -42,7 +43,7 @@ export default class ControlPanel extends React.Component<Props> {
 
         return (
             <Wrapper>
-                <p>Sort By</p>
+                <Filter />
                 <SelectAllWrapper>
                     <Title>Select all {selectedNotes?.length ? `(${selectedNotes?.length})` : ''}</Title>
                     <Checkbox

@@ -6,6 +6,7 @@ export const initialState = {
     isLoading: false,
     selectedNotes: [],
     note: {},
+    filter: '',
 };
 
 export function rootReducer(state = initialState, action: any) {

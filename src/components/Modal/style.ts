@@ -21,9 +21,10 @@ const ModalContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 50px;
     width: 800px;
-    color: #FFFFFF;
     padding: 50px;
+    background-color: #FFFFFF;
 `;
 
 const ModalTitle = styled.h2`
@@ -39,8 +40,8 @@ const ModalTitle = styled.h2`
 
 const ButtonsContainer = styled.div`
 	display: flex;
-    align-items: center;
 	justify-content: space-between;
+    width: 100%;
 `;
 
 export {

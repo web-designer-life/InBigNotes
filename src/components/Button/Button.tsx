@@ -1,15 +1,10 @@
 import React from 'react';
+import { BUTTON_TYPES } from '../../constants';
 import StyledButton from './style';
-
-export enum ButtonTypes {
-    Button = "button",
-    Submit = "submit",
-    Reset = "reset",
-};
 
 interface Props {
     form?: string,
-    type: ButtonTypes | undefined,
+    type: BUTTON_TYPES | undefined,
     disabled?: boolean,
     onClick?: () => void,
     text: string,

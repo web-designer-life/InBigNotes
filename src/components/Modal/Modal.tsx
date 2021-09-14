@@ -5,9 +5,14 @@ import {
     ModalTitle,
     ButtonsContainer, 
 } from './style';
-import Button, { ButtonTypes } from '../Button/Button';
+import Button from '../Button/Button';
+import { BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
 
-export default class Modal extends React.Component {
+interface Props {
+
+};
+
+export default class Modal extends React.Component<Props> {
 	render() {
 		return (
 			<ModalBackground>
@@ -15,16 +20,16 @@ export default class Modal extends React.Component {
 					<ModalTitle>You have made changes to your note. Do you want to apply the changes?</ModalTitle>
 					<ButtonsContainer>
 						<Button 
-                            type={ButtonTypes.Button}
+                            type={BUTTON_TYPES.Button}
                             onClick={() => {}} 
                             text="Yes" 
-                            color="green"
+                            color={BUTTON_COLORS.Green}
                         />
 						<Button 
-                            type={ButtonTypes.Button}
+                            type={BUTTON_TYPES.Button}
                             onClick={() => {}} 
                             text="No" 
-                            color="red"
+                            color={BUTTON_COLORS.Red}
                         />
 					</ButtonsContainer>
 				</ModalContainer>
