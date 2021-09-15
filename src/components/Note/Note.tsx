@@ -98,6 +98,11 @@ export default class Note extends React.Component<Props, State> {
 		} as Pick<State, keyof State>);
 	};
 
+    // handleModalSubmitButtonClick() {
+    //     this.toggleModal();
+    //     this.handleSetAction();
+    // }
+
     onSubmit() {
         const { addOrUpdateNote } = this.props;
         const { title, text } = this.state;

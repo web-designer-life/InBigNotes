@@ -11,8 +11,7 @@ const LoaderBackground = styled.div`
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: #000000;
-    opacity: .7;
+    background-color: rgba(0, 0, 0, .7);
     z-index: 999;
 `;
 
