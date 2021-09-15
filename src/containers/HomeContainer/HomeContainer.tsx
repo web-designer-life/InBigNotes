@@ -19,11 +19,11 @@ interface Props {
 export default class HomeContainer extends React.Component<Props> {  
     componentDidMount() {
         this.props.fetchNotesAction();
-    } 
+    };
     
     componentWillUnmount() {
         this.props.resetStoreAction();
-    } 
+    };
 
     render() {
         const {

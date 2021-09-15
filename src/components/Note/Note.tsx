@@ -11,6 +11,7 @@ import {
 } from './style';
 import Button from '../Button/Button';
 import { ROUTES, BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
+import Modal from '../Modal/Modal';
 
 interface Props {
     typeName: string,
@@ -21,6 +22,8 @@ interface Props {
 interface State {
     title: string,
     text: string,
+    active: boolean,
+    action: () => void,
 };
 
 const ADD_OR_UPDATE_NOTE_FORM = 'addOrUpdateNote';
@@ -32,18 +35,21 @@ export default class Note extends React.Component<Props, State> {
         this.state = {
             title: '',
             text: '',
+            active: false,
+            action: () => {},
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleCancelChanges = this.handleCancelChanges.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     };
     
     componentDidMount() {
         this.handleCancelChanges();
     };
 
-    handleChange(evt: { target: { name: string; value: string; }; }) {
+    handleChange(evt: { target: { name: string; value: any; }; }) {
 		const { name, value } = evt.target;
 
         this.setState({
@@ -80,9 +86,19 @@ export default class Note extends React.Component<Props, State> {
         });
     };
 
-    onSubmit(evt: any) {
-        evt.preventDefault();
+    toggleModal() {
+		this.setState({
+			active: !this.state.active,
+		} as Pick<State, keyof State>);
+	};
 
+    handleSetAction(func: Function) {
+		this.setState({
+			action: func,
+		} as Pick<State, keyof State>);
+	};
+
+    onSubmit() {
         const { addOrUpdateNote } = this.props;
         const { title, text } = this.state;
 
@@ -99,51 +115,61 @@ export default class Note extends React.Component<Props, State> {
 
     render() {
         const { typeName } = this.props;
-        const { title, text } = this.state;
+        const { title, text, active, action } = this.state;
 
         return (
-            <NoteForm onSubmit={this.onSubmit} id={ADD_OR_UPDATE_NOTE_FORM}>
-                <NoteTitle 
-                    type="text"
-                    name="title"
-                    value={title} 
-                    onChange={this.handleChange} 
-                    placeholder="Title" 
-                    required 
-                />
-                <NoteText 
-                    name="text"
-                    value={text} 
-                    onChange={this.handleChange} 
-                    placeholder="Text" 
-                    required 
-                />
-                <NoteControlsWrapper>
-                    <Link to={ROUTES.HOME}>
-                        <Button 
-                            type={BUTTON_TYPES.Button}
-                            text="Back"
-                            color={BUTTON_COLORS.Red}
-                        />
-                    </Link>
-                    <NoteButtonsWrapper>
-                        <Button 
-                            form={ADD_OR_UPDATE_NOTE_FORM}
-                            type={BUTTON_TYPES.Submit}
-                            disabled={!this.handleCheckSaveOrUpdateChanges()}
-                            text={typeName}
-                            color={BUTTON_COLORS.Green}
-                        />
-                        <Button               
-                            type={BUTTON_TYPES.Reset}
-                            disabled={!this.handleCheckCancelChanges()}
-                            onClick={this.handleCancelChanges}
-                            text="Cancel"
-                            color={BUTTON_COLORS.Red}
-                        />
-                    </NoteButtonsWrapper>
-                </NoteControlsWrapper>
-            </NoteForm>
+            <>
+                <NoteForm onSubmit={this.onSubmit} id={ADD_OR_UPDATE_NOTE_FORM}>
+                    <NoteTitle 
+                        type="text"
+                        name="title"
+                        value={title} 
+                        onChange={this.handleChange} 
+                        placeholder="Title" 
+                        required 
+                    />
+                    <NoteText 
+                        name="text"
+                        value={text} 
+                        onChange={this.handleChange} 
+                        placeholder="Text" 
+                        required 
+                    />
+                    <NoteControlsWrapper>
+                        <Link to={ROUTES.HOME}>
+                            <Button 
+                                type={BUTTON_TYPES.Button}
+                                text="Back"
+                                color={BUTTON_COLORS.Red}
+                            />
+                        </Link>
+                        <NoteButtonsWrapper>
+                            <Button 
+                                form={ADD_OR_UPDATE_NOTE_FORM}
+                                type={BUTTON_TYPES.Button}
+                                disabled={!this.handleCheckSaveOrUpdateChanges()}
+                                text={typeName}
+                                onClick={() => {
+                                    this.toggleModal();
+                                    this.handleSetAction(this.onSubmit);
+                                }}
+                                color={BUTTON_COLORS.Green}
+                            />
+                            <Button               
+                                type={BUTTON_TYPES.Reset}
+                                disabled={!this.handleCheckCancelChanges()}
+                                onClick={() => {
+                                    this.toggleModal();
+                                    this.handleSetAction(this.handleCancelChanges);
+                                }}
+                                text="Cancel"
+                                color={BUTTON_COLORS.Red}
+                            />
+                        </NoteButtonsWrapper>
+                    </NoteControlsWrapper>
+                </NoteForm>
+                <Modal active={active} onClose={this.toggleModal} action={action} />
+            </>
         )
     }
 };

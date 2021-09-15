@@ -11,6 +11,7 @@ import { Note } from '../../interfaces';
 import { Link } from 'react-router-dom';
 import { EmptyListNotes } from './style';
 import { ROUTES, BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
+import Modal from '../Modal/Modal';
 
 interface Props {
     notes?: Note[],
@@ -22,12 +23,35 @@ interface Props {
     unselectAllNotes(): Function,
 };
 
-export default class Home extends React.Component<Props> {
+interface State {
+    active: boolean,
+    action: () => void,
+}
+
+export default class Home extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
+        this.state = {
+            active: false,
+            action: () => {},
+        };
+
         this.handleDeleteNotes = this.handleDeleteNotes.bind(this);
-    };
+        this.toggleModal = this.toggleModal.bind(this);
+    };    
+
+    toggleModal() {
+		this.setState({
+			active: !this.state.active,
+		} as Pick<State, keyof State>);
+	};
+
+    handleSetAction(func: Function) {
+		this.setState({
+			action: func,
+		} as Pick<State, keyof State>);
+	};
 
     handleDeleteNotes() {
         const {
@@ -57,6 +81,8 @@ export default class Home extends React.Component<Props> {
             unselectAllNotes,
         } = this.props;
 
+        const {active, action} = this.state;
+
         return (
             (notes && notes.length !== 0) ? 
             <>
@@ -74,7 +100,10 @@ export default class Home extends React.Component<Props> {
                         <Button 
                             type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
-                            onClick={this.handleDeleteNotes}
+                            onClick={() => {
+                                this.toggleModal();
+                                this.handleSetAction(this.handleDeleteNotes)
+                            }}
                             text="Delete"
                             color={BUTTON_COLORS.Red}
                         />
@@ -92,6 +121,7 @@ export default class Home extends React.Component<Props> {
                     addSelectedNote={addSelectedNote}
                     removeUnselectedNote={removeUnselectedNote}
                 />
+                <Modal active={active} onClose={this.toggleModal} action={action} />
             </>
             :
             <>
@@ -109,13 +139,17 @@ export default class Home extends React.Component<Props> {
                         <Button
                             type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
-                            onClick={this.handleDeleteNotes}
+                            onClick={() => {
+                                this.toggleModal();
+                                this.handleSetAction(this.handleDeleteNotes)
+                            }}
                             text="Delete"
                             color={BUTTON_COLORS.Red}
                         />
                     </Wrapper>
                 </RouterWrapper>
                 <EmptyListNotes>No notes</EmptyListNotes>
+                <Modal active={active} onClose={this.toggleModal} action={action} />
             </>
         )
     }
