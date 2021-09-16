@@ -10,21 +10,27 @@ interface Props {
     removeUnselectedNote(note: Note): Function,
 };
 
-export const ListNotes: React.FC<Props> = ({ 
-    notes, 
-    selectedNotes, 
-    addSelectedNote, 
-    removeUnselectedNote, 
-}) => (
-    <List>
-        {notes.map((note: Note) =>(
-            <NoteComponent 
-                key={note.id}
-                note={note}
-                selectedNotes={selectedNotes}
-                addSelectedNote={addSelectedNote}
-                removeUnselectedNote={removeUnselectedNote}
-            />
-        ))}
-    </List>
-);
+export class ListNotes extends React.Component<Props> { 
+    render() {
+        const {
+            notes, 
+            selectedNotes, 
+            addSelectedNote, 
+            removeUnselectedNote, 
+        } = this.props;
+        
+        return (
+            <List>
+                {notes.map((note: Note) =>(
+                    <NoteComponent 
+                        key={note.id}
+                        note={note}
+                        selectedNotes={selectedNotes}
+                        addSelectedNote={addSelectedNote}
+                        removeUnselectedNote={removeUnselectedNote}
+                    />
+                ))}
+            </List>
+        );
+    } 
+}

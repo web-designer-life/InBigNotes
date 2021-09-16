@@ -6,6 +6,7 @@ export const initialState = {
     isLoading: false,
     selectedNotes: [],
     note: {},
+    redirect: false,
     filter: '',
 };
 
@@ -44,6 +45,7 @@ export function rootReducer(state = initialState, action: any) {
             return {
                 ...state, 
                 isLoading: false,
+                redirect: true,
             };
         case actions.UPDATE_NOTE_PENDING:
             return {
@@ -55,6 +57,7 @@ export function rootReducer(state = initialState, action: any) {
             return {
                 ...state, 
                 isLoading: false,
+                redirect: true,
             };
         case actions.DELETE_NOTES_PENDING:
             return {
@@ -86,6 +89,11 @@ export function rootReducer(state = initialState, action: any) {
             return {
                 ...state,
                 selectedNotes: [],
+            };
+        case actions.REDIRECT:
+            return {
+                ...state,
+                redirect: true,
             };
         case actions.RESET_STORE: 
             return initialState;

@@ -44,6 +44,10 @@ export const unselectAllNotes = () => ({
     type: actions.UNSELECT_ALL_NOTES,
 });
 
+export const redirect = () => ({
+    type: actions.REDIRECT,
+});
+
 export const resetStore = () => ({
     type: actions.RESET_STORE,
 });

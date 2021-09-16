@@ -5,7 +5,9 @@ import { Note as INote } from '../../interfaces';
 
 interface Props {
     isLoading: boolean,
+    redirect: boolean,
     addNoteAction(note: INote): Function,
+    redirectAction(): Function,
     resetStoreAction(): Function,
 };
 
@@ -17,7 +19,9 @@ export default class NoteCreation extends React.Component<Props> {
     render() {
         const { 
             isLoading, 
+            redirect,
             addNoteAction,
+            redirectAction,
         } = this.props;
 
         return (
@@ -25,6 +29,8 @@ export default class NoteCreation extends React.Component<Props> {
             <Loader /> :
             <Note 
                 typeName="Save"
+                redirect={redirect}
+                redirectAction={redirectAction}
                 addOrUpdateNote={addNoteAction}
             />
         );

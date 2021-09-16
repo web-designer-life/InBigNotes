@@ -37,6 +37,7 @@ export default class Home extends React.Component<Props, State> {
             action: () => {},
         };
 
+        this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
         this.handleDeleteNotes = this.handleDeleteNotes.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
     };    
@@ -52,6 +53,11 @@ export default class Home extends React.Component<Props, State> {
 			action: func,
 		} as Pick<State, keyof State>);
 	};
+
+    handleModalBackButtonClick() {
+        this.toggleModal();
+        this.handleSetAction(this.handleDeleteNotes);
+    }
 
     handleDeleteNotes() {
         const {
@@ -100,10 +106,7 @@ export default class Home extends React.Component<Props, State> {
                         <Button 
                             type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
-                            onClick={() => {
-                                this.toggleModal();
-                                this.handleSetAction(this.handleDeleteNotes)
-                            }}
+                            onClick={this.handleModalBackButtonClick}
                             text="Delete"
                             color={BUTTON_COLORS.Red}
                         />
@@ -139,16 +142,13 @@ export default class Home extends React.Component<Props, State> {
                         <Button
                             type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
-                            onClick={() => {
-                                this.toggleModal();
-                                this.handleSetAction(this.handleDeleteNotes)
-                            }}
+                            onClick={this.handleModalBackButtonClick}
                             text="Delete"
                             color={BUTTON_COLORS.Red}
                         />
                     </Wrapper>
                 </RouterWrapper>
-                <EmptyListNotes>No notes</EmptyListNotes>
+                <EmptyListNotes>You have no notes yet. Please, create one...</EmptyListNotes>
                 <Modal active={active} onClose={this.toggleModal} action={action} />
             </>
         )

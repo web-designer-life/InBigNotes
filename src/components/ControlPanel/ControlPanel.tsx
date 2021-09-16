@@ -5,7 +5,7 @@ import Filter from '../Filter/Filter';
 import { 
     Wrapper, 
     SelectAllWrapper, 
-    Title 
+    Title,
 } from './style';
 
 interface Props {

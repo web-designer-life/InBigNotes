@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Note as INote } from '../../interfaces';
 import { 
     NoteForm, 
@@ -16,7 +16,9 @@ import Modal from '../Modal/Modal';
 interface Props {
     typeName: string,
     note?: INote,
+    redirect: boolean,
     addOrUpdateNote(note: INote): Function,
+    redirectAction(): Function,
 };
 
 interface State {
@@ -39,14 +41,24 @@ export default class Note extends React.Component<Props, State> {
             action: () => {},
         };
 
+        this.renderRedirect = this.renderRedirect.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleCancelChanges = this.handleCancelChanges.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
+        this.handleModalSubmitButtonClick = this.handleModalSubmitButtonClick.bind(this);
+        this.handleModalCancelButtonClick = this.handleModalCancelButtonClick.bind(this);
     };
     
     componentDidMount() {
         this.handleCancelChanges();
+    };
+
+    renderRedirect() {
+        if (this.props.redirect) {
+            return <Redirect to={ROUTES.HOME} />
+        }
     };
 
     handleChange(evt: { target: { name: string; value: any; }; }) {
@@ -98,10 +110,20 @@ export default class Note extends React.Component<Props, State> {
 		} as Pick<State, keyof State>);
 	};
 
-    // handleModalSubmitButtonClick() {
-    //     this.toggleModal();
-    //     this.handleSetAction();
-    // }
+    handleModalBackButtonClick() {
+        this.toggleModal();
+        this.handleSetAction(this.props.redirectAction);
+    };
+
+    handleModalSubmitButtonClick() {
+        this.toggleModal();
+        this.handleSetAction(this.onSubmit);
+    };
+
+    handleModalCancelButtonClick() {
+        this.toggleModal();
+        this.handleSetAction(this.handleCancelChanges);
+    };
 
     onSubmit() {
         const { addOrUpdateNote } = this.props;
@@ -141,32 +163,29 @@ export default class Note extends React.Component<Props, State> {
                         required 
                     />
                     <NoteControlsWrapper>
-                        <Link to={ROUTES.HOME}>
-                            <Button 
-                                type={BUTTON_TYPES.Button}
-                                text="Back"
-                                color={BUTTON_COLORS.Red}
-                            />
-                        </Link>
+                        <Button 
+                            type={BUTTON_TYPES.Button}
+                            text="Back"
+                            onClick={
+                                this.handleCheckCancelChanges() ? 
+                                this.handleModalBackButtonClick : 
+                                this.props.redirectAction
+                            }
+                            color={BUTTON_COLORS.Red}
+                        />
                         <NoteButtonsWrapper>
                             <Button 
                                 form={ADD_OR_UPDATE_NOTE_FORM}
                                 type={BUTTON_TYPES.Button}
                                 disabled={!this.handleCheckSaveOrUpdateChanges()}
                                 text={typeName}
-                                onClick={() => {
-                                    this.toggleModal();
-                                    this.handleSetAction(this.onSubmit);
-                                }}
+                                onClick={this.handleModalSubmitButtonClick}
                                 color={BUTTON_COLORS.Green}
                             />
                             <Button               
                                 type={BUTTON_TYPES.Reset}
                                 disabled={!this.handleCheckCancelChanges()}
-                                onClick={() => {
-                                    this.toggleModal();
-                                    this.handleSetAction(this.handleCancelChanges);
-                                }}
+                                onClick={this.handleModalCancelButtonClick}
                                 text="Cancel"
                                 color={BUTTON_COLORS.Red}
                             />
@@ -174,6 +193,7 @@ export default class Note extends React.Component<Props, State> {
                     </NoteControlsWrapper>
                 </NoteForm>
                 <Modal active={active} onClose={this.toggleModal} action={action} />
+                {this.renderRedirect()}
             </>
         )
     }

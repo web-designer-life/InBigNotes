@@ -11,8 +11,10 @@ interface Props {
     },
     note: INote,
     isLoading: boolean,
+    redirect: boolean,
     fetchNoteAction(id: string): Function,
     updateNoteAction(note: INote): Function,
+    redirectAction(): Function,
     resetStoreAction(): Function,
 };
 
@@ -29,7 +31,9 @@ export default class NoteView extends React.Component<Props> {
         const { 
             note,
             isLoading, 
+            redirect,
             updateNoteAction,
+            redirectAction,
         } = this.props;
 
         return (
@@ -38,6 +42,8 @@ export default class NoteView extends React.Component<Props> {
             <Note 
                 typeName="Update"
                 note={note}
+                redirect={redirect}
+                redirectAction={redirectAction}
                 addOrUpdateNote={updateNoteAction}
             />
         );

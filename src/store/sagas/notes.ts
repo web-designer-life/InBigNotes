@@ -17,42 +17,6 @@ function* fetchNotes() {
     yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
 };
 
-function* fetchNote({ id }: Params) {
-    yield delay(1500);
-
-    const notes = JSON.parse(localStorage.getItem('notes')!) || [];
-
-    const note = notes.find((note: Note) => note.id === id);
-
-    yield put({ type: actions.FETCH_NOTE_SUCCESS, payload: note });
-};
-
-function* addNote({ note }: Params) {
-    yield delay(1500);
-
-    const notes = JSON.parse(localStorage.getItem('notes')!) || [];
-
-    notes.push(note);
-
-    localStorage.setItem('notes', JSON.stringify(notes));
-
-    yield put({ type: actions.ADD_NOTE_SUCCESS });
-};
-
-function* updateNote({ note }: Params) {
-    yield delay(1500);
-
-    const notes = JSON.parse(localStorage.getItem('notes')!) || [];
-
-    const modifiedNotes = notes.filter((elem: Note) => elem.id !== note.id);
-
-    modifiedNotes.push(note);
-
-    localStorage.setItem('notes', JSON.stringify(modifiedNotes));
-
-    yield put({ type: actions.UPDATE_NOTE_SUCCESS });
-};
-
 function* deleteNotes({ notes }: Params) {
     yield delay(1500);
 
@@ -62,12 +26,14 @@ function* deleteNotes({ notes }: Params) {
     yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
 };
 
+function* redirect() {
+    yield put({ type: actions.REDIRECT});
+};
+
 export default function notesSaga() {
     return all([ 
         takeEvery(actions.FETCH_NOTES_PENDING, fetchNotes),
-        takeEvery(actions.FETCH_NOTE_PENDING, fetchNote),
-        takeEvery(actions.ADD_NOTE_PENDING, addNote),
-        takeEvery(actions.UPDATE_NOTE_PENDING, updateNote),
         takeEvery(actions.DELETE_NOTES_PENDING, deleteNotes),
+        takeEvery(actions.ADD_NOTE_PENDING, redirect),
     ]);
 };

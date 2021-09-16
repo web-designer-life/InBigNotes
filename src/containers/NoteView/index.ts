@@ -3,6 +3,7 @@ import {
     fetchNote, 
     updateNote, 
     resetStore, 
+    redirect,
 } from '../../store/actions/notes';
 import NoteView from './NoteView';
 import { Note } from '../../interfaces';
@@ -11,6 +12,7 @@ const mapStateToProps = (store: any) => {
     return {
         isLoading: store.isLoading,
         note: store.note,
+        redirect: store.redirect,
     }
 };
 
@@ -18,6 +20,7 @@ const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNoteAction: (id: string) => dispatch(fetchNote(id)),
         updateNoteAction: (note: Note) => dispatch(updateNote(note)),
+        redirectAction: () => dispatch(redirect()),
         resetStoreAction: () => dispatch(resetStore()),
     }
 };
