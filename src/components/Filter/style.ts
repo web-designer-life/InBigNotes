@@ -25,14 +25,12 @@ const FilterList = styled.select`
     background-color: #FFFFFF;
     border: 5px solid #5A5A5A;
     border-radius: 20px;
-    padding: 0 30px 0 30px;
+    padding: 0 10px 0 10px;
     height: 80px;
     cursor: pointer;
 `;
 
-const FilterListItem = styled.option`
-
-`;
+const FilterListItem = styled.option``;
 
 export {
     FilterContainer,
