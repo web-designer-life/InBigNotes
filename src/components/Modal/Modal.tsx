@@ -9,6 +9,9 @@ import Button from '../Button/Button';
 import { BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
 
 interface Props {
+    modalText: string,
+    buttonConfirmText: string, 
+    buttonCancelText: string,
     active: boolean,
     onClose: () => void,
     action: () => void,
@@ -17,6 +20,9 @@ interface Props {
 export default class Modal extends React.Component<Props> {
 	render() {
         const {
+            modalText,
+            buttonConfirmText,
+            buttonCancelText,
             active,
             onClose,
             action,
@@ -26,7 +32,7 @@ export default class Modal extends React.Component<Props> {
             active ?
             <ModalBackground>
                 <ModalContainer>
-                    <ModalTitle>Do you want to confirm the action?</ModalTitle>
+                    <ModalTitle>{modalText}</ModalTitle>
                     <ButtonsContainer>
                         <Button 
                             type={BUTTON_TYPES.Button}
@@ -34,13 +40,13 @@ export default class Modal extends React.Component<Props> {
                                 action();
                                 onClose();
                             }}
-                            text="Yes" 
+                            text={buttonConfirmText} 
                             color={BUTTON_COLORS.Green}
                         />
                         <Button 
                             type={BUTTON_TYPES.Button}
                             onClick={onClose} 
-                            text="No" 
+                            text={buttonCancelText} 
                             color={BUTTON_COLORS.Red}
                         />
                     </ButtonsContainer>

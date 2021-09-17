@@ -10,7 +10,7 @@ import {
     NoteButtonsWrapper 
 } from './style';
 import Button from '../Button/Button';
-import { ROUTES, BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
+import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXT, MODAL_TEXT } from '../../constants';
 import Modal from '../Modal/Modal';
 
 interface Props {
@@ -24,6 +24,9 @@ interface Props {
 interface State {
     title: string,
     text: string,
+    modalText: string,
+    buttonConfirmText: string,
+    buttonCancelText: string,
     active: boolean,
     action: () => void,
 };
@@ -37,6 +40,9 @@ export default class Note extends React.Component<Props, State> {
         this.state = {
             title: '',
             text: '',
+            modalText: '',
+            buttonConfirmText: '',
+            buttonCancelText: '',
             active: false,
             action: () => {},
         };
@@ -111,18 +117,36 @@ export default class Note extends React.Component<Props, State> {
 	};
 
     handleModalBackButtonClick() {
-        this.toggleModal();
+        this.setState({
+			modalText: MODAL_TEXT.Back,
+            buttonConfirmText: BUTTON_TEXT.Back,
+            buttonCancelText: BUTTON_TEXT.Cancel,
+		} as Pick<State, keyof State>);
+
         this.handleSetAction(this.props.redirectAction);
+        this.toggleModal();
     };
 
     handleModalSubmitButtonClick() {
-        this.toggleModal();
+        this.setState({
+			modalText: this.props.typeName === BUTTON_TEXT.Save ? MODAL_TEXT.Save : MODAL_TEXT.Update,
+            buttonConfirmText: this.props.typeName,
+            buttonCancelText: BUTTON_TEXT.Cancel,
+		} as Pick<State, keyof State>);
+        
         this.handleSetAction(this.onSubmit);
+        this.toggleModal();
     };
 
     handleModalCancelButtonClick() {
-        this.toggleModal();
+        this.setState({
+			modalText: MODAL_TEXT.Cancel,
+            buttonConfirmText: BUTTON_TEXT.Confirm,
+            buttonCancelText: BUTTON_TEXT.Cancel,
+		} as Pick<State, keyof State>);
+        
         this.handleSetAction(this.handleCancelChanges);
+        this.toggleModal();
     };
 
     onSubmit() {
@@ -142,7 +166,15 @@ export default class Note extends React.Component<Props, State> {
 
     render() {
         const { typeName } = this.props;
-        const { title, text, active, action } = this.state;
+        const { 
+            title, 
+            text, 
+            modalText,
+            buttonConfirmText,
+            buttonCancelText,
+            active, 
+            action, 
+        } = this.state;
 
         return (
             <>
@@ -165,7 +197,7 @@ export default class Note extends React.Component<Props, State> {
                     <NoteControlsWrapper>
                         <Button 
                             type={BUTTON_TYPES.Button}
-                            text="Back"
+                            text={BUTTON_TEXT.Back}
                             onClick={
                                 this.handleCheckCancelChanges() ? 
                                 this.handleModalBackButtonClick : 
@@ -186,13 +218,20 @@ export default class Note extends React.Component<Props, State> {
                                 type={BUTTON_TYPES.Reset}
                                 disabled={!this.handleCheckCancelChanges()}
                                 onClick={this.handleModalCancelButtonClick}
-                                text="Cancel"
+                                text={BUTTON_TEXT.Cancel}
                                 color={BUTTON_COLORS.Red}
                             />
                         </NoteButtonsWrapper>
                     </NoteControlsWrapper>
                 </NoteForm>
-                <Modal active={active} onClose={this.toggleModal} action={action} />
+                <Modal 
+                    modalText={modalText} 
+                    buttonConfirmText={buttonConfirmText} 
+                    buttonCancelText={buttonCancelText}
+                    active={active} 
+                    onClose={this.toggleModal} 
+                    action={action} 
+                />
                 {this.renderRedirect()}
             </>
         )

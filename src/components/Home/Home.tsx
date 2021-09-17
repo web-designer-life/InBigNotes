@@ -10,7 +10,7 @@ import Button from '../Button/Button';
 import { Note } from '../../interfaces';
 import { Link } from 'react-router-dom';
 import { EmptyListNotes } from './style';
-import { ROUTES, BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
+import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXT, MODAL_TEXT } from '../../constants';
 import Modal from '../Modal/Modal';
 
 interface Props {
@@ -24,6 +24,9 @@ interface Props {
 };
 
 interface State {
+    modalText: string,
+    buttonConfirmText: string,
+    buttonCancelText: string,
     active: boolean,
     action: () => void,
 }
@@ -33,6 +36,9 @@ export default class Home extends React.Component<Props, State> {
         super(props);
 
         this.state = {
+            modalText: '',
+            buttonConfirmText: '',
+            buttonCancelText: '',
             active: false,
             action: () => {},
         };
@@ -55,8 +61,14 @@ export default class Home extends React.Component<Props, State> {
 	};
 
     handleModalBackButtonClick() {
-        this.toggleModal();
+        this.setState({
+			modalText: MODAL_TEXT.Delete,
+            buttonConfirmText: BUTTON_TEXT.Delete,
+            buttonCancelText: BUTTON_TEXT.Cancel,
+		} as Pick<State, keyof State>);
+
         this.handleSetAction(this.handleDeleteNotes);
+        this.toggleModal();
     }
 
     handleDeleteNotes() {
@@ -87,7 +99,13 @@ export default class Home extends React.Component<Props, State> {
             unselectAllNotes,
         } = this.props;
 
-        const {active, action} = this.state;
+        const {
+            modalText, 
+            buttonConfirmText,
+            buttonCancelText,
+            active, 
+            action
+        } = this.state;
 
         return (
             (notes && notes.length !== 0) ? 
@@ -99,7 +117,7 @@ export default class Home extends React.Component<Props, State> {
                             <Button 
                                 type={BUTTON_TYPES.Button}
                                 disabled={!!selectedNotes?.length}
-                                text="Create"
+                                text={BUTTON_TEXT.Create}
                                 color={BUTTON_COLORS.Green}
                             />
                         </Link>
@@ -107,7 +125,7 @@ export default class Home extends React.Component<Props, State> {
                             type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleModalBackButtonClick}
-                            text="Delete"
+                            text={BUTTON_TEXT.Delete}
                             color={BUTTON_COLORS.Red}
                         />
                     </Wrapper>
@@ -124,7 +142,14 @@ export default class Home extends React.Component<Props, State> {
                     addSelectedNote={addSelectedNote}
                     removeUnselectedNote={removeUnselectedNote}
                 />
-                <Modal active={active} onClose={this.toggleModal} action={action} />
+                <Modal 
+                    modalText={modalText} 
+                    buttonConfirmText={buttonConfirmText} 
+                    buttonCancelText={buttonCancelText}
+                    active={active} 
+                    onClose={this.toggleModal} 
+                    action={action} 
+                />
             </>
             :
             <>
@@ -135,7 +160,7 @@ export default class Home extends React.Component<Props, State> {
                             <Button 
                                 type={BUTTON_TYPES.Button}
                                 disabled={!!selectedNotes?.length}
-                                text="Create"
+                                text={BUTTON_TEXT.Create}
                                 color={BUTTON_COLORS.Green}
                             />
                         </Link>
@@ -143,13 +168,20 @@ export default class Home extends React.Component<Props, State> {
                             type={BUTTON_TYPES.Button}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleModalBackButtonClick}
-                            text="Delete"
+                            text={BUTTON_TEXT.Delete}
                             color={BUTTON_COLORS.Red}
                         />
                     </Wrapper>
                 </RouterWrapper>
                 <EmptyListNotes>You have no notes yet. Please, create one...</EmptyListNotes>
-                <Modal active={active} onClose={this.toggleModal} action={action} />
+                <Modal 
+                    modalText={modalText} 
+                    buttonConfirmText={buttonConfirmText} 
+                    buttonCancelText={buttonCancelText}
+                    active={active} 
+                    onClose={this.toggleModal} 
+                    action={action} 
+                />
             </>
         )
     }
