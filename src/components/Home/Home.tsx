@@ -9,7 +9,7 @@ import {
 import Button from '../Button/Button';
 import { Note } from '../../interfaces';
 import { Link } from 'react-router-dom';
-import { EmptyListNotes } from './style';
+import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
 import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXT, MODAL_TEXT } from '../../constants';
 import Modal from '../Modal/Modal';
 
@@ -173,7 +173,9 @@ export default class Home extends React.Component<Props, State> {
                         />
                     </Wrapper>
                 </RouterWrapper>
-                <EmptyListNotes>You have no notes yet. Please, create one...</EmptyListNotes>
+                <EmptyListNotesWrapper>
+                    <EmptyListNotesText>You have no notes yet. Please, create one...</EmptyListNotesText>
+                </EmptyListNotesWrapper>
                 <Modal 
                     modalText={modalText} 
                     buttonConfirmText={buttonConfirmText} 
