@@ -10,7 +10,10 @@ import Button from '../Button/Button';
 import { Note } from '../../interfaces';
 import { Link } from 'react-router-dom';
 import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
-import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXTS, MODAL_TEXTS } from '../../constants';
+import { ROUTES } from '../../constants/routes';
+import { BUTTON_TYPES } from '../../constants/types';
+import { COLORS } from '../../constants/colors';
+import { TEXTS } from '../../constants/texts';
 import Modal from '../Modal/Modal';
 
 interface Props {
@@ -65,9 +68,9 @@ export default class Home extends React.Component<Props, State> {
 
     handleModalBackButtonClick() {
         this.setState({
-			modalText: MODAL_TEXTS.DELETE,
-            buttonConfirmText: BUTTON_TEXTS.DELETE,
-            buttonCancelText: BUTTON_TEXTS.CANCEL,
+			modalText: TEXTS.MODAL.DELETE,
+            buttonConfirmText: TEXTS.BUTTON.DELETE,
+            buttonCancelText: TEXTS.BUTTON.CANCEL,
 		} as Pick<State, keyof State>);
 
         this.handleSetAction(this.handleDeleteNotes);
@@ -117,22 +120,22 @@ export default class Home extends React.Component<Props, State> {
             (notes && notes.length !== 0) ? 
             <>
                 <RouterWrapper>
-                    <Logo>InBigNotes</Logo>
+                    <Logo>{TEXTS.LOGO}</Logo>
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
                                 type={BUTTON_TYPES.BUTTON}
                                 disabled={!!selectedNotes?.length}
-                                text={BUTTON_TEXTS.CREATE}
-                                color={BUTTON_COLORS.GREEN}
+                                text={TEXTS.BUTTON.CREATE}
+                                color={COLORS.BUTTON.GREEN}
                             />
                         </Link>
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleModalBackButtonClick}
-                            text={BUTTON_TEXTS.DELETE}
-                            color={BUTTON_COLORS.RED}
+                            text={TEXTS.BUTTON.DELETE}
+                            color={COLORS.BUTTON.RED}
                         />
                     </Wrapper>
                 </RouterWrapper>
@@ -163,27 +166,27 @@ export default class Home extends React.Component<Props, State> {
             :
             <>
                 <RouterWrapper>
-                    <Logo>InBigNotes</Logo>
+                    <Logo>{TEXTS.LOGO}</Logo>
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
                                 type={BUTTON_TYPES.BUTTON}
                                 disabled={!!selectedNotes?.length}
-                                text={BUTTON_TEXTS.CREATE}
-                                color={BUTTON_COLORS.GREEN}
+                                text={TEXTS.BUTTON.CREATE}
+                                color={COLORS.BUTTON.GREEN}
                             />
                         </Link>
                         <Button
                             type={BUTTON_TYPES.BUTTON}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleModalBackButtonClick}
-                            text={BUTTON_TEXTS.DELETE}
-                            color={BUTTON_COLORS.RED}
+                            text={TEXTS.BUTTON.DELETE}
+                            color={COLORS.BUTTON.RED}
                         />
                     </Wrapper>
                 </RouterWrapper>
                 <EmptyListNotesWrapper>
-                    <EmptyListNotesText>You have no notes yet. Please, create one...</EmptyListNotesText>
+                    <EmptyListNotesText>{TEXTS.NO_NOTES}</EmptyListNotesText>
                 </EmptyListNotesWrapper>
                 <Modal 
                     modalText={modalText} 

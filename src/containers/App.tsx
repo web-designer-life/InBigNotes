@@ -8,7 +8,7 @@ import {
 import HomeContainer from './HomeContainer';
 import NoteCreation from './NoteCreation';
 import NoteView from './NoteView';
-import { ROUTES } from '../constants';
+import { ROUTES } from '../constants/routes';
 
 export default class App extends React.Component {
     render() {

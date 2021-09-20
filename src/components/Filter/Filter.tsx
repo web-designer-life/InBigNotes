@@ -1,4 +1,5 @@
 import React from 'react';
+import { TEXTS } from '../../constants/texts';
 import {
     FilterContainer,
     FilterTitle,
@@ -31,7 +32,7 @@ export default class Filter extends React.Component<Props, State> {
         const { value } = evt.target;
 
         this.props.filterAction(value);
-        this.props.fetchNotes(this.props.filter);
+        this.props.fetchNotes(value);
     };
       
     render() {
@@ -39,13 +40,13 @@ export default class Filter extends React.Component<Props, State> {
             <FilterContainer>
                 <FilterTitle>Sort by:</FilterTitle>
                 <FilterList
-                    name="filter"
+                    name={TEXTS.FILTER.TITLE}
                     onChange={this.handleChangeFilter}
                     value={this.props.filter}
                 >                 
-                    <FilterListItem value="title">Name</FilterListItem>
-                    <FilterListItem value="created_at">Date Created</FilterListItem>
-                    <FilterListItem value="updated_at">Date Modified</FilterListItem>
+                    <FilterListItem value={TEXTS.FILTER.NAME.VALUE}>{TEXTS.FILTER.NAME.TEXT}</FilterListItem>
+                    <FilterListItem value={TEXTS.FILTER.DATE_CREATED.VALUE}>{TEXTS.FILTER.DATE_CREATED.TEXT}</FilterListItem>
+                    <FilterListItem value={TEXTS.FILTER.DATE_MODIFIED.VALUE}>{TEXTS.FILTER.DATE_MODIFIED.TEXT}</FilterListItem>
                 </FilterList>
             </FilterContainer>
         )

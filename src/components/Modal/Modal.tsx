@@ -6,7 +6,8 @@ import {
     ButtonsContainer, 
 } from './style';
 import Button from '../Button/Button';
-import { BUTTON_TYPES, BUTTON_COLORS } from '../../constants';
+import { BUTTON_TYPES } from '../../constants/types';
+import { COLORS } from '../../constants/colors';
 
 interface Props {
     modalText: string,
@@ -41,13 +42,13 @@ export default class Modal extends React.Component<Props> {
                                 onClose();
                             }}
                             text={buttonConfirmText} 
-                            color={BUTTON_COLORS.GREEN}
+                            color={COLORS.BUTTON.GREEN}
                         />
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
                             onClick={onClose} 
                             text={buttonCancelText} 
-                            color={BUTTON_COLORS.RED}
+                            color={COLORS.BUTTON.RED}
                         />
                     </ButtonsContainer>
                 </ModalContainer>

@@ -1,3 +1,4 @@
+import { TEXTS } from '../../constants/texts';
 import { Note } from '../../interfaces';
 import actions from '../actions';
 
@@ -7,7 +8,7 @@ export const initialState = {
     selectedNotes: [],
     note: {},
     redirect: false,
-    filter: 'title',
+    filter: TEXTS.FILTER.NAME.VALUE,
 };
 
 export function rootReducer(state = initialState, action: any) {

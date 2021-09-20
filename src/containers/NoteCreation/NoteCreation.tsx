@@ -2,6 +2,7 @@ import * as React from 'react';
 import Note from '../../components/Note/Note';
 import Loader from '../../components/Loader/Loader';
 import { Note as INote } from '../../interfaces';
+import { ACTIONS } from '../../constants/types';
 
 interface Props {
     isLoading: boolean,
@@ -28,7 +29,7 @@ export default class NoteCreation extends React.Component<Props> {
             isLoading ?
             <Loader /> :
             <Note 
-                typeName="Save"
+                typeName={ACTIONS.SAVE}
                 redirect={redirect}
                 redirectAction={redirectAction}
                 addOrUpdateNote={addNoteAction}

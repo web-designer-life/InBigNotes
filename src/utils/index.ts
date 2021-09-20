@@ -1,21 +1,11 @@
 import { Note } from '../interfaces';
 
-export function sortNotes(notes: Note[], note: any, filter: string) {
-    if (typeof note[filter] === 'string') {
-        return sortByText(notes, filter);
-    } else {
-        return sortByNumber(notes, filter);
-    }
-};
+export const sortByFilterType = (notes: Note[], filterType: string) => (
+    notes.sort((prev: any, next: any) => {
+        const prevNote = typeof prev[filterType] === 'string' ? prev[filterType].toLowerCase() : prev[filterType];
+        const nextNote = typeof next[filterType] === 'string' ? next[filterType].toLowerCase() : next[filterType];
 
-export function sortByText(notes: Note[], filter: string) {
-    return notes.sort((prev: any, next: any) => {
-        return next[filter].localeCompare(prev[filter])
-    });
-};
-
-export function sortByNumber(notes: Note[], filter: string) {
-    return notes.sort((prev: any, next: any) => {
-        return prev[filter] - next[filter];
-    });
-};
+        return (prevNote < nextNote) ? -1 :
+        (prevNote > nextNote) ? 1 : 0;
+    })
+);

@@ -5,6 +5,7 @@ import {
     LoaderText 
 } from './style';
 import loader from '../../images/loader.gif';
+import { TEXTS } from '../../constants/texts';
 
 export default class Loader extends React.Component {
     render() {
@@ -15,9 +16,9 @@ export default class Loader extends React.Component {
                         src={loader} 
                         width={100} 
                         height={100} 
-                        alt="Loading" 
+                        alt={TEXTS.LOADER}
                     />
-                    <LoaderText>Loading...</LoaderText>
+                    <LoaderText>{TEXTS.LOADER}</LoaderText>
                 </LoaderContainer>
             </LoaderBackground>
         )

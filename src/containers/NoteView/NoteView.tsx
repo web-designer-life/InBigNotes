@@ -2,6 +2,7 @@ import * as React from 'react';
 import Note from '../../components/Note/Note';
 import Loader from '../../components/Loader/Loader';
 import { Note as INote } from '../../interfaces';
+import { ACTIONS } from '../../constants/types';
 
 interface Props {
     match: {
@@ -40,7 +41,7 @@ export default class NoteView extends React.Component<Props> {
             isLoading ?
             <Loader /> :
             <Note 
-                typeName="Update"
+                typeName={ACTIONS.UPDATE}
                 note={note}
                 redirect={redirect}
                 redirectAction={redirectAction}

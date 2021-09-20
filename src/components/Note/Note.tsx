@@ -10,7 +10,11 @@ import {
     NoteButtonsWrapper 
 } from './style';
 import Button from '../Button/Button';
-import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXTS, MODAL_TEXTS } from '../../constants';
+import { ROUTES } from '../../constants/routes';
+import { BUTTON_TYPES } from '../../constants/types';
+import { COLORS } from '../../constants/colors';
+import { TEXTS } from '../../constants/texts';
+import { FORMS } from '../../constants/forms';
 import Modal from '../Modal/Modal';
 
 interface Props {
@@ -30,8 +34,6 @@ interface State {
     active: boolean,
     action: () => void,
 };
-
-const ADD_OR_UPDATE_NOTE_FORM = 'addOrUpdateNote';
 
 export default class Note extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -118,9 +120,9 @@ export default class Note extends React.Component<Props, State> {
 
     handleModalBackButtonClick() {
         this.setState({
-			modalText: MODAL_TEXTS.BACK,
-            buttonConfirmText: BUTTON_TEXTS.BACK,
-            buttonCancelText: BUTTON_TEXTS.CANCEL,
+			modalText: TEXTS.MODAL.BACK,
+            buttonConfirmText: TEXTS.BUTTON.BACK,
+            buttonCancelText: TEXTS.BUTTON.CANCEL,
 		} as Pick<State, keyof State>);
 
         this.handleSetAction(this.props.redirectAction);
@@ -129,9 +131,9 @@ export default class Note extends React.Component<Props, State> {
 
     handleModalSubmitButtonClick() {
         this.setState({
-			modalText: this.props.typeName === BUTTON_TEXTS.SAVE ? MODAL_TEXTS.SAVE : MODAL_TEXTS.UPDATE,
+			modalText: this.props.typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
             buttonConfirmText: this.props.typeName,
-            buttonCancelText: BUTTON_TEXTS.CANCEL,
+            buttonCancelText: TEXTS.BUTTON.CANCEL,
 		} as Pick<State, keyof State>);
         
         this.handleSetAction(this.onSubmit);
@@ -140,9 +142,9 @@ export default class Note extends React.Component<Props, State> {
 
     handleModalCancelButtonClick() {
         this.setState({
-			modalText: MODAL_TEXTS.CANCEL,
-            buttonConfirmText: BUTTON_TEXTS.CONFIRM,
-            buttonCancelText: BUTTON_TEXTS.CANCEL,
+			modalText: TEXTS.MODAL.CANCEL,
+            buttonConfirmText: TEXTS.BUTTON.CONFIRM,
+            buttonCancelText: TEXTS.BUTTON.CANCEL,
 		} as Pick<State, keyof State>);
         
         this.handleSetAction(this.handleCancelChanges);
@@ -178,7 +180,7 @@ export default class Note extends React.Component<Props, State> {
 
         return (
             <>
-                <NoteForm onSubmit={this.onSubmit} id={ADD_OR_UPDATE_NOTE_FORM}>
+                <NoteForm onSubmit={this.onSubmit} id={FORMS.ADD_OR_UPDATE_NOTE_FORM}>
                     <NoteTitle 
                         type="text"
                         name="title"
@@ -197,29 +199,29 @@ export default class Note extends React.Component<Props, State> {
                     <NoteControlsWrapper>
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
-                            text={BUTTON_TEXTS.BACK}
+                            text={TEXTS.BUTTON.BACK}
                             onClick={
                                 this.handleCheckCancelChanges() ? 
                                 this.handleModalBackButtonClick : 
                                 this.props.redirectAction
                             }
-                            color={BUTTON_COLORS.RED}
+                            color={COLORS.BUTTON.RED}
                         />
                         <NoteButtonsWrapper>
                             <Button 
-                                form={ADD_OR_UPDATE_NOTE_FORM}
+                                form={FORMS.ADD_OR_UPDATE_NOTE_FORM}
                                 type={BUTTON_TYPES.BUTTON}
                                 disabled={!this.handleCheckSaveOrUpdateChanges()}
                                 text={typeName}
                                 onClick={this.handleModalSubmitButtonClick}
-                                color={BUTTON_COLORS.GREEN}
+                                color={COLORS.BUTTON.GREEN}
                             />
                             <Button               
                                 type={BUTTON_TYPES.RESET}
                                 disabled={!this.handleCheckCancelChanges()}
                                 onClick={this.handleModalCancelButtonClick}
-                                text={BUTTON_TEXTS.CANCEL}
-                                color={BUTTON_COLORS.RED}
+                                text={TEXTS.BUTTON.CANCEL}
+                                color={COLORS.BUTTON.RED}
                             />
                         </NoteButtonsWrapper>
                     </NoteControlsWrapper>

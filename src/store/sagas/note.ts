@@ -4,6 +4,7 @@ import {
     all, 
     takeEvery, 
 } from 'redux-saga/effects';
+import { TEXTS } from '../../constants/texts';
 import { Note } from '../../interfaces';
 import actions from '../actions';
 
@@ -12,7 +13,7 @@ type Params = { id: string, note: Note, type: string };
 function* fetchNote({ id }: Params) {
     yield delay(1500);
 
-    const notes = JSON.parse(localStorage.getItem('notes')!) || [];
+    const notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
 
     const note = notes.find((note: Note) => note.id === id);
 
@@ -24,11 +25,11 @@ function* addNote({ note }: Params) {
     
     yield delay(1500);
 
-    const notes = JSON.parse(localStorage.getItem('notes')!) || [];
+    const notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
 
     notes.push(note);
 
-    localStorage.setItem('notes', JSON.stringify(notes));
+    localStorage.setItem(TEXTS.NOTES, JSON.stringify(notes));
 
     yield put({ type: actions.ADD_NOTE_SUCCESS });
 };
@@ -38,13 +39,13 @@ function* updateNote({ note }: Params) {
 
     yield delay(1500);
 
-    const notes = JSON.parse(localStorage.getItem('notes')!) || [];
+    const notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
 
     const modifiedNotes = notes.filter((elem: Note) => elem.id !== note.id);
 
     modifiedNotes.push(note);
 
-    localStorage.setItem('notes', JSON.stringify(modifiedNotes));
+    localStorage.setItem(TEXTS.NOTES, JSON.stringify(modifiedNotes));
 
     yield put({ type: actions.UPDATE_NOTE_SUCCESS });
 };

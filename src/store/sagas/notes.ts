@@ -4,8 +4,9 @@ import {
     all, 
     takeEvery, 
 } from 'redux-saga/effects';
+import { TEXTS } from '../../constants/texts';
 import { Note } from '../../interfaces';
-import { sortNotes } from '../../utils';
+import { sortByFilterType } from '../../utils';
 import actions from '../actions';
 
 type Params = { id: string, note: Note, notes: Note[], filter: string, type: string };
@@ -13,10 +14,10 @@ type Params = { id: string, note: Note, notes: Note[], filter: string, type: str
 function* fetchNotes({ filter }: Params) {
     yield delay(1500);
 
-    let notes = JSON.parse(localStorage.getItem('notes')!) || [];
+    let notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
 
     if (notes.length) {
-        notes = sortNotes(notes, notes[0], filter);
+        notes = sortByFilterType(notes, filter);
     }
 
     yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
@@ -25,7 +26,7 @@ function* fetchNotes({ filter }: Params) {
 function* deleteNotes({ notes }: Params) {
     yield delay(1500);
 
-    localStorage.setItem('notes', JSON.stringify(notes));
+    localStorage.setItem(TEXTS.NOTES, JSON.stringify(notes));
 
     yield put({ type: actions.DELETE_NOTES_SUCCESS });
     yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
