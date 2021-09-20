@@ -120,7 +120,7 @@ export default class Home extends React.Component<Props, State> {
             (notes && notes.length !== 0) ? 
             <>
                 <RouterWrapper>
-                    <Logo>{TEXTS.LOGO}</Logo>
+                    <Logo>{TEXTS.PROJECT_NAME}</Logo>
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
@@ -166,7 +166,7 @@ export default class Home extends React.Component<Props, State> {
             :
             <>
                 <RouterWrapper>
-                    <Logo>{TEXTS.LOGO}</Logo>
+                    <Logo>{TEXTS.PROJECT_NAME}</Logo>
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
@@ -186,7 +186,7 @@ export default class Home extends React.Component<Props, State> {
                     </Wrapper>
                 </RouterWrapper>
                 <EmptyListNotesWrapper>
-                    <EmptyListNotesText>{TEXTS.NO_NOTES}</EmptyListNotesText>
+                    <EmptyListNotesText>{TEXTS.EMPTY_STORAGE_DATA}</EmptyListNotesText>
                 </EmptyListNotesWrapper>
                 <Modal 
                     modalText={modalText} 

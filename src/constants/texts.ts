@@ -1,8 +1,8 @@
 export const TEXTS = {
-    LOGO: 'InBigNotes',
+    PROJECT_NAME: 'InBigNotes',
     LOADER: 'Loading...',
-    NO_NOTES: 'You have no notes yet. Please, create one...',
-    NOTES: 'notes',
+    EMPTY_STORAGE_DATA: 'You have no notes yet. Please, create one...',
+    STORAGE_NAME: 'notes',
     BUTTON: {
         CREATE: 'Create',
         DELETE: 'Delete',
@@ -20,7 +20,6 @@ export const TEXTS = {
         CANCEL: 'You have changes in your note. Do you want to cancel the changes?',
     },
     FILTER: {
-        TITLE: 'filter',
         NAME: {
             TEXT: 'Name',
             VALUE: 'title',

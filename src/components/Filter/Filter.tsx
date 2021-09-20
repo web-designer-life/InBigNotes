@@ -40,7 +40,6 @@ export default class Filter extends React.Component<Props, State> {
             <FilterContainer>
                 <FilterTitle>Sort by:</FilterTitle>
                 <FilterList
-                    name={TEXTS.FILTER.TITLE}
                     onChange={this.handleChangeFilter}
                     value={this.props.filter}
                 >                 

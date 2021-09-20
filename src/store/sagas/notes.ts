@@ -14,7 +14,7 @@ type Params = { id: string, note: Note, notes: Note[], filter: string, type: str
 function* fetchNotes({ filter }: Params) {
     yield delay(1500);
 
-    let notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
+    let notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
     if (notes.length) {
         notes = sortByFilterType(notes, filter);
@@ -26,7 +26,7 @@ function* fetchNotes({ filter }: Params) {
 function* deleteNotes({ notes }: Params) {
     yield delay(1500);
 
-    localStorage.setItem(TEXTS.NOTES, JSON.stringify(notes));
+    localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
 
     yield put({ type: actions.DELETE_NOTES_SUCCESS });
     yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });

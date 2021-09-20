@@ -13,7 +13,7 @@ type Params = { id: string, note: Note, type: string };
 function* fetchNote({ id }: Params) {
     yield delay(1500);
 
-    const notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
+    const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
     const note = notes.find((note: Note) => note.id === id);
 
@@ -25,11 +25,11 @@ function* addNote({ note }: Params) {
     
     yield delay(1500);
 
-    const notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
+    const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
     notes.push(note);
 
-    localStorage.setItem(TEXTS.NOTES, JSON.stringify(notes));
+    localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
 
     yield put({ type: actions.ADD_NOTE_SUCCESS });
 };
@@ -39,13 +39,13 @@ function* updateNote({ note }: Params) {
 
     yield delay(1500);
 
-    const notes = JSON.parse(localStorage.getItem(TEXTS.NOTES)!) || [];
+    const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
     const modifiedNotes = notes.filter((elem: Note) => elem.id !== note.id);
 
     modifiedNotes.push(note);
 
-    localStorage.setItem(TEXTS.NOTES, JSON.stringify(modifiedNotes));
+    localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(modifiedNotes));
 
     yield put({ type: actions.UPDATE_NOTE_SUCCESS });
 };
