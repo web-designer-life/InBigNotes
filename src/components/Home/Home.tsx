@@ -4,7 +4,7 @@ import { ListNotes } from '../Notes/ListNotes';
 import { 
     RouterWrapper, 
     Logo, 
-    Wrapper 
+    Wrapper,
 } from '../../containers/style';
 import Button from '../Button/Button';
 import { Note } from '../../interfaces';
