@@ -10,17 +10,20 @@ import Button from '../Button/Button';
 import { Note } from '../../interfaces';
 import { Link } from 'react-router-dom';
 import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
-import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXT, MODAL_TEXT } from '../../constants';
+import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXTS, MODAL_TEXTS } from '../../constants';
 import Modal from '../Modal/Modal';
 
 interface Props {
     notes?: Note[],
     selectedNotes?: string[],
+    filter: string,
+    fetchNotes(filter: string): Function,
     deleteNotes(notes: Note[]): Function,
     addSelectedNote(note: Note): Function,
     removeUnselectedNote(note: Note): Function,
     selectAllNotes(notes: Note[]): Function,
     unselectAllNotes(): Function,
+    filterAction(filter: string): Function,
 };
 
 interface State {
@@ -62,9 +65,9 @@ export default class Home extends React.Component<Props, State> {
 
     handleModalBackButtonClick() {
         this.setState({
-			modalText: MODAL_TEXT.Delete,
-            buttonConfirmText: BUTTON_TEXT.Delete,
-            buttonCancelText: BUTTON_TEXT.Cancel,
+			modalText: MODAL_TEXTS.DELETE,
+            buttonConfirmText: BUTTON_TEXTS.DELETE,
+            buttonCancelText: BUTTON_TEXTS.CANCEL,
 		} as Pick<State, keyof State>);
 
         this.handleSetAction(this.handleDeleteNotes);
@@ -93,10 +96,13 @@ export default class Home extends React.Component<Props, State> {
         const { 
             notes, 
             selectedNotes,
+            filter,
+            fetchNotes,
             addSelectedNote, 
             removeUnselectedNote,
             selectAllNotes,
             unselectAllNotes,
+            filterAction,
         } = this.props;
 
         const {
@@ -104,7 +110,7 @@ export default class Home extends React.Component<Props, State> {
             buttonConfirmText,
             buttonCancelText,
             active, 
-            action
+            action,
         } = this.state;
 
         return (
@@ -115,26 +121,29 @@ export default class Home extends React.Component<Props, State> {
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
-                                type={BUTTON_TYPES.Button}
+                                type={BUTTON_TYPES.BUTTON}
                                 disabled={!!selectedNotes?.length}
-                                text={BUTTON_TEXT.Create}
-                                color={BUTTON_COLORS.Green}
+                                text={BUTTON_TEXTS.CREATE}
+                                color={BUTTON_COLORS.GREEN}
                             />
                         </Link>
                         <Button 
-                            type={BUTTON_TYPES.Button}
+                            type={BUTTON_TYPES.BUTTON}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleModalBackButtonClick}
-                            text={BUTTON_TEXT.Delete}
-                            color={BUTTON_COLORS.Red}
+                            text={BUTTON_TEXTS.DELETE}
+                            color={BUTTON_COLORS.RED}
                         />
                     </Wrapper>
                 </RouterWrapper>
                 <ControlPanel 
                     notes={notes}
                     selectedNotes={selectedNotes}
+                    filter={filter}
+                    fetchNotes={fetchNotes}
                     selectAllNotes={selectAllNotes}
                     unselectAllNotes={unselectAllNotes}
+                    filterAction={filterAction}
                 />
                 <ListNotes 
                     notes={notes}
@@ -158,18 +167,18 @@ export default class Home extends React.Component<Props, State> {
                     <Wrapper>
                         <Link to={ROUTES.NOTE_CREATE}>
                             <Button 
-                                type={BUTTON_TYPES.Button}
+                                type={BUTTON_TYPES.BUTTON}
                                 disabled={!!selectedNotes?.length}
-                                text={BUTTON_TEXT.Create}
-                                color={BUTTON_COLORS.Green}
+                                text={BUTTON_TEXTS.CREATE}
+                                color={BUTTON_COLORS.GREEN}
                             />
                         </Link>
                         <Button
-                            type={BUTTON_TYPES.Button}
+                            type={BUTTON_TYPES.BUTTON}
                             disabled={!selectedNotes?.length}
                             onClick={this.handleModalBackButtonClick}
-                            text={BUTTON_TEXT.Delete}
-                            color={BUTTON_COLORS.Red}
+                            text={BUTTON_TEXTS.DELETE}
+                            color={BUTTON_COLORS.RED}
                         />
                     </Wrapper>
                 </RouterWrapper>

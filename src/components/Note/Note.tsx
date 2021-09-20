@@ -10,7 +10,7 @@ import {
     NoteButtonsWrapper 
 } from './style';
 import Button from '../Button/Button';
-import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXT, MODAL_TEXT } from '../../constants';
+import { ROUTES, BUTTON_TYPES, BUTTON_COLORS, BUTTON_TEXTS, MODAL_TEXTS } from '../../constants';
 import Modal from '../Modal/Modal';
 
 interface Props {
@@ -118,9 +118,9 @@ export default class Note extends React.Component<Props, State> {
 
     handleModalBackButtonClick() {
         this.setState({
-			modalText: MODAL_TEXT.Back,
-            buttonConfirmText: BUTTON_TEXT.Back,
-            buttonCancelText: BUTTON_TEXT.Cancel,
+			modalText: MODAL_TEXTS.BACK,
+            buttonConfirmText: BUTTON_TEXTS.BACK,
+            buttonCancelText: BUTTON_TEXTS.CANCEL,
 		} as Pick<State, keyof State>);
 
         this.handleSetAction(this.props.redirectAction);
@@ -129,9 +129,9 @@ export default class Note extends React.Component<Props, State> {
 
     handleModalSubmitButtonClick() {
         this.setState({
-			modalText: this.props.typeName === BUTTON_TEXT.Save ? MODAL_TEXT.Save : MODAL_TEXT.Update,
+			modalText: this.props.typeName === BUTTON_TEXTS.SAVE ? MODAL_TEXTS.SAVE : MODAL_TEXTS.UPDATE,
             buttonConfirmText: this.props.typeName,
-            buttonCancelText: BUTTON_TEXT.Cancel,
+            buttonCancelText: BUTTON_TEXTS.CANCEL,
 		} as Pick<State, keyof State>);
         
         this.handleSetAction(this.onSubmit);
@@ -140,9 +140,9 @@ export default class Note extends React.Component<Props, State> {
 
     handleModalCancelButtonClick() {
         this.setState({
-			modalText: MODAL_TEXT.Cancel,
-            buttonConfirmText: BUTTON_TEXT.Confirm,
-            buttonCancelText: BUTTON_TEXT.Cancel,
+			modalText: MODAL_TEXTS.CANCEL,
+            buttonConfirmText: BUTTON_TEXTS.CONFIRM,
+            buttonCancelText: BUTTON_TEXTS.CANCEL,
 		} as Pick<State, keyof State>);
         
         this.handleSetAction(this.handleCancelChanges);
@@ -196,30 +196,30 @@ export default class Note extends React.Component<Props, State> {
                     />
                     <NoteControlsWrapper>
                         <Button 
-                            type={BUTTON_TYPES.Button}
-                            text={BUTTON_TEXT.Back}
+                            type={BUTTON_TYPES.BUTTON}
+                            text={BUTTON_TEXTS.BACK}
                             onClick={
                                 this.handleCheckCancelChanges() ? 
                                 this.handleModalBackButtonClick : 
                                 this.props.redirectAction
                             }
-                            color={BUTTON_COLORS.Red}
+                            color={BUTTON_COLORS.RED}
                         />
                         <NoteButtonsWrapper>
                             <Button 
                                 form={ADD_OR_UPDATE_NOTE_FORM}
-                                type={BUTTON_TYPES.Button}
+                                type={BUTTON_TYPES.BUTTON}
                                 disabled={!this.handleCheckSaveOrUpdateChanges()}
                                 text={typeName}
                                 onClick={this.handleModalSubmitButtonClick}
-                                color={BUTTON_COLORS.Green}
+                                color={BUTTON_COLORS.GREEN}
                             />
                             <Button               
-                                type={BUTTON_TYPES.Reset}
+                                type={BUTTON_TYPES.RESET}
                                 disabled={!this.handleCheckCancelChanges()}
                                 onClick={this.handleModalCancelButtonClick}
-                                text={BUTTON_TEXT.Cancel}
-                                color={BUTTON_COLORS.Red}
+                                text={BUTTON_TEXTS.CANCEL}
+                                color={BUTTON_COLORS.RED}
                             />
                         </NoteButtonsWrapper>
                     </NoteControlsWrapper>

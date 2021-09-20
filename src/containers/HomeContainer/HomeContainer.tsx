@@ -7,18 +7,20 @@ interface Props {
     notes?: Note[],
     isLoading: boolean,
     selectedNotes?: string[],
-    fetchNotesAction(): Function,
+    filter: string,
+    fetchNotesAction(filter: string): Function,
     deleteNotesAction(notes: Note[]): Function,
     addSelectedNoteAction(note: Note): Function,
     removeUnselectedNoteAction(note: Note): Function,
     selectAllNotesAction(notes: Note[]): Function,
     unselectAllNotesAction(): Function,
+    filterAction(filter: string): Function,
     resetStoreAction(): Function,
 };
 
 export default class HomeContainer extends React.Component<Props> {  
     componentDidMount() {
-        this.props.fetchNotesAction();
+        this.props.fetchNotesAction(this.props.filter);
     };
     
     componentWillUnmount() {
@@ -30,11 +32,14 @@ export default class HomeContainer extends React.Component<Props> {
             notes,
             isLoading, 
             selectedNotes,
+            filter,
+            fetchNotesAction,
             deleteNotesAction,
             addSelectedNoteAction,
             removeUnselectedNoteAction,
             selectAllNotesAction,
             unselectAllNotesAction,
+            filterAction,
         } = this.props;
         
         return (
@@ -45,11 +50,14 @@ export default class HomeContainer extends React.Component<Props> {
                     <Home 
                         notes={notes}
                         selectedNotes={selectedNotes}
+                        filter={filter}
+                        fetchNotes={fetchNotesAction}
                         deleteNotes={deleteNotesAction}
                         addSelectedNote={addSelectedNoteAction}
                         removeUnselectedNote={removeUnselectedNoteAction}
                         selectAllNotes={selectAllNotesAction}
                         unselectAllNotes={unselectAllNotesAction}
+                        filterAction={filterAction}
                     />
                 }
             </>

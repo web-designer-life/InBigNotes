@@ -35,19 +35,19 @@ export default class Modal extends React.Component<Props> {
                     <ModalTitle>{modalText}</ModalTitle>
                     <ButtonsContainer>
                         <Button 
-                            type={BUTTON_TYPES.Button}
+                            type={BUTTON_TYPES.BUTTON}
                             onClick={() => {
                                 action();
                                 onClose();
                             }}
                             text={buttonConfirmText} 
-                            color={BUTTON_COLORS.Green}
+                            color={BUTTON_COLORS.GREEN}
                         />
                         <Button 
-                            type={BUTTON_TYPES.Button}
+                            type={BUTTON_TYPES.BUTTON}
                             onClick={onClose} 
                             text={buttonCancelText} 
-                            color={BUTTON_COLORS.Red}
+                            color={BUTTON_COLORS.RED}
                         />
                     </ButtonsContainer>
                 </ModalContainer>

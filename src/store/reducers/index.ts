@@ -7,7 +7,7 @@ export const initialState = {
     selectedNotes: [],
     note: {},
     redirect: false,
-    filter: '',
+    filter: 'title',
 };
 
 export function rootReducer(state = initialState, action: any) {
@@ -89,6 +89,11 @@ export function rootReducer(state = initialState, action: any) {
             return {
                 ...state,
                 selectedNotes: [],
+            };
+        case actions.FILTER:
+            return {
+                ...state, 
+                filter: action.filter,
             };
         case actions.REDIRECT:
             return {

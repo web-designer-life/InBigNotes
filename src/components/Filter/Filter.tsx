@@ -7,8 +7,10 @@ import {
 } from './style';
 
 interface Props {
-
-}
+    filter: string,
+    fetchNotes(filter: string): Function,
+    filterAction(filter: string): Function,
+};
 
 interface State {
     filter: string,
@@ -17,20 +19,19 @@ interface State {
 export default class Filter extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-
+        
         this.state = {
-            filter: 'title',
+            filter: this.props.filter,
         };
 
         this.handleChangeFilter = this.handleChangeFilter.bind(this);
     };
 
-    handleChangeFilter(evt: { target: { name: string; value: string; }; }) {
-        const { name, value } = evt.target;
+    handleChangeFilter(evt: { target: { value: string; }; }) {
+        const { value } = evt.target;
 
-        this.setState({
-            [name]: value
-        } as Pick<State, keyof State>);
+        this.props.filterAction(value);
+        this.props.fetchNotes(this.props.filter);
     };
       
     render() {
@@ -40,7 +41,7 @@ export default class Filter extends React.Component<Props, State> {
                 <FilterList
                     name="filter"
                     onChange={this.handleChangeFilter}
-                    value={this.state.filter}
+                    value={this.props.filter}
                 >                 
                     <FilterListItem value="title">Name</FilterListItem>
                     <FilterListItem value="created_at">Date Created</FilterListItem>

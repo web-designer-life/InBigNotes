@@ -5,7 +5,8 @@ import {
     addSelectedNote, 
     removeUnselectedNote, 
     selectAllNotes, 
-    unselectAllNotes, 
+    unselectAllNotes,
+    filter, 
     resetStore, 
 } from '../../store/actions/notes';
 import HomeContainer from './HomeContainer';
@@ -16,17 +17,19 @@ const mapStateToProps = (store: any) => {
         notes: store.notes,
         isLoading: store.isLoading,
         selectedNotes: store.selectedNotes,
+        filter: store.filter,
     }
 };
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        fetchNotesAction: () => dispatch(fetchNotes()),
+        fetchNotesAction: (filter: string) => dispatch(fetchNotes(filter)),
         deleteNotesAction: (notes: Note[]) => dispatch(deleteNotes(notes)),
         addSelectedNoteAction: (note: Note) => dispatch(addSelectedNote(note)),
         removeUnselectedNoteAction: (note: Note) => dispatch(removeUnselectedNote(note)),
         selectAllNotesAction: (notes: Note[]) => dispatch(selectAllNotes(notes)),
         unselectAllNotesAction: () => dispatch(unselectAllNotes()),
+        filterAction: (filterValue: string) => dispatch(filter(filterValue)),
         resetStoreAction: () => dispatch(resetStore()),
     }
 };

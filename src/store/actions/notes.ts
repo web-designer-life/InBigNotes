@@ -1,8 +1,9 @@
 import actions from '.';
 import { Note } from '../../interfaces';
 
-export const fetchNotes = () => ({
+export const fetchNotes = (filter: string) => ({
     type: actions.FETCH_NOTES_PENDING,
+    filter,
 });
 
 export const fetchNote = (id: string) => ({
@@ -42,6 +43,11 @@ export const selectAllNotes = (notes: Note[]) => ({
 
 export const unselectAllNotes = () => ({
     type: actions.UNSELECT_ALL_NOTES,
+});
+
+export const filter = (filter: string) => ({
+    type: actions.FILTER,
+    filter,
 });
 
 export const redirect = () => ({
