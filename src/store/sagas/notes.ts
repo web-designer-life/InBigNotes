@@ -15,7 +15,7 @@ function* fetchNotes({ filter }: Params) {
 
     let notes = JSON.parse(localStorage.getItem('notes')!) || [];
 
-    if (notes) {
+    if (notes.length) {
         notes = sortNotes(notes, notes[0], filter);
     }
 
