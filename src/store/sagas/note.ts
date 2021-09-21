@@ -22,7 +22,9 @@ function* fetchNote({ id }: Params) {
     yield put({ type: actions.FETCH_NOTE_SUCCESS, payload: note });
 };
 
-function* addNote({ note }: Params) {    
+function* addNote({ note }: Params) {  
+	yield call(history.push, ROUTES.HOME);
+      
     yield delay(1500);
 
     const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
@@ -32,11 +34,11 @@ function* addNote({ note }: Params) {
     localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
 
     yield put({ type: actions.ADD_NOTE_SUCCESS });
-    
-	yield call(history.push, ROUTES.HOME);
 };
 
 function* updateNote({ note }: Params) {
+	yield call(history.push, ROUTES.HOME);
+
     yield delay(1500);
 
     const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
@@ -48,8 +50,6 @@ function* updateNote({ note }: Params) {
     localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(modifiedNotes));
 
     yield put({ type: actions.UPDATE_NOTE_SUCCESS });
-
-	yield call(history.push, ROUTES.HOME);
 };
 
 export default function noteSaga() {

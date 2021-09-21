@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 const RouterWrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin: 50px;
+    gap: 30px;
 `;
 
 const Logo = styled.h1`
@@ -20,9 +22,10 @@ const Logo = styled.h1`
 
 const Wrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    min-width: 570px;
+    gap: 30px;
 `;
 
 export { RouterWrapper, Logo, Wrapper };

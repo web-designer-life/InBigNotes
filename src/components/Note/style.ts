@@ -32,6 +32,7 @@ const NoteText = styled.textarea`
     border: none;
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
     height: 680px;
+    min-height: 200px;
     color: #787878;
 `;
 
@@ -39,13 +40,14 @@ const NoteControlsWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 30px;
 `;
 
 const NoteButtonsWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 570px;
+    gap: 30px;
 `;
 
 export { 
