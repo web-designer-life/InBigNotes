@@ -32,11 +32,6 @@ export default function rootReducer(state = initialState, action: any) {
                 isLoading: false,
                 redirect: true,
             };
-        case actions.FILTER:
-            return {
-                ...state, 
-                filter: action.filter,
-            };
         case actions.REDIRECT:
             return {
                 ...state,

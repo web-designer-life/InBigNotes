@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { Note as INote } from '../../interfaces';
 import { 
     NoteForm, 
@@ -50,7 +50,7 @@ export default class Note extends React.Component<Props, State> {
             action: () => {},
         };
 
-        this.renderRedirect = this.renderRedirect.bind(this);
+        // this.renderRedirect = this.renderRedirect.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleCancelChanges = this.handleCancelChanges.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -64,11 +64,11 @@ export default class Note extends React.Component<Props, State> {
         this.handleCancelChanges();
     };
 
-    renderRedirect() {
-        if (this.props.redirect) {
-            return <Redirect to={ROUTES.HOME} />
-        }
-    };
+    // renderRedirect() {
+    //     if (this.props.redirect) {
+    //         return <Redirect to={ROUTES.HOME} />
+    //     }
+    // };
 
     handleChange(evt: { target: { name: string; value: any; }; }) {
 		const { name, value } = evt.target;
@@ -126,7 +126,7 @@ export default class Note extends React.Component<Props, State> {
             buttonCancelText: TEXTS.BUTTON.CANCEL,
 		} as Pick<State, keyof State>);
 
-        this.handleSetAction(this.props.redirectAction);
+        // this.handleSetAction(this.props.redirectAction);
         this.toggleModal();
     };
 
@@ -204,7 +204,7 @@ export default class Note extends React.Component<Props, State> {
                             onClick={
                                 this.handleCheckCancelChanges() ? 
                                 this.handleModalBackButtonClick : 
-                                this.props.redirectAction
+                                this.props.redirectAction//
                             }
                             color={COLORS.BUTTON.RED}
                         />
@@ -235,7 +235,7 @@ export default class Note extends React.Component<Props, State> {
                     onClose={this.toggleModal} 
                     action={action} 
                 />
-                {this.renderRedirect()}
+                {/* {this.renderRedirect()} */}
             </>
         )
     }

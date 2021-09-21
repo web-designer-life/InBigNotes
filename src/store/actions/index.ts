@@ -29,6 +29,8 @@ const FILTER = 'FILTER';
 const REDIRECT = 'REDIRECT';
 const REDIRECT_TO_HOME = 'REDIRECT_TO_HOME';
 
+const NAVIGATE_TO_PAGE = 'NAVIGATE_TO_PAGE';
+
 const RESET_STORE = 'RESET_STORE';
 
 export default { 
@@ -54,5 +56,6 @@ export default {
     FILTER,
     REDIRECT,
     REDIRECT_TO_HOME,
+    NAVIGATE_TO_PAGE,
     RESET_STORE,
 };
