@@ -1,11 +1,11 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
+import { ROUTES } from '../../constants';
 import actions from '../actions';
 import { history } from '../configureStore';
 
 type Params = { path: string, type: string };
 
 function* navigateToPage({ path }: Params) {
-    console.log(history, path)
 	yield call(history.push, path);
 };
 
