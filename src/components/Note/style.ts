@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const NoteForm = styled.form`
     display: flex;
     flex-direction: column;
-    margin: 50px;
+    padding: 50px;
+    max-height: 100vh;
 `;
 
 const NoteTitle = styled.input`

@@ -4,7 +4,7 @@ import {
     all, 
     takeEvery, 
 } from 'redux-saga/effects';
-import { TEXTS } from '../../constants/texts';
+import { TEXTS } from '../../constants';
 import { Note } from '../../interfaces';
 import { sortByFilterType } from '../../utils';
 import actions from '../actions';

@@ -10,9 +10,9 @@ import { Note } from '../../interfaces';
 
 const mapStateToProps = (store: any) => {
     return {
-        isLoading: store.isLoading,
-        note: store.note,
-        redirect: store.redirect,
+        isLoading: store.note.isLoading,
+        note: store.note.note,
+        redirect: store.note.redirect,
     }
 };
 

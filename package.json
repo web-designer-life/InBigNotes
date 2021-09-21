@@ -5,6 +5,10 @@
   "repository": "git@github.com:web-designer-life/InBigNotes.git",
   "author": "AntonY <io57196657@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/polyfill": "^7.12.1",

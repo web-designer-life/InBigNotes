@@ -2,11 +2,13 @@ import {
     delay, 
     put, 
     all, 
-    takeEvery, 
+    takeEvery,
+    call, 
 } from 'redux-saga/effects';
-import { TEXTS } from '../../constants/texts';
-import { Note } from '../../interfaces';
+import { history } from '../configureStore';
+import { ROUTES, TEXTS } from '../../constants';
 import actions from '../actions';
+import { Note } from '../../interfaces';
 
 type Params = { id: string, note: Note, type: string };
 
@@ -32,6 +34,8 @@ function* addNote({ note }: Params) {
     localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
 
     yield put({ type: actions.ADD_NOTE_SUCCESS });
+    
+	yield call(history.push, ROUTES.HOME);
 };
 
 function* updateNote({ note }: Params) {
@@ -48,6 +52,8 @@ function* updateNote({ note }: Params) {
     localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(modifiedNotes));
 
     yield put({ type: actions.UPDATE_NOTE_SUCCESS });
+
+	yield call(history.push, ROUTES.HOME);
 };
 
 export default function noteSaga() {

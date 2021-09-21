@@ -14,10 +14,10 @@ import { Note } from '../../interfaces';
 
 const mapStateToProps = (store: any) => {
     return {
-        notes: store.notes,
-        isLoading: store.isLoading,
-        selectedNotes: store.selectedNotes,
-        filter: store.filter,
+        notes: store.notes.notes,
+        isLoading: store.notes.isLoading,
+        selectedNotes: store.notes.selectedNotes,
+        filter: store.notes.filter,
     }
 };
 

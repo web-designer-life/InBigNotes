@@ -2,13 +2,11 @@ import styled from 'styled-components';
 
 const List = styled.ul`
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
     padding: 50px 50px 30px 50px;
 `;
 
 const Note = styled.li`
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,21 +16,16 @@ const Note = styled.li`
 
 const NoteInfo = styled.div`
     list-style-type: none;
-    height: 170px;
-    width: 1690px;
-    padding: 30px;
     background: #FFFFFF;
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 40px;
+    padding: 30px;
+    margin: 0 30px 0 0;
+    height: 170px;
+    min-width: calc(100% - 110px);
     &:hover {
         cursor: pointer;
     }
-`;
-
-const Header = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 `;
 
 const Title = styled.h3`
@@ -58,6 +51,7 @@ const Text = styled.p`
     font-size: 21px;
     line-height: 27px;
     margin: 20px 0 0 0;
+    width: auto;
     color: #787878;
 `;
 
@@ -65,7 +59,6 @@ export {
     List, 
     Note, 
     NoteInfo, 
-    Header, 
     Title, 
     Text,
 };

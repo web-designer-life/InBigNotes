@@ -8,7 +8,6 @@ import {
 } from '../../containers/style';
 import Button from '../Button/Button';
 import { Note } from '../../interfaces';
-import { Link } from 'react-router-dom';
 import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
 import { 
     ROUTES, 
@@ -124,14 +123,12 @@ export default class Home extends React.Component<Props, State> {
                 <RouterWrapper>
                     <Logo>{TEXTS.PROJECT_NAME}</Logo>
                     <Wrapper>
-                        <Link to={ROUTES.NOTE_CREATE}>
-                            <Button 
-                                type={BUTTON_TYPES.BUTTON}
-                                disabled={!!selectedNotes?.length}
-                                text={TEXTS.BUTTON.CREATE}
-                                color={COLORS.BUTTON.GREEN}
-                            />
-                        </Link>
+                        <Button 
+                            type={BUTTON_TYPES.BUTTON}
+                            disabled={!!selectedNotes?.length}
+                            text={TEXTS.BUTTON.CREATE}
+                            color={COLORS.BUTTON.GREEN}
+                        />
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
                             disabled={!selectedNotes?.length}
@@ -170,14 +167,12 @@ export default class Home extends React.Component<Props, State> {
                 <RouterWrapper>
                     <Logo>{TEXTS.PROJECT_NAME}</Logo>
                     <Wrapper>
-                        <Link to={ROUTES.NOTE_CREATE}>
-                            <Button 
-                                type={BUTTON_TYPES.BUTTON}
-                                disabled={!!selectedNotes?.length}
-                                text={TEXTS.BUTTON.CREATE}
-                                color={COLORS.BUTTON.GREEN}
-                            />
-                        </Link>
+                        <Button 
+                            type={BUTTON_TYPES.BUTTON}
+                            disabled={!!selectedNotes?.length}
+                            text={TEXTS.BUTTON.CREATE}
+                            color={COLORS.BUTTON.GREEN}
+                        />
                         <Button
                             type={BUTTON_TYPES.BUTTON}
                             disabled={!selectedNotes?.length}

@@ -7,14 +7,14 @@ import {
     NoteTitle, 
     NoteText, 
     NoteControlsWrapper, 
-    NoteButtonsWrapper 
+    NoteButtonsWrapper, 
 } from './style';
 import Button from '../Button/Button';
 import { 
     ROUTES, 
     BUTTON_TYPES, 
     COLORS, TEXTS, 
-    FORMS 
+    FORMS, 
 } from '../../constants';
 import Modal from '../Modal/Modal';
 

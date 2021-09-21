@@ -3,12 +3,10 @@ import Checkbox from '../Checkbox/Checkbox';
 import { 
     Note, 
     NoteInfo, 
-    Header, 
     Title, 
-    Text 
+    Text,
 } from './style';
 import { Note as INote } from '../../interfaces';
-import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants';
 
 interface Props {
@@ -46,14 +44,10 @@ export default class NoteComponent extends React.Component<Props> {
 
         return (
             <Note>
-                <Link to={`${ROUTES.NOTE}/${note.id}`}>
-                    <NoteInfo>
-                        <Header>
-                            <Title>{note.title}</Title>
-                        </Header>
-                        <Text>{note.text}</Text>
-                    </NoteInfo>
-                </Link>
+                <NoteInfo>
+                    <Title>{note.title}</Title>
+                    <Text>{note.text}</Text>
+                </NoteInfo>
                 <Checkbox
                     checked={!!selectedNotes?.includes(note.id)}
                     onChange={this.handleSelectOrUnselectNote}
