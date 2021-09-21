@@ -14,14 +14,20 @@ interface Props {
     selectedNotes?: string[],
     addSelectedNote(note: INote): Function,
     removeUnselectedNote(note: INote): Function,
+    navigateToPage(path: string): Function,
 };
 
 export default class NoteComponent extends React.Component<Props> { 
     constructor(props: Props) {
         super(props);
 
+        this.handleNavigateToNote = this.handleNavigateToNote.bind(this);
         this.handleSelectOrUnselectNote = this.handleSelectOrUnselectNote.bind(this);
     };
+
+    handleNavigateToNote() {
+		this.props.navigateToPage(`${ROUTES.NOTE}/${this.props.note.id}`);
+	};
 
     handleSelectOrUnselectNote() {
         const { 
@@ -44,7 +50,7 @@ export default class NoteComponent extends React.Component<Props> {
 
         return (
             <Note>
-                <NoteInfo>
+                <NoteInfo onClick={this.handleNavigateToNote}>
                     <Title>{note.title}</Title>
                     <Text>{note.text}</Text>
                 </NoteInfo>

@@ -50,10 +50,6 @@ export const filter = (filter: string) => ({
     filter,
 });
 
-export const redirect = () => ({
-    type: actions.REDIRECT,
-});
-
 export const navigateToPage = (path: string) => ({
     type: actions.NAVIGATE_TO_PAGE,
     path,

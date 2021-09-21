@@ -32,14 +32,9 @@ function* deleteNotes({ notes }: Params) {
     yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
 };
 
-function* redirect() {
-    yield put({ type: actions.REDIRECT});
-};
-
 export default function notesSaga() {
     return all([ 
         takeEvery(actions.FETCH_NOTES_PENDING, fetchNotes),
         takeEvery(actions.DELETE_NOTES_PENDING, deleteNotes),
-        takeEvery(actions.ADD_NOTE_PENDING, redirect),
     ]);
 };

@@ -6,23 +6,21 @@ import { ACTIONS } from '../../constants';
 
 interface Props {
     isLoading: boolean,
-    redirect: boolean,
     addNoteAction(note: INote): Function,
-    redirectAction(): Function,
+    navigateToPageAction(path: string): Function,
     resetStoreAction(): Function,
 };
 
 export default class NoteCreation extends React.Component<Props> {
     componentWillUnmount() {
         this.props.resetStoreAction();
-    }
+    };
 
     render() {
         const { 
             isLoading, 
-            redirect,
             addNoteAction,
-            redirectAction,
+            navigateToPageAction,
         } = this.props;
 
         return (
@@ -30,8 +28,7 @@ export default class NoteCreation extends React.Component<Props> {
             <Loader /> :
             <Note 
                 typeName={ACTIONS.SAVE}
-                redirect={redirect}
-                redirectAction={redirectAction}
+                navigateToPage={navigateToPageAction}
                 addOrUpdateNote={addNoteAction}
             />
         );

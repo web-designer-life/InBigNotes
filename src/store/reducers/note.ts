@@ -30,12 +30,6 @@ export default function rootReducer(state = initialState, action: any) {
             return {
                 ...state, 
                 isLoading: false,
-                redirect: true,
-            };
-        case actions.REDIRECT:
-            return {
-                ...state,
-                redirect: true,
             };
         case actions.RESET_STORE: 
             return initialState;

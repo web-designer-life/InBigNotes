@@ -2,7 +2,7 @@ import * as React from 'react';
 import Note from '../../components/Note/Note';
 import Loader from '../../components/Loader/Loader';
 import { Note as INote } from '../../interfaces';
-import { ACTIONS } from '../../constants';
+import { ACTIONS, ROUTES } from '../../constants';
 
 interface Props {
     match: {
@@ -12,29 +12,27 @@ interface Props {
     },
     note: INote,
     isLoading: boolean,
-    redirect: boolean,
     fetchNoteAction(id: string): Function,
     updateNoteAction(note: INote): Function,
-    redirectAction(): Function,
+    navigateToPageAction(path: string): Function,
     resetStoreAction(): Function,
 };
 
 export default class NoteView extends React.Component<Props> {
     componentDidMount() {
         this.props.fetchNoteAction(this.props.match.params.noteId);
-    }
+    };
 
     componentWillUnmount() {
         this.props.resetStoreAction();
-    }
+    };
 
     render() {
         const { 
             note,
             isLoading, 
-            redirect,
             updateNoteAction,
-            redirectAction,
+            navigateToPageAction,
         } = this.props;
 
         return (
@@ -43,8 +41,7 @@ export default class NoteView extends React.Component<Props> {
             <Note 
                 typeName={ACTIONS.UPDATE}
                 note={note}
-                redirect={redirect}
-                redirectAction={redirectAction}
+                navigateToPage={navigateToPageAction}
                 addOrUpdateNote={updateNoteAction}
             />
         );

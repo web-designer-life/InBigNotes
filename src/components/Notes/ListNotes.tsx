@@ -8,6 +8,7 @@ interface Props {
     selectedNotes?: string[],
     addSelectedNote(note: Note): Function,
     removeUnselectedNote(note: Note): Function,
+    navigateToPage(path: string): Function,
 };
 
 export class ListNotes extends React.Component<Props> { 
@@ -17,6 +18,7 @@ export class ListNotes extends React.Component<Props> {
             selectedNotes, 
             addSelectedNote, 
             removeUnselectedNote, 
+            navigateToPage,
         } = this.props;
         
         return (
@@ -28,6 +30,7 @@ export class ListNotes extends React.Component<Props> {
                         selectedNotes={selectedNotes}
                         addSelectedNote={addSelectedNote}
                         removeUnselectedNote={removeUnselectedNote}
+                        navigateToPage={navigateToPage}
                     />
                 ))}
             </List>

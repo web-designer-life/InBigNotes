@@ -7,7 +7,8 @@ import {
     selectAllNotes, 
     unselectAllNotes,
     filter, 
-    resetStore, 
+    navigateToPage, 
+    resetStore,
 } from '../../store/actions/notes';
 import HomeContainer from './HomeContainer';
 import { Note } from '../../interfaces';
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: any) => {
         selectAllNotesAction: (notes: Note[]) => dispatch(selectAllNotes(notes)),
         unselectAllNotesAction: () => dispatch(unselectAllNotes()),
         filterAction: (filterValue: string) => dispatch(filter(filterValue)),
+        navigateToPageAction: (path: string) => dispatch(navigateToPage(path)),
         resetStoreAction: () => dispatch(resetStore()),
     }
 };

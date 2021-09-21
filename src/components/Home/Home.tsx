@@ -28,6 +28,7 @@ interface Props {
     selectAllNotes(notes: Note[]): Function,
     unselectAllNotes(): Function,
     filterAction(filter: string): Function,
+    navigateToPage(path: string): Function,
 };
 
 interface State {
@@ -50,6 +51,7 @@ export default class Home extends React.Component<Props, State> {
             action: () => {},
         };
 
+        this.handleNavigateToNoteCreator = this.handleNavigateToNoteCreator.bind(this);
         this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
         this.handleDeleteNotes = this.handleDeleteNotes.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -59,6 +61,10 @@ export default class Home extends React.Component<Props, State> {
 		this.setState({
 			active: !this.state.active,
 		} as Pick<State, keyof State>);
+	};
+
+    handleNavigateToNoteCreator() {
+		this.props.navigateToPage(ROUTES.NOTE_CREATE);
 	};
 
     handleSetAction(func: Function) {
@@ -107,6 +113,7 @@ export default class Home extends React.Component<Props, State> {
             selectAllNotes,
             unselectAllNotes,
             filterAction,
+            navigateToPage,
         } = this.props;
 
         const {
@@ -126,6 +133,7 @@ export default class Home extends React.Component<Props, State> {
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
                             disabled={!!selectedNotes?.length}
+                            onClick={this.handleNavigateToNoteCreator}
                             text={TEXTS.BUTTON.CREATE}
                             color={COLORS.BUTTON.GREEN}
                         />
@@ -152,6 +160,7 @@ export default class Home extends React.Component<Props, State> {
                     selectedNotes={selectedNotes}
                     addSelectedNote={addSelectedNote}
                     removeUnselectedNote={removeUnselectedNote}
+                    navigateToPage={navigateToPage}
                 />
                 <Modal 
                     modalText={modalText} 
@@ -170,6 +179,7 @@ export default class Home extends React.Component<Props, State> {
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
                             disabled={!!selectedNotes?.length}
+                            onClick={this.handleNavigateToNoteCreator}
                             text={TEXTS.BUTTON.CREATE}
                             color={COLORS.BUTTON.GREEN}
                         />

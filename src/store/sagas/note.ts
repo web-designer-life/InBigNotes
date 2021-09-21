@@ -22,9 +22,7 @@ function* fetchNote({ id }: Params) {
     yield put({ type: actions.FETCH_NOTE_SUCCESS, payload: note });
 };
 
-function* addNote({ note }: Params) {
-    yield put({ type: actions.REDIRECT });
-    
+function* addNote({ note }: Params) {    
     yield delay(1500);
 
     const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
@@ -39,8 +37,6 @@ function* addNote({ note }: Params) {
 };
 
 function* updateNote({ note }: Params) {
-    yield put({ type: actions.REDIRECT });
-
     yield delay(1500);
 
     const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];

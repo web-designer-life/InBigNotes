@@ -6,7 +6,6 @@ const initialState = {
     notes: [],
     isLoading: false,
     selectedNotes: [],
-    redirect: false,
     filter: TEXTS.FILTER.NAME.VALUE,
 };
 
@@ -58,11 +57,6 @@ export default function rootReducer(state = initialState, action: any) {
             return {
                 ...state, 
                 filter: action.filter,
-            };
-        case actions.REDIRECT:
-            return {
-                ...state,
-                redirect: true,
             };
         case actions.RESET_STORE: 
             return initialState;

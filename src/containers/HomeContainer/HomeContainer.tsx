@@ -15,6 +15,7 @@ interface Props {
     selectAllNotesAction(notes: Note[]): Function,
     unselectAllNotesAction(): Function,
     filterAction(filter: string): Function,
+    navigateToPageAction(path: string): Function,
     resetStoreAction(): Function,
 };
 
@@ -40,6 +41,7 @@ export default class HomeContainer extends React.Component<Props> {
             selectAllNotesAction,
             unselectAllNotesAction,
             filterAction,
+            navigateToPageAction,
         } = this.props;
         
         return (
@@ -57,6 +59,7 @@ export default class HomeContainer extends React.Component<Props> {
                         removeUnselectedNote={removeUnselectedNoteAction}
                         selectAllNotes={selectAllNotesAction}
                         unselectAllNotes={unselectAllNotesAction}
+                        navigateToPage={navigateToPageAction}
                         filterAction={filterAction}
                     />
                 }
