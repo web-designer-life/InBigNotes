@@ -6,8 +6,7 @@ import {
     ButtonsContainer, 
 } from './style';
 import Button from '../Button/Button';
-import { BUTTON_TYPES } from '../../constants/types';
-import { COLORS } from '../../constants/colors';
+import { BUTTON_TYPES, COLORS } from '../../constants';
 
 interface Props {
     modalText: string,

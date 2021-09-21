@@ -10,11 +10,12 @@ import {
     NoteButtonsWrapper 
 } from './style';
 import Button from '../Button/Button';
-import { ROUTES } from '../../constants/routes';
-import { BUTTON_TYPES } from '../../constants/types';
-import { COLORS } from '../../constants/colors';
-import { TEXTS } from '../../constants/texts';
-import { FORMS } from '../../constants/forms';
+import { 
+    ROUTES, 
+    BUTTON_TYPES, 
+    COLORS, TEXTS, 
+    FORMS 
+} from '../../constants';
 import Modal from '../Modal/Modal';
 
 interface Props {

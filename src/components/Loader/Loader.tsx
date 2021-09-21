@@ -5,7 +5,7 @@ import {
     LoaderText 
 } from './style';
 import loader from '../../images/loader.gif';
-import { TEXTS } from '../../constants/texts';
+import { TEXTS } from '../../constants';
 
 export default class Loader extends React.Component {
     render() {

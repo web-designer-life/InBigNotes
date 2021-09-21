@@ -9,7 +9,7 @@ import {
 } from './style';
 import { Note as INote } from '../../interfaces';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../constants/routes';
+import { ROUTES } from '../../constants';
 
 interface Props {
     note: INote,

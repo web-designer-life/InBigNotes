@@ -1,5 +1,5 @@
 import React from 'react';
-import { BUTTON_TYPES } from '../../constants/types';
+import { BUTTON_TYPES } from '../../constants';
 import StyledButton from './style';
 
 interface Props {

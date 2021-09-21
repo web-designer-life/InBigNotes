@@ -10,10 +10,12 @@ import Button from '../Button/Button';
 import { Note } from '../../interfaces';
 import { Link } from 'react-router-dom';
 import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
-import { ROUTES } from '../../constants/routes';
-import { BUTTON_TYPES } from '../../constants/types';
-import { COLORS } from '../../constants/colors';
-import { TEXTS } from '../../constants/texts';
+import { 
+    ROUTES, 
+    BUTTON_TYPES, 
+    COLORS, 
+    TEXTS, 
+} from '../../constants';
 import Modal from '../Modal/Modal';
 
 interface Props {
