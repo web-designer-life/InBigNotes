@@ -6,7 +6,11 @@ const RouterWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin: 50px;
-    gap: 30px;
+    gap: 20px;
+    @media (max-width: 640px) {
+	    flex-direction: column;
+        margin: 20px;
+    }
 `;
 
 const Logo = styled.h1`
@@ -25,7 +29,11 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
+    @media (max-width: 640px) {
+	    flex-direction: column;
+        width: 100%;
+    }
 `;
 
 export { RouterWrapper, Logo, Wrapper };

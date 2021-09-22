@@ -4,6 +4,11 @@ const List = styled.ul`
     display: flex;
     flex-direction: column;
     padding: 50px 50px 30px 50px;
+    @media (max-width: 989px) {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 20px 0 20px;
+    }
 `;
 
 const Note = styled.li`
@@ -40,6 +45,10 @@ const Title = styled.h3`
     margin: 0;
     width: auto;
     color: #5A5A5A;
+    @media (max-width: 989px) {
+        font-size: 36px;
+        line-height: 48px;
+    }
 `;
 
 const Text = styled.p`

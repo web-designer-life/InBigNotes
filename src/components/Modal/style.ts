@@ -24,6 +24,11 @@ const ModalContainer = styled.div`
     width: 800px;
     padding: 50px;
     background-color: #FFFFFF;
+    @media (max-width: 989px) {
+        width: 500px;
+        padding: 30px;
+        margin: 30px;
+    }
 `;
 
 const ModalTitle = styled.h2`
@@ -35,12 +40,21 @@ const ModalTitle = styled.h2`
     text-align: center;
     margin: 0 0 50px 0;
     color: #5A5A5A;
+    @media (max-width: 989px) {  
+        font-size: 36px;
+        line-height: 48px;
+        margin: 0 0 30px 0;
+    }
 `;
 
 const ButtonsContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
     width: 100%;
+    gap: 20px;
+    @media (max-width: 989px) {
+        flex-direction: column;
+    }
 `;
 
 export {

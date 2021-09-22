@@ -5,7 +5,15 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 50px;
-    gap: 30px;
+    gap: 20px;
+    @media (max-width: 989px) {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+    }
+    @media (max-width: 640px) {
+        align-items: flex-end;
+    }
 `;
 
 const SelectAllWrapper = styled.div`

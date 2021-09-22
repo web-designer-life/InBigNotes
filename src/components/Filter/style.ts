@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 const FilterContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    @media (max-width: 640px) {
+	    flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 `;
 
 const FilterTitle = styled.h2`
@@ -13,6 +19,9 @@ const FilterTitle = styled.h2`
     line-height: 46px;
     margin: 0 30px 0 0;
     color: #5A5A5A;
+    @media (max-width: 640px) {
+        margin: 0 0 10px 0;
+    }
 `;
 
 const FilterList = styled.select`
@@ -25,9 +34,12 @@ const FilterList = styled.select`
     background-color: #FFFFFF;
     border: 5px solid #5A5A5A;
     border-radius: 20px;
-    padding: 0 10px 0 10px;
-    height: 80px;
+    padding: 15px 10px 15px 10px;
     cursor: pointer;
+    @media (max-width: 640px) {
+        flex-direction: column;
+        width: 100%;
+    }
 `;
 
 const FilterListItem = styled.option``;

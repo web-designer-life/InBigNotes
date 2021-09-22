@@ -39,6 +39,11 @@ const StyledButton = styled.button`
             color: #FF0000;
         }
     `)}
+    @media (max-width: 989px) {
+	    min-width: auto;
+        width: 100%;
+        padding: 0;
+    }
 `;
 
 export default StyledButton;
