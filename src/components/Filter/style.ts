@@ -38,7 +38,6 @@ const FilterList = styled.select`
     cursor: pointer;
     @media (max-width: 500px) {
         flex-direction: column;
-        width: 100%;
     }
 `;
 
