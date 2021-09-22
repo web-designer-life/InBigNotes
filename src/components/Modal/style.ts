@@ -36,11 +36,6 @@ const ModalTitle = styled.h2`
     text-align: center;
     margin: 0 0 25px 0;
     color: #5A5A5A;
-    /* @media (max-width: 989px) {  
-        font-size: 36px;
-        line-height: 48px;
-        margin: 0 0 30px 0;
-    } */
 `;
 
 const ButtonsContainer = styled.div`
