@@ -20,13 +20,16 @@ const LoaderContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 125px;
-    height: 125px;
     color: #FFFFFF;
     margin: auto;
 `;
 
 const LoaderText = styled.p`
+    font-family: 'Lora', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
     color: #FFFFFF;
 `;
 

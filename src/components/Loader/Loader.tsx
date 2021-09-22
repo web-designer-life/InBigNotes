@@ -14,8 +14,8 @@ export default class Loader extends React.Component {
                 <LoaderContainer>
                     <img 
                         src={loader} 
-                        width={100} 
-                        height={100} 
+                        width={75} 
+                        height={75} 
                         alt={TEXTS.LOADER}
                     />
                     <LoaderText>{TEXTS.LOADER}</LoaderText>

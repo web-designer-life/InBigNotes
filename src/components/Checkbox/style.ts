@@ -9,8 +9,8 @@ const CheckboxContainer = styled.div`
 `;
 
 const Icon = styled.img`
-    width: 54px;
-    height: 40px;
+    width: 32px;
+    height: 24px;
     fill: none;
 `;
 
@@ -30,11 +30,11 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
+    width: 55px;
+    height: 55px;
     background: #FFFFFF;
-    border-radius: 20px;
-    border: 5px solid #0047FF;
+    border-radius: 15px;
+    border: 4px solid #0047FF;
 
     ${Icon} {
         visibility: ${(props) => (props.checked ? "visible" : "hidden")};

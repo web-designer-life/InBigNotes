@@ -20,31 +20,27 @@ const ModalContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 50px;
-    width: 800px;
-    padding: 50px;
+    border-radius: 20px;
+    width: 400px;
+    padding: 25px;
+    margin: 25px;
     background-color: #FFFFFF;
-    @media (max-width: 989px) {
-        width: 500px;
-        padding: 30px;
-        margin: 30px;
-    }
 `;
 
 const ModalTitle = styled.h2`
 	font-family: 'Lora', 'Arial', sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 48px;
-    line-height: 61px;
+    font-size: 24px;
+    line-height: 31px;
     text-align: center;
-    margin: 0 0 50px 0;
+    margin: 0 0 25px 0;
     color: #5A5A5A;
-    @media (max-width: 989px) {  
+    /* @media (max-width: 989px) {  
         font-size: 36px;
         line-height: 48px;
         margin: 0 0 30px 0;
-    }
+    } */
 `;
 
 const ButtonsContainer = styled.div`

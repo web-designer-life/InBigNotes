@@ -4,15 +4,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 50px;
+    padding: 0 30px;
     gap: 20px;
-    @media (max-width: 989px) {
+    @media (max-width: 500px) {
         flex-direction: column;
-        align-items: center;
-        padding: 0 20px;
-    }
-    @media (max-width: 640px) {
         align-items: flex-end;
+        padding: 0 20px;
     }
 `;
 
@@ -25,9 +22,9 @@ const SelectAllWrapper = styled.div`
 const Title = styled.p`
     font-style: normal;
     font-weight: bold;
-    font-size: 36px;
-    line-height: 46px;
-    margin: 0 30px 0 0;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 15px 0 0;
     color: #5A5A5A;
 `;
 
