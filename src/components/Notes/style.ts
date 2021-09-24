@@ -67,7 +67,7 @@ const DateInfo = styled.p`
     font-size: 10px;
     line-height: 13px;
     width: auto;
-    color: #787878;
+    color: #5A5A5A;
 `;
 
 export { 
