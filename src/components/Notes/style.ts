@@ -27,7 +27,6 @@ const NoteInfo = styled.div`
     border-radius: 20px;
     padding: 10px 15px;
     margin: 0 15px 0 0;
-    height: 80px;
     min-width: calc(100% - 70px);
     &:hover {
         cursor: pointer;
@@ -59,10 +58,23 @@ const Text = styled.p`
     color: #787878;
 `;
 
+const DateInfo = styled.p`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 13px;
+    width: auto;
+    color: #787878;
+`;
+
 export { 
     List, 
     Note, 
     NoteInfo, 
     Title, 
     Text,
+    DateInfo,
 };

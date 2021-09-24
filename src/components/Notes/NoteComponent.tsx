@@ -5,9 +5,11 @@ import {
     NoteInfo, 
     Title, 
     Text,
+    DateInfo,
 } from './style';
 import { Note as INote } from '../../interfaces';
 import { ROUTES } from '../../constants';
+import { formatDate } from '../../utils';
 
 interface Props {
     note: INote,
@@ -53,6 +55,8 @@ export default class NoteComponent extends React.Component<Props> {
                 <NoteInfo onClick={this.handleNavigateToNote}>
                     <Title>{note.title}</Title>
                     <Text>{note.text}</Text>
+                    <DateInfo>Created: {formatDate(new Date(+note.created_at))}</DateInfo>
+                    <DateInfo>Modified: {formatDate(new Date(+note.updated_at))}</DateInfo>
                 </NoteInfo>
                 <Checkbox
                     checked={!!selectedNotes?.includes(note.id)}
