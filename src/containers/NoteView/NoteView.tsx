@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Note from '../../components/Note/Note';
 import Loader from '../../components/Loader/Loader';
+import Error from '../../components/Error/Error';
 import { Note as INote } from '../../interfaces';
 import { ACTIONS, ROUTES } from '../../constants';
 
@@ -12,6 +13,7 @@ interface Props {
     },
     note: INote,
     isLoading: boolean,
+    error: boolean,
     fetchNoteAction(id: string): Function,
     updateNoteAction(note: INote): Function,
     navigateToPageAction(path: string): Function,
@@ -31,9 +33,14 @@ export default class NoteView extends React.Component<Props> {
         const { 
             note,
             isLoading, 
+            error,
             updateNoteAction,
             navigateToPageAction,
         } = this.props;
+
+        if (error) {
+			return <Error />;
+		}
 
         return (
             isLoading ?

@@ -58,6 +58,13 @@ const Text = styled.p`
     color: #787878;
 `;
 
+const Appearance = styled.div`
+    background-color: black;
+    height: 1px;
+    width: 100%;
+    margin: 5px 0;
+`;
+
 const DateInfo = styled.p`
     white-space: nowrap;
     overflow: hidden;
@@ -77,4 +84,5 @@ export {
     Title, 
     Text,
     DateInfo,
+    Appearance,
 };

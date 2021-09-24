@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 import { 
-    fetchNotes, 
-    deleteNotes, 
     addSelectedNote, 
     removeUnselectedNote, 
     selectAllNotes, 
@@ -9,7 +7,9 @@ import {
     filter, 
     navigateToPage, 
     resetStore,
-} from '../../store/actions/notes';
+    fetchNotesData,
+    deleteNotesData,
+} from '../../actions/notes';
 import HomeContainer from './HomeContainer';
 import { Note } from '../../interfaces';
 
@@ -19,13 +19,14 @@ const mapStateToProps = (store: any) => {
         isLoading: store.notes.isLoading,
         selectedNotes: store.notes.selectedNotes,
         filter: store.notes.filter,
+        error: store.notes.error,
     }
 };
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        fetchNotesAction: (filter: string) => dispatch(fetchNotes(filter)),
-        deleteNotesAction: (notes: Note[]) => dispatch(deleteNotes(notes)),
+        fetchNotesAction: (filter: string) => dispatch(fetchNotesData(filter)),
+        deleteNotesAction: (notes: Note[]) => dispatch(deleteNotesData(notes)),
         addSelectedNoteAction: (note: Note) => dispatch(addSelectedNote(note)),
         removeUnselectedNoteAction: (note: Note) => dispatch(removeUnselectedNote(note)),
         selectAllNotesAction: (notes: Note[]) => dispatch(selectAllNotes(notes)),

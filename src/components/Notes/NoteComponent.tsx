@@ -6,6 +6,7 @@ import {
     Title, 
     Text,
     DateInfo,
+    Appearance,
 } from './style';
 import { Note as INote } from '../../interfaces';
 import { ROUTES } from '../../constants';
@@ -55,6 +56,7 @@ export default class NoteComponent extends React.Component<Props> {
                 <NoteInfo onClick={this.handleNavigateToNote}>
                     <Title>{note.title}</Title>
                     <Text>{note.text}</Text>
+                    <Appearance />
                     <DateInfo>Created: {formatDate(new Date(+note.created_at))}</DateInfo>
                     <DateInfo>Modified: {formatDate(new Date(+note.updated_at))}</DateInfo>
                 </NoteInfo>

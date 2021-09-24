@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { history } from '../store/configureStore';
+import { history } from '../store/store';
 import { GlobalStyle } from '../globalStyle';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';

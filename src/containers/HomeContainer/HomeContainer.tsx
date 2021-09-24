@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Loader from '../../components/Loader/Loader';
+import Error from '../../components/Error/Error';
 import Home from '../../components/Home/Home';
 import { Note } from '../../interfaces';
 
@@ -8,6 +9,7 @@ interface Props {
     isLoading: boolean,
     selectedNotes?: string[],
     filter: string,
+    error: boolean,
     fetchNotesAction(filter: string): Function,
     deleteNotesAction(notes: Note[]): Function,
     addSelectedNoteAction(note: Note): Function,
@@ -34,6 +36,7 @@ export default class HomeContainer extends React.Component<Props> {
             isLoading, 
             selectedNotes,
             filter,
+            error,
             fetchNotesAction,
             deleteNotesAction,
             addSelectedNoteAction,
@@ -43,6 +46,10 @@ export default class HomeContainer extends React.Component<Props> {
             filterAction,
             navigateToPageAction,
         } = this.props;
+
+        if (error) {
+			return <Error />;
+		}
         
         return (
             <>

@@ -1,7 +1,6 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
-import { ROUTES } from '../../constants';
 import actions from '../actions';
-import { history } from '../configureStore';
+import { history } from '../store/store';
 
 type Params = { path: string, type: string };
 

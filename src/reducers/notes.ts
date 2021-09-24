@@ -1,5 +1,5 @@
-import { TEXTS } from '../../constants';
-import { Note } from '../../interfaces';
+import { TEXTS } from '../constants';
+import { Note } from '../interfaces';
 import actions from '../actions';
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
     isLoading: false,
     selectedNotes: [],
     filter: TEXTS.FILTER.NAME.VALUE,
+    error: false,
 };
 
 export default function rootReducer(state = initialState, action: any) {
@@ -57,6 +58,13 @@ export default function rootReducer(state = initialState, action: any) {
             return {
                 ...state, 
                 filter: action.filter,
+            };
+        case actions.FETCH_NOTES_FAIL:
+        case actions.DELETE_NOTES_FAIL:
+            return {
+                ...state,
+                isLoading: false,
+                error: true,
             };
         case actions.RESET_STORE: 
             return initialState;
