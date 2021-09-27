@@ -8,7 +8,12 @@ import { TEXTS } from '../constants';
 import { Note } from '../interfaces';
 import { sortByFilterType } from '../utils';
 import actions from '../actions';
-import { fetchNotesFail, deleteNotesFail } from '../actions/notes';
+import { 
+    deleteNotesFail, 
+    deleteNotesSuccess, 
+    fetchNotesFail, 
+    fetchNotesSuccess,
+} from '../actionCreators/notes';
 
 type Params = { id: string, note: Note, notes: Note[], filter: string, type: string };
 
@@ -22,7 +27,7 @@ function* fetchNotes({ filter }: Params) {
             notes = sortByFilterType(notes, filter);
         }
     
-        yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
+        yield put(fetchNotesSuccess(notes));
 	} catch (e) {
 		yield put(fetchNotesFail());
 	}
@@ -34,8 +39,8 @@ function* deleteNotes({ notes }: Params) {
     
         localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
     
-        yield put({ type: actions.DELETE_NOTES_SUCCESS });
-        yield put({ type: actions.FETCH_NOTES_SUCCESS, payload: notes });
+        yield put(deleteNotesSuccess());
+        yield put(fetchNotesSuccess(notes));        
 	} catch (e) {
 		yield put(deleteNotesFail());
 	}

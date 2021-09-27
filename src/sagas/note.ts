@@ -9,19 +9,30 @@ import { history } from '../store/store';
 import { ROUTES, TEXTS } from '../constants';
 import actions from '../actions';
 import { Note } from '../interfaces';
-import { fetchNoteFail, addNoteFail, updateNoteFail } from '../actions/notes';
+import { 
+    addNoteFail, 
+    addNoteSuccess, 
+    fetchNoteFail, 
+    fetchNoteSuccess, 
+    updateNoteFail, 
+    updateNoteSuccess, 
+} from '../actionCreators/note';
 
 type Params = { id: string, note: Note, type: string };
 
 function* fetchNote({ id }: Params) {
     try {
         yield delay(1500);
-
+        
         const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
-    
+        
         const note = notes.find((note: Note) => note.id === id);
-    
-        yield put({ type: actions.FETCH_NOTE_SUCCESS, payload: note });
+
+        if (!note) {
+            throw new Error('No note');
+        }
+
+        yield put(fetchNoteSuccess(note));
 	} catch (e) {
 		yield put(fetchNoteFail());
 	}
@@ -30,7 +41,7 @@ function* fetchNote({ id }: Params) {
 function* addNote({ note }: Params) {  
     try {
         yield call(history.push, ROUTES.HOME);
-      
+        
         yield delay(1500);
 
         const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
@@ -39,7 +50,7 @@ function* addNote({ note }: Params) {
 
         localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
 
-        yield put({ type: actions.ADD_NOTE_SUCCESS });
+        yield put(addNoteSuccess());
 	} catch (e) {
 		yield put(addNoteFail());
 	}
@@ -59,7 +70,7 @@ function* updateNote({ note }: Params) {
 
         localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(modifiedNotes));
 
-        yield put({ type: actions.UPDATE_NOTE_SUCCESS });
+        yield put(updateNoteSuccess());
 	} catch (e) {
 		yield put(updateNoteFail());
 	}

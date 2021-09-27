@@ -1,17 +1,16 @@
 import { connect } from 'react-redux';
+import HomeContainer from './HomeContainer';
+import { Note } from '../../interfaces';
 import { 
     addSelectedNote, 
+    deleteNotesData, 
+    fetchNotesData, 
+    filter, 
     removeUnselectedNote, 
     selectAllNotes, 
     unselectAllNotes,
-    filter, 
-    navigateToPage, 
-    resetStore,
-    fetchNotesData,
-    deleteNotesData,
-} from '../../actions/notes';
-import HomeContainer from './HomeContainer';
-import { Note } from '../../interfaces';
+} from '../../actionCreators/notes';
+import { navigateToPage, resetStore } from '../../actionCreators/common';
 
 const mapStateToProps = (store: any) => {
     return {

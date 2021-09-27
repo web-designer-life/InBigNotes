@@ -6,6 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import HomeContainer from './HomeContainer';
 import NoteCreation from './NoteCreation';
 import NoteView from './NoteView';
+import Error from '../components/Error/Error';
 import { ROUTES } from '../constants';
 
 export default class App extends React.Component {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
                         <Route path={ROUTES.NOTE_CREATE} component={NoteCreation} />
                         <Route path={`${ROUTES.NOTE}/:noteId`} component={NoteView} />
                         <Route path={ROUTES.HOME} exact component={HomeContainer} />
+                        <Route component={Error} />
                     </Switch>
                 </ConnectedRouter>
             </>

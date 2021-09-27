@@ -1,12 +1,8 @@
 import { connect } from 'react-redux';
-import { 
-    resetStore,
-    navigateToPage,
-    fetchNoteData,
-    updateNoteData,
-} from '../../actions/notes';
 import NoteView from './NoteView';
 import { Note } from '../../interfaces';
+import { fetchNoteData, updateNoteData } from '../../actionCreators/note';
+import { navigateToPage, resetStore } from '../../actionCreators/common';
 
 const mapStateToProps = (store: any) => {
     return {

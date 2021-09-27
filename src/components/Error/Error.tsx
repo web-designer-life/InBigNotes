@@ -7,7 +7,7 @@ export default class Error extends React.Component {
 	render() {
         return (
             <Container>
-                <Message>Oops... Something went wrong</Message>
+                <Message>404 - Not Found!</Message>
                 <Link to={ROUTES.HOME}>Go home</Link>
             </Container>
         );
