@@ -25,7 +25,7 @@ const NoteInfo = styled.div`
     background: #FFFFFF;
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    padding: 10px 15px;
+    padding: 15px 20px;
     margin: 0 15px 0 0;
     min-width: calc(100% - 70px);
     &:hover {
@@ -41,7 +41,7 @@ const Title = styled.h3`
     font-weight: bold;
     font-size: 24px;
     line-height: 31px;
-    margin: 0;
+    margin: 0 0 5px 0;
     width: auto;
     color: #5A5A5A;
 `;
@@ -54,6 +54,7 @@ const Text = styled.p`
     font-weight: bold;
     font-size: 14px;
     line-height: 18px;
+    margin: 0 0 10px 0;
     width: auto;
     color: #787878;
 `;
@@ -62,7 +63,7 @@ const Appearance = styled.div`
     background-color: black;
     height: 1px;
     width: 100%;
-    margin: 5px 0;
+    margin: 0 0 10px 0;
 `;
 
 const DateInfo = styled.p`

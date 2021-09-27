@@ -20,7 +20,7 @@ export default function rootReducer(state = initialState, action: any) {
         case actions.FETCH_NOTES_SUCCESS:
             return {
                 ...state, 
-                notes: action.payload, 
+                notes: action.notes, 
                 isLoading: false,
             };
         case actions.DELETE_NOTES_PENDING:

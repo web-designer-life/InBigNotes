@@ -2,7 +2,6 @@ import actions from '../actions';
 
 const initialState = {
     isLoading: false,
-    selectedNotes: [],
     note: {},
     error: false,
 };
@@ -18,7 +17,7 @@ export default function rootReducer(state = initialState, action: any) {
         case actions.FETCH_NOTE_SUCCESS:
             return {
                 ...state, 
-                note: action.payload, 
+                note: action.note, 
                 isLoading: false,
             };
         case actions.ADD_NOTE_PENDING:

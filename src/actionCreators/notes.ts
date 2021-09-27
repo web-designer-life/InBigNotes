@@ -1,53 +1,67 @@
 import actions from '../actions';
 import { Note } from '../interfaces';
 
-export const fetchNotesData = (filter: string) => ({
+const fetchNotesData = (filter: string) => ({
 	type: actions.FETCH_NOTES_PENDING,
     filter,
 });
 
-export const deleteNotesData = (notes: Note[]) => ({
+const fetchNotesSuccess = (notes: Note[]) => ({
+    type: actions.FETCH_NOTES_SUCCESS,
+    notes,
+});
+
+const fetchNotesFail = () => ({
+    type: actions.FETCH_NOTES_FAIL,
+});
+
+const deleteNotesData = (notes: Note[]) => ({
     type: actions.DELETE_NOTES_PENDING,
     notes,
 });
 
-export const fetchNotesSuccess = (payload: Note[]) => ({
-    type: actions.FETCH_NOTES_SUCCESS,
-    payload,
-});
-
-export const fetchNotesFail = () => ({
-    type: actions.FETCH_NOTES_FAIL,
-});
-
-export const deleteNotesSuccess = () => ({
+const deleteNotesSuccess = () => ({
     type: actions.DELETE_NOTES_SUCCESS,
 });
 
-export const deleteNotesFail = () => ({
+const deleteNotesFail = () => ({
     type: actions.DELETE_NOTES_FAIL,
 });
 
-export const addSelectedNote = (note: Note) => ({
+const addSelectedNote = (note: Note) => ({
     type: actions.ADD_SELECTED_NOTE,
     note,
 });
 
-export const removeUnselectedNote = (note: Note) => ({
+const removeUnselectedNote = (note: Note) => ({
     type: actions.REMOVE_UNSELECTED_NOTE,
     note,
 });
 
-export const selectAllNotes = (notes: Note[]) => ({
+const selectAllNotes = (notes: Note[]) => ({
     type: actions.SELECT_ALL_NOTES,
     notes,
 });
 
-export const unselectAllNotes = () => ({
+const unselectAllNotes = () => ({
     type: actions.UNSELECT_ALL_NOTES,
 });
 
-export const filter = (filter: string) => ({
+const filter = (filter: string) => ({
     type: actions.FILTER,
     filter,
 });
+
+export {
+    fetchNotesData,
+    fetchNotesSuccess,
+    fetchNotesFail,
+    deleteNotesData,
+    deleteNotesSuccess,
+    deleteNotesFail,
+    addSelectedNote,
+    removeUnselectedNote,
+    selectAllNotes,
+    unselectAllNotes,
+    filter,
+};

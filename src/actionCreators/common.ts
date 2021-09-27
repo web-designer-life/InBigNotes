@@ -1,10 +1,15 @@
 import actions from '../actions';
 
-export const navigateToPage = (path: string) => ({
+const navigateToPage = (path: string) => ({
     type: actions.NAVIGATE_TO_PAGE,
     path,
 });
 
-export const resetStore = () => ({
+const resetStore = () => ({
     type: actions.RESET_STORE,
 });
+
+export {
+    navigateToPage,
+    resetStore,
+};
