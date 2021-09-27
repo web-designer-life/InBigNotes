@@ -1,5 +1,9 @@
 import { Note } from '../interfaces';
 
+const formatNumberOfDate = (dateValue: Number) => {
+    return dateValue < 10 ? '0' + dateValue : dateValue;
+};
+
 export const sortByFilterType = (notes: Note[], filterType: string) => (
     notes.sort((prev: any, next: any) => {
         const prevNote = typeof prev[filterType] === 'string' ? prev[filterType].toLowerCase() : prev[filterType];
@@ -16,13 +20,15 @@ export const formatDate = (date: any) => {
     let year = date.getFullYear();
     let hour = date.getHours();
     let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
   
     year = year.toString().slice(-2);
-    month = month < 10 ? '0' + month : month;
-    dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
-    hour = hour < 10 ? '0' + hour : hour;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
+    month = formatNumberOfDate(month);
+    dayOfMonth = formatNumberOfDate(dayOfMonth);
+    hour = formatNumberOfDate(hour);
+    minutes = formatNumberOfDate(minutes);
+    seconds = formatNumberOfDate(seconds);
       
-    return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`;
+    return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}:${seconds}`;
 };
   
