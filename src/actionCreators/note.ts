@@ -3,12 +3,12 @@ import { Note } from '../interfaces';
 
 const fetchNoteData = (id: string) => ({
 	type: actions.FETCH_NOTE_PENDING,
-    id,
+    payload: { id },
 });
 
 const fetchNoteSuccess = (note: Note) => ({
     type: actions.FETCH_NOTE_SUCCESS,
-    note,
+    payload: { note },
 });
 
 const fetchNoteFail = () => ({
@@ -17,7 +17,7 @@ const fetchNoteFail = () => ({
 
 const addNoteData = (note: Note) => ({
 	type: actions.ADD_NOTE_PENDING,
-	note,
+	payload: { note },
 });
 
 const addNoteSuccess = () => ({
@@ -30,7 +30,7 @@ const addNoteFail = () => ({
 
 const updateNoteData = (note: Note) => ({
 	type: actions.UPDATE_NOTE_PENDING,
-	note,
+	payload: { note },
 });
 
 const updateNoteSuccess = () => ({

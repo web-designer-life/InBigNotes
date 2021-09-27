@@ -18,9 +18,9 @@ import {
     updateNoteSuccess, 
 } from '../actionCreators/note';
 
-type Params = { id: string, note: Note, type: string };
+function* fetchNote({ payload } : any) {
+    const { id } = payload;
 
-function* fetchNote({ id }: Params) {
     try {
         yield delay(1500);
         
@@ -38,7 +38,9 @@ function* fetchNote({ id }: Params) {
 	}
 };
 
-function* addNote({ note }: Params) {  
+function* addNote({ payload } : any) { 
+    const { note } = payload;
+
     try {
         yield call(history.push, ROUTES.HOME);
         
@@ -56,7 +58,9 @@ function* addNote({ note }: Params) {
 	}
 };
 
-function* updateNote({ note }: Params) {
+function* updateNote({ payload } : any) { 
+    const { note } = payload;
+    
     try {
 		yield call(history.push, ROUTES.HOME);
 

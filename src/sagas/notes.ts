@@ -5,7 +5,6 @@ import {
     takeEvery, 
 } from 'redux-saga/effects';
 import { TEXTS } from '../constants';
-import { Note } from '../interfaces';
 import { sortByFilterType } from '../utils';
 import actions from '../actions';
 import { 
@@ -15,9 +14,9 @@ import {
     fetchNotesSuccess,
 } from '../actionCreators/notes';
 
-type Params = { id: string, note: Note, notes: Note[], filter: string, type: string };
-
-function* fetchNotes({ filter }: Params) {
+function* fetchNotes({ payload } : any) {
+    const { filter } = payload;
+    
     try {
         yield delay(1500);
     
@@ -26,14 +25,16 @@ function* fetchNotes({ filter }: Params) {
         if (notes.length) {
             notes = sortByFilterType(notes, filter);
         }
-    
+
         yield put(fetchNotesSuccess(notes));
 	} catch (e) {
 		yield put(fetchNotesFail());
 	}
 };
 
-function* deleteNotes({ notes }: Params) {
+function* deleteNotes({ payload } : any) {
+    const { notes } = payload;
+
     try {
         yield delay(1500);
     

@@ -10,8 +10,8 @@ const initialState = {
     error: false,
 };
 
-export default function rootReducer(state = initialState, action: any) {
-    switch (action.type) {
+export default function rootReducer(state = initialState, { type, payload } : any) {
+    switch (type) {
         case actions.FETCH_NOTES_PENDING:
             return {
                 ...state, 
@@ -20,13 +20,13 @@ export default function rootReducer(state = initialState, action: any) {
         case actions.FETCH_NOTES_SUCCESS:
             return {
                 ...state, 
-                notes: action.notes, 
+                notes: payload.notes, 
                 isLoading: false,
             };
         case actions.DELETE_NOTES_PENDING:
             return {
                 ...state, 
-                notes: action.notes,
+                notes: payload.notes,
                 isLoading: true,
             };
         case actions.DELETE_NOTES_SUCCESS:
@@ -37,17 +37,17 @@ export default function rootReducer(state = initialState, action: any) {
         case actions.ADD_SELECTED_NOTE:
             return {
                 ...state, 
-                selectedNotes: [].concat(state.selectedNotes, action.note.id),
+                selectedNotes: [].concat(state.selectedNotes, payload.note.id),
             };
         case actions.REMOVE_UNSELECTED_NOTE:
             return {
                 ...state,
-                selectedNotes: state.selectedNotes.filter((index) => (index !== action.note.id)),
+                selectedNotes: state.selectedNotes.filter((index) => (index !== payload.note.id)),
             };
         case actions.SELECT_ALL_NOTES:
             return {
                 ...state, 
-                selectedNotes: [].concat([], (action.notes).map((note: Note) => note.id)),
+                selectedNotes: [].concat([], payload.notes.map((note: Note) => note.id)),
             };
         case actions.UNSELECT_ALL_NOTES:
             return {
@@ -57,7 +57,7 @@ export default function rootReducer(state = initialState, action: any) {
         case actions.FILTER:
             return {
                 ...state, 
-                filter: action.filter,
+                filter: payload.filter,
             };
         case actions.FETCH_NOTES_FAIL:
         case actions.DELETE_NOTES_FAIL:

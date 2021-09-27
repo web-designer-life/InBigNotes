@@ -3,12 +3,12 @@ import { Note } from '../interfaces';
 
 const fetchNotesData = (filter: string) => ({
 	type: actions.FETCH_NOTES_PENDING,
-    filter,
+    payload: { filter },
 });
 
 const fetchNotesSuccess = (notes: Note[]) => ({
     type: actions.FETCH_NOTES_SUCCESS,
-    notes,
+    payload: { notes },
 });
 
 const fetchNotesFail = () => ({
@@ -17,7 +17,7 @@ const fetchNotesFail = () => ({
 
 const deleteNotesData = (notes: Note[]) => ({
     type: actions.DELETE_NOTES_PENDING,
-    notes,
+    payload: { notes },
 });
 
 const deleteNotesSuccess = () => ({
@@ -30,17 +30,17 @@ const deleteNotesFail = () => ({
 
 const addSelectedNote = (note: Note) => ({
     type: actions.ADD_SELECTED_NOTE,
-    note,
+    payload: { note },
 });
 
 const removeUnselectedNote = (note: Note) => ({
     type: actions.REMOVE_UNSELECTED_NOTE,
-    note,
+    payload: { note },
 });
 
 const selectAllNotes = (notes: Note[]) => ({
     type: actions.SELECT_ALL_NOTES,
-    notes,
+    payload: { notes },
 });
 
 const unselectAllNotes = () => ({
@@ -49,7 +49,7 @@ const unselectAllNotes = () => ({
 
 const filter = (filter: string) => ({
     type: actions.FILTER,
-    filter,
+    payload: { filter },
 });
 
 export {

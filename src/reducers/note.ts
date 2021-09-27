@@ -6,24 +6,24 @@ const initialState = {
     error: false,
 };
 
-export default function rootReducer(state = initialState, action: any) {
-    switch (action.type) {
+export default function rootReducer(state = initialState, { type, payload } : any) {
+    switch (type) {
         case actions.FETCH_NOTE_PENDING:
             return {
                 ...state, 
-                id: action.id,
+                id: payload.id,
                 isLoading: true,
             };
         case actions.FETCH_NOTE_SUCCESS:
             return {
                 ...state, 
-                note: action.note, 
+                note: payload.note, 
                 isLoading: false,
             };
         case actions.ADD_NOTE_PENDING:
             return {
                 ...state, 
-                note: action.note,
+                note: payload.note,
                 isLoading: true,
             };
         case actions.ADD_NOTE_SUCCESS:
@@ -34,7 +34,7 @@ export default function rootReducer(state = initialState, action: any) {
         case actions.UPDATE_NOTE_PENDING:
             return {
                 ...state, 
-                note: action.note,
+                note: payload.note,
                 isLoading: true,
             };
         case actions.UPDATE_NOTE_SUCCESS:

@@ -2,9 +2,9 @@ import { all, call, takeEvery } from 'redux-saga/effects';
 import actions from '../actions';
 import { history } from '../store/store';
 
-type Params = { path: string, type: string };
-
-function* navigateToPage({ path }: Params) {
+function* navigateToPage({ payload } : any) {
+    const { path } = payload;
+    
 	yield call(history.push, path);
 };
 
