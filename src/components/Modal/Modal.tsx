@@ -29,7 +29,7 @@ export default class Modal extends Component<Props> {
             action, 
             onClose
         } = this.props;
-        
+
         action();
         onClose();
     };
@@ -41,7 +41,6 @@ export default class Modal extends Component<Props> {
             buttonCancelText,
             active,
             onClose,
-            action,
         } = this.props;
 
 		return (
