@@ -13,7 +13,6 @@ const FilterContainer = styled.div`
 `;
 
 const FilterTitle = styled.h2`
-    font-family: 'Lora', 'Arial', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -26,7 +25,7 @@ const FilterTitle = styled.h2`
 `;
 
 const FilterList = styled.select`
-    font-family: 'Lora', 'Arial', sans-serif;
+    font-family: inherit;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;

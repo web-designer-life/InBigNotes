@@ -27,7 +27,7 @@ const NoteTitle = styled.input`
 `;
 
 const NoteText = styled.textarea`
-    font-family: 'Lora', 'Arial', sans-serif;
+    font-family: inherit;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;

@@ -7,7 +7,6 @@ const StyledButton = styled.button`
     color: ${COLORS.WHITE};
     padding: 10px 25px;
     transition-duration: .1s;
-    font-family: 'Lora', 'Arial', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;

@@ -24,12 +24,10 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
     }
     h1, h2, h3 {
-        font-family: 'Lora', 'Arial', sans-serif;
         padding: 0;
         margin: 0;
     }
     p {
-        font-family: 'Lora', 'Arial', sans-serif;
         padding: 0;
         margin: 0;
     }

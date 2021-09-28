@@ -17,7 +17,6 @@ const RouterWrapper = styled.div`
 `;
 
 const Logo = styled.h1`
-    font-family: 'Lora', 'Arial', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 36px;

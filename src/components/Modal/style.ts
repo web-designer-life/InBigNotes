@@ -29,7 +29,6 @@ const ModalContainer = styled.div`
 `;
 
 const ModalTitle = styled.h2`
-	font-family: 'Lora', 'Arial', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;

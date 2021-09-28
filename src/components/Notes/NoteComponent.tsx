@@ -42,7 +42,7 @@ export default class NoteComponent extends Component<Props> {
 
         selectedNotes?.includes(note.id) ?
         removeUnselectedNote(note) :
-        addSelectedNote(note)
+        addSelectedNote(note);
     };
     
     render() {

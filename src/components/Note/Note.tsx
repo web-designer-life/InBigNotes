@@ -50,6 +50,7 @@ export default class Note extends Component<Props, State> {
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleCheckButtonAction = this.handleCheckButtonAction.bind(this);
         this.handleCancelChanges = this.handleCancelChanges.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -92,6 +93,12 @@ export default class Note extends Component<Props, State> {
             ((title.trim() !== note?.title && note?.title) || (text.trim() !== note?.text && note?.text))
             || ((title.trim() !== '' && !note?.title) || (text.trim() !== '' && !note?.text))
         );
+    };
+
+    handleCheckButtonAction() {
+        this.handleCheckCancelChanges() ? 
+        this.handleModalBackButtonClick() : 
+        this.handleNavigateToHome();
     };
 
     handleCancelChanges() {
@@ -197,11 +204,7 @@ export default class Note extends Component<Props, State> {
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
                             text={TEXTS.BUTTON.BACK}
-                            onClick={
-                                this.handleCheckCancelChanges() ? 
-                                this.handleModalBackButtonClick : 
-                                this.handleNavigateToHome
-                            }
+                            onClick={this.handleCheckButtonAction}
                             color={COLORS.BUTTON.RED}
                         />
                         <NoteButtonsWrapper>

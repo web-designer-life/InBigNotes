@@ -14,7 +14,6 @@ const Message = styled.h1`
 `;
 
 const BackLink = styled.div`
-	font-family: 'Lora', 'Arial', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;

@@ -35,7 +35,7 @@ export default class ControlPanel extends Component<Props> {
 
         selectedNotes?.length === notes?.length ?
         unselectAllNotes() :
-        selectAllNotes(notes || [])
+        selectAllNotes(notes || []);
     };
 
     render() {

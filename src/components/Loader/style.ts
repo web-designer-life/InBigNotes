@@ -26,7 +26,6 @@ const LoaderContainer = styled.div`
 `;
 
 const LoaderText = styled.p`
-    font-family: 'Lora', 'Arial', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
