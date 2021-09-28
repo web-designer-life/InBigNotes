@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const ModalBackground = styled.div`
 	position: fixed;
@@ -24,7 +25,7 @@ const ModalContainer = styled.div`
     width: 400px;
     padding: 25px;
     margin: 25px;
-    background-color: #FFFFFF;
+    background-color: ${COLORS.WHITE};
 `;
 
 const ModalTitle = styled.h2`
@@ -35,7 +36,7 @@ const ModalTitle = styled.h2`
     line-height: 31px;
     text-align: center;
     margin: 0 0 25px 0;
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
 `;
 
 const ButtonsContainer = styled.div`

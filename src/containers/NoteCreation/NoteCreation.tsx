@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import Note from '../../components/Note/Note';
 import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
@@ -13,7 +13,7 @@ interface Props {
     resetStoreAction(): Function,
 };
 
-export default class NoteCreation extends React.Component<Props> {
+export default class NoteCreation extends Component<Props> {
     componentWillUnmount() {
         this.props.resetStoreAction();
     };

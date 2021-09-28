@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../constants';
 
 const RouterWrapper = styled.div`
     display: flex;
@@ -23,7 +24,7 @@ const Logo = styled.h1`
     line-height: 47px;
     display: flex;
     align-items: center;
-    color: #000000;
+    color: ${COLORS.BLACK};
 `;
 
 const Wrapper = styled.div`

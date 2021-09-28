@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { 
     LoaderBackground, 
     LoaderContainer, 
@@ -7,7 +7,7 @@ import {
 import loader from '../../images/loader.gif';
 import { TEXTS } from '../../constants';
 
-export default class Loader extends React.Component {
+export default class Loader extends Component {
     render() {
         return (
             <LoaderBackground>

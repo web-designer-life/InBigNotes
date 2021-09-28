@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const Container = styled.div`
 	display: flex;
@@ -17,15 +18,15 @@ const BackLink = styled.div`
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    border: 2px solid #000000;
+    border: 2px solid ${COLORS.BLACK};
 	border-radius: 5px;
 	padding: 10px 15px;
-	background-color: #FFFFFF;
-	color: #000000;
+	background-color: ${COLORS.WHITE};
+	color: ${COLORS.BLACK};
     transition-duration: .1s;
 	&:hover {
-		background-color: #000000;
-		color: #FFFFFF;
+		background-color: ${COLORS.BLACK};
+		color: ${COLORS.WHITE};
 	}
 `;
 

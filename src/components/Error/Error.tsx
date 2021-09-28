@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants';
 import { 
@@ -7,7 +7,7 @@ import {
     BackLink,
 } from './style';
 
-export default class Error extends React.Component {
+export default class Error extends Component {
 	render() {
         return (
             <Container>

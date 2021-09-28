@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const List = styled.ul`
     display: flex;
@@ -22,7 +23,7 @@ const NoteInfo = styled.div`
     flex-direction: column;
     justify-content: space-around;
     list-style-type: none;
-    background: #FFFFFF;
+    background: ${COLORS.WHITE};
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     padding: 15px 20px;
@@ -43,7 +44,7 @@ const Title = styled.h3`
     line-height: 31px;
     margin: 0 0 5px 0;
     width: auto;
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
 `;
 
 const Text = styled.p`
@@ -56,11 +57,11 @@ const Text = styled.p`
     line-height: 18px;
     margin: 0 0 10px 0;
     width: auto;
-    color: #787878;
+    color: ${COLORS.STEEL_GRAY};;
 `;
 
 const Appearance = styled.div`
-    background-color: black;
+    background-color: ${COLORS.BLACK};
     height: 1px;
     width: 100%;
     margin: 0 0 10px 0;
@@ -75,7 +76,7 @@ const DateInfo = styled.p`
     font-size: 10px;
     line-height: 13px;
     width: auto;
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
 `;
 
 export { 

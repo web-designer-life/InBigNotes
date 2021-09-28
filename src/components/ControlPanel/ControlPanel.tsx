@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { Note } from '../../interfaces';
 import Checkbox from '../Checkbox/Checkbox';
 import Filter from '../Filter/Filter';
@@ -18,7 +18,7 @@ interface Props {
     filterAction(filter: string): Function,
 }
 
-export default class ControlPanel extends React.Component<Props> {
+export default class ControlPanel extends Component<Props> {
     constructor(props: Props) {
         super(props);
 

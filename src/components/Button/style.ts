@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
+import { COLORS } from '../../constants';
 
 const StyledButton = styled.button`
 	min-width: 170px;
     border-radius: 15px;
-    color: #FFFFFF;
+    color: ${COLORS.WHITE};
     padding: 10px 25px;
     transition-duration: .1s;
     font-family: 'Lora', 'Arial', sans-serif;
@@ -11,31 +12,31 @@ const StyledButton = styled.button`
     font-weight: bold;
     font-size: 24px;
     &:hover {
-        background-color: #FFFFFF;
+        background-color: ${COLORS.WHITE};
     }
     &:disabled {
         opacity: .5;
-        border: 4px solid #808080;
-        background-color: #808080;
+        border: 4px solid ${COLORS.GRAY};
+        background-color: ${COLORS.GRAY};
         &:hover { 
-            background-color: #808080;
-            color: #FFFFFF;
+            background-color: ${COLORS.GRAY};
+            color: ${COLORS.WHITE};
             cursor: default;
         }
     }
     ${(props) => (props.color === 'green' && css`
-        border: 4px solid #00AB00;
-        background-color: #00AB00;
+        border: 4px solid ${COLORS.GREEN};
+        background-color: ${COLORS.GREEN};
         &:hover {
-            color: #00AB00;
+            color: ${COLORS.GREEN};
         }
     `)}
     ${(props) => (props.color === 'red' && css`
-        border: 4px solid #FF0000;
-        background-color: #FF0000;
+        border: 4px solid ${COLORS.RED};
+        background-color: ${COLORS.RED};
         &:hover {
-            background-color: #FFFFFF;
-            color: #FF0000;
+            background-color: ${COLORS.WHITE};
+            color: ${COLORS.RED};
         }
     `)}
     @media (max-width: 450px) {

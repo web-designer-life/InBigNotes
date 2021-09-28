@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TEXTS } from '../../constants';
 import {
     FilterContainer,
@@ -17,7 +17,7 @@ interface State {
     filter: string,
 };
 
-export default class Filter extends React.Component<Props, State> {
+export default class Filter extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         
@@ -38,7 +38,7 @@ export default class Filter extends React.Component<Props, State> {
     render() {
         return (
             <FilterContainer>
-                <FilterTitle>Sort by:</FilterTitle>
+                <FilterTitle>{TEXTS.FILTER.TITLE}</FilterTitle>
                 <FilterList
                     onChange={this.handleChangeFilter}
                     value={this.props.filter}

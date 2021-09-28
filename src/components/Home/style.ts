@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const EmptyListNotesWrapper = styled.div`
     display: flex;
@@ -10,7 +11,7 @@ const EmptyListNotesWrapper = styled.div`
 const EmptyListNotesText = styled.h2`
     font-size: 40px;
     font-weight: 400;
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
 `;
 
 export { EmptyListNotesWrapper, EmptyListNotesText };

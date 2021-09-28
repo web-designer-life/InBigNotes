@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import NoteComponent from './NoteComponent';
 import { List } from './style';
 import { Note } from '../../interfaces';
@@ -11,7 +11,7 @@ interface Props {
     navigateToPage(path: string): Function,
 };
 
-export class ListNotes extends React.Component<Props> { 
+export class ListNotes extends Component<Props> { 
     render() {
         const {
             notes, 

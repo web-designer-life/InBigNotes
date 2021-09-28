@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Note as INote } from '../../interfaces';
 import { 
@@ -34,7 +34,7 @@ interface State {
     action: () => void,
 };
 
-export default class Note extends React.Component<Props, State> {
+export default class Note extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
 

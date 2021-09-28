@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const Wrapper = styled.div`
     display: flex;
@@ -25,7 +26,7 @@ const Title = styled.p`
     font-size: 18px;
     line-height: 24px;
     margin: 0 15px 0 0;
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
 `;
 
 export { 

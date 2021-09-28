@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import {
     ModalBackground,
     ModalContainer,
@@ -17,7 +17,23 @@ interface Props {
     action: () => void,
 };
 
-export default class Modal extends React.Component<Props> {
+export default class Modal extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    };
+
+    handleClick() {
+        const {
+            action, 
+            onClose
+        } = this.props;
+        
+        action();
+        onClose();
+    };
+
 	render() {
         const {
             modalText,
@@ -36,10 +52,7 @@ export default class Modal extends React.Component<Props> {
                     <ButtonsContainer>
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
-                            onClick={() => {
-                                action();
-                                onClose();
-                            }}
+                            onClick={this.handleClick}
                             text={buttonConfirmText} 
                             color={COLORS.BUTTON.GREEN}
                         />

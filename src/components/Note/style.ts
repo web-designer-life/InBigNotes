@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const NoteForm = styled.form`
     display: flex;
@@ -18,7 +19,7 @@ const NoteTitle = styled.input`
     margin: 0 0 20px 0;
     border: none;
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
     @media (max-width: 450px) {
         font-size: 24px;
         line-height: 31px;
@@ -38,7 +39,7 @@ const NoteText = styled.textarea`
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
     height: 680px;
     min-height: 100px;
-    color: #787878;
+    color: ${COLORS.STEEL_GRAY};
     @media (max-width: 450px) {
         font-size: 18px;
         line-height: 24px;

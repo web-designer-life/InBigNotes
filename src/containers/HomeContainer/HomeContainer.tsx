@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
 import Home from '../../components/Home/Home';
@@ -21,7 +21,7 @@ interface Props {
     resetStoreAction(): Function,
 };
 
-export default class HomeContainer extends React.Component<Props> {  
+export default class HomeContainer extends Component<Props> {  
     componentDidMount() {
         this.props.fetchNotesAction(this.props.filter);
     };

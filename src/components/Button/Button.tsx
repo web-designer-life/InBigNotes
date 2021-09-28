@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BUTTON_TYPES } from '../../constants';
 import StyledButton from './style';
 
@@ -11,7 +11,7 @@ interface Props {
     color: string,
 };
 
-export default class Button extends React.Component<Props> {
+export default class Button extends Component<Props> {
     render() {
         const {
             type, 

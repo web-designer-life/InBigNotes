@@ -20,6 +20,7 @@ export const TEXTS = {
         CANCEL: 'You have changes in your note. Do you want to cancel the changes?',
     },
     FILTER: {
+        TITLE: 'Sort by:',
         NAME: {
             TEXT: 'Name',
             VALUE: 'title',

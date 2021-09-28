@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import { 
     Note, 
@@ -20,7 +20,7 @@ interface Props {
     navigateToPage(path: string): Function,
 };
 
-export default class NoteComponent extends React.Component<Props> { 
+export default class NoteComponent extends Component<Props> { 
     constructor(props: Props) {
         super(props);
 

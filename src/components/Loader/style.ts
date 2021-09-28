@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const LoaderBackground = styled.div`
     position: fixed;
@@ -20,7 +21,7 @@ const LoaderContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #FFFFFF;
+    color: ${COLORS.WHITE};
     margin: auto;
 `;
 
@@ -30,7 +31,7 @@ const LoaderText = styled.p`
     font-weight: bold;
     font-size: 14px;
     line-height: 18px;
-    color: #FFFFFF;
+    color: ${COLORS.WHITE};
 `;
 
 export { 

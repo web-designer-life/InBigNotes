@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const FilterContainer = styled.div`
     display: flex;
@@ -18,7 +19,7 @@ const FilterTitle = styled.h2`
     font-size: 18px;
     line-height: 24px;
     margin: 0 15px 0 0;
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
     @media (max-width: 500px) {
         margin: 0 0 10px 0;
     }
@@ -30,9 +31,9 @@ const FilterList = styled.select`
     font-weight: bold;
     font-size: 18px;
     line-height: 24px;
-    color: #5A5A5A;
-    background-color: #FFFFFF;
-    border: 4px solid #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
+    background-color: ${COLORS.WHITE};
+    border: 4px solid ${COLORS.STEEL_GRAY};
     border-radius: 15px;
     padding: 10px 5px 10px 5px;
     cursor: pointer;

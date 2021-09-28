@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import { ListNotes } from '../Notes/ListNotes';
 import { 
@@ -39,7 +39,7 @@ interface State {
     action: () => void,
 }
 
-export default class Home extends React.Component<Props, State> {
+export default class Home extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
 

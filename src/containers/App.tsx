@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { history } from '../store/store';
 import { GlobalStyle } from '../globalStyle';
 import { Route, Switch } from 'react-router-dom';
@@ -9,7 +9,7 @@ import NoteView from './NoteView';
 import Error from '../components/Error/Error';
 import { ROUTES } from '../constants';
 
-export default class App extends React.Component {
+export default class App extends Component {
     render() {
         return (
             <>

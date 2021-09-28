@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const CheckboxContainer = styled.div`
     display: inline-block;
@@ -32,9 +33,9 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
     align-items: center;
     width: 55px;
     height: 55px;
-    background: #FFFFFF;
+    background: ${COLORS.WHITE};
     border-radius: 15px;
-    border: 4px solid #0047FF;
+    border: 4px solid ${COLORS.BLUE};
 
     ${Icon} {
         visibility: ${(props) => (props.checked ? "visible" : "hidden")};
