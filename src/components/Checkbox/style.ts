@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const CheckboxContainer = styled.div`
     display: inline-block;
@@ -9,8 +10,8 @@ const CheckboxContainer = styled.div`
 `;
 
 const Icon = styled.img`
-    width: 54px;
-    height: 40px;
+    width: 32px;
+    height: 24px;
     fill: none;
 `;
 
@@ -30,15 +31,20 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
-    background: #FFFFFF;
-    border-radius: 20px;
-    border: 5px solid #0047FF;
+    width: 55px;
+    height: 55px;
+    background: ${COLORS.WHITE};
+    border-radius: 15px;
+    border: 4px solid ${COLORS.BLUE};
 
     ${Icon} {
         visibility: ${(props) => (props.checked ? "visible" : "hidden")};
     }
 `;
 
-export { CheckboxContainer, Icon, HiddenCheckbox, StyledCheckbox };
+export { 
+    CheckboxContainer, 
+    Icon, 
+    HiddenCheckbox, 
+    StyledCheckbox,
+};

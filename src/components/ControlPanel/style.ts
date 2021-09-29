@@ -1,9 +1,17 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const Wrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 50px;
+    padding: 0 30px;
+    gap: 20px;
+    @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0 20px;
+    }
 `;
 
 const SelectAllWrapper = styled.div`
@@ -15,10 +23,14 @@ const SelectAllWrapper = styled.div`
 const Title = styled.p`
     font-style: normal;
     font-weight: bold;
-    font-size: 36px;
-    line-height: 46px;
-    margin: 0 20px 0 0;
-    color: #5A5A5A;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 15px 0 0;
+    color: ${COLORS.STEEL_GRAY};
 `;
 
-export { Wrapper, SelectAllWrapper, Title };
+export { 
+    Wrapper, 
+    SelectAllWrapper, 
+    Title,
+};

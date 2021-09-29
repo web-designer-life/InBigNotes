@@ -1,7 +1,6 @@
 const paths = require('../paths');
 const webpack = require('webpack');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { CheckerPlugin } = require('awesome-typescript-loader');
@@ -63,13 +62,6 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: `${paths.public}/assets`
-        }
-      ]
-    }),
     new HtmlWebpackPlugin({
       template: `${paths.public}/index.html`,
       filename: 'index.html'

@@ -1,52 +1,50 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const List = styled.ul`
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 50px 50px 30px 50px;
+    flex-direction: column;
+    padding: 30px 30px 20px 30px;
+    @media (max-width: 500px) {
+        padding: 20px 20px 0 20px;
+    }
 `;
 
 const Note = styled.li`
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 20px 0;
+    margin: 0 0 15px 0;
     width: 100%;
 `;
 
-const NoteInfo = styled.li`
+const NoteInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     list-style-type: none;
-    height: 170px;
-    width: 1690px;
-    padding: 30px;
-    background: #FFFFFF;
+    background: ${COLORS.WHITE};
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
+    border-radius: 20px;
+    padding: 15px 20px;
+    margin: 0 15px 0 0;
+    min-width: calc(100% - 70px);
     &:hover {
         cursor: pointer;
     }
 `;
 
-const Header = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`;
-
 const Title = styled.h3`
-    height: 61px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-style: normal;
     font-weight: bold;
-    font-size: 48px;
-    line-height: 61px;
-    margin: 0;
+    font-size: 24px;
+    line-height: 31px;
+    margin: 0 0 5px 0;
     width: auto;
-    color: #5A5A5A;
+    color: ${COLORS.STEEL_GRAY};
 `;
 
 const Text = styled.p`
@@ -55,10 +53,38 @@ const Text = styled.p`
     text-overflow: ellipsis;
     font-style: normal;
     font-weight: bold;
-    font-size: 21px;
-    line-height: 27px;
-    margin: 20px 0 0 0;
-    color: #787878;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 0 10px 0;
+    width: auto;
+    color: ${COLORS.STEEL_GRAY};;
 `;
 
-export { List, Note, NoteInfo, Header, Title, Text };
+const Appearance = styled.div`
+    background-color: ${COLORS.BLACK};
+    height: 1px;
+    width: 100%;
+    margin: 0 0 10px 0;
+`;
+
+const DateInfo = styled.p`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 13px;
+    width: auto;
+    color: ${COLORS.STEEL_GRAY};
+`;
+
+export { 
+    List, 
+    Note, 
+    NoteInfo, 
+    Title, 
+    Text,
+    DateInfo,
+    Appearance,
+};

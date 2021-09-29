@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
-const Background = styled.div`
+const LoaderBackground = styled.div`
     position: fixed;
     top: 0;
     right: 0;
@@ -11,24 +12,29 @@ const Background = styled.div`
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: #000000;
-    opacity: .7;
+    background-color: rgba(0, 0, 0, .7);
     z-index: 999;
 `;
 
-const LoaderContent = styled.div`
+const LoaderContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 125px;
-    height: 125px;
-    color: #FFFFFF;
+    color: ${COLORS.WHITE};
     margin: auto;
 `;
 
 const LoaderText = styled.p`
-    color: #FFFFFF;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: ${COLORS.WHITE};
 `;
 
-export { Background, LoaderContent, LoaderText };
+export { 
+    LoaderBackground, 
+    LoaderContainer, 
+    LoaderText,
+};

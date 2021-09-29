@@ -1,51 +1,73 @@
-import * as React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from 'react-router-dom';
+import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Note as INote } from '../../interfaces';
-import { BackToMenuButton } from '../Buttons/BackToMenuButton';
-import { SaveNoteButton } from '../Buttons/SaveNoteButton';
-import { CancelNoteButton } from '../Buttons/CancelNoteButton';
-import { fetchNotes, addNote, deleteNotes, addSelectedNote, removeUnselectedNote, selectAllNotes, unselectAllNotes } from '../../store/actions/notes';
-import { connect } from 'react-redux';
-import { NoteForm, NoteTitle, NoteText, NoteControlsWrapper, NoteButtonsWrapper } from './style';
+import { 
+    NoteForm, 
+    NoteTitle, 
+    NoteText, 
+    NoteControlsWrapper, 
+    NoteButtonsWrapper, 
+} from './style';
+import Button from '../Button/Button';
+import { 
+    ROUTES, 
+    BUTTON_TYPES, 
+    COLORS, TEXTS, 
+    FORMS, 
+} from '../../constants';
+import Modal from '../Modal/Modal';
 
 interface Props {
-    note?: INote,    
-    notes: INote[],
-    isLoading: Boolean,
-    selectedNotes?: string[],
-    fetchNotesAction(): Function,
-    addNoteAction(notes: INote[]): Function,
-    deleteNotesAction(notes: INote[]): Function,
-    addSelectedNoteAction(note: INote): Function,
-    removeUnselectedNoteAction(note: INote): Function,
-    selectAllNotesAction(notes: INote[]): Function,
-    unselectAllNotesAction(): Function,
+    typeName: string,
+    note?: INote,
+    addOrUpdateNote(note: INote): Function,
+    navigateToPage(path: string): Function,
 };
 
 interface State {
     title: string,
     text: string,
-}
+    modalText: string,
+    buttonConfirmText: string,
+    buttonCancelText: string,
+    active: boolean,
+    action: () => void,
+};
 
-export class Note extends React.Component<Props, State> {
+export default class Note extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
         this.state = {
-            title: this.props.note ? this.props.note.title : '',
-            text: this.props.note ? this.props.note.text : '',
+            title: '',
+            text: '',
+            modalText: '',
+            buttonConfirmText: '',
+            buttonCancelText: '',
+            active: false,
+            action: () => {},
         };
 
+        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCheckButtonAction = this.handleCheckButtonAction.bind(this);
+        this.handleCancelChanges = this.handleCancelChanges.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
+        this.handleModalSubmitButtonClick = this.handleModalSubmitButtonClick.bind(this);
+        this.handleModalCancelButtonClick = this.handleModalCancelButtonClick.bind(this);
+    };
+    
+    componentDidMount() {
+        this.handleCancelChanges();
     };
 
-    handleChange(evt: { target: { name: string; value: string; }; }) {
+    handleNavigateToHome() {
+		this.props.navigateToPage(ROUTES.HOME);
+	};
+
+    handleChange(evt: { target: { name: string; value: any; }; }) {
 		const { name, value } = evt.target;
 
         this.setState({
@@ -53,71 +75,166 @@ export class Note extends React.Component<Props, State> {
         } as Pick<State, keyof State>);
     };
 
-    handleSubmit(evt: any) {
-        evt.preventDefault();
+    handleCheckSaveOrUpdateChanges() {
+        const { title, text } = this.state;
+        const { note } = this.props;
+
+        return (
+            ((title.trim() !== '' && text.trim() !== '') 
+            && (title.trim() !== note?.title || text.trim() !== note?.text))
+        );
+    };
+
+    handleCheckCancelChanges() {
+        const { title, text } = this.state;
+        const { note } = this.props;
+
+        return (
+            ((title.trim() !== note?.title && note?.title) || (text.trim() !== note?.text && note?.text))
+            || ((title.trim() !== '' && !note?.title) || (text.trim() !== '' && !note?.text))
+        );
+    };
+
+    handleCheckButtonAction() {
+        this.handleCheckCancelChanges() ? 
+        this.handleModalBackButtonClick() : 
+        this.handleNavigateToHome();
+    };
+
+    handleCancelChanges() {
+        const { note } = this.props;
+
+        this.setState({
+            title: note?.title || '',
+            text: note?.text || '',
+        });
+    };
+
+    toggleModal() {
+		this.setState({
+			active: !this.state.active,
+		} as Pick<State, keyof State>);
+	};
+
+    handleSetAction(func: () => void) {
+		this.setState({
+			action: func,
+		} as Pick<State, keyof State>);
+	};
+
+    handleModalBackButtonClick() {
+        this.setState({
+			modalText: TEXTS.MODAL.BACK,
+            buttonConfirmText: TEXTS.BUTTON.BACK,
+            buttonCancelText: TEXTS.BUTTON.CANCEL,
+		} as Pick<State, keyof State>);
+
+        this.handleSetAction(this.handleNavigateToHome);
+        this.toggleModal();
+    };
+
+    handleModalSubmitButtonClick() {
+        this.setState({
+			modalText: this.props.typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
+            buttonConfirmText: this.props.typeName,
+            buttonCancelText: TEXTS.BUTTON.CANCEL,
+		} as Pick<State, keyof State>);
+        
+        this.handleSetAction(this.onSubmit);
+        this.toggleModal();
+    };
+
+    handleModalCancelButtonClick() {
+        this.setState({
+			modalText: TEXTS.MODAL.CANCEL,
+            buttonConfirmText: TEXTS.BUTTON.CONFIRM,
+            buttonCancelText: TEXTS.BUTTON.CANCEL,
+		} as Pick<State, keyof State>);
+        
+        this.handleSetAction(this.handleCancelChanges);
+        this.toggleModal();
+    };
+
+    onSubmit() {
+        const { addOrUpdateNote } = this.props;
+        const { title, text } = this.state;
+
+        const note = {                    
+            id: this.props.note?.id || uuidv4(),
+            title: title.trim(),
+            text: text.trim(),
+            created_at: this.props.note?.created_at || Date.now(),
+            updated_at: Date.now(),
+        };
+
+        addOrUpdateNote(note);
     };
 
     render() {
+        const { typeName } = this.props;
         const { 
-            notes,
-            addNoteAction 
-        } = this.props;
+            title, 
+            text, 
+            modalText,
+            buttonConfirmText,
+            buttonCancelText,
+            active, 
+            action, 
+        } = this.state;
 
         return (
-            <NoteForm onSubmit={this.handleSubmit}>
-                <NoteTitle 
-                    type="text"
-                    name="title"
-                    value={this.state.title} 
-                    onChange={this.handleChange} 
-                    placeholder="Title" 
-                    required 
-                />
-                <NoteText 
-                    name="text"
-                    value={this.state.text} 
-                    onChange={this.handleChange} 
-                    placeholder="Text" 
-                    required 
-                />
-                <NoteControlsWrapper>
-                    <Link to="/">
-                        <BackToMenuButton />
-                    </Link>
-                    <NoteButtonsWrapper>
-                        <SaveNoteButton 
-                            noteInfo={this.state}
-                            notes={notes}
-                            addNote={addNoteAction}
+            <>
+                <NoteForm onSubmit={this.onSubmit} id={FORMS.ADD_OR_UPDATE_NOTE_FORM}>
+                    <NoteTitle 
+                        type="text"
+                        name="title"
+                        value={title} 
+                        onChange={this.handleChange} 
+                        placeholder="Title" 
+                        required 
+                    />
+                    <NoteText 
+                        name="text"
+                        value={text} 
+                        onChange={this.handleChange} 
+                        placeholder="Text" 
+                        required 
+                    />
+                    <NoteControlsWrapper>
+                        <Button 
+                            type={BUTTON_TYPES.BUTTON}
+                            text={TEXTS.BUTTON.BACK}
+                            onClick={this.handleCheckButtonAction}
+                            color={COLORS.BUTTON.RED}
                         />
-                        <CancelNoteButton />
-                    </NoteButtonsWrapper>
-                </NoteControlsWrapper>
-            </NoteForm>
+                        <NoteButtonsWrapper>
+                            <Button 
+                                form={FORMS.ADD_OR_UPDATE_NOTE_FORM}
+                                type={BUTTON_TYPES.BUTTON}
+                                disabled={!this.handleCheckSaveOrUpdateChanges()}
+                                text={typeName}
+                                onClick={this.handleModalSubmitButtonClick}
+                                color={COLORS.BUTTON.GREEN}
+                            />
+                            <Button               
+                                type={BUTTON_TYPES.RESET}
+                                disabled={!this.handleCheckCancelChanges()}
+                                onClick={this.handleModalCancelButtonClick}
+                                text={TEXTS.BUTTON.CANCEL}
+                                color={COLORS.BUTTON.RED}
+                            />
+                        </NoteButtonsWrapper>
+                    </NoteControlsWrapper>
+                </NoteForm>
+                <Modal 
+                    modalText={modalText} 
+                    buttonConfirmText={buttonConfirmText} 
+                    buttonCancelText={buttonCancelText}
+                    active={active} 
+                    onClose={this.toggleModal} 
+                    action={action} 
+                />
+            </>
         )
     }
 };
-
-const mapStateToProps = (store: any) => {
-    return {
-        notes: store.notes,
-        isLoading: store.isLoading,
-    }
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        fetchNotesAction: () => dispatch(fetchNotes()),
-        addNoteAction: (notes: INote[]) => dispatch(addNote(notes)),
-        deleteNotesAction: (notes: INote[]) => dispatch(deleteNotes(notes)),
-        addSelectedNoteAction: (note: INote) => dispatch(addSelectedNote(note)),
-        removeUnselectedNoteAction: (note: INote) => dispatch(removeUnselectedNote(note)),
-        selectAllNotesAction: (notes: INote[]) => dispatch(selectAllNotes(notes)),
-        unselectAllNotesAction: () => dispatch(unselectAllNotes()),
-    }
-};
-  
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(Note);

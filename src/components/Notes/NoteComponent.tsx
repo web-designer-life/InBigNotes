@@ -1,46 +1,68 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
-import { Note, NoteInfo, Header, Title, Text } from './style';
+import { 
+    Note, 
+    NoteInfo, 
+    Title, 
+    Text,
+    DateInfo,
+    Appearance,
+} from './style';
 import { Note as INote } from '../../interfaces';
-import { Link } from 'react-router-dom';
+import { ROUTES } from '../../constants';
+import { formatDate } from '../../utils';
 
 interface Props {
     note: INote,
     selectedNotes?: string[],
     addSelectedNote(note: INote): Function,
     removeUnselectedNote(note: INote): Function,
+    navigateToPage(path: string): Function,
 };
 
-export default class NoteComponent extends React.Component<Props> {
-    render() {
+export default class NoteComponent extends Component<Props> { 
+    constructor(props: Props) {
+        super(props);
+
+        this.handleNavigateToNote = this.handleNavigateToNote.bind(this);
+        this.handleSelectOrUnselectNote = this.handleSelectOrUnselectNote.bind(this);
+    };
+
+    handleNavigateToNote() {
+		this.props.navigateToPage(`${ROUTES.NOTE}/${this.props.note.id}`);
+	};
+
+    handleSelectOrUnselectNote() {
         const { 
             note, 
             selectedNotes,
             addSelectedNote, 
-            removeUnselectedNote 
+            removeUnselectedNote,
+        } = this.props;
+
+        selectedNotes?.includes(note.id) ?
+        removeUnselectedNote(note) :
+        addSelectedNote(note);
+    };
+    
+    render() {
+        const { 
+            note, 
+            selectedNotes,
         } = this.props;
 
         return (
             <Note>
-                <NoteInfo>
-                    <Link 
-                        to={`note/${note.id}`}
-                    >
-                        <Header>
-                            <Title>{note.title}</Title>
-                        </Header>
-                        <Text>{note.text}</Text>
-                    </Link>
+                <NoteInfo onClick={this.handleNavigateToNote}>
+                    <Title>{note.title}</Title>
+                    <Text>{note.text}</Text>
+                    <Appearance />
+                    <DateInfo>Created: {formatDate(new Date(+note.created_at))}</DateInfo>
+                    <DateInfo>Modified: {formatDate(new Date(+note.updated_at))}</DateInfo>
                 </NoteInfo>
                 <Checkbox
-                    checked={
-                        !!selectedNotes?.includes(note.id)
-                    }
-                    onChange={() => {
-                        selectedNotes?.includes(note.id) ?
-                        removeUnselectedNote(note) :
-                        addSelectedNote(note)
-                    }}
+                    checked={!!selectedNotes?.includes(note.id)}
+                    onChange={this.handleSelectOrUnselectNote}
                 />
             </Note>
         )
