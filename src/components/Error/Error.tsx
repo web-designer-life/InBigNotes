@@ -1,21 +1,47 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../constants';
+import PropTypes from "prop-types";
 import { 
-    Container, 
-    Message, 
-    BackLink,
-} from './style';
+    BUTTON_TYPES, 
+    COLORS, ROUTES, 
+    TEXTS, 
+} from '../../constants';
+import Button from '../Button/Button';
+import { Container, Message } from './style';
 
-export default class Error extends Component {
+interface Props {
+    navigateToPage(path: string): Function,
+};
+
+export default class Error extends Component<Props> {
+    static defaultProps: { 
+        navigateToPage: () => void; 
+    };
+
+    constructor(props: Props) {
+        super(props);
+
+        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
+    };
+
+    handleNavigateToHome() {
+		this.props.navigateToPage(ROUTES.HOME);
+	};
+
 	render() {
         return (
             <Container>
                 <Message>404 - Not Found!</Message>
-                <Link to={ROUTES.HOME}>
-                    <BackLink>Go home</BackLink>
-                </Link>
+                <Button
+                    type={BUTTON_TYPES.BUTTON}
+                    onClick={this.handleNavigateToHome}
+                    text={TEXTS.BUTTON.HOME}
+                    color={COLORS.BUTTON.GREEN}
+                />
             </Container>
         );
     };
+};
+
+Error.defaultProps = {
+    navigateToPage: () => {},
 };

@@ -48,7 +48,7 @@ export default class HomeContainer extends Component<Props> {
         } = this.props;
 
         if (error) {
-			return <Error />;
+			return <Error navigateToPage={navigateToPageAction}/>;
 		}
         
         return (

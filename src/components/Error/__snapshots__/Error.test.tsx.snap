@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error component Has props should render Post component 1`] = `
+<div
+  class="sc-gsTEea kOLVVs"
+>
+  <h1
+    class="sc-dlfnuX fsWPCe"
+  >
+    404 - Not Found!
+  </h1>
+  <button
+    class="sc-bdfBQB leOgNx"
+    color="green"
+    type="button"
+  >
+    Go home
+  </button>
+</div>
+`;

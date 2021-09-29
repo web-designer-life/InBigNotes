@@ -11,6 +11,7 @@ export const TEXTS = {
         UPDATE: 'Update',
         CANCEL: 'Cancel',
         CONFIRM: 'Confirm',
+        HOME: 'Go home',
     },
     MODAL: {
         DELETE: 'Do you want to delete selected notes?',

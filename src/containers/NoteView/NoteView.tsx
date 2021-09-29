@@ -39,7 +39,7 @@ export default class NoteView extends Component<Props> {
         } = this.props;
 
         if (error) {
-			return <Error />;
+			return <Error navigateToPage={navigateToPageAction}/>;
 		}
 
         return (
