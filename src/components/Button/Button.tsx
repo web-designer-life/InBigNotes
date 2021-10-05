@@ -4,14 +4,14 @@ import StyledButton from './style';
 
 interface Props {
     form?: string,
-    type: BUTTON_TYPES | undefined,
+    type: BUTTON_TYPES,
     disabled?: boolean,
     onClick?: () => void,
     text: string,
     color: string,
 };
 
-export default class Button extends Component<Props> {
+export default class Button extends Component<Props> {    
     render() {
         const {
             type, 

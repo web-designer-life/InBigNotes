@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component should render Modal component 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.h2>
+      Do you want to delete selected notes?
+    </styled.h2>
+    <styled.div>
+      <Button
+        color="green"
+        onClick={[Function]}
+        text="Delete"
+        type="button"
+      />
+      <Button
+        color="red"
+        onClick={[Function]}
+        text="Cancel"
+        type="button"
+      />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

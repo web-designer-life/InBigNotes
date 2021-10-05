@@ -1,18 +1,27 @@
 import React from 'react'
 import Error from '../Error/Error';
-import { render } from 'enzyme';
+import { shallow } from 'enzyme';
+
+const setUp = () => shallow(<Error />);
 
 describe("Error component", () => {
+    let component: any;
+    let instance: any;
+
+    beforeEach(() => {
+        component = setUp();
+        instance = component.instance();
+    });
+        
     describe("Has props", () => {
-        it("should render Post component", () => {
-            const component = render(<Error />);
+        it("should render Error component", () => {
             expect(component).toMatchSnapshot();
         });
     });
-  
-    describe("defaultProps", () => {
-        it("should use default navigateToPage", () => {
-            const result = Error.defaultProps.navigateToPage();
+
+    describe("Error handlers", () => {
+        it("should call onClick method", () => {
+            const result = instance.handleNavigateToHome();
             expect(result).toBe(undefined);
         });
     });

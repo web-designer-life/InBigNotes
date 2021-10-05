@@ -84,7 +84,7 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testMatch": [
-      "**/*.(test|spec).(js|jsx|ts|tsx)"
+      "**/*.test.(js|jsx|ts|tsx)"
     ],
     "globals": {
       "ts-jest": {
@@ -93,8 +93,8 @@
       }
     },
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./__mocks__/fileMock.js",
-      "\\.(css|scss)$": "identity-obj-proxy"
+      "\\.(jpg|jpeg|png|gif|webp|svg|ttf|woff|woff2)$": "identity-obj-proxy",
+      "\\.css$": "identity-obj-proxy"
     }
   }
 }

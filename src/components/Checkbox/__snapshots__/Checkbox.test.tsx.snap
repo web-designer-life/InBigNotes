@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox component Has props should render Checkbox component 1`] = `
+<label>
+  <styled.div>
+    <styled.input
+      checked={true}
+      onChange={[Function]}
+    />
+    <styled.div
+      checked={true}
+    >
+      <styled.img
+        src={null}
+      />
+    </styled.div>
+  </styled.div>
+</label>
+`;

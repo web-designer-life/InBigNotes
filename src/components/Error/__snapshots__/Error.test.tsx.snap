@@ -1,20 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error component Has props should render Post component 1`] = `
-<div
-  class="sc-gsTEea kOLVVs"
->
-  <h1
-    class="sc-dlfnuX fsWPCe"
-  >
+exports[`Error component Has props should render Error component 1`] = `
+<styled.div>
+  <styled.h1>
     404 - Not Found!
-  </h1>
-  <button
-    class="sc-bdfBQB leOgNx"
+  </styled.h1>
+  <Button
     color="green"
+    onClick={[Function]}
+    text="Go home"
     type="button"
-  >
-    Go home
-  </button>
-</div>
+  />
+</styled.div>
 `;
