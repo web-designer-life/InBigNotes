@@ -1,5 +1,5 @@
 import { TEXTS } from '../constants';
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 import actions from '../actions';
 
 const initialState = {
@@ -47,7 +47,7 @@ export default function rootReducer(state = initialState, { type, payload } : an
         case actions.SELECT_ALL_NOTES:
             return {
                 ...state, 
-                selectedNotes: [].concat([], payload.notes.map((note: Note) => note.id)),
+                selectedNotes: [].concat([], payload.notes.map((note: INote) => note.id)),
             };
         case actions.UNSELECT_ALL_NOTES:
             return {

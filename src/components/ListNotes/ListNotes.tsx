@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import NoteComponent from '../NoteComponent';
 import { List } from './style';
-import { Note } from '../../interfaces';
+import { INote } from '../../interfaces';
 
 interface Props {
-    notes: Note[],
+    notes: INote[],
     selectedNotes?: string[],
-    addSelectedNote(note: Note): Function,
-    removeUnselectedNote(note: Note): Function,
+    addSelectedNote(note: INote): Function,
+    removeUnselectedNote(note: INote): Function,
     navigateToPage(path: string): Function,
 };
 
@@ -23,7 +23,7 @@ export default class ListNotes extends Component<Props> {
         
         return (
             <List>
-                {notes.map((note: Note) => (
+                {notes.map((note: INote) => (
                     <NoteComponent 
                         key={note.id}
                         note={note}

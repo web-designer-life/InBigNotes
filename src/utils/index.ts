@@ -1,10 +1,10 @@
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 
 const formatNumberOfDate = (dateValue: Number) => {
     return dateValue < 10 ? '0' + dateValue : dateValue;
 };
 
-export const sortByFilterType = (notes: Note[], filterType: string) => (
+export const sortByFilterType = (notes: INote[], filterType: string) => (
     notes.sort((prev: any, next: any) => {
         const prevNote = typeof prev[filterType] === 'string' ? prev[filterType].toLowerCase() : prev[filterType];
         const nextNote = typeof next[filterType] === 'string' ? next[filterType].toLowerCase() : next[filterType];

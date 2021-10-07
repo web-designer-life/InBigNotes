@@ -1,12 +1,12 @@
 import actions from '../actions';
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 
 const fetchNoteData = (id: string) => ({
 	type: actions.FETCH_NOTE_PENDING,
     payload: { id },
 });
 
-const fetchNoteSuccess = (note: Note) => ({
+const fetchNoteSuccess = (note: INote) => ({
     type: actions.FETCH_NOTE_SUCCESS,
     payload: { note },
 });
@@ -15,7 +15,7 @@ const fetchNoteFail = () => ({
     type: actions.FETCH_NOTE_FAIL,
 });
 
-const addNoteData = (note: Note) => ({
+const addNoteData = (note: INote) => ({
 	type: actions.ADD_NOTE_PENDING,
 	payload: { note },
 });
@@ -28,7 +28,7 @@ const addNoteFail = () => ({
     type: actions.ADD_NOTE_FAIL,
 });
 
-const updateNoteData = (note: Note) => ({
+const updateNoteData = (note: INote) => ({
 	type: actions.UPDATE_NOTE_PENDING,
 	payload: { note },
 });

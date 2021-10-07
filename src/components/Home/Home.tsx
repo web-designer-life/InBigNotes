@@ -3,7 +3,7 @@ import ControlPanel from '../ControlPanel';
 import ListNotes from '../ListNotes';
 import Button from '../Button';
 import Modal from '../Modal';
-import { Note } from '../../interfaces';
+import { INote } from '../../interfaces';
 import { 
     RouterWrapper, 
     Logo, 
@@ -18,14 +18,14 @@ import {
 } from '../../constants';
 
 interface Props {
-    notes?: Note[],
+    notes?: INote[],
     selectedNotes?: string[],
     filter: string,
     fetchNotes(filter: string): Function,
-    deleteNotes(notes: Note[]): Function,
-    addSelectedNote(note: Note): Function,
-    removeUnselectedNote(note: Note): Function,
-    selectAllNotes(notes: Note[]): Function,
+    deleteNotes(notes: INote[]): Function,
+    addSelectedNote(note: INote): Function,
+    removeUnselectedNote(note: INote): Function,
+    selectAllNotes(notes: INote[]): Function,
     unselectAllNotes(): Function,
     filterAction(filter: string): Function,
     navigateToPage(path: string): Function,
@@ -93,7 +93,7 @@ export default class Home extends Component<Props, State> {
         } = this.props;
 
         const completeNotes = notes?.filter(
-            (note: Note) => !selectedNotes?.some(
+            (note: INote) => !selectedNotes?.some(
                 (selectedNote: String) => note.id === selectedNote
             )
         ) || [];

@@ -8,7 +8,7 @@ import {
     DateInfo,
     Appearance,
 } from './style';
-import { Note as INote } from '../../interfaces';
+import { INote } from '../../interfaces';
 import { ROUTES } from '../../constants';
 import { formatDate } from '../../utils';
 

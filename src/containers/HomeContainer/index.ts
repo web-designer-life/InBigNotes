@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import HomeContainer from './HomeContainer';
-import { Note } from '../../interfaces';
+import { INote } from '../../interfaces';
 import { 
     addSelectedNote, 
     deleteNotesData, 
@@ -25,10 +25,10 @@ const mapStateToProps = (store: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNotesAction: (filter: string) => dispatch(fetchNotesData(filter)),
-        deleteNotesAction: (notes: Note[]) => dispatch(deleteNotesData(notes)),
-        addSelectedNoteAction: (note: Note) => dispatch(addSelectedNote(note)),
-        removeUnselectedNoteAction: (note: Note) => dispatch(removeUnselectedNote(note)),
-        selectAllNotesAction: (notes: Note[]) => dispatch(selectAllNotes(notes)),
+        deleteNotesAction: (notes: INote[]) => dispatch(deleteNotesData(notes)),
+        addSelectedNoteAction: (note: INote) => dispatch(addSelectedNote(note)),
+        removeUnselectedNoteAction: (note: INote) => dispatch(removeUnselectedNote(note)),
+        selectAllNotesAction: (notes: INote[]) => dispatch(selectAllNotes(notes)),
         unselectAllNotesAction: () => dispatch(unselectAllNotes()),
         filterAction: (filterValue: string) => dispatch(filter(filterValue)),
         navigateToPageAction: (path: string) => dispatch(navigateToPage(path)),

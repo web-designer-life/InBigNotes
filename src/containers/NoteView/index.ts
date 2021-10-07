@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NoteView from './NoteView';
-import { Note } from '../../interfaces';
+import { INote } from '../../interfaces';
 import { fetchNoteData, updateNoteData } from '../../actionCreators/note';
 import { navigateToPage, resetStore } from '../../actionCreators/common';
 
@@ -15,7 +15,7 @@ const mapStateToProps = (store: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         fetchNoteAction: (id: string) => dispatch(fetchNoteData(id)),
-        updateNoteAction: (note: Note) => dispatch(updateNoteData(note)),
+        updateNoteAction: (note: INote) => dispatch(updateNoteData(note)),
         navigateToPageAction: (path: string) => dispatch(navigateToPage(path)),
         resetStoreAction: () => dispatch(resetStore()),
     }

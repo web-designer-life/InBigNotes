@@ -15,7 +15,7 @@ import {
     NoteControlsWrapper, 
     NoteButtonsWrapper, 
 } from './style';
-import { Note as INote } from '../../interfaces';
+import { INote } from '../../interfaces';
 
 interface Props {
     typeName: string,

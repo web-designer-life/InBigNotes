@@ -1,7 +1,7 @@
 import React from 'react'
 import Home from '../components/Home/Home';
 import { shallow } from 'enzyme';
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 
 const homeProps = {
     notes: [
@@ -18,10 +18,10 @@ const homeProps = {
     ],
     filter: 'title',
     fetchNotes: (filter: string) => Function,
-    deleteNotes: (notes: Note[]) => Function,
-    addSelectedNote: (note: Note) => Function,
-    removeUnselectedNote: (note: Note) => Function,
-    selectAllNotes: (notes: Note[]) => Function,
+    deleteNotes: (notes: INote[]) => Function,
+    addSelectedNote: (note: INote) => Function,
+    removeUnselectedNote: (note: INote) => Function,
+    selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
     filterAction: (filter: string) => Function,
     navigateToPage: (path: string) => Function,

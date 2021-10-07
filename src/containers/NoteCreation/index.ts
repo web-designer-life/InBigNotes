@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NoteCreation from './NoteCreation';
-import { Note } from '../../interfaces';
+import { INote } from '../../interfaces';
 import { addNoteData } from '../../actionCreators/note';
 import { navigateToPage, resetStore } from '../../actionCreators/common';
 
@@ -13,7 +13,7 @@ const mapStateToProps = (store: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        addNoteAction: (note: Note) => dispatch(addNoteData(note)),
+        addNoteAction: (note: INote) => dispatch(addNoteData(note)),
         navigateToPageAction: (path: string) => dispatch(navigateToPage(path)),
         resetStoreAction: () => dispatch(resetStore()),
     }

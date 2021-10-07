@@ -1,7 +1,7 @@
 import React from 'react'
 import ControlPanel from '../components/ControlPanel/ControlPanel';
 import { shallow } from 'enzyme';
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 
 const controlPanelProps = {
     notes: [
@@ -18,7 +18,7 @@ const controlPanelProps = {
     ],
     filter: 'title',
     fetchNotes: (filter: string) => Function,
-    selectAllNotes: (notes: Note[]) => Function,
+    selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
     filterAction: (filter: string) => Function,
 };

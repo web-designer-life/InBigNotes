@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Note } from '../../interfaces';
+import { INote } from '../../interfaces';
 import Checkbox from '../Checkbox';
 import Filter from '../Filter';
 import { 
@@ -9,11 +9,11 @@ import {
 } from './style';
 
 interface Props {
-    notes?: Note[],
+    notes?: INote[],
     selectedNotes?: string[],
     filter: string,
     fetchNotes(filter: string): Function,
-    selectAllNotes(notes: Note[]): Function,
+    selectAllNotes(notes: INote[]): Function,
     unselectAllNotes(): Function,
     filterAction(filter: string): Function,
 }

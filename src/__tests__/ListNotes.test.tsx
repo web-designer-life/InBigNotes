@@ -1,7 +1,7 @@
 import React from 'react'
-import { ListNotes } from '../components/Notes/ListNotes';
+import ListNotes from '../components/ListNotes';
 import { shallow } from 'enzyme';
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 
 const ListNotesProps = {
     notes: [
@@ -16,9 +16,9 @@ const ListNotesProps = {
     selectedNotes: [
         'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
     ],
-    addOrUpdateNote: (note: Note) => Function,
-    addSelectedNote: (note: Note) => Function,
-    removeUnselectedNote: (note: Note) => Function,
+    addOrUpdateNote: (note: INote) => Function,
+    addSelectedNote: (note: INote) => Function,
+    removeUnselectedNote: (note: INote) => Function,
     navigateToPage: (path: string) => Function,
 };
 

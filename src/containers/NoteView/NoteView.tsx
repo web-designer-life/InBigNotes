@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Note from '../../components/Note/Note';
-import Loader from '../../components/Loader/Loader';
-import Error from '../../components/Error/Error';
-import { Note as INote } from '../../interfaces';
+import Note from '../../components/Note';
+import Loader from '../../components/Loader';
+import Error from '../../components/Error';
+import { INote } from '../../interfaces';
 import { ACTIONS } from '../../constants';
 
 interface Props {

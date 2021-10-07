@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import Loader from '../../components/Loader/Loader';
-import Error from '../../components/Error/Error';
-import Home from '../../components/Home/Home';
-import { Note } from '../../interfaces';
+import Loader from '../../components/Loader';
+import Error from '../../components/Error';
+import Home from '../../components/Home';
+import { INote } from '../../interfaces';
 
 interface Props {
-    notes?: Note[],
+    notes?: INote[],
     isLoading: boolean,
     selectedNotes?: string[],
     filter: string,
     error: boolean,
     fetchNotesAction(filter: string): Function,
-    deleteNotesAction(notes: Note[]): Function,
-    addSelectedNoteAction(note: Note): Function,
-    removeUnselectedNoteAction(note: Note): Function,
-    selectAllNotesAction(notes: Note[]): Function,
+    deleteNotesAction(notes: INote[]): Function,
+    addSelectedNoteAction(note: INote): Function,
+    removeUnselectedNoteAction(note: INote): Function,
+    selectAllNotesAction(notes: INote[]): Function,
     unselectAllNotesAction(): Function,
     filterAction(filter: string): Function,
     navigateToPageAction(path: string): Function,

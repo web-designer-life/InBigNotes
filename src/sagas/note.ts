@@ -8,7 +8,7 @@ import {
 import { history } from '../store/store';
 import { ROUTES, TEXTS } from '../constants';
 import actions from '../actions';
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 import { 
     addNoteFail, 
     addNoteSuccess, 
@@ -26,7 +26,7 @@ function* fetchNote({ payload } : any) {
         
         const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
         
-        const note = notes.find((note: Note) => note.id === id);
+        const note = notes.find((note: INote) => note.id === id);
 
         if (!note) {
             throw new Error('No note');
@@ -68,7 +68,7 @@ function* updateNote({ payload } : any) {
 
         const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
-        const modifiedNotes = notes.filter((elem: Note) => elem.id !== note.id);
+        const modifiedNotes = notes.filter((elem: INote) => elem.id !== note.id);
 
         modifiedNotes.push(note);
 
