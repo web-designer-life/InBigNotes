@@ -4,7 +4,7 @@ import {
     COLORS, ROUTES, 
     TEXTS, 
 } from '../../constants';
-import Button from '../Button/Button';
+import Button from '../Button';
 import { Container, Message } from './style';
 
 interface Props {

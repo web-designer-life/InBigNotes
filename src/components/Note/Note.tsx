@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Note as INote } from '../../interfaces';
+import Button from '../Button';
+import Modal from '../Modal';
+import { 
+    ROUTES, 
+    BUTTON_TYPES, 
+    COLORS, TEXTS, 
+    FORMS, 
+} from '../../constants';
 import { 
     NoteForm, 
     NoteTitle, 
@@ -8,14 +15,7 @@ import {
     NoteControlsWrapper, 
     NoteButtonsWrapper, 
 } from './style';
-import Button from '../Button/Button';
-import { 
-    ROUTES, 
-    BUTTON_TYPES, 
-    COLORS, TEXTS, 
-    FORMS, 
-} from '../../constants';
-import Modal from '../Modal/Modal';
+import { Note as INote } from '../../interfaces';
 
 interface Props {
     typeName: string,

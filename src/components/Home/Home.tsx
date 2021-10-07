@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import ControlPanel from '../ControlPanel/ControlPanel';
-import { ListNotes } from '../Notes/ListNotes';
+import ControlPanel from '../ControlPanel';
+import ListNotes from '../ListNotes';
+import Button from '../Button';
+import Modal from '../Modal';
+import { Note } from '../../interfaces';
 import { 
     RouterWrapper, 
     Logo, 
     Wrapper,
 } from '../../containers/style';
-import Button from '../Button/Button';
-import { Note } from '../../interfaces';
 import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
 import { 
     ROUTES, 
@@ -15,7 +16,6 @@ import {
     COLORS, 
     TEXTS, 
 } from '../../constants';
-import Modal from '../Modal/Modal';
 
 interface Props {
     notes?: Note[],

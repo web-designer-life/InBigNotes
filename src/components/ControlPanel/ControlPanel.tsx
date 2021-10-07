@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Note } from '../../interfaces';
-import Checkbox from '../Checkbox/Checkbox';
-import Filter from '../Filter/Filter';
+import Checkbox from '../Checkbox';
+import Filter from '../Filter';
 import { 
     Wrapper, 
     SelectAllWrapper, 
