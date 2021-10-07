@@ -1,6 +1,6 @@
 import React from 'react'
-import Note from './Note';
-import { Note as INote} from '../../interfaces';
+import Note from '../components/Note/Note';
+import { Note as INote} from '../interfaces';
 import { shallow } from 'enzyme';
 
 const noteProps = {

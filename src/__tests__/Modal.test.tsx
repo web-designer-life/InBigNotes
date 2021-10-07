@@ -1,7 +1,7 @@
 import React from 'react'
-import Modal from './Modal';
+import Modal from '../components/Modal/Modal';
 import { shallow } from 'enzyme';
-import { TEXTS } from '../../constants';
+import { TEXTS } from '../constants';
 
 const modalProps = {
     modalText: TEXTS.MODAL.DELETE,

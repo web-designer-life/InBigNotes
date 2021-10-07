@@ -23,7 +23,7 @@ export class ListNotes extends Component<Props> {
         
         return (
             <List>
-                {notes.map((note: Note) =>(
+                {notes.map((note: Note) => (
                     <NoteComponent 
                         key={note.id}
                         note={note}

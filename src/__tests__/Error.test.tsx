@@ -1,5 +1,5 @@
 import React from 'react'
-import Error from '../Error/Error';
+import Error from '../components/Error/Error';
 import { shallow } from 'enzyme';
 
 const setUp = () => shallow(<Error />);

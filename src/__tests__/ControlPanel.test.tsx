@@ -1,9 +1,9 @@
 import React from 'react'
-import Home from './Home';
+import ControlPanel from '../components/ControlPanel/ControlPanel';
 import { shallow } from 'enzyme';
-import { Note } from '../../interfaces';
+import { Note } from '../interfaces';
 
-const homeProps = {
+const controlPanelProps = {
     notes: [
         {
             id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
@@ -18,18 +18,14 @@ const homeProps = {
     ],
     filter: 'title',
     fetchNotes: (filter: string) => Function,
-    deleteNotes: (notes: Note[]) => Function,
-    addSelectedNote: (note: Note) => Function,
-    removeUnselectedNote: (note: Note) => Function,
     selectAllNotes: (notes: Note[]) => Function,
     unselectAllNotes: () => Function,
     filterAction: (filter: string) => Function,
-    navigateToPage: (path: string) => Function,
 };
 
-describe("Home component", () => {
-    it("should render Home component", () => {
-        const component = shallow(<Home {...homeProps} />);
+describe("ControlPanel component", () => {
+    it("should render ControlPanel component", () => {
+        const component = shallow(<ControlPanel {...controlPanelProps} />);
         expect(component).toMatchSnapshot();
     });
 });
