@@ -6,7 +6,7 @@ const initialState = {
     error: false,
 };
 
-export default function rootReducer(state = initialState, { type, payload } : any) {
+export default function noteReducer(state = initialState, { type, payload } : any) {
     switch (type) {
         case actions.FETCH_NOTE_PENDING:
             return {
