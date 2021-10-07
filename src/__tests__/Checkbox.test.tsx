@@ -1,5 +1,5 @@
 import React from 'react'
-import Checkbox from '../components/Checkbox/Checkbox';
+import Checkbox from '../components/Checkbox';
 import { shallow } from 'enzyme';
 
 const checkboxProps = {
