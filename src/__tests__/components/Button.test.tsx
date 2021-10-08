@@ -2,12 +2,12 @@ import React from 'react'
 import Button from '../../components/Button';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
+import 'jest-styled-components';
 import { 
     BUTTON_TYPES, 
     COLORS, 
     TEXTS,
 } from '../../constants';
-import 'jest-styled-components';
 
 const greenButtonProps = {
     type: BUTTON_TYPES.BUTTON,

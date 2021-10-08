@@ -1,26 +1,26 @@
 import React from 'react'
 import Checkbox from '../../components/Checkbox';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
 
-const checkboxProps = {
+const activeCheckboxProps = {
     checked: true,
     onChange: () => {},
 };
 
-const setUp = () => shallow(<Checkbox {...checkboxProps} />);
+const inactiveCheckboxProps = {
+    checked: false,
+    onChange: () => {},
+};
 
-describe('Checkbox component', () => {
-    let component: any;
-    let instance: any;
-
-    beforeEach(() => {
-        component = setUp();
-        instance = component.instance();
+describe('Checkbox component', () => {      
+    it('should render active Checkbox component', () => {
+        const component = renderer.create(<Checkbox {...activeCheckboxProps} />);
+        expect(component).toMatchSnapshot();
     });
-        
-    describe('Has props', () => {
-        it('should render Checkbox component', () => {
-            expect(component).toMatchSnapshot();
-        });
+
+    it('should render inactive Checkbox component', () => {
+        const component = renderer.create(<Checkbox {...inactiveCheckboxProps} />);
+        expect(component).toMatchSnapshot();
     });
 });
