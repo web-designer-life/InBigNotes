@@ -10,8 +10,8 @@ export const history = createBrowserHistory();
 
 function configureStore() { 
     const sagaMiddleware = createSagaMiddleware();
-
-	const routeMiddleware = routerMiddleware(history);
+    
+    const routeMiddleware = routerMiddleware(history);
     
     const middlewares = [ sagaMiddleware, routeMiddleware ]; 
     const middlewareEnhancer = applyMiddleware(...middlewares); 
