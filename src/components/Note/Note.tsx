@@ -5,7 +5,8 @@ import Modal from '../Modal';
 import { 
     ROUTES, 
     BUTTON_TYPES, 
-    COLORS, TEXTS, 
+    COLORS, 
+    TEXTS, 
     FORMS, 
 } from '../../constants';
 import { 
@@ -186,18 +187,18 @@ export default class Note extends Component<Props, State> {
             <>
                 <NoteForm onSubmit={this.onSubmit} id={FORMS.ADD_OR_UPDATE_NOTE_FORM}>
                     <NoteTitle 
-                        type='text'
-                        name='title'
+                        type={TEXTS.INPUT_FIELD.TYPE.TEXT}
+                        name={TEXTS.INPUT_FIELD.NAME.TITLE}
                         value={title} 
                         onChange={this.handleChange} 
-                        placeholder='Title' 
+                        placeholder={TEXTS.INPUT_FIELD.PLACEHOLDER.TITLE}
                         required 
                     />
                     <NoteText 
-                        name='text'
+                        name={TEXTS.INPUT_FIELD.NAME.TEXT}
                         value={text} 
                         onChange={this.handleChange} 
-                        placeholder='Text' 
+                        placeholder={TEXTS.INPUT_FIELD.PLACEHOLDER.TEXT} 
                         required 
                     />
                     <NoteControlsWrapper>

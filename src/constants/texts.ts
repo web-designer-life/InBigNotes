@@ -20,6 +20,19 @@ export const TEXTS = {
         UPDATE: 'Do you want to update your note?',
         CANCEL: 'You have changes in your note. Do you want to cancel the changes?',
     },
+    INPUT_FIELD: {
+        TYPE: {
+            TEXT: 'text',
+        },
+        NAME: {
+            TITLE: 'title',
+            TEXT: 'text',
+        },
+        PLACEHOLDER: {
+            TITLE: 'Title',
+            TEXT: 'Text',
+        },
+    },
     FILTER: {
         TITLE: 'Sort by:',
         NAME: {
