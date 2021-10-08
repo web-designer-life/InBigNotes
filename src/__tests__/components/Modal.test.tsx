@@ -12,8 +12,8 @@ const modalProps = {
     action: () => {},
 };
 
-describe("Modal component", () => {
-    it("should render Modal component", () => {
+describe('Modal component', () => {
+    it('should render Modal component', () => {
         const component = shallow(<Modal {...modalProps} />);
         expect(component).toMatchSnapshot();
     });

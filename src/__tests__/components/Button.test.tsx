@@ -11,13 +11,13 @@ const greenButtonProps = {
     color: COLORS.GREEN,
 };
 
-describe("Button component", () => {
-    it("should render green Button component", () => {
+describe('Button component', () => {
+    it('should render green Button component', () => {
         const component = shallow(<Button {...greenButtonProps} />);
         expect(component).toMatchSnapshot();
     });
 
-    it("should call onClick method", () => {
+    it('should call onClick method', () => {
         const mockCallBack = jest.fn();
         const component = shallow(
             <Button 
@@ -29,7 +29,7 @@ describe("Button component", () => {
             />
         );
         expect(mockCallBack.mock.calls.length).toBe(0);
-        component.simulate("click");
+        component.simulate('click');
         expect(mockCallBack.mock.calls.length).toBe(1);
     });
 });

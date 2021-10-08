@@ -23,8 +23,8 @@ const controlPanelProps = {
     filterAction: (filter: string) => Function,
 };
 
-describe("ControlPanel component", () => {
-    it("should render ControlPanel component", () => {
+describe('ControlPanel component', () => {
+    it('should render ControlPanel component', () => {
         const component = shallow(<ControlPanel {...controlPanelProps} />);
         expect(component).toMatchSnapshot();
     });

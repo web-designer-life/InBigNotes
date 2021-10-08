@@ -20,8 +20,8 @@ const noteComponentProps = {
     navigateToPage: (path: string) => Function,
 };
 
-describe("NoteComponent component", () => {
-    it("should render NoteComponent component", () => {
+describe('NoteComponent component', () => {
+    it('should render NoteComponent component', () => {
         const component = shallow(<NoteComponent {...noteComponentProps} />);
         expect(component).toMatchSnapshot();
     });

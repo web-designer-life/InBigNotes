@@ -22,8 +22,8 @@ const ListNotesProps = {
     navigateToPage: (path: string) => Function,
 };
 
-describe("ListNotes component", () => {
-    it("should render ListNotes component", () => {
+describe('ListNotes component', () => {
+    it('should render ListNotes component', () => {
         const component = shallow(<ListNotes {...ListNotesProps} />);
         expect(component).toMatchSnapshot();
     });

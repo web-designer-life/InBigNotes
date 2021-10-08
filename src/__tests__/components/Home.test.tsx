@@ -27,8 +27,8 @@ const homeProps = {
     navigateToPage: (path: string) => Function,
 };
 
-describe("Home component", () => {
-    it("should render Home component", () => {
+describe('Home component', () => {
+    it('should render Home component', () => {
         const component = shallow(<Home {...homeProps} />);
         expect(component).toMatchSnapshot();
     });

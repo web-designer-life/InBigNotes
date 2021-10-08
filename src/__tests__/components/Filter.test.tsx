@@ -8,8 +8,8 @@ const filterProps = {
     filterAction: (filter: string) => Function,
 };
 
-describe("Filter component", () => {
-    it("should render Filter component", () => {
+describe('Filter component', () => {
+    it('should render Filter component', () => {
         const component = shallow(<Filter {...filterProps} />);
         expect(component).toMatchSnapshot();
     });

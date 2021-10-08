@@ -15,7 +15,7 @@ const Icon = styled.img`
     fill: none;
 `;
 
-const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
+const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -38,7 +38,7 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
     border: 4px solid ${COLORS.BLUE};
 
     ${Icon} {
-        visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+        visibility: ${(props) => (props.checked ? 'visible' : 'hidden')};
     }
 `;
 

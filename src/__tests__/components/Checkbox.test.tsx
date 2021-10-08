@@ -9,7 +9,7 @@ const checkboxProps = {
 
 const setUp = () => shallow(<Checkbox {...checkboxProps} />);
 
-describe("Checkbox component", () => {
+describe('Checkbox component', () => {
     let component: any;
     let instance: any;
 
@@ -18,8 +18,8 @@ describe("Checkbox component", () => {
         instance = component.instance();
     });
         
-    describe("Has props", () => {
-        it("should render Checkbox component", () => {
+    describe('Has props', () => {
+        it('should render Checkbox component', () => {
             expect(component).toMatchSnapshot();
         });
     });

@@ -186,18 +186,18 @@ export default class Note extends Component<Props, State> {
             <>
                 <NoteForm onSubmit={this.onSubmit} id={FORMS.ADD_OR_UPDATE_NOTE_FORM}>
                     <NoteTitle 
-                        type="text"
-                        name="title"
+                        type='text'
+                        name='title'
                         value={title} 
                         onChange={this.handleChange} 
-                        placeholder="Title" 
+                        placeholder='Title' 
                         required 
                     />
                     <NoteText 
-                        name="text"
+                        name='text'
                         value={text} 
                         onChange={this.handleChange} 
-                        placeholder="Text" 
+                        placeholder='Text' 
                         required 
                     />
                     <NoteControlsWrapper>
