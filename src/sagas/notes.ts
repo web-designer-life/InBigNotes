@@ -8,13 +8,13 @@ import { TEXTS } from '../constants';
 import { sortByFilterType } from '../utils';
 import actions from '../actions';
 import { 
-    deleteNotesFail, 
-    deleteNotesSuccess, 
-    fetchNotesFail, 
     fetchNotesSuccess,
+    fetchNotesFail, 
+    deleteNotesSuccess, 
+    deleteNotesFail, 
 } from '../actionCreators/notes';
 
-function* fetchNotes({ payload } : any) {
+export function* fetchNotes({ payload } : any) {
     const { filter } = payload;
     
     try {
@@ -32,7 +32,7 @@ function* fetchNotes({ payload } : any) {
 	}
 };
 
-function* deleteNotes({ payload } : any) {
+export function* deleteNotes({ payload } : any) {
     const { notes } = payload;
 
     try {

@@ -1,8 +1,12 @@
-import { all, call, takeEvery } from 'redux-saga/effects';
+import { 
+    all, 
+    call, 
+    takeEvery,
+} from 'redux-saga/effects';
 import actions from '../actions';
 import { history } from '../store/store';
 
-function* navigateToPage({ payload } : any) {
+export function* navigateToPage({ payload } : any) {
     const { path } = payload;
     
 	yield call(history.push, path);

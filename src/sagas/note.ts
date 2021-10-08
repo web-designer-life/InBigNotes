@@ -10,15 +10,15 @@ import { ROUTES, TEXTS } from '../constants';
 import actions from '../actions';
 import { INote } from '../interfaces';
 import { 
-    addNoteFail, 
-    addNoteSuccess, 
+    fetchNoteSuccess,
     fetchNoteFail, 
-    fetchNoteSuccess, 
-    updateNoteFail, 
+    addNoteSuccess, 
+    addNoteFail,  
     updateNoteSuccess, 
+    updateNoteFail, 
 } from '../actionCreators/note';
 
-function* fetchNote({ payload } : any) {
+export function* fetchNote({ payload } : any) {
     const { id } = payload;
 
     try {
@@ -38,7 +38,7 @@ function* fetchNote({ payload } : any) {
 	}
 };
 
-function* addNote({ payload } : any) { 
+export function* addNote({ payload } : any) { 
     const { note } = payload;
 
     try {
@@ -58,7 +58,7 @@ function* addNote({ payload } : any) {
 	}
 };
 
-function* updateNote({ payload } : any) { 
+export function* updateNote({ payload } : any) { 
     const { note } = payload;
     
     try {
