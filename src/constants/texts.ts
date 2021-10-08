@@ -47,5 +47,5 @@ export const TEXTS = {
             TEXT: 'Date Modified',
             VALUE: 'updated_at',
         },
-    }
+    },
 };
