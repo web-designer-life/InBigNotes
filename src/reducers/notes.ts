@@ -3,9 +3,9 @@ import { INote } from '../interfaces';
 import actions from '../actions';
 
 export const initialState = {
-    notes: [],
+    notes: [] as any,
     isLoading: false,
-    selectedNotes: [],
+    selectedNotes: [] as any,
     filter: TEXTS.FILTER.NAME.VALUE,
     error: false,
 };
