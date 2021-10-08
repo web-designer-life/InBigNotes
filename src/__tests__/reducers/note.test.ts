@@ -1,5 +1,15 @@
+import actions from '../../actions';
 import reducer from '../../reducers/note';
 import { initialState } from '../../reducers/note';
+
+const ID = 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3';
+const NOTE = {
+    id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
+    title: 'Army',
+    text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
+    created_at: 1632734670806,
+    updated_at: 1632735522467,
+};
 
 describe('reducer', () => {
     it('should return the initial state', () => {
@@ -14,16 +24,16 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'FETCH_NOTE_PENDING',
+            type: actions.FETCH_NOTE_PENDING,
             payload: {
-                id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
+                id: ID,
             },
         });
 
         expect(state).toEqual({
             note: {},
             isLoading: true,
-            id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
+            id: ID,
             error: false,
         });
     });
@@ -32,26 +42,14 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'FETCH_NOTE_SUCCESS',
+            type: actions.FETCH_NOTE_SUCCESS,
             payload: {
-                note: {
-                    id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
-                    title: 'Army',
-                    text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
-                    created_at: 1632734670806,
-                    updated_at: 1632735522467,
-                },
+                note: NOTE,
             },
         });
 
         expect(state).toEqual({
-            note: {
-                created_at: 1632734670806,
-                id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
-                text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
-                title: 'Army',
-                updated_at: 1632735522467,
-            },
+            note: NOTE,
             isLoading: false,
             error: false,
         });
@@ -61,26 +59,14 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'ADD_NOTE_PENDING',
+            type: actions.ADD_NOTE_PENDING,
             payload: {
-                note: {
-                    id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
-                    title: 'Army',
-                    text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
-                    created_at: 1632734670806,
-                    updated_at: 1632735522467,
-                },
+                note: NOTE,
             },
         });
 
         expect(state).toEqual({
-            note: {
-                created_at: 1632734670806,
-                id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
-                text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
-                title: 'Army',
-                updated_at: 1632735522467,
-            },
+            note: NOTE,
             isLoading: true,
             error: false,
         });
@@ -90,7 +76,7 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'ADD_NOTE_SUCCESS',
+            type: actions.ADD_NOTE_SUCCESS,
         });
 
         expect(state).toEqual({
@@ -104,26 +90,14 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'UPDATE_NOTE_PENDING',
+            type: actions.UPDATE_NOTE_PENDING,
             payload: {
-                note: {
-                    id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
-                    title: 'Army',
-                    text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
-                    created_at: 1632734670806,
-                    updated_at: 1632735522467,
-                },
+                note: NOTE,
             },
         });
 
         expect(state).toEqual({
-            note: {
-                created_at: 1632734670806,
-                id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
-                text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
-                title: 'Army',
-                updated_at: 1632735522467,
-            },
+            note: NOTE,
             isLoading: true,
             error: false,
         });
@@ -133,7 +107,7 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'UPDATE_NOTE_SUCCESS',
+            type: actions.UPDATE_NOTE_SUCCESS,
         });
 
         expect(state).toEqual({
@@ -147,7 +121,7 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'FETCH_NOTE_FAIL',
+            type: actions.FETCH_NOTE_FAIL,
         });
 
         expect(state).toEqual({
@@ -161,7 +135,7 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'ADD_NOTE_FAIL',
+            type: actions.ADD_NOTE_FAIL,
         });
 
         expect(state).toEqual({
@@ -175,7 +149,7 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'UPDATE_NOTE_FAIL',
+            type: actions.UPDATE_NOTE_FAIL,
         });
 
         expect(state).toEqual({
@@ -189,7 +163,7 @@ describe('reducer', () => {
         let state = initialState;
 
         state = reducer(state, {
-            type: 'RESET_STORE',
+            type: actions.RESET_STORE,
         });
 
         expect(state).toEqual({
