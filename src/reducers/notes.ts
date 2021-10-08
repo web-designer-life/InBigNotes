@@ -2,7 +2,7 @@ import { TEXTS } from '../constants';
 import { INote } from '../interfaces';
 import actions from '../actions';
 
-const initialState = {
+export const initialState = {
     notes: [],
     isLoading: false,
     selectedNotes: [],

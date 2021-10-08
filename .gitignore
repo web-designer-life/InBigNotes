@@ -3,4 +3,4 @@ build
 yarn-error.log
 yarn.lock
 coverage
-src/__tests__/__snapshots__
+src/__tests__/*/__snapshots__

@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from '../components/Button';
+import Button from '../../components/Button';
 import { shallow } from 'enzyme';
-import { BUTTON_TYPES, COLORS, TEXTS } from '../constants';
+import { BUTTON_TYPES, COLORS, TEXTS } from '../../constants';
 
 const greenButtonProps = {
     type: BUTTON_TYPES.BUTTON,

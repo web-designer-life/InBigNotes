@@ -1,7 +1,7 @@
 import React from 'react'
-import Home from '../components/Home';
+import Home from '../../components/Home';
 import { shallow } from 'enzyme';
-import { INote } from '../interfaces';
+import { INote } from '../../interfaces';
 
 const homeProps = {
     notes: [
