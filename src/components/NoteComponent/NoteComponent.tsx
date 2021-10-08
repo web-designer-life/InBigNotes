@@ -14,7 +14,7 @@ import { formatDate } from '../../utils';
 
 interface Props {
     note: INote,
-    selectedNotes?: string[],
+    selectedNotes: string[],
     addSelectedNote(note: INote): Function,
     removeUnselectedNote(note: INote): Function,
     navigateToPage(path: string): Function,
@@ -40,7 +40,7 @@ export default class NoteComponent extends Component<Props> {
             removeUnselectedNote,
         } = this.props;
 
-        selectedNotes?.includes(note.id) ?
+        selectedNotes.includes(note.id) ?
         removeUnselectedNote(note) :
         addSelectedNote(note);
     };
@@ -61,7 +61,7 @@ export default class NoteComponent extends Component<Props> {
                     <DateInfo>Modified: {formatDate(new Date(+note.updated_at))}</DateInfo>
                 </NoteInfo>
                 <Checkbox
-                    checked={!!selectedNotes?.includes(note.id)}
+                    checked={!!selectedNotes.includes(note.id)}
                     onChange={this.handleSelectOrUnselectNote}
                 />
             </Note>

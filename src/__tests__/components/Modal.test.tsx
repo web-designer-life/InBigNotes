@@ -3,7 +3,7 @@ import Modal from '../../components/Modal';
 import { shallow } from 'enzyme';
 import { TEXTS } from '../../constants';
 
-const modalProps = {
+const activeModalProps = {
     modalText: TEXTS.MODAL.DELETE,
     buttonConfirmText: TEXTS.BUTTON.DELETE,
     buttonCancelText: TEXTS.BUTTON.CANCEL,
@@ -12,9 +12,23 @@ const modalProps = {
     action: () => {},
 };
 
+const inactiveModalProps = {
+    modalText: TEXTS.MODAL.DELETE,
+    buttonConfirmText: TEXTS.BUTTON.DELETE,
+    buttonCancelText: TEXTS.BUTTON.CANCEL,
+    active: false,
+    onClose: () => {},
+    action: () => {},
+};
+
 describe('Modal component', () => {
-    it('should render Modal component', () => {
-        const component = shallow(<Modal {...modalProps} />);
+    it('should render active Modal component', () => {
+        const component = shallow(<Modal {...activeModalProps} />);
+        expect(component).toMatchSnapshot();
+    });
+
+    it('should render inactive Modal component', () => {
+        const component = shallow(<Modal {...inactiveModalProps} />);
         expect(component).toMatchSnapshot();
     });
 });

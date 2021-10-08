@@ -9,8 +9,8 @@ import {
 } from './style';
 
 interface Props {
-    notes?: INote[],
-    selectedNotes?: string[],
+    notes: INote[],
+    selectedNotes: string[],
     filter: string,
     fetchNotes(filter: string): Function,
     selectAllNotes(notes: INote[]): Function,
@@ -33,7 +33,7 @@ export default class ControlPanel extends Component<Props> {
             unselectAllNotes,
         } = this.props;
 
-        selectedNotes?.length === notes?.length ?
+        selectedNotes.length === notes.length ?
         unselectAllNotes() :
         selectAllNotes(notes || []);
     };
@@ -55,9 +55,9 @@ export default class ControlPanel extends Component<Props> {
                     filterAction={filterAction}
                 />
                 <SelectAllWrapper>
-                    <Title>Select all {selectedNotes?.length ? `(${selectedNotes?.length})` : ''}</Title>
+                    <Title>Select all {selectedNotes.length ? `(${selectedNotes.length})` : ''}</Title>
                     <Checkbox
-                        checked={selectedNotes?.length === notes?.length}
+                        checked={selectedNotes.length === notes.length}
                         onChange={this.handleSelectOrUnselectNotes}
                     />
                 </SelectAllWrapper>

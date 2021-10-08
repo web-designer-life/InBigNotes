@@ -3,11 +3,12 @@ import Loader from '../../components/Loader';
 import Error from '../../components/Error';
 import Home from '../../components/Home';
 import { INote } from '../../interfaces';
+import { ROUTES } from '../../constants';
 
 interface Props {
-    notes?: INote[],
+    notes: INote[],
     isLoading: boolean,
-    selectedNotes?: string[],
+    selectedNotes: string[],
     filter: string,
     error: boolean,
     fetchNotesAction(filter: string): Function,
@@ -21,7 +22,13 @@ interface Props {
     resetStoreAction(): Function,
 };
 
-export default class HomeContainer extends Component<Props> {  
+export default class HomeContainer extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+
+        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
+    };
+    
     componentDidMount() {
         this.props.fetchNotesAction(this.props.filter);
     };
@@ -29,6 +36,10 @@ export default class HomeContainer extends Component<Props> {
     componentWillUnmount() {
         this.props.resetStoreAction();
     };
+
+    handleNavigateToHome() {
+		this.props.navigateToPageAction(ROUTES.HOME);
+	};
 
     render() {
         const {
@@ -48,7 +59,7 @@ export default class HomeContainer extends Component<Props> {
         } = this.props;
 
         if (error) {
-			return <Error navigateToPage={navigateToPageAction}/>;
+			return <Error navigateToPage={this.handleNavigateToHome}/>;
 		}
         
         return (

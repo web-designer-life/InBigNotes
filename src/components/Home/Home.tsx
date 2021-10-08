@@ -18,8 +18,8 @@ import {
 } from '../../constants';
 
 interface Props {
-    notes?: INote[],
-    selectedNotes?: string[],
+    notes: INote[],
+    selectedNotes: string[],
     filter: string,
     fetchNotes(filter: string): Function,
     deleteNotes(notes: INote[]): Function,
@@ -92,8 +92,8 @@ export default class Home extends Component<Props, State> {
             deleteNotes,
         } = this.props;
 
-        const completeNotes = notes?.filter(
-            (note: INote) => !selectedNotes?.some(
+        const completeNotes = notes.filter(
+            (note: INote) => !selectedNotes.some(
                 (selectedNote: String) => note.id === selectedNote
             )
         ) || [];
@@ -132,14 +132,14 @@ export default class Home extends Component<Props, State> {
                     <Wrapper>
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
-                            disabled={!!selectedNotes?.length}
+                            disabled={!!selectedNotes.length}
                             onClick={this.handleNavigateToNoteCreator}
                             text={TEXTS.BUTTON.CREATE}
                             color={COLORS.BUTTON.GREEN}
                         />
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
-                            disabled={!selectedNotes?.length}
+                            disabled={!selectedNotes.length}
                             onClick={this.handleModalBackButtonClick}
                             text={TEXTS.BUTTON.DELETE}
                             color={COLORS.BUTTON.RED}
@@ -178,14 +178,14 @@ export default class Home extends Component<Props, State> {
                     <Wrapper>
                         <Button 
                             type={BUTTON_TYPES.BUTTON}
-                            disabled={!!selectedNotes?.length}
+                            disabled={!!selectedNotes.length}
                             onClick={this.handleNavigateToNoteCreator}
                             text={TEXTS.BUTTON.CREATE}
                             color={COLORS.BUTTON.GREEN}
                         />
                         <Button
                             type={BUTTON_TYPES.BUTTON}
-                            disabled={!selectedNotes?.length}
+                            disabled={!selectedNotes.length}
                             onClick={this.handleModalBackButtonClick}
                             text={TEXTS.BUTTON.DELETE}
                             color={COLORS.BUTTON.RED}

@@ -3,7 +3,7 @@ import Note from '../../components/Note';
 import Loader from '../../components/Loader';
 import Error from '../../components/Error';
 import { INote } from '../../interfaces';
-import { ACTIONS } from '../../constants';
+import { ACTIONS, ROUTES } from '../../constants';
 
 interface Props {
     isLoading: boolean,
@@ -14,9 +14,19 @@ interface Props {
 };
 
 export default class NoteCreation extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+
+        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
+    };
+    
     componentWillUnmount() {
         this.props.resetStoreAction();
     };
+
+    handleNavigateToHome() {
+		this.props.navigateToPageAction(ROUTES.HOME);
+	};
 
     render() {
         const { 
@@ -27,7 +37,7 @@ export default class NoteCreation extends Component<Props> {
         } = this.props;
 
         if (error) {
-			return <Error navigateToPage={navigateToPageAction}/>;
+			return <Error navigateToPage={this.handleNavigateToHome}/>;
 		}
 
         return (

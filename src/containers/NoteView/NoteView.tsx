@@ -3,7 +3,7 @@ import Note from '../../components/Note';
 import Loader from '../../components/Loader';
 import Error from '../../components/Error';
 import { INote } from '../../interfaces';
-import { ACTIONS } from '../../constants';
+import { ACTIONS, ROUTES } from '../../constants';
 
 interface Props {
     match: {
@@ -21,6 +21,12 @@ interface Props {
 };
 
 export default class NoteView extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+
+        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
+    };
+    
     componentDidMount() {
         this.props.fetchNoteAction(this.props.match.params.noteId);
     };
@@ -28,6 +34,10 @@ export default class NoteView extends Component<Props> {
     componentWillUnmount() {
         this.props.resetStoreAction();
     };
+
+    handleNavigateToHome() {
+		this.props.navigateToPageAction(ROUTES.HOME);
+	};
 
     render() {
         const { 
@@ -39,7 +49,7 @@ export default class NoteView extends Component<Props> {
         } = this.props;
 
         if (error) {
-			return <Error navigateToPage={navigateToPageAction}/>;
+			return <Error navigateToPage={this.handleNavigateToHome}/>;
 		}
 
         return (
