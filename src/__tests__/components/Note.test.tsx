@@ -16,9 +16,20 @@ const noteProps = {
     navigateToPage: (path: string) => Function,
 };
 
+const notePropsWithoutNote = {
+    typeName: 'Save',
+    addOrUpdateNote: (note: INote) => Function,
+    navigateToPage: (path: string) => Function,
+};
+
 describe('Note component', () => {
     it('should render Note component', () => {
         const component = shallow(<Note {...noteProps} />);
+        expect(component).toMatchSnapshot();
+    });
+
+    it('should render Note component without note', () => {
+        const component = shallow(<Note {...notePropsWithoutNote} />);
         expect(component).toMatchSnapshot();
     });
 });

@@ -2,7 +2,7 @@ import actions from '../actions';
 import { INote } from '../interfaces';
 
 const fetchNoteData = (id: string) => ({
-	type: actions.FETCH_NOTE_PENDING,
+    type: actions.FETCH_NOTE_PENDING,
     payload: { id },
 });
 
@@ -16,8 +16,8 @@ const fetchNoteFail = () => ({
 });
 
 const addNoteData = (note: INote) => ({
-	type: actions.ADD_NOTE_PENDING,
-	payload: { note },
+    type: actions.ADD_NOTE_PENDING,
+    payload: { note },
 });
 
 const addNoteSuccess = () => ({
@@ -29,8 +29,8 @@ const addNoteFail = () => ({
 });
 
 const updateNoteData = (note: INote) => ({
-	type: actions.UPDATE_NOTE_PENDING,
-	payload: { note },
+    type: actions.UPDATE_NOTE_PENDING,
+    payload: { note },
 });
 
 const updateNoteSuccess = () => ({
@@ -38,7 +38,7 @@ const updateNoteSuccess = () => ({
 });
 
 const updateNoteFail = () => ({
-	type: actions.UPDATE_NOTE_FAIL,
+    type: actions.UPDATE_NOTE_FAIL,
 });
 
 export {

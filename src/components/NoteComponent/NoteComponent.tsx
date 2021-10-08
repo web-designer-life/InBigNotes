@@ -29,8 +29,8 @@ export default class NoteComponent extends Component<Props> {
     };
 
     handleNavigateToNote() {
-		this.props.navigateToPage(`${ROUTES.NOTE}/${this.props.note.id}`);
-	};
+        this.props.navigateToPage(`${ROUTES.NOTE}/${this.props.note.id}`);
+    };
 
     handleSelectOrUnselectNote() {
         const { 

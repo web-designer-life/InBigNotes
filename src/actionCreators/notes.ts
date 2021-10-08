@@ -2,7 +2,7 @@ import actions from '../actions';
 import { INote } from '../interfaces';
 
 const fetchNotesData = (filter: string) => ({
-	type: actions.FETCH_NOTES_PENDING,
+    type: actions.FETCH_NOTES_PENDING,
     payload: { filter },
 });
 

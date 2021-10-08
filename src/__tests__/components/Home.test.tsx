@@ -27,9 +27,30 @@ const homeProps = {
     navigateToPage: (path: string) => Function,
 };
 
+const homePropsWithoutNotes = {
+    notes: [],
+    selectedNotes: [
+        'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
+    ],
+    filter: 'title',
+    fetchNotes: (filter: string) => Function,
+    deleteNotes: (notes: INote[]) => Function,
+    addSelectedNote: (note: INote) => Function,
+    removeUnselectedNote: (note: INote) => Function,
+    selectAllNotes: (notes: INote[]) => Function,
+    unselectAllNotes: () => Function,
+    filterAction: (filter: string) => Function,
+    navigateToPage: (path: string) => Function,
+};
+
 describe('Home component', () => {
     it('should render Home component', () => {
         const component = shallow(<Home {...homeProps} />);
+        expect(component).toMatchSnapshot();
+    });
+
+    it('should render Home component without notes', () => {
+        const component = shallow(<Home {...homePropsWithoutNotes} />);
         expect(component).toMatchSnapshot();
     });
 });

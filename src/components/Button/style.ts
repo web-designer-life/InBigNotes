@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { COLORS } from '../../constants';
 
 const StyledButton = styled.button`
-	min-width: 170px;
+    min-width: 170px;
     border-radius: 15px;
     color: ${COLORS.WHITE};
     padding: 10px 25px;
@@ -39,7 +39,7 @@ const StyledButton = styled.button`
         }
     `)}
     @media (max-width: 450px) {
-	    min-width: auto;
+        min-width: auto;
         width: 100%;
     }
 `;

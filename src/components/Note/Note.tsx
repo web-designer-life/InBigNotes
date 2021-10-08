@@ -79,7 +79,7 @@ export default class Note extends Component<Props, State> {
     handleCheckSaveOrUpdateChanges() {
         const { title, text } = this.state;
         const { note } = this.props;
-
+        
         return (
             ((title.trim() !== '' && text.trim() !== '') 
             && (title.trim() !== note?.title || text.trim() !== note?.text))
