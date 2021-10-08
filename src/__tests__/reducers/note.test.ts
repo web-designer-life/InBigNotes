@@ -1,7 +1,7 @@
 import noteReducer from '../../reducers/note';
 import { initialState } from '../../reducers/note';
 
-describe('note reducer', () => {
+describe('noteReducer', () => {
     it('should return the initial state', () => {
         expect(noteReducer(undefined, {})).toEqual({
             error: false,
