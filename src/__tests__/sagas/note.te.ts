@@ -25,8 +25,8 @@ const NOTE = {
     updated_at: 1632735522467,
 };
 
-describe('Note actionCreators', () => {
-    it('should load and set the image stats in case of success', async () => {
+describe('noteSaga', () => {
+    it('fetchNote success action', async () => {
         const dispatchedActions: any[] = [];
 
         const fakeStore = {
@@ -39,7 +39,7 @@ describe('Note actionCreators', () => {
         expect(dispatchedActions).toContainEqual(fetchNoteSuccess(NOTE));
     });
 
-    it('should load and handle the image stats error (incl. retries) in case of failure', async () => {
+    it('fetchNote error action', async () => {
         const dispatchedActions: any[] = [];
 
         const fakeStore = {

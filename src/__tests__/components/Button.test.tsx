@@ -1,19 +1,40 @@
 import React from 'react'
 import Button from '../../components/Button';
 import { shallow } from 'enzyme';
-import { BUTTON_TYPES, COLORS, TEXTS } from '../../constants';
+import renderer from 'react-test-renderer';
+import { 
+    BUTTON_TYPES, 
+    COLORS, 
+    TEXTS,
+} from '../../constants';
+import 'jest-styled-components';
 
 const greenButtonProps = {
     type: BUTTON_TYPES.BUTTON,
     disabled: false,
     onClick: () => {},
     text: TEXTS.BUTTON.HOME,
-    color: COLORS.GREEN,
+    color: COLORS.BUTTON.GREEN,
+};
+
+const redButtonProps = {
+    type: BUTTON_TYPES.BUTTON,
+    disabled: false,
+    onClick: () => {},
+    text: TEXTS.BUTTON.DELETE,
+    color: COLORS.BUTTON.RED,
 };
 
 describe('Button component', () => {
     it('should render green Button component', () => {
-        const component = shallow(<Button {...greenButtonProps} />);
+        const component = renderer.create(<Button {...greenButtonProps} />).toJSON();
+        expect(component).toHaveStyleRule('background-color', '#00AB00');
+        expect(component).toMatchSnapshot();
+    });
+
+    it('should render red Button component', () => {
+        const component = renderer.create(<Button {...redButtonProps} />).toJSON();
+        expect(component).toHaveStyleRule('background-color', '#FF0000');
         expect(component).toMatchSnapshot();
     });
 
@@ -25,7 +46,7 @@ describe('Button component', () => {
                 type={BUTTON_TYPES.BUTTON}
                 disabled={false}
                 text={TEXTS.BUTTON.BACK}
-                color={COLORS.RED}
+                color={COLORS.BUTTON.RED}
             />
         );
         expect(mockCallBack.mock.calls.length).toBe(0);
