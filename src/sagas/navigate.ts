@@ -4,7 +4,7 @@ import {
     takeEvery,
 } from 'redux-saga/effects';
 import actions from '../actions';
-import { history } from '../store/store';
+import history from '../store/store';
 
 export function* navigateToPage({ payload } : any) {
     const { path } = payload;

@@ -5,7 +5,7 @@ import {
     takeEvery,
     call, 
 } from 'redux-saga/effects';
-import { history } from '../store/store';
+import history from '../store/store';
 import { ROUTES, TEXTS } from '../constants';
 import actions from '../actions';
 import { INote } from '../interfaces';
