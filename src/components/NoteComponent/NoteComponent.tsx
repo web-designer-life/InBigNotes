@@ -57,8 +57,8 @@ export default class NoteComponent extends Component<Props> {
                     <Title>{note.title}</Title>
                     <Text>{note.text}</Text>
                     <Appearance />
-                    <DateInfo>Created: {formatDate(new Date(+note.created_at))}</DateInfo>
-                    <DateInfo>Modified: {formatDate(new Date(+note.updated_at))}</DateInfo>
+                    <DateInfo>Created: {formatDate(new Date(note.created_at))}</DateInfo>
+                    <DateInfo>Modified: {formatDate(new Date(note.updated_at))}</DateInfo>
                 </NoteInfo>
                 <Checkbox
                     checked={!!selectedNotes.includes(note.id)}

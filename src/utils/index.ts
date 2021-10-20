@@ -1,7 +1,7 @@
 import { INote } from '../interfaces';
 
-const formatNumberOfDate = (dateValue: Number) => {
-    return dateValue < 10 ? '0' + dateValue : dateValue;
+const formatNumberOfDate = (dateValue: number) => {
+    return dateValue < 10 ? `0${dateValue}` : dateValue;
 };
 
 export const sortByFilterType = (notes: INote[], filterType: string) => (
