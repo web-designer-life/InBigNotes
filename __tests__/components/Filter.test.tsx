@@ -1,5 +1,5 @@
 import React from 'react'
-import Filter from '../../components/Filter';
+import Filter from '../../src/components/Filter';
 import { shallow } from 'enzyme';
 
 const filterProps = {

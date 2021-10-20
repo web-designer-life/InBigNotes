@@ -1,7 +1,7 @@
-import actions from '../../actions';
-import reducer from '../../reducers/notes';
-import { initialState } from '../../reducers/notes';
-import { TEXTS } from '../../constants';
+import actions from '../../src/actions';
+import reducer from '../../src/reducers/notes';
+import { initialState } from '../../src/reducers/notes';
+import { TEXTS } from '../../src/constants';
 
 const ID = 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3';
 const NOTE = {

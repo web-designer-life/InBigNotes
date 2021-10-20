@@ -1,7 +1,7 @@
 import React from 'react'
-import NoteComponent from '../../components/NoteComponent';
+import NoteComponent from '../../src/components/NoteComponent';
 import { shallow } from 'enzyme';
-import { INote } from '../../interfaces';
+import { INote } from '../../src/interfaces';
 
 const noteComponentProps = {
     note: {

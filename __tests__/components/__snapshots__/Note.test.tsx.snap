@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Note component should render Note component 1`] = `
+<Fragment>
+  <styled.form
+    id="addOrUpdateNote"
+    onSubmit={[Function]}
+  >
+    <styled.input
+      name="title"
+      onChange={[Function]}
+      placeholder="Title"
+      required={true}
+      type="text"
+      value="Army"
+    />
+    <styled.textarea
+      name="text"
+      onChange={[Function]}
+      placeholder="Text"
+      required={true}
+      value="An army, ground force, or land force is a fighting force that fights primarily on land."
+    />
+    <styled.div>
+      <Button
+        color="red"
+        onClick={[Function]}
+        text="Back"
+        type="button"
+      />
+      <styled.div>
+        <Button
+          color="green"
+          disabled={true}
+          form="addOrUpdateNote"
+          onClick={[Function]}
+          text="Save"
+          type="button"
+        />
+        <Button
+          color="red"
+          disabled={true}
+          onClick={[Function]}
+          text="Cancel"
+          type="reset"
+        />
+      </styled.div>
+    </styled.div>
+  </styled.form>
+  <Modal
+    action={[Function]}
+    active={false}
+    buttonCancelText=""
+    buttonConfirmText=""
+    modalText=""
+    onClose={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`Note component should render Note component without note 1`] = `
+<Fragment>
+  <styled.form
+    id="addOrUpdateNote"
+    onSubmit={[Function]}
+  >
+    <styled.input
+      name="title"
+      onChange={[Function]}
+      placeholder="Title"
+      required={true}
+      type="text"
+      value=""
+    />
+    <styled.textarea
+      name="text"
+      onChange={[Function]}
+      placeholder="Text"
+      required={true}
+      value=""
+    />
+    <styled.div>
+      <Button
+        color="red"
+        onClick={[Function]}
+        text="Back"
+        type="button"
+      />
+      <styled.div>
+        <Button
+          color="green"
+          disabled={true}
+          form="addOrUpdateNote"
+          onClick={[Function]}
+          text="Save"
+          type="button"
+        />
+        <Button
+          color="red"
+          disabled={true}
+          onClick={[Function]}
+          text="Cancel"
+          type="reset"
+        />
+      </styled.div>
+    </styled.div>
+  </styled.form>
+  <Modal
+    action={[Function]}
+    active={false}
+    buttonCancelText=""
+    buttonConfirmText=""
+    modalText=""
+    onClose={[Function]}
+  />
+</Fragment>
+`;

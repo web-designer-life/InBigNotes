@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ControlPanel component should render ControlPanel component 1`] = `
+<styled.div>
+  <Filter
+    fetchNotes={[Function]}
+    filter="title"
+    filterAction={[Function]}
+  />
+  <styled.div>
+    <styled.p>
+      Select all 
+      (1)
+    </styled.p>
+    <Checkbox
+      checked={true}
+      onChange={[Function]}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`ControlPanel component should render ControlPanel component without selectedNotes 1`] = `
+<styled.div>
+  <Filter
+    fetchNotes={[Function]}
+    filter="title"
+    filterAction={[Function]}
+  />
+  <styled.div>
+    <styled.p>
+      Select all 
+    </styled.p>
+    <Checkbox
+      checked={false}
+      onChange={[Function]}
+    />
+  </styled.div>
+</styled.div>
+`;

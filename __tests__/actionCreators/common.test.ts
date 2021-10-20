@@ -1,6 +1,6 @@
-import { navigateToPage, resetStore } from '../../actionCreators/common';
-import actions from '../../actions';
-import { ROUTES } from '../../constants';
+import { navigateToPage, resetStore } from '../../src/actionCreators/common';
+import actions from '../../src/actions';
+import { ROUTES } from '../../src/constants';
 
 describe('Common actionCreators', () => {
     it('navigateToPage', () => {

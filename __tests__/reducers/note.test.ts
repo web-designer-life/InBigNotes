@@ -1,6 +1,6 @@
-import actions from '../../actions';
-import reducer from '../../reducers/note';
-import { initialState } from '../../reducers/note';
+import actions from '../../src/actions';
+import reducer from '../../src/reducers/note';
+import { initialState } from '../../src/reducers/note';
 
 const ID = 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3';
 const NOTE = {

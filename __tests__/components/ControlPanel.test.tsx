@@ -1,9 +1,9 @@
 import React from 'react'
-import Home from '../../components/Home';
+import ControlPanel from '../../src/components/ControlPanel';
 import { shallow } from 'enzyme';
-import { INote } from '../../interfaces';
+import { INote } from '../../src/interfaces';
 
-const homeProps = {
+const controlPanelProps = {
     notes: [
         {
             id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
@@ -18,39 +18,37 @@ const homeProps = {
     ],
     filter: 'title',
     fetchNotes: (filter: string) => Function,
-    deleteNotes: (notes: INote[]) => Function,
-    addSelectedNote: (note: INote) => Function,
-    removeUnselectedNote: (note: INote) => Function,
     selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
     filterAction: (filter: string) => Function,
-    navigateToPage: (path: string) => Function,
 };
 
-const homePropsWithoutNotes = {
-    notes: [],
-    selectedNotes: [
-        'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
+const controlPanelPropsWithoutSelectedNotes = {
+    notes: [
+        {
+            id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
+            title: 'Army',
+            text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
+            created_at: 1632734670806,
+            updated_at: 1632735522467,
+        },
     ],
+    selectedNotes: [],
     filter: 'title',
     fetchNotes: (filter: string) => Function,
-    deleteNotes: (notes: INote[]) => Function,
-    addSelectedNote: (note: INote) => Function,
-    removeUnselectedNote: (note: INote) => Function,
     selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
     filterAction: (filter: string) => Function,
-    navigateToPage: (path: string) => Function,
 };
 
-describe('Home component', () => {
-    it('should render Home component', () => {
-        const component = shallow(<Home {...homeProps} />);
+describe('ControlPanel component', () => {
+    it('should render ControlPanel component', () => {
+        const component = shallow(<ControlPanel {...controlPanelProps} />);
         expect(component).toMatchSnapshot();
     });
 
-    it('should render Home component without notes', () => {
-        const component = shallow(<Home {...homePropsWithoutNotes} />);
+    it('should render ControlPanel component without selectedNotes', () => {
+        const component = shallow(<ControlPanel {...controlPanelPropsWithoutSelectedNotes} />);
         expect(component).toMatchSnapshot();
     });
 });

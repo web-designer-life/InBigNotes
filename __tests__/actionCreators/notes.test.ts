@@ -10,9 +10,9 @@ import {
     selectAllNotes,
     unselectAllNotes,
     filter, 
-} from '../../actionCreators/notes';
-import actions from '../../actions';
-import { TEXTS } from '../../constants';
+} from '../../src/actionCreators/notes';
+import actions from '../../src/actions';
+import { TEXTS } from '../../src/constants';
 
 const NOTE = {
     id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',

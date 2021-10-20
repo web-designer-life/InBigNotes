@@ -25,7 +25,7 @@ export function* fetchNote({ payload } : any) {
         yield delay(1500);
         
         const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
-        
+
         const note = notes.find((note: INote) => note.id === id);
 
         if (!note) {

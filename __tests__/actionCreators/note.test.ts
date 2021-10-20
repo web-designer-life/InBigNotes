@@ -8,8 +8,8 @@ import {
     updateNoteData,
     updateNoteSuccess,
     updateNoteFail, 
-} from '../../actionCreators/note';
-import actions from '../../actions';
+} from '../../src/actionCreators/note';
+import actions from '../../src/actions';
 
 const ID = 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3';
 const NOTE = {
