@@ -1,18 +1,18 @@
 import { 
     all, 
-    call, 
+    put, 
     takeEvery,
 } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 import actions from '../actions';
-import history from '../store/store';
 
 export function* navigateToPage({ payload } : any) {
     const { path } = payload;
     
-	yield call(history.push, path);
+    yield put(push(path));
 };
 
-export default function navigate() {
+export default function navigateSaga() {
     return all([ 
         takeEvery(actions.NAVIGATE_TO_PAGE, navigateToPage),
     ]);

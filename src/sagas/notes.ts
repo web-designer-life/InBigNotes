@@ -1,18 +1,18 @@
 import { 
+    all,
     delay, 
-    put, 
-    all, 
+    put,  
     takeEvery, 
 } from 'redux-saga/effects';
-import { TEXTS } from '../constants';
-import { sortByFilterType } from '../utils';
-import actions from '../actions';
 import { 
     fetchNotesSuccess,
     fetchNotesFail, 
     deleteNotesSuccess, 
     deleteNotesFail, 
 } from '../actionCreators/notes';
+import { sortByFilterType } from '../utils';
+import actions from '../actions';
+import { TEXTS } from '../constants';
 
 export function* fetchNotes({ payload } : any) {
     const { filter } = payload;
@@ -20,7 +20,7 @@ export function* fetchNotes({ payload } : any) {
     try {
         yield delay(1500);
     
-        let notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
+        let notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
     
         if (notes.length) {
             notes = sortByFilterType(notes, filter);
@@ -38,7 +38,7 @@ export function* deleteNotes({ payload } : any) {
     try {
         yield delay(1500);
     
-        localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
+        window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
     
         yield put(deleteNotesSuccess());
         yield put(fetchNotesSuccess(notes));        
