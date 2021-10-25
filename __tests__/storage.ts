@@ -1,4 +1,4 @@
-const localStorage = (function() {
+const storage = (function() {
     let store = {};
   
     return {
@@ -18,6 +18,6 @@ const localStorage = (function() {
 })();
 
 Object.defineProperty(window, 'localStorage', {
-    value: localStorage,
+    value: storage,
     writable: true,
 });

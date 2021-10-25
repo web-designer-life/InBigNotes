@@ -14,11 +14,11 @@ exports[`NoteComponent component should render NoteComponent component 1`] = `
     <styled.div />
     <styled.p>
       Created: 
-      27.09.21 12:24:30
+      27.09.2021 12:24:30
     </styled.p>
     <styled.p>
       Modified: 
-      27.09.21 12:38:42
+      27.09.2021 12:38:42
     </styled.p>
   </styled.div>
   <Checkbox
