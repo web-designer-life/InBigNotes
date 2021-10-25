@@ -35,24 +35,30 @@ const NOTES = [
 ];
 
 describe('notesSaga sagas', () => {
+    afterEach(() => {
+        window.localStorage.removeItem(TEXTS.STORAGE_NAME);
+    });
+
     describe('fetchNotes', () => {
         it('Success action with notes, sorted by title', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(NOTES));
     
             const generator = fetchNotes({ payload: { filter: TEXTS.FILTER.NAME.VALUE } });
     
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(fetchNotesSuccess(NOTES))
             );
-            
-            window.localStorage.removeItem(TEXTS.STORAGE_NAME);
         });
 
         it('Success action without notes', () => {    
             const generator = fetchNotes({ payload: { filter: TEXTS.FILTER.NAME.VALUE } });
     
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(fetchNotesSuccess([]))
             );
@@ -63,12 +69,12 @@ describe('notesSaga sagas', () => {
 
             const generator = fetchNotes({ payload: { filter: TEXTS.FILTER.NAME.VALUE } });
     
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(fetchNotesFail())
             );
-
-            window.localStorage.removeItem(TEXTS.STORAGE_NAME);
         });
     });
 
@@ -78,21 +84,23 @@ describe('notesSaga sagas', () => {
     
             const generator = deleteNotes({ payload: { notes: NOTES } });
     
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(deleteNotesSuccess())
             );
             expect(generator.next().value).toEqual(
                 put(fetchNotesSuccess(NOTES))
             );
-            
-            window.localStorage.removeItem(TEXTS.STORAGE_NAME);
         });
 
         it('Error action', () => {        
             const generator = deleteNotes({ payload: {} });
     
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(deleteNotesFail())
             );

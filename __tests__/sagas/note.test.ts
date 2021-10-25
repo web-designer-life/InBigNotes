@@ -47,24 +47,30 @@ const NOTES = [
 ];
 
 describe('noteSaga sagas', () => {
+    afterEach(() => {
+        window.localStorage.removeItem(TEXTS.STORAGE_NAME);
+    });
+
     describe('fetchNote', () => {
         it('Success action', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(NOTES));
     
             const generator = fetchNote({ payload: { id: ID } });
     
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(fetchNoteSuccess(NOTE))
             );
-            
-            window.localStorage.removeItem(TEXTS.STORAGE_NAME);
         });
     
         it('Error action', () => {    
             const generator = fetchNote({ payload: { id: ID } });
     
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(fetchNoteFail())
             );
@@ -78,12 +84,12 @@ describe('noteSaga sagas', () => {
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(addNoteSuccess())
             );
-            
-            window.localStorage.removeItem(TEXTS.STORAGE_NAME);
         });
     
         it('Error action', () => {    
@@ -92,7 +98,9 @@ describe('noteSaga sagas', () => {
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(addNoteFail())
             );
@@ -108,12 +116,12 @@ describe('noteSaga sagas', () => {
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(updateNoteSuccess())
             );
-            
-            window.localStorage.removeItem(TEXTS.STORAGE_NAME);
         });
 
         it('Success action without notes', () => {    
@@ -122,12 +130,12 @@ describe('noteSaga sagas', () => {
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(updateNoteSuccess())
             );
-            
-            window.localStorage.removeItem(TEXTS.STORAGE_NAME);
         });
     
         it('Error action', () => {    
@@ -136,7 +144,9 @@ describe('noteSaga sagas', () => {
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
-            expect(generator.next().value).toEqual(delay(1500));
+            expect(generator.next().value).toEqual(
+                delay(1500)
+            );
             expect(generator.next().value).toEqual(
                 put(updateNoteFail())
             );
