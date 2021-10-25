@@ -25,19 +25,25 @@ export default class NoteView extends Component<Props> {
         super(props);
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    };
+    }
     
     componentDidMount() {
-        this.props.fetchNoteAction(this.props.match.params.noteId);
-    };
+        const { fetchNoteAction, match } = this.props;
+
+        fetchNoteAction(match.params.noteId);
+    }
 
     componentWillUnmount() {
-        this.props.resetStoreAction();
-    };
+        const { resetStoreAction } = this.props;
+
+        resetStoreAction();
+    }
 
     handleNavigateToHome() {
-		this.props.navigateToPageAction(ROUTES.HOME);
-	};
+        const { navigateToPageAction } = this.props;
+
+		navigateToPageAction(ROUTES.HOME);
+	}
 
     render() {
         const { 

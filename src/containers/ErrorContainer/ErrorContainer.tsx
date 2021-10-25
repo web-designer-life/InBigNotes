@@ -11,11 +11,13 @@ export default class ErrorContainer extends Component<Props> {
         super(props);
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    };
+    }
 
     handleNavigateToHome() {
-		this.props.navigateToPageAction(ROUTES.HOME);
-	};
+        const { navigateToPageAction } = this.props;
+
+		navigateToPageAction(ROUTES.HOME);
+	}
 
     render() {        
         return ( 

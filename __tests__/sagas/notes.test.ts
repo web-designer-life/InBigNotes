@@ -43,7 +43,7 @@ describe('notesSaga sagas', () => {
         it('Success action with notes, sorted by title', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(NOTES));
     
-            const generator = fetchNotes({ payload: { filter: TEXTS.FILTER.NAME.VALUE } });
+            const generator = fetchNotes({ payload: { filterType: TEXTS.FILTER.NAME.VALUE } });
     
             expect(generator.next().value).toEqual(
                 delay(1500)
@@ -54,7 +54,7 @@ describe('notesSaga sagas', () => {
         });
 
         it('Success action without notes', () => {    
-            const generator = fetchNotes({ payload: { filter: TEXTS.FILTER.NAME.VALUE } });
+            const generator = fetchNotes({ payload: { filterType: TEXTS.FILTER.NAME.VALUE } });
     
             expect(generator.next().value).toEqual(
                 delay(1500)
@@ -67,7 +67,7 @@ describe('notesSaga sagas', () => {
         it('Error action', () => {    
             window.localStorage.setItem(TEXTS.STORAGE_NAME, 'undefined');
 
-            const generator = fetchNotes({ payload: { filter: TEXTS.FILTER.NAME.VALUE } });
+            const generator = fetchNotes({ payload: { filterType: TEXTS.FILTER.NAME.VALUE } });
     
             expect(generator.next().value).toEqual(
                 delay(1500)

@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { shallow } from 'enzyme';
 import Note from '../../src/components/Note';
 import { INote } from '../../src/interfaces';
-import { shallow } from 'enzyme';
 
 const noteProps = {
     typeName: 'Save',

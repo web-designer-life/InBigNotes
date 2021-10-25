@@ -8,6 +8,12 @@ import loader from '../../images/loader.gif';
 import { TEXTS } from '../../constants';
 
 export default class Loader extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {};
+    }
+    
     render() {
         return (
             <LoaderBackground>

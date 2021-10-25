@@ -15,7 +15,7 @@ import actions from '../actions';
 import { TEXTS } from '../constants';
 
 export function* fetchNotes({ payload } : any) {
-    const { filter } = payload;
+    const { filterType } = payload;
     
     try {
         yield delay(1500);
@@ -23,7 +23,7 @@ export function* fetchNotes({ payload } : any) {
         let notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
     
         if (notes.length) {
-            notes = sortByFilterType(notes, filter);
+            notes = sortByFilterType(notes, filterType);
         }
 
         yield put(fetchNotesSuccess(notes));

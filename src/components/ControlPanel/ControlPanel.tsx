@@ -11,11 +11,11 @@ import {
 interface Props {
     notes: INote[],
     selectedNotes: string[],
-    filter: string,
-    fetchNotes(filter: string): Function,
+    filterType: string,
+    fetchNotes(filterType: string): Function,
     selectAllNotes(notes: INote[]): Function,
     unselectAllNotes(): Function,
-    filterAction(filter: string): Function,
+    filterAction(filterType: string): Function,
 }
 
 export default class ControlPanel extends Component<Props> {
@@ -23,7 +23,7 @@ export default class ControlPanel extends Component<Props> {
         super(props);
 
         this.handleSelectOrUnselectNotes = this.handleSelectOrUnselectNotes.bind(this);
-    };
+    }
 
     handleSelectOrUnselectNotes() {
         const { 
@@ -33,16 +33,16 @@ export default class ControlPanel extends Component<Props> {
             unselectAllNotes,
         } = this.props;
 
-        selectedNotes.length === notes.length ?
+        return selectedNotes.length === notes.length ?
         unselectAllNotes() :
         selectAllNotes(notes || []);
-    };
+    }
 
     render() {
         const { 
             notes, 
             selectedNotes,
-            filter,
+            filterType,
             fetchNotes,
             filterAction,
         } = this.props;
@@ -50,7 +50,7 @@ export default class ControlPanel extends Component<Props> {
         return (
             <Wrapper>
                 <Filter 
-                    filter={filter}
+                    filterType={filterType}
                     fetchNotes={fetchNotes}
                     filterAction={filterAction}
                 />

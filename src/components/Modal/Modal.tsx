@@ -22,7 +22,7 @@ export default class Modal extends Component<Props> {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
-    };
+    }
 
     handleClick() {
         const {
@@ -32,7 +32,7 @@ export default class Modal extends Component<Props> {
 
         action();
         onClose();
-    };
+    }
 
 	render() {
         const {

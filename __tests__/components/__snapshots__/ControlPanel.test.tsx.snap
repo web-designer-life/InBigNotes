@@ -4,8 +4,8 @@ exports[`ControlPanel component should render ControlPanel component 1`] = `
 <styled.div>
   <Filter
     fetchNotes={[Function]}
-    filter="title"
     filterAction={[Function]}
+    filterType="title"
   />
   <styled.div>
     <styled.p>
@@ -24,8 +24,8 @@ exports[`ControlPanel component should render ControlPanel component without sel
 <styled.div>
   <Filter
     fetchNotes={[Function]}
-    filter="title"
     filterAction={[Function]}
+    filterType="title"
   />
   <styled.div>
     <styled.p>

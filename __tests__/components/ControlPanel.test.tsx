@@ -1,6 +1,6 @@
-import React from 'react'
-import ControlPanel from '../../src/components/ControlPanel';
+import React from 'react';
 import { shallow } from 'enzyme';
+import ControlPanel from '../../src/components/ControlPanel';
 import { INote } from '../../src/interfaces';
 
 const controlPanelProps = {
@@ -16,11 +16,11 @@ const controlPanelProps = {
     selectedNotes: [
         'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
     ],
-    filter: 'title',
-    fetchNotes: (filter: string) => Function,
+    filterType: 'title',
+    fetchNotes: (filterType: string) => Function,
     selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
-    filterAction: (filter: string) => Function,
+    filterAction: (filterType: string) => Function,
 };
 
 const controlPanelPropsWithoutSelectedNotes = {
@@ -34,11 +34,11 @@ const controlPanelPropsWithoutSelectedNotes = {
         },
     ],
     selectedNotes: [],
-    filter: 'title',
-    fetchNotes: (filter: string) => Function,
+    filterType: 'title',
+    fetchNotes: (filterType: string) => Function,
     selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
-    filterAction: (filter: string) => Function,
+    filterAction: (filterType: string) => Function,
 };
 
 describe('ControlPanel component', () => {

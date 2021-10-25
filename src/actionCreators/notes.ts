@@ -1,9 +1,9 @@
 import actions from '../actions';
 import { INote } from '../interfaces';
 
-const fetchNotesData = (filter: string) => ({
+const fetchNotesData = (filterType: string) => ({
     type: actions.FETCH_NOTES_PENDING,
-    payload: { filter },
+    payload: { filterType },
 });
 
 const fetchNotesSuccess = (notes: INote[]) => ({
@@ -47,9 +47,9 @@ const unselectAllNotes = () => ({
     type: actions.UNSELECT_ALL_NOTES,
 });
 
-const filter = (filter: string) => ({
+const filter = (filterType: string) => ({
     type: actions.FILTER,
-    payload: { filter },
+    payload: { filterType },
 });
 
 export {

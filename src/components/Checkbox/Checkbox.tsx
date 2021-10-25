@@ -8,15 +8,12 @@ import {
 import checkMark from '../../images/check-mark.svg';
 
 interface Props {
-    className?: string,
     checked: boolean,
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    labelWrap?: boolean,
 };
 
 const Checkbox: React.FC<Props> = ({
     checked,
-    labelWrap = true,
     ...props
 }) => {
     const content = (

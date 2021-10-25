@@ -12,6 +12,12 @@ interface Props {
 };
 
 export default class ListNotes extends Component<Props> { 
+    constructor(props) {
+        super(props);
+        
+        this.state = {};
+    }
+    
     render() {
         const {
             notes, 

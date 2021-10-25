@@ -1,22 +1,22 @@
 import moment from 'moment';
 import { INote } from '../interfaces';
 
-const SORT_VALUE_TYPE = 'string';
 const DATETIME_FORMAT = 'DD.MM.YYYY HH:mm:ss';
 
-export const formatValueByFilterType = (value: any, filterType: string) => {
-    return typeof value[filterType] === SORT_VALUE_TYPE ? 
+export const formatValueByFilterType = (value: any, filterType: string) => (
+    typeof value[filterType] === 'string' ? 
     value[filterType].toLowerCase() : 
-    value[filterType];
-};
+    value[filterType]
+);
 
 export const sortByFilterType = (notes: INote[], filterType: string) => (
     notes.sort((prev: any, next: any) => {
         const prevNote = formatValueByFilterType(prev, filterType);
         const nextNote = formatValueByFilterType(next, filterType);
 
-        return (prevNote < nextNote) ? -1 :
-        (prevNote > nextNote) ? 1 : 0;
+        if (prevNote < nextNote) return -1;
+        if (prevNote > nextNote) return 1;
+        return 0;
     })
 );
 

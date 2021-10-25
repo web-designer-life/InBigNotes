@@ -6,7 +6,7 @@ export const initialState = {
     notes: [] as any,
     isLoading: false,
     selectedNotes: [] as any,
-    filter: TEXTS.FILTER.NAME.VALUE,
+    filterType: TEXTS.FILTER.NAME.VALUE,
     error: false,
 };
 
@@ -57,7 +57,7 @@ export default function notesReducer(state = initialState, { type, payload } : a
         case actions.FILTER:
             return {
                 ...state, 
-                filter: payload.filter,
+                filterType: payload.filterType,
             };
         case actions.FETCH_NOTES_FAIL:
         case actions.DELETE_NOTES_FAIL:

@@ -58,15 +58,17 @@ export default class Note extends Component<Props, State> {
         this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
         this.handleModalSubmitButtonClick = this.handleModalSubmitButtonClick.bind(this);
         this.handleModalCancelButtonClick = this.handleModalCancelButtonClick.bind(this);
-    };
+    }
     
     componentDidMount() {
         this.handleCancelChanges();
-    };
+    }
 
     handleNavigateToHome() {
-		this.props.navigateToPage(ROUTES.HOME);
-	};
+        const { navigateToPage } = this.props;
+
+		navigateToPage(ROUTES.HOME);
+	}
 
     handleChange(evt: { target: { name: string; value: any; }; }) {
 		const { name, value } = evt.target;
@@ -74,7 +76,7 @@ export default class Note extends Component<Props, State> {
         this.setState({
             [name]: value
         } as Pick<State, keyof State>);
-    };
+    }
 
     handleCheckSaveOrUpdateChanges() {
         const { title, text } = this.state;
@@ -84,7 +86,7 @@ export default class Note extends Component<Props, State> {
             ((title.trim() !== '' && text.trim() !== '') 
             && (title.trim() !== note?.title || text.trim() !== note?.text))
         );
-    };
+    }
 
     handleCheckCancelChanges() {
         const { title, text } = this.state;
@@ -94,13 +96,13 @@ export default class Note extends Component<Props, State> {
             ((title.trim() !== note?.title && note?.title) || (text.trim() !== note?.text && note?.text))
             || ((title.trim() !== '' && !note?.title) || (text.trim() !== '' && !note?.text))
         );
-    };
+    }
 
     handleCheckButtonAction() {
-        this.handleCheckCancelChanges() ? 
+        return this.handleCheckCancelChanges() ? 
         this.handleModalBackButtonClick() : 
         this.handleNavigateToHome();
-    };
+    }
 
     handleCancelChanges() {
         const { note } = this.props;
@@ -109,19 +111,13 @@ export default class Note extends Component<Props, State> {
             title: note?.title || '',
             text: note?.text || '',
         });
-    };
-
-    toggleModal() {
-		this.setState({
-			active: !this.state.active,
-		} as Pick<State, keyof State>);
-	};
+    }
 
     handleSetAction(func: () => void) {
 		this.setState({
 			action: func,
 		} as Pick<State, keyof State>);
-	};
+	}
 
     handleModalBackButtonClick() {
         this.setState({
@@ -132,18 +128,20 @@ export default class Note extends Component<Props, State> {
 
         this.handleSetAction(this.handleNavigateToHome);
         this.toggleModal();
-    };
+    }
 
     handleModalSubmitButtonClick() {
+        const { typeName } = this.props;
+
         this.setState({
-			modalText: this.props.typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
-            buttonConfirmText: this.props.typeName,
+			modalText: typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
+            buttonConfirmText: typeName,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
 		} as Pick<State, keyof State>);
         
         this.handleSetAction(this.onSubmit);
         this.toggleModal();
-    };
+    }
 
     handleModalCancelButtonClick() {
         this.setState({
@@ -154,22 +152,30 @@ export default class Note extends Component<Props, State> {
         
         this.handleSetAction(this.handleCancelChanges);
         this.toggleModal();
-    };
+    }
 
     onSubmit() {
-        const { addOrUpdateNote } = this.props;
+        const { addOrUpdateNote, note } = this.props;
         const { title, text } = this.state;
 
-        const note = {                    
-            id: this.props.note?.id || uuidv4(),
+        const completeNote = {                    
+            id: note?.id || uuidv4(),
             title: title.trim(),
             text: text.trim(),
-            created_at: this.props.note?.created_at || Date.now(),
+            created_at: note?.created_at || Date.now(),
             updated_at: Date.now(),
         };
 
-        addOrUpdateNote(note);
-    };
+        addOrUpdateNote(completeNote);
+    }
+
+    toggleModal() {
+        const { active } = this.state;
+
+		this.setState({
+			active: !active,
+		} as Pick<State, keyof State>);
+	}
 
     render() {
         const { typeName } = this.props;

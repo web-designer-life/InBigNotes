@@ -25,8 +25,8 @@ exports[`Home component should render Home component 1`] = `
   </styled.div>
   <ControlPanel
     fetchNotes={[Function]}
-    filter="title"
     filterAction={[Function]}
+    filterType="title"
     notes={
       Array [
         Object {

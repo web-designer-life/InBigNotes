@@ -6,7 +6,6 @@ import { createBrowserHistory, createMemoryHistory } from 'history';
 import { rootReducer } from '../reducers';
 import rootSaga from '../sagas';
 
-let history;
 let createHistory;
 
 if (typeof document !== 'undefined') {
@@ -15,7 +14,7 @@ if (typeof document !== 'undefined') {
 	createHistory = createMemoryHistory;
 }
 
-history = createHistory();
+const history = createHistory();
 
 export default history;
 

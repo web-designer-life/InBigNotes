@@ -1,6 +1,6 @@
-import React from 'react'
-import Home from '../../src/components/Home';
+import React from 'react';
 import { shallow } from 'enzyme';
+import Home from '../../src/components/Home';
 import { INote } from '../../src/interfaces';
 
 const homeProps = {
@@ -16,14 +16,14 @@ const homeProps = {
     selectedNotes: [
         'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
     ],
-    filter: 'title',
-    fetchNotes: (filter: string) => Function,
+    filterType: 'title',
+    fetchNotes: (filterType: string) => Function,
     deleteNotes: (notes: INote[]) => Function,
     addSelectedNote: (note: INote) => Function,
     removeUnselectedNote: (note: INote) => Function,
     selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
-    filterAction: (filter: string) => Function,
+    filterAction: (filterType: string) => Function,
     navigateToPage: (path: string) => Function,
 };
 
@@ -32,14 +32,14 @@ const homePropsWithoutNotes = {
     selectedNotes: [
         'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
     ],
-    filter: 'title',
-    fetchNotes: (filter: string) => Function,
+    filterType: 'title',
+    fetchNotes: (filterType: string) => Function,
     deleteNotes: (notes: INote[]) => Function,
     addSelectedNote: (note: INote) => Function,
     removeUnselectedNote: (note: INote) => Function,
     selectAllNotes: (notes: INote[]) => Function,
     unselectAllNotes: () => Function,
-    filterAction: (filter: string) => Function,
+    filterAction: (filterType: string) => Function,
     navigateToPage: (path: string) => Function,
 };
 

@@ -26,11 +26,13 @@ export default class NoteComponent extends Component<Props> {
 
         this.handleNavigateToNote = this.handleNavigateToNote.bind(this);
         this.handleSelectOrUnselectNote = this.handleSelectOrUnselectNote.bind(this);
-    };
+    }
 
     handleNavigateToNote() {
-        this.props.navigateToPage(`${ROUTES.NOTE}/${this.props.note.id}`);
-    };
+        const { navigateToPage, note } = this.props;
+        
+        navigateToPage(`${ROUTES.NOTE}/${note.id}`);
+    }
 
     handleSelectOrUnselectNote() {
         const { 
@@ -40,10 +42,10 @@ export default class NoteComponent extends Component<Props> {
             removeUnselectedNote,
         } = this.props;
 
-        selectedNotes.includes(note.id) ?
+        return selectedNotes.includes(note.id) ?
         removeUnselectedNote(note) :
         addSelectedNote(note);
-    };
+    }
     
     render() {
         const { 

@@ -11,7 +11,13 @@ interface Props {
     color: string,
 };
 
-export default class Button extends Component<Props> {    
+export default class Button extends Component<Props> {
+    constructor(props) {
+        super(props);
+        
+        this.state = {};
+    }
+
     render() {
         const {
             type, 

@@ -1,6 +1,6 @@
-import React from 'react'
-import ListNotes from '../../src/components/ListNotes';
+import React from 'react';
 import { shallow } from 'enzyme';
+import ListNotes from '../../src/components/ListNotes';
 import { INote } from '../../src/interfaces';
 
 const ListNotesProps = {

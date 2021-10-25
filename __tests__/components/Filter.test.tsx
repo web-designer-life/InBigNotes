@@ -1,11 +1,11 @@
-import React from 'react'
-import Filter from '../../src/components/Filter';
+import React from 'react';
 import { shallow } from 'enzyme';
+import Filter from '../../src/components/Filter';
 
 const filterProps = {
-    filter: 'title',
-    fetchNotes: (filter: string) => Function,
-    filterAction: (filter: string) => Function,
+    filterType: 'title',
+    fetchNotes: (filterType: string) => Function,
+    filterAction: (filterType: string) => Function,
 };
 
 describe('Filter component', () => {

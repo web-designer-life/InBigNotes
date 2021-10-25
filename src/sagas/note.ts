@@ -25,7 +25,7 @@ export function* fetchNote({ payload } : any) {
         
         const notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
-        const note = notes.find((note: INote) => note.id === id);
+        const note = notes.find((currentNote: INote) => currentNote.id === id);
 
         if (!note) {
             throw new Error('No note');

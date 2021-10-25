@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { GlobalStyle } from '../globalStyle';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
+import { GlobalStyle } from '../globalStyle';
 import HomeContainer from './HomeContainer';
 import NoteCreation from './NoteCreation';
 import NoteView from './NoteView';
@@ -13,6 +13,12 @@ interface Props {
 };
 
 export default class App extends Component<Props> {
+    constructor(props) {
+        super(props);
+        
+        this.state = {};
+    }
+      
     render() {
         const { history } = this.props;
 

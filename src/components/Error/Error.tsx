@@ -12,6 +12,12 @@ interface Props {
 };
 
 export default class Error extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+        
+        this.state = {};
+    }
+
 	render() {
         const { navigateToPage } = this.props;
         return (
@@ -25,5 +31,5 @@ export default class Error extends Component<Props> {
                 />
             </Container>
         );
-    };
+    }
 };

@@ -29,7 +29,7 @@ describe('Note actionCreators', () => {
         expect(fetchNotesDataActionCreator).toEqual({ 
             type: actions.FETCH_NOTES_PENDING, 
             payload: {
-                filter: TEXTS.FILTER.NAME.VALUE,
+                filterType: TEXTS.FILTER.NAME.VALUE,
             },
         });
     });
@@ -133,7 +133,7 @@ describe('Note actionCreators', () => {
         expect(filterActionCreator).toEqual({ 
             type: actions.FILTER, 
             payload: {
-                filter: TEXTS.FILTER.NAME.VALUE,
+                filterType: TEXTS.FILTER.NAME.VALUE,
             },
         });
     });

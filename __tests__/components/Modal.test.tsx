@@ -1,6 +1,6 @@
-import React from 'react'
-import Modal from '../../src/components/Modal';
+import React from 'react';
 import { shallow } from 'enzyme';
+import Modal from '../../src/components/Modal';
 import { TEXTS } from '../../src/constants';
 
 const activeModalProps = {

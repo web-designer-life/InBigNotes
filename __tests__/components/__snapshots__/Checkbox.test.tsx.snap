@@ -10,6 +10,12 @@ exports[`Checkbox component should render active Checkbox component 1`] = `
   cursor: pointer;
 }
 
+.c4 {
+  width: 32px;
+  height: 24px;
+  fill: none;
+}
+
 .c1 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -47,12 +53,6 @@ exports[`Checkbox component should render active Checkbox component 1`] = `
   visibility: visible;
 }
 
-.c4 {
-  width: 32px;
-  height: 24px;
-  fill: none;
-}
-
 <label>
   <div
     className="c0"
@@ -84,6 +84,12 @@ exports[`Checkbox component should render inactive Checkbox component 1`] = `
 
 .c0:hover {
   cursor: pointer;
+}
+
+.c4 {
+  width: 32px;
+  height: 24px;
+  fill: none;
 }
 
 .c1 {
@@ -125,12 +131,6 @@ exports[`Checkbox component should render inactive Checkbox component 1`] = `
 
 .c2 .c3 {
   visibility: hidden;
-}
-
-.c4 {
-  width: 32px;
-  height: 24px;
-  fill: none;
 }
 
 <label>

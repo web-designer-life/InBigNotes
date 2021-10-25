@@ -1,7 +1,7 @@
-import React from 'react'
-import Checkbox from '../../src/components/Checkbox';
+import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
+import Checkbox from '../../src/components/Checkbox';
 
 const activeCheckboxProps = {
     checked: true,

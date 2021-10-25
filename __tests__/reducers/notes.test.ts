@@ -1,6 +1,5 @@
 import actions from '../../src/actions';
-import reducer from '../../src/reducers/notes';
-import { initialState } from '../../src/reducers/notes';
+import reducer, { initialState } from '../../src/reducers/notes';
 import { TEXTS } from '../../src/constants';
 
 const ID = 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3';
@@ -18,7 +17,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -34,7 +33,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: true,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -57,7 +56,7 @@ describe('reducer', () => {
             ],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -80,7 +79,7 @@ describe('reducer', () => {
             ],
             isLoading: true,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -96,7 +95,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -117,7 +116,7 @@ describe('reducer', () => {
             selectedNotes: [
                 ID,
             ],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -129,7 +128,7 @@ describe('reducer', () => {
             selectedNotes: [
                 ID,
             ],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         };
 
@@ -144,7 +143,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -167,7 +166,7 @@ describe('reducer', () => {
             selectedNotes: [
                 ID,
             ],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -183,7 +182,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });
@@ -194,7 +193,7 @@ describe('reducer', () => {
         state = reducer(state, {
             type: actions.FILTER,
             payload: {
-                filter: TEXTS.FILTER.DATE_CREATED.VALUE,
+                filterType: TEXTS.FILTER.DATE_CREATED.VALUE,
             },
         });
 
@@ -202,7 +201,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.DATE_CREATED.VALUE,
+            filterType: TEXTS.FILTER.DATE_CREATED.VALUE,
             error: false,
         });
     });
@@ -218,7 +217,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: true,
         });
     });
@@ -234,7 +233,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: true,
         });
     });
@@ -250,7 +249,7 @@ describe('reducer', () => {
             notes: [],
             isLoading: false,
             selectedNotes: [],
-            filter: TEXTS.FILTER.NAME.VALUE,
+            filterType: TEXTS.FILTER.NAME.VALUE,
             error: false,
         });
     });

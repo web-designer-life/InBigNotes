@@ -9,15 +9,15 @@ interface Props {
     notes: INote[],
     isLoading: boolean,
     selectedNotes: string[],
-    filter: string,
+    filterType: string,
     error: boolean,
-    fetchNotesAction(filter: string): Function,
+    fetchNotesAction(filterType: string): Function,
     deleteNotesAction(notes: INote[]): Function,
     addSelectedNoteAction(note: INote): Function,
     removeUnselectedNoteAction(note: INote): Function,
     selectAllNotesAction(notes: INote[]): Function,
     unselectAllNotesAction(): Function,
-    filterAction(filter: string): Function,
+    filterAction(filterType: string): Function,
     navigateToPageAction(path: string): Function,
     resetStoreAction(): Function,
 };
@@ -27,26 +27,32 @@ export default class HomeContainer extends Component<Props> {
         super(props);
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    };
+    }
     
     componentDidMount() {
-        this.props.fetchNotesAction(this.props.filter);
-    };
+        const { fetchNotesAction, filterType } = this.props;
+
+        fetchNotesAction(filterType);
+    }
     
     componentWillUnmount() {
-        this.props.resetStoreAction();
-    };
+        const { resetStoreAction } = this.props;
+
+        resetStoreAction();
+    }
 
     handleNavigateToHome() {
-		this.props.navigateToPageAction(ROUTES.HOME);
-	};
+        const { navigateToPageAction } = this.props;
+
+		navigateToPageAction(ROUTES.HOME);
+	}
 
     render() {
         const {
             notes,
             isLoading, 
             selectedNotes,
-            filter,
+            filterType,
             error,
             fetchNotesAction,
             deleteNotesAction,
@@ -70,7 +76,7 @@ export default class HomeContainer extends Component<Props> {
                     <Home 
                         notes={notes}
                         selectedNotes={selectedNotes}
-                        filter={filter}
+                        filterType={filterType}
                         fetchNotes={fetchNotesAction}
                         deleteNotes={deleteNotesAction}
                         addSelectedNote={addSelectedNoteAction}

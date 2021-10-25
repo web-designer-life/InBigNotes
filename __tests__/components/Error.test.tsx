@@ -1,6 +1,6 @@
-import React from 'react'
-import Error from '../../src/components/Error';
+import React from 'react';
 import { shallow } from 'enzyme';
+import Error from '../../src/components/Error';
 
 const errorProps = {
     navigateToPage: () => {},

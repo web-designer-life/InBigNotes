@@ -18,15 +18,19 @@ export default class NoteCreation extends Component<Props> {
         super(props);
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    };
+    }
     
     componentWillUnmount() {
-        this.props.resetStoreAction();
-    };
+        const { resetStoreAction } = this.props;
+
+        resetStoreAction();
+    }
 
     handleNavigateToHome() {
-		this.props.navigateToPageAction(ROUTES.HOME);
-	};
+        const { navigateToPageAction } = this.props;
+
+		navigateToPageAction(ROUTES.HOME);
+	}
 
     render() {
         const { 

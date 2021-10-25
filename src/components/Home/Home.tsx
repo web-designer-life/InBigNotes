@@ -20,14 +20,14 @@ import {
 interface Props {
     notes: INote[],
     selectedNotes: string[],
-    filter: string,
-    fetchNotes(filter: string): Function,
+    filterType: string,
+    fetchNotes(filterType: string): Function,
     deleteNotes(notes: INote[]): Function,
     addSelectedNote(note: INote): Function,
     removeUnselectedNote(note: INote): Function,
     selectAllNotes(notes: INote[]): Function,
     unselectAllNotes(): Function,
-    filterAction(filter: string): Function,
+    filterAction(filterType: string): Function,
     navigateToPage(path: string): Function,
 };
 
@@ -37,7 +37,7 @@ interface State {
     buttonCancelText: string,
     active: boolean,
     action: () => void,
-}
+};
 
 export default class Home extends Component<Props, State> {
     constructor(props: Props) {
@@ -55,23 +55,19 @@ export default class Home extends Component<Props, State> {
         this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
         this.handleDeleteNotes = this.handleDeleteNotes.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-    };    
-
-    toggleModal() {
-		this.setState({
-			active: !this.state.active,
-		} as Pick<State, keyof State>);
-	};
+    }
 
     handleNavigateToNoteCreator() {
-		this.props.navigateToPage(ROUTES.NOTE_CREATE);
-	};
+        const { navigateToPage } = this.props;
+
+		navigateToPage(ROUTES.NOTE_CREATE);
+	}
 
     handleSetAction(func: Function) {
 		this.setState({
 			action: func,
 		} as Pick<State, keyof State>);
-	};
+	}
 
     handleModalBackButtonClick() {
         this.setState({
@@ -100,13 +96,21 @@ export default class Home extends Component<Props, State> {
 
         unselectAllNotes();
         deleteNotes(completeNotes);
-    };
+    }
+
+    toggleModal() {
+        const { active } = this.state;
+
+		this.setState({
+			active: !active,
+		} as Pick<State, keyof State>);
+	}
     
     render() {
         const { 
             notes, 
             selectedNotes,
-            filter,
+            filterType,
             fetchNotes,
             addSelectedNote, 
             removeUnselectedNote,
@@ -149,7 +153,7 @@ export default class Home extends Component<Props, State> {
                 <ControlPanel 
                     notes={notes}
                     selectedNotes={selectedNotes}
-                    filter={filter}
+                    filterType={filterType}
                     fetchNotes={fetchNotes}
                     selectAllNotes={selectAllNotes}
                     unselectAllNotes={unselectAllNotes}
