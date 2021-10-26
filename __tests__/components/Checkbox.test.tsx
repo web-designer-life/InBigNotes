@@ -16,11 +16,13 @@ const inactiveCheckboxProps = {
 describe('Checkbox component', () => {
     it('should render active Checkbox component', () => {
         const component = renderer.create(<Checkbox {...activeCheckboxProps} />);
+
         expect(component).toMatchSnapshot();
     });
 
     it('should render inactive Checkbox component', () => {
         const component = renderer.create(<Checkbox {...inactiveCheckboxProps} />);
+
         expect(component).toMatchSnapshot();
     });
 });

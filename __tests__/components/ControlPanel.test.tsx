@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import ControlPanel from '../../src/components/ControlPanel';
 import { INote } from '../../src/interfaces';
 
@@ -44,11 +44,35 @@ const controlPanelPropsWithoutSelectedNotes = {
 describe('ControlPanel component', () => {
     it('should render ControlPanel component', () => {
         const component = shallow(<ControlPanel {...controlPanelProps} />);
+
         expect(component).toMatchSnapshot();
     });
 
     it('should render ControlPanel component without selectedNotes', () => {
         const component = shallow(<ControlPanel {...controlPanelPropsWithoutSelectedNotes} />);
+
         expect(component).toMatchSnapshot();
+    });
+
+    describe('handlers', () => {
+        describe('handleSelectOrUnselectNotes', () => {
+            it('with selectedNotes', () => {
+                const component = mount(<ControlPanel {...controlPanelProps} />);
+
+                const input = component.find('input').first();
+                input.simulate('change', { preventDefault: jest.fn });
+
+                expect(component).toMatchSnapshot();
+            });
+
+            it('without selectedNotes', () => {
+                const component = mount(<ControlPanel {...controlPanelPropsWithoutSelectedNotes} />);
+
+                const input = component.find('input').first();
+                input.simulate('change', { preventDefault: jest.fn });
+
+                expect(component).toMatchSnapshot();
+            });
+        });
     });
 });

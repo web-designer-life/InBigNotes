@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Home from '../../src/components/Home';
 import { INote } from '../../src/interfaces';
 
@@ -27,11 +27,9 @@ const homeProps = {
     navigateToPage: (path: string) => Function,
 };
 
-const homePropsWithoutNotes = {
+const homePropsWithoutSelectedNotes = {
     notes: [],
-    selectedNotes: [
-        'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
-    ],
+    selectedNotes: [],
     filterType: 'title',
     fetchNotes: (filterType: string) => Function,
     deleteNotes: (notes: INote[]) => Function,
@@ -46,11 +44,51 @@ const homePropsWithoutNotes = {
 describe('Home component', () => {
     it('should render Home component', () => {
         const component = shallow(<Home {...homeProps} />);
+
         expect(component).toMatchSnapshot();
     });
 
     it('should render Home component without notes', () => {
-        const component = shallow(<Home {...homePropsWithoutNotes} />);
+        const component = shallow(<Home {...homePropsWithoutSelectedNotes} />);
+
         expect(component).toMatchSnapshot();
+    });
+
+    describe('handlers', () => {
+        describe('handleNavigateToNoteCreator', () => {
+            it('should call method', () => {
+                const component = mount(<Home {...homePropsWithoutSelectedNotes} />);
+
+                const createNoteButton = component.find('button[color="green"]').first();
+                createNoteButton.simulate('click');
+
+                expect(component).toMatchSnapshot();
+            });
+        });
+
+        describe('handleModalBackButtonClick', () => {
+            it('should call method', () => {
+                const component = mount(<Home {...homeProps} />);
+
+                const deleteNotesButton = component.find('button[color="red"]').first();
+                deleteNotesButton.simulate('click');
+
+                expect(component).toMatchSnapshot();
+            });
+        });
+
+        describe('handleDeleteNotes', () => {
+            it('should call method', () => {
+                const component = mount(<Home {...homeProps} />);
+
+                const deleteNotesButton = component.find('button[color="red"]').first();
+                deleteNotesButton.simulate('click');
+
+                const modalConfirmButton = component.find('button[color="green"]').last();
+                modalConfirmButton.simulate('click');
+
+                expect(component).toMatchSnapshot();
+            });
+        });
     });
 });

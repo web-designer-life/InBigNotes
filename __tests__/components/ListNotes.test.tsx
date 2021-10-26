@@ -25,6 +25,7 @@ const ListNotesProps = {
 describe('ListNotes component', () => {
     it('should render ListNotes component', () => {
         const component = shallow(<ListNotes {...ListNotesProps} />);
+
         expect(component).toMatchSnapshot();
     });
 });

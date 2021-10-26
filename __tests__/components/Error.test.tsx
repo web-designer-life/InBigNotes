@@ -9,6 +9,7 @@ const errorProps = {
 describe('Error component', () => {
     it('should render Error component', () => {
         const component = shallow(<Error {...errorProps} />);
+
         expect(component).toMatchSnapshot();
     });
 });

@@ -6,7 +6,7 @@ exports[`Loader component should render Loader component 1`] = `
     <img
       alt="Loading..."
       height={75}
-      src={null}
+      src="test-file-stub"
       width={75}
     />
     <styled.p>

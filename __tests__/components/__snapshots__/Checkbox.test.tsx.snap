@@ -53,25 +53,23 @@ exports[`Checkbox component should render active Checkbox component 1`] = `
   visibility: visible;
 }
 
-<label>
+<label
+  className="c0"
+>
+  <input
+    checked={true}
+    className="c1"
+    onChange={[Function]}
+    type="checkbox"
+  />
   <div
-    className="c0"
+    checked={true}
+    className="c2"
   >
-    <input
-      checked={true}
-      className="c1"
-      onChange={[Function]}
-      type="checkbox"
+    <img
+      className="c3 c4"
+      src="test-file-stub"
     />
-    <div
-      checked={true}
-      className="c2"
-    >
-      <img
-        className="c3 c4"
-        src={null}
-      />
-    </div>
   </div>
 </label>
 `;
@@ -133,25 +131,23 @@ exports[`Checkbox component should render inactive Checkbox component 1`] = `
   visibility: hidden;
 }
 
-<label>
+<label
+  className="c0"
+>
+  <input
+    checked={false}
+    className="c1"
+    onChange={[Function]}
+    type="checkbox"
+  />
   <div
-    className="c0"
+    checked={false}
+    className="c2"
   >
-    <input
-      checked={false}
-      className="c1"
-      onChange={[Function]}
-      type="checkbox"
+    <img
+      className="c3 c4"
+      src="test-file-stub"
     />
-    <div
-      checked={false}
-      className="c2"
-    >
-      <img
-        className="c3 c4"
-        src={null}
-      />
-    </div>
   </div>
 </label>
 `;

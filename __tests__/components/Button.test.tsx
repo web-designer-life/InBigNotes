@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import 'jest-styled-components';
 import Button from '../../src/components/Button';
 import {
@@ -28,29 +28,36 @@ const redButtonProps = {
 describe('Button component', () => {
     it('should render green Button component', () => {
         const component = renderer.create(<Button {...greenButtonProps} />).toJSON();
+
         expect(component).toHaveStyleRule('background-color', '#00AB00');
         expect(component).toMatchSnapshot();
     });
 
     it('should render red Button component', () => {
         const component = renderer.create(<Button {...redButtonProps} />).toJSON();
+
         expect(component).toHaveStyleRule('background-color', '#FF0000');
         expect(component).toMatchSnapshot();
     });
 
-    it('should call onClick method', () => {
-        const mockCallBack = jest.fn();
-        const component = shallow(
-            <Button
-                onClick={mockCallBack}
-                type={BUTTON_TYPES.BUTTON}
-                disabled={false}
-                text={TEXTS.BUTTON.BACK}
-                color={COLORS.BUTTON.RED}
-            />
-        );
-        expect(mockCallBack.mock.calls.length).toBe(0);
-        component.simulate('click');
-        expect(mockCallBack.mock.calls.length).toBe(1);
+    describe('handlers', () => {
+        describe('onClick', () => {
+            it('should call method', () => {
+                const mockCallBack = jest.fn();
+                const component = mount(
+                    <Button
+                        type={BUTTON_TYPES.BUTTON}
+                        disabled={false}
+                        onClick={mockCallBack}
+                        text={TEXTS.BUTTON.DELETE}
+                        color={COLORS.BUTTON.RED}
+                    />
+                );
+
+                component.simulate('click');
+
+                expect(mockCallBack.mock.calls.length).toEqual(1);
+            });
+        });
     });
 });

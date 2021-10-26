@@ -92,7 +92,7 @@ export default class Home extends Component<Props, State> {
             (note: INote) => !selectedNotes.some(
                 (selectedNote: String) => note.id === selectedNote
             )
-        ) || [];
+        );
 
         unselectAllNotes();
         deleteNotes(completeNotes);

@@ -91,7 +91,6 @@ describe('Utils', () => {
     describe('sortByFilterType', () => {
         it('sorted notes equal SORTED_NOTES', () => {
             const cloneNotes = NOTES.slice();
-
             const completeValue = sortByFilterType(cloneNotes, TEXTS.FILTER.NAME.VALUE);
 
             expect(JSON.stringify(completeValue)).toEqual(JSON.stringify(SORTED_NOTES));
