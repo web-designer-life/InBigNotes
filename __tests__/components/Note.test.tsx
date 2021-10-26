@@ -22,6 +22,12 @@ const notePropsWithoutNote = {
     navigateToPage: (path: string) => Function,
 };
 
+const notePropsWithoutNoteAndWithUpdateTypeName = {
+    typeName: 'Update',
+    addOrUpdateNote: (note: INote) => Function,
+    navigateToPage: (path: string) => Function,
+};
+
 describe('Note component', () => {
     it('should render Note component', () => {
         const component = shallow(<Note {...noteProps} />);
@@ -124,14 +130,40 @@ describe('Note component', () => {
                 const inputTitle = component.find('input').first();
                 inputTitle.simulate('change', { preventDefault: jest.fn, target: { name: 'title', value: 'Army1', } });
 
+                expect(component).toMatchSnapshot();
+            });
+
+            it('should call method with note and with changes', () => {
+                const component = mount(<Note {...notePropsWithoutNote} />);
+
+                const inputTitle = component.find('input').first();
+                inputTitle.simulate('change', { preventDefault: jest.fn, target: { name: 'title', value: 'Army', } });
+
+                const textareaText = component.find('textarea').first();
+                textareaText.simulate('change', { preventDefault: jest.fn, target: { name: 'text', value: 'Should I...', } });
+
+                expect(component).toMatchSnapshot();
+            });
+        });
+
+        describe('handleModalSubmitButtonClick', () => {
+            it('should call method with note and with changes', () => {
+                const component = mount(<Note {...noteProps} />);
+
+                const inputTitle = component.find('input').first();
+                inputTitle.simulate('change', { preventDefault: jest.fn, target: { name: 'title', value: 'Army1', } });
+
+                const textareaText = component.find('textarea').first();
+                textareaText.simulate('change', { preventDefault: jest.fn, target: { name: 'text', value: 'Should I...', } });
+
                 const addOrUpdateNoteButton = component.find('button[color="green"]').first();
                 addOrUpdateNoteButton.simulate('click');
 
                 expect(component).toMatchSnapshot();
             });
 
-            it('should call method with note and have changes in text', () => {
-                const component = mount(<Note {...noteProps} />);
+            it('should call method without note and with changes', () => {
+                const component = mount(<Note {...notePropsWithoutNoteAndWithUpdateTypeName} />);
 
                 const inputTitle = component.find('input').first();
                 inputTitle.simulate('change', { preventDefault: jest.fn, target: { name: 'title', value: 'Army', } });
@@ -141,6 +173,43 @@ describe('Note component', () => {
 
                 const addOrUpdateNoteButton = component.find('button[color="green"]').first();
                 addOrUpdateNoteButton.simulate('click');
+
+                expect(component).toMatchSnapshot();
+            });
+        });
+
+        describe('handleCheckCancelChanges', () => {
+            it('should call method with note and with changes', () => {
+                const component = mount(<Note {...noteProps} />);
+
+                const inputTitle = component.find('input').first();
+                inputTitle.simulate('change', { preventDefault: jest.fn, target: { name: 'title', value: 'Army1', } });
+
+                const textareaText = component.find('textarea').first();
+                textareaText.simulate('change', { preventDefault: jest.fn, target: { name: 'text', value: 'Should I...', } });
+
+                expect(component).toMatchSnapshot();
+            });
+
+            it('should call method with note and with changes', () => {
+                const component = mount(<Note {...notePropsWithoutNote} />);
+
+                expect(component).toMatchSnapshot();
+            });
+        });
+
+        describe('handleModalCancelButtonClick', () => {
+            it('should call method', () => {
+                const component = mount(<Note {...noteProps} />);
+
+                const inputTitle = component.find('input').first();
+                inputTitle.simulate('change', { preventDefault: jest.fn, target: { name: 'title', value: 'Army1', } });
+
+                const textareaText = component.find('textarea').first();
+                textareaText.simulate('change', { preventDefault: jest.fn, target: { name: 'text', value: 'Should I...', } });
+
+                const resetButton = component.find('button[color="red"]').last();
+                resetButton.simulate('click');
 
                 expect(component).toMatchSnapshot();
             });
