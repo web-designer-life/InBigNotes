@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Error from '../../src/components/Error';
 
 const errorProps = {
-    navigateToPage: () => {},
+    navigateToPage: () => { },
 };
 
 describe('Error component', () => {

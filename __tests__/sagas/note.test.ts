@@ -1,22 +1,22 @@
-import { 
-    takeEvery, 
-    all, 
-    put, 
-    delay, 
+import {
+    takeEvery,
+    all,
+    put,
+    delay,
 } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
-import noteSaga, { 
-    fetchNote, 
-    addNote, 
-    updateNote, 
+import noteSaga, {
+    fetchNote,
+    addNote,
+    updateNote,
 } from '../../src/sagas/note';
-import { 
-    fetchNoteSuccess, 
+import {
+    fetchNoteSuccess,
     fetchNoteFail,
     addNoteSuccess,
-    addNoteFail,  
-    updateNoteSuccess, 
-    updateNoteFail, 
+    addNoteFail,
+    updateNoteSuccess,
+    updateNoteFail,
 } from '../../src/actionCreators/note';
 import actions from '../../src/actions';
 import { ROUTES, TEXTS } from '../../src/constants';
@@ -54,9 +54,9 @@ describe('noteSaga sagas', () => {
     describe('fetchNote', () => {
         it('Success action', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(NOTES));
-    
+
             const generator = fetchNote({ payload: { id: ID } });
-    
+
             expect(generator.next().value).toEqual(
                 delay(1500)
             );
@@ -64,10 +64,10 @@ describe('noteSaga sagas', () => {
                 put(fetchNoteSuccess(NOTE))
             );
         });
-    
-        it('Error action', () => {    
+
+        it('Error action', () => {
             const generator = fetchNote({ payload: { id: ID } });
-    
+
             expect(generator.next().value).toEqual(
                 delay(1500)
             );
@@ -78,9 +78,9 @@ describe('noteSaga sagas', () => {
     });
 
     describe('addNote', () => {
-        it('Success action with note', () => {    
+        it('Success action with note', () => {
             const generator = addNote({ payload: { note: NOTE } });
-            
+
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
@@ -91,8 +91,8 @@ describe('noteSaga sagas', () => {
                 put(addNoteSuccess())
             );
         });
-    
-        it('Error action', () => {    
+
+        it('Error action', () => {
             const generator = addNote({ payload: {} });
 
             expect(generator.next().value).toEqual(
@@ -108,11 +108,11 @@ describe('noteSaga sagas', () => {
     });
 
     describe('updateNote', () => {
-        it('Success action with notes', () => {    
+        it('Success action with notes', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(NOTES));
 
             const generator = updateNote({ payload: { note: NOTE } });
-            
+
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
@@ -124,9 +124,9 @@ describe('noteSaga sagas', () => {
             );
         });
 
-        it('Success action without notes', () => {    
+        it('Success action without notes', () => {
             const generator = updateNote({ payload: { note: NOTE } });
-            
+
             expect(generator.next().value).toEqual(
                 put(push(ROUTES.HOME))
             );
@@ -137,8 +137,8 @@ describe('noteSaga sagas', () => {
                 put(updateNoteSuccess())
             );
         });
-    
-        it('Error action', () => {    
+
+        it('Error action', () => {
             const generator = updateNote({ payload: {} });
 
             expect(generator.next().value).toEqual(

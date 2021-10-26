@@ -1,4 +1,4 @@
-import { 
+import {
     fetchNotesData,
     fetchNotesSuccess,
     fetchNotesFail,
@@ -9,7 +9,7 @@ import {
     removeUnselectedNote,
     selectAllNotes,
     unselectAllNotes,
-    filter, 
+    filter,
 } from '../../src/actionCreators/notes';
 import actions from '../../src/actions';
 import { TEXTS } from '../../src/constants';
@@ -26,8 +26,8 @@ describe('Note actionCreators', () => {
     it('fetchNotesData', () => {
         const fetchNotesDataActionCreator = fetchNotesData(TEXTS.FILTER.NAME.VALUE);
 
-        expect(fetchNotesDataActionCreator).toEqual({ 
-            type: actions.FETCH_NOTES_PENDING, 
+        expect(fetchNotesDataActionCreator).toEqual({
+            type: actions.FETCH_NOTES_PENDING,
             payload: {
                 filterType: TEXTS.FILTER.NAME.VALUE,
             },
@@ -37,8 +37,8 @@ describe('Note actionCreators', () => {
     it('fetchNotesSuccess', () => {
         const fetchNotesSuccessActionCreator = fetchNotesSuccess([NOTE]);
 
-        expect(fetchNotesSuccessActionCreator).toEqual({ 
-            type: actions.FETCH_NOTES_SUCCESS, 
+        expect(fetchNotesSuccessActionCreator).toEqual({
+            type: actions.FETCH_NOTES_SUCCESS,
             payload: {
                 notes: [
                     NOTE,
@@ -50,16 +50,16 @@ describe('Note actionCreators', () => {
     it('fetchNotesFail', () => {
         const fetchNotesFailActionCreator = fetchNotesFail();
 
-        expect(fetchNotesFailActionCreator).toEqual({ 
-            type: actions.FETCH_NOTES_FAIL, 
+        expect(fetchNotesFailActionCreator).toEqual({
+            type: actions.FETCH_NOTES_FAIL,
         });
     });
 
     it('deleteNotesData', () => {
         const deleteNotesDataActionCreator = deleteNotesData([NOTE]);
 
-        expect(deleteNotesDataActionCreator).toEqual({ 
-            type: actions.DELETE_NOTES_PENDING, 
+        expect(deleteNotesDataActionCreator).toEqual({
+            type: actions.DELETE_NOTES_PENDING,
             payload: {
                 notes: [
                     NOTE,
@@ -71,24 +71,24 @@ describe('Note actionCreators', () => {
     it('deleteNotesSuccess', () => {
         const deleteNotesSuccessActionCreator = deleteNotesSuccess();
 
-        expect(deleteNotesSuccessActionCreator).toEqual({ 
-            type: actions.DELETE_NOTES_SUCCESS, 
+        expect(deleteNotesSuccessActionCreator).toEqual({
+            type: actions.DELETE_NOTES_SUCCESS,
         });
     });
 
     it('deleteNotesFail', () => {
         const deleteNotesFailActionCreator = deleteNotesFail();
 
-        expect(deleteNotesFailActionCreator).toEqual({ 
-            type: actions.DELETE_NOTES_FAIL, 
+        expect(deleteNotesFailActionCreator).toEqual({
+            type: actions.DELETE_NOTES_FAIL,
         });
     });
 
     it('addSelectedNote', () => {
         const addSelectedNoteActionCreator = addSelectedNote(NOTE);
 
-        expect(addSelectedNoteActionCreator).toEqual({ 
-            type: actions.ADD_SELECTED_NOTE, 
+        expect(addSelectedNoteActionCreator).toEqual({
+            type: actions.ADD_SELECTED_NOTE,
             payload: {
                 note: NOTE,
             },
@@ -98,8 +98,8 @@ describe('Note actionCreators', () => {
     it('removeUnselectedNote', () => {
         const removeUnselectedNoteActionCreator = removeUnselectedNote(NOTE);
 
-        expect(removeUnselectedNoteActionCreator).toEqual({ 
-            type: actions.REMOVE_UNSELECTED_NOTE, 
+        expect(removeUnselectedNoteActionCreator).toEqual({
+            type: actions.REMOVE_UNSELECTED_NOTE,
             payload: {
                 note: NOTE,
             },
@@ -109,8 +109,8 @@ describe('Note actionCreators', () => {
     it('selectAllNotes', () => {
         const selectAllNotesActionCreator = selectAllNotes([NOTE]);
 
-        expect(selectAllNotesActionCreator).toEqual({ 
-            type: actions.SELECT_ALL_NOTES, 
+        expect(selectAllNotesActionCreator).toEqual({
+            type: actions.SELECT_ALL_NOTES,
             payload: {
                 notes: [
                     NOTE,
@@ -122,16 +122,16 @@ describe('Note actionCreators', () => {
     it('unselectAllNotes', () => {
         const unselectAllNotesActionCreator = unselectAllNotes();
 
-        expect(unselectAllNotesActionCreator).toEqual({ 
-            type: actions.UNSELECT_ALL_NOTES, 
+        expect(unselectAllNotesActionCreator).toEqual({
+            type: actions.UNSELECT_ALL_NOTES,
         });
     });
 
     it('filter', () => {
         const filterActionCreator = filter(TEXTS.FILTER.NAME.VALUE);
 
-        expect(filterActionCreator).toEqual({ 
-            type: actions.FILTER, 
+        expect(filterActionCreator).toEqual({
+            type: actions.FILTER,
             payload: {
                 filterType: TEXTS.FILTER.NAME.VALUE,
             },

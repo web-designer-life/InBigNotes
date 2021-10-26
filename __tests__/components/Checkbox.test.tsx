@@ -5,15 +5,15 @@ import Checkbox from '../../src/components/Checkbox';
 
 const activeCheckboxProps = {
     checked: true,
-    onChange: () => {},
+    onChange: () => { },
 };
 
 const inactiveCheckboxProps = {
     checked: false,
-    onChange: () => {},
+    onChange: () => { },
 };
 
-describe('Checkbox component', () => {      
+describe('Checkbox component', () => {
     it('should render active Checkbox component', () => {
         const component = renderer.create(<Checkbox {...activeCheckboxProps} />);
         expect(component).toMatchSnapshot();

@@ -26,7 +26,7 @@ export default class NoteView extends Component<Props> {
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
     }
-    
+
     componentDidMount() {
         const { fetchNoteAction, match } = this.props;
 
@@ -42,31 +42,31 @@ export default class NoteView extends Component<Props> {
     handleNavigateToHome() {
         const { navigateToPageAction } = this.props;
 
-		navigateToPageAction(ROUTES.HOME);
-	}
+        navigateToPageAction(ROUTES.HOME);
+    }
 
     render() {
-        const { 
+        const {
             note,
-            isLoading, 
+            isLoading,
             error,
             updateNoteAction,
             navigateToPageAction,
         } = this.props;
 
         if (error) {
-			return <Error navigateToPage={this.handleNavigateToHome}/>;
-		}
+            return <Error navigateToPage={this.handleNavigateToHome} />;
+        }
 
         return (
             isLoading ?
-            <Loader /> :
-            <Note 
-                typeName={ACTIONS.UPDATE}
-                note={note}
-                navigateToPage={navigateToPageAction}
-                addOrUpdateNote={updateNoteAction}
-            />
+                <Loader /> :
+                <Note
+                    typeName={ACTIONS.UPDATE}
+                    note={note}
+                    navigateToPage={navigateToPageAction}
+                    addOrUpdateNote={updateNoteAction}
+                />
         );
     }
 };

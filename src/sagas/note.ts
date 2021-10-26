@@ -1,28 +1,28 @@
-import { 
-    delay, 
-    put, 
+import {
+    delay,
+    put,
     takeEvery,
-    all, 
+    all,
 } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
-import { 
+import {
     fetchNoteSuccess,
-    fetchNoteFail, 
-    addNoteSuccess, 
-    addNoteFail,  
-    updateNoteSuccess, 
-    updateNoteFail, 
+    fetchNoteFail,
+    addNoteSuccess,
+    addNoteFail,
+    updateNoteSuccess,
+    updateNoteFail,
 } from '../actionCreators/note';
 import { INote } from '../interfaces';
 import actions from '../actions';
 import { ROUTES, TEXTS } from '../constants';
 
-export function* fetchNote({ payload } : any) {
+export function* fetchNote({ payload }: any) {
     const { id } = payload;
 
     try {
         yield delay(1500);
-        
+
         const notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
         const note = notes.find((currentNote: INote) => currentNote.id === id);
@@ -32,17 +32,17 @@ export function* fetchNote({ payload } : any) {
         }
 
         yield put(fetchNoteSuccess(note));
-	} catch (e) {
-		yield put(fetchNoteFail());
-	}
+    } catch (e) {
+        yield put(fetchNoteFail());
+    }
 };
 
-export function* addNote({ payload } : any) { 
+export function* addNote({ payload }: any) {
     const { note } = payload;
 
     try {
         yield put(push(ROUTES.HOME));
-        
+
         yield delay(1500);
 
         if (!note) {
@@ -56,14 +56,14 @@ export function* addNote({ payload } : any) {
         window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
 
         yield put(addNoteSuccess());
-	} catch (e) {
-		yield put(addNoteFail());
-	}
+    } catch (e) {
+        yield put(addNoteFail());
+    }
 };
 
-export function* updateNote({ payload } : any) { 
+export function* updateNote({ payload }: any) {
     const { note } = payload;
-    
+
     try {
         yield put(push(ROUTES.HOME));
 
@@ -82,13 +82,13 @@ export function* updateNote({ payload } : any) {
         window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(modifiedNotes));
 
         yield put(updateNoteSuccess());
-	} catch (e) {
-		yield put(updateNoteFail());
-	}
+    } catch (e) {
+        yield put(updateNoteFail());
+    }
 };
 
 export default function noteSaga() {
-    return all([ 
+    return all([
         takeEvery(actions.FETCH_NOTE_PENDING, fetchNote),
         takeEvery(actions.ADD_NOTE_PENDING, addNote),
         takeEvery(actions.UPDATE_NOTE_PENDING, updateNote),

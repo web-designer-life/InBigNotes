@@ -6,7 +6,7 @@ interface Props {
     navigateToPageAction(path: string): Function,
 };
 
-export default class ErrorContainer extends Component<Props> {  
+export default class ErrorContainer extends Component<Props> {
     constructor(props: Props) {
         super(props);
 
@@ -16,11 +16,11 @@ export default class ErrorContainer extends Component<Props> {
     handleNavigateToHome() {
         const { navigateToPageAction } = this.props;
 
-		navigateToPageAction(ROUTES.HOME);
-	}
+        navigateToPageAction(ROUTES.HOME);
+    }
 
-    render() {        
-        return ( 
+    render() {
+        return (
             <Error navigateToPage={this.handleNavigateToHome} />
         );
     }

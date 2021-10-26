@@ -6,8 +6,8 @@ describe('Common actionCreators', () => {
     it('navigateToPage', () => {
         const navigateToPageActionCreator = navigateToPage(ROUTES.HOME);
 
-        expect(navigateToPageActionCreator).toEqual({ 
-            type: actions.NAVIGATE_TO_PAGE, 
+        expect(navigateToPageActionCreator).toEqual({
+            type: actions.NAVIGATE_TO_PAGE,
             payload: {
                 path: ROUTES.HOME,
             },
@@ -16,9 +16,9 @@ describe('Common actionCreators', () => {
 
     it('resetStore', () => {
         const resetStoreActionCreator = resetStore();
-        
-        expect(resetStoreActionCreator).toEqual({ 
-            type: actions.RESET_STORE, 
+
+        expect(resetStoreActionCreator).toEqual({
+            type: actions.RESET_STORE,
         });
     });
 });

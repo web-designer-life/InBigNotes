@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { INote } from '../../interfaces';
 import Checkbox from '../Checkbox';
 import Filter from '../Filter';
-import { 
-    Wrapper, 
-    SelectAllWrapper, 
+import {
+    Wrapper,
+    SelectAllWrapper,
     Title,
 } from './style';
 
@@ -26,21 +26,21 @@ export default class ControlPanel extends Component<Props> {
     }
 
     handleSelectOrUnselectNotes() {
-        const { 
-            notes, 
+        const {
+            notes,
             selectedNotes,
-            selectAllNotes, 
+            selectAllNotes,
             unselectAllNotes,
         } = this.props;
 
         return selectedNotes.length === notes.length ?
-        unselectAllNotes() :
-        selectAllNotes(notes || []);
+            unselectAllNotes() :
+            selectAllNotes(notes || []);
     }
 
     render() {
-        const { 
-            notes, 
+        const {
+            notes,
             selectedNotes,
             filterType,
             fetchNotes,
@@ -49,7 +49,7 @@ export default class ControlPanel extends Component<Props> {
 
         return (
             <Wrapper>
-                <Filter 
+                <Filter
                     filterType={filterType}
                     fetchNotes={fetchNotes}
                     filterAction={filterAction}

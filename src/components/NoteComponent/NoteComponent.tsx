@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Checkbox from '../Checkbox';
-import { 
-    Note, 
-    NoteInfo, 
-    Title, 
+import {
+    Note,
+    NoteInfo,
+    Title,
     Text,
     DateInfo,
     Appearance,
@@ -20,7 +20,7 @@ interface Props {
     navigateToPage(path: string): Function,
 };
 
-export default class NoteComponent extends Component<Props> { 
+export default class NoteComponent extends Component<Props> {
     constructor(props: Props) {
         super(props);
 
@@ -30,26 +30,26 @@ export default class NoteComponent extends Component<Props> {
 
     handleNavigateToNote() {
         const { navigateToPage, note } = this.props;
-        
+
         navigateToPage(`${ROUTES.NOTE}/${note.id}`);
     }
 
     handleSelectOrUnselectNote() {
-        const { 
-            note, 
+        const {
+            note,
             selectedNotes,
-            addSelectedNote, 
+            addSelectedNote,
             removeUnselectedNote,
         } = this.props;
 
         return selectedNotes.includes(note.id) ?
-        removeUnselectedNote(note) :
-        addSelectedNote(note);
+            removeUnselectedNote(note) :
+            addSelectedNote(note);
     }
-    
+
     render() {
-        const { 
-            note, 
+        const {
+            note,
             selectedNotes,
         } = this.props;
 

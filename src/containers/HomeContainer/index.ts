@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import HomeContainer from './HomeContainer';
 import { INote } from '../../interfaces';
-import { 
-    addSelectedNote, 
-    deleteNotesData, 
-    fetchNotesData, 
-    filter, 
-    removeUnselectedNote, 
-    selectAllNotes, 
+import {
+    addSelectedNote,
+    deleteNotesData,
+    fetchNotesData,
+    filter,
+    removeUnselectedNote,
+    selectAllNotes,
     unselectAllNotes,
 } from '../../actionCreators/notes';
 import { navigateToPage, resetStore } from '../../actionCreators/common';
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     navigateToPageAction: (path: string) => dispatch(navigateToPage(path)),
     resetStoreAction: () => dispatch(resetStore()),
 });
- 
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps,

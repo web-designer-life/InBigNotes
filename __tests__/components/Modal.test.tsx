@@ -8,8 +8,8 @@ const activeModalProps = {
     buttonConfirmText: TEXTS.BUTTON.DELETE,
     buttonCancelText: TEXTS.BUTTON.CANCEL,
     active: true,
-    onClose: () => {},
-    action: () => {},
+    onClose: () => { },
+    action: () => { },
 };
 
 const inactiveModalProps = {
@@ -17,8 +17,8 @@ const inactiveModalProps = {
     buttonConfirmText: TEXTS.BUTTON.DELETE,
     buttonCancelText: TEXTS.BUTTON.CANCEL,
     active: false,
-    onClose: () => {},
-    action: () => {},
+    onClose: () => { },
+    action: () => { },
 };
 
 describe('Modal component', () => {

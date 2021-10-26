@@ -9,6 +9,6 @@ export {
     FORMS,
     ROUTES,
     TEXTS,
-    BUTTON_TYPES, 
+    BUTTON_TYPES,
     ACTIONS,
 }

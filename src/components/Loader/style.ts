@@ -33,8 +33,8 @@ const LoaderText = styled.p`
     color: ${COLORS.WHITE};
 `;
 
-export { 
-    LoaderBackground, 
-    LoaderContainer, 
+export {
+    LoaderBackground,
+    LoaderContainer,
     LoaderText,
 };

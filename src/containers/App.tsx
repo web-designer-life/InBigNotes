@@ -15,10 +15,10 @@ interface Props {
 export default class App extends Component<Props> {
     constructor(props) {
         super(props);
-        
+
         this.state = {};
     }
-      
+
     render() {
         const { history } = this.props;
 

@@ -14,23 +14,23 @@ interface Props {
 export default class Button extends Component<Props> {
     constructor(props) {
         super(props);
-        
+
         this.state = {};
     }
 
     render() {
         const {
-            type, 
-            disabled, 
-            onClick, 
+            type,
+            disabled,
+            onClick,
             text,
             color,
         } = this.props;
 
         return (
-            <StyledButton 
-                type={type} 
-                disabled={disabled} 
+            <StyledButton
+                type={type}
+                disabled={disabled}
                 onClick={onClick}
                 color={color}
             >

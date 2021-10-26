@@ -19,7 +19,7 @@ export default class NoteCreation extends Component<Props> {
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
     }
-    
+
     componentWillUnmount() {
         const { resetStoreAction } = this.props;
 
@@ -29,29 +29,29 @@ export default class NoteCreation extends Component<Props> {
     handleNavigateToHome() {
         const { navigateToPageAction } = this.props;
 
-		navigateToPageAction(ROUTES.HOME);
-	}
+        navigateToPageAction(ROUTES.HOME);
+    }
 
     render() {
-        const { 
-            isLoading, 
+        const {
+            isLoading,
             error,
             addNoteAction,
             navigateToPageAction,
         } = this.props;
 
         if (error) {
-			return <Error navigateToPage={this.handleNavigateToHome}/>;
-		}
+            return <Error navigateToPage={this.handleNavigateToHome} />;
+        }
 
         return (
             isLoading ?
-            <Loader /> :
-            <Note 
-                typeName={ACTIONS.SAVE}
-                navigateToPage={navigateToPageAction}
-                addOrUpdateNote={addNoteAction}
-            />
+                <Loader /> :
+                <Note
+                    typeName={ACTIONS.SAVE}
+                    navigateToPage={navigateToPageAction}
+                    addOrUpdateNote={addNoteAction}
+                />
         );
     }
 };

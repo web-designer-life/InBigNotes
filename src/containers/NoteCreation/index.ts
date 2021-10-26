@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     navigateToPageAction: (path: string) => dispatch(navigateToPage(path)),
     resetStoreAction: () => dispatch(resetStore()),
 });
- 
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps,

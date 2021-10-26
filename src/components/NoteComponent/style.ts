@@ -70,10 +70,10 @@ const DateInfo = styled.p`
     color: ${COLORS.STEEL_GRAY};
 `;
 
-export { 
-    Note, 
-    NoteInfo, 
-    Title, 
+export {
+    Note,
+    NoteInfo,
+    Title,
     Text,
     DateInfo,
     Appearance,

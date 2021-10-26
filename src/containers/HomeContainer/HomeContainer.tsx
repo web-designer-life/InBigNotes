@@ -28,13 +28,13 @@ export default class HomeContainer extends Component<Props> {
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
     }
-    
+
     componentDidMount() {
         const { fetchNotesAction, filterType } = this.props;
 
         fetchNotesAction(filterType);
     }
-    
+
     componentWillUnmount() {
         const { resetStoreAction } = this.props;
 
@@ -44,13 +44,13 @@ export default class HomeContainer extends Component<Props> {
     handleNavigateToHome() {
         const { navigateToPageAction } = this.props;
 
-		navigateToPageAction(ROUTES.HOME);
-	}
+        navigateToPageAction(ROUTES.HOME);
+    }
 
     render() {
         const {
             notes,
-            isLoading, 
+            isLoading,
             selectedNotes,
             filterType,
             error,
@@ -65,27 +65,27 @@ export default class HomeContainer extends Component<Props> {
         } = this.props;
 
         if (error) {
-			return <Error navigateToPage={this.handleNavigateToHome}/>;
-		}
-        
+            return <Error navigateToPage={this.handleNavigateToHome} />;
+        }
+
         return (
             <>
-                {   
+                {
                     isLoading ?
-                    <Loader /> :
-                    <Home 
-                        notes={notes}
-                        selectedNotes={selectedNotes}
-                        filterType={filterType}
-                        fetchNotes={fetchNotesAction}
-                        deleteNotes={deleteNotesAction}
-                        addSelectedNote={addSelectedNoteAction}
-                        removeUnselectedNote={removeUnselectedNoteAction}
-                        selectAllNotes={selectAllNotesAction}
-                        unselectAllNotes={unselectAllNotesAction}
-                        navigateToPage={navigateToPageAction}
-                        filterAction={filterAction}
-                    />
+                        <Loader /> :
+                        <Home
+                            notes={notes}
+                            selectedNotes={selectedNotes}
+                            filterType={filterType}
+                            fetchNotes={fetchNotesAction}
+                            deleteNotes={deleteNotesAction}
+                            addSelectedNote={addSelectedNoteAction}
+                            removeUnselectedNote={removeUnselectedNoteAction}
+                            selectAllNotes={selectAllNotesAction}
+                            unselectAllNotes={unselectAllNotesAction}
+                            navigateToPage={navigateToPageAction}
+                            filterAction={filterAction}
+                        />
                 }
             </>
         );

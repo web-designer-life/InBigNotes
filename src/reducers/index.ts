@@ -4,7 +4,7 @@ import notes from './notes';
 import note from './note';
 
 function rootReducer(history: any) {
-    return combineReducers({
+	return combineReducers({
 		router: connectRouter(history),
 		notes,
 		note,

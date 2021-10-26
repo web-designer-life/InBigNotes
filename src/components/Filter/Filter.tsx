@@ -16,7 +16,7 @@ interface Props {
 export default class Filter extends Component<Props> {
     constructor(props: Props) {
         super(props);
-        
+
         this.state = {};
 
         this.handleChangeFilter = this.handleChangeFilter.bind(this);
@@ -29,7 +29,7 @@ export default class Filter extends Component<Props> {
         filterAction(value);
         fetchNotes(value);
     }
-      
+
     render() {
         const { filterType } = this.props;
 
@@ -39,7 +39,7 @@ export default class Filter extends Component<Props> {
                 <FilterList
                     onChange={this.handleChangeFilter}
                     value={filterType}
-                >                 
+                >
                     <FilterListItem value={TEXTS.FILTER.NAME.VALUE}>{TEXTS.FILTER.NAME.TEXT}</FilterListItem>
                     <FilterListItem value={TEXTS.FILTER.DATE_CREATED.VALUE}>{TEXTS.FILTER.DATE_CREATED.TEXT}</FilterListItem>
                     <FilterListItem value={TEXTS.FILTER.DATE_MODIFIED.VALUE}>{TEXTS.FILTER.DATE_MODIFIED.TEXT}</FilterListItem>

@@ -1,7 +1,7 @@
-import { 
-    all, 
-    put, 
-    takeEvery, 
+import {
+    all,
+    put,
+    takeEvery,
 } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import navigateSaga, { navigateToPage } from '../../src/sagas/navigate';

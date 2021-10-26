@@ -3,16 +3,16 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import Button from '../../src/components/Button';
-import { 
-    BUTTON_TYPES, 
-    COLORS, 
+import {
+    BUTTON_TYPES,
+    COLORS,
     TEXTS,
 } from '../../src/constants';
 
 const greenButtonProps = {
     type: BUTTON_TYPES.BUTTON,
     disabled: false,
-    onClick: () => {},
+    onClick: () => { },
     text: TEXTS.BUTTON.HOME,
     color: COLORS.BUTTON.GREEN,
 };
@@ -20,7 +20,7 @@ const greenButtonProps = {
 const redButtonProps = {
     type: BUTTON_TYPES.BUTTON,
     disabled: false,
-    onClick: () => {},
+    onClick: () => { },
     text: TEXTS.BUTTON.DELETE,
     color: COLORS.BUTTON.RED,
 };
@@ -41,8 +41,8 @@ describe('Button component', () => {
     it('should call onClick method', () => {
         const mockCallBack = jest.fn();
         const component = shallow(
-            <Button 
-                onClick={mockCallBack} 
+            <Button
+                onClick={mockCallBack}
                 type={BUTTON_TYPES.BUTTON}
                 disabled={false}
                 text={TEXTS.BUTTON.BACK}

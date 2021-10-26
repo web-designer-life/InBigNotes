@@ -9,29 +9,29 @@ import rootSaga from '../sagas';
 let createHistory;
 
 if (typeof document !== 'undefined') {
-	createHistory = createBrowserHistory;
+    createHistory = createBrowserHistory;
 } else {
-	createHistory = createMemoryHistory;
+    createHistory = createMemoryHistory;
 }
 
 const history = createHistory();
 
 export default history;
 
-function configureStore() { 
+function configureStore() {
     const sagaMiddleware = createSagaMiddleware();
-    
-    const routeMiddleware = routerMiddleware(history);
-    
-    const middlewares = [ sagaMiddleware, routeMiddleware ]; 
-    const middlewareEnhancer = applyMiddleware(...middlewares); 
- 
-    const enhancers = [ middlewareEnhancer ]; 
-    const composedEnhancers = composeWithDevTools(...enhancers); 
- 
-    const store = createStore(rootReducer(history), composedEnhancers); 
 
-    sagaMiddleware.run(rootSaga); 
+    const routeMiddleware = routerMiddleware(history);
+
+    const middlewares = [sagaMiddleware, routeMiddleware];
+    const middlewareEnhancer = applyMiddleware(...middlewares);
+
+    const enhancers = [middlewareEnhancer];
+    const composedEnhancers = composeWithDevTools(...enhancers);
+
+    const store = createStore(rootReducer(history), composedEnhancers);
+
+    sagaMiddleware.run(rootSaga);
 
     return store;
 };

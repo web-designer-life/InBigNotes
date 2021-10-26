@@ -1,18 +1,18 @@
-import { 
-    put, 
-    delay, 
-    takeEvery, 
-    all, 
+import {
+    put,
+    delay,
+    takeEvery,
+    all,
 } from 'redux-saga/effects';
-import notesSaga, { 
-    fetchNotes, 
-    deleteNotes, 
+import notesSaga, {
+    fetchNotes,
+    deleteNotes,
 } from '../../src/sagas/notes';
-import { 
-    fetchNotesSuccess, 
+import {
+    fetchNotesSuccess,
     fetchNotesFail,
-    deleteNotesSuccess, 
-    deleteNotesFail,  
+    deleteNotesSuccess,
+    deleteNotesFail,
 } from '../../src/actionCreators/notes';
 import actions from '../../src/actions';
 import { TEXTS } from '../../src/constants';
@@ -42,9 +42,9 @@ describe('notesSaga sagas', () => {
     describe('fetchNotes', () => {
         it('Success action with notes, sorted by title', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(NOTES));
-    
+
             const generator = fetchNotes({ payload: { filterType: TEXTS.FILTER.NAME.VALUE } });
-    
+
             expect(generator.next().value).toEqual(
                 delay(1500)
             );
@@ -53,9 +53,9 @@ describe('notesSaga sagas', () => {
             );
         });
 
-        it('Success action without notes', () => {    
+        it('Success action without notes', () => {
             const generator = fetchNotes({ payload: { filterType: TEXTS.FILTER.NAME.VALUE } });
-    
+
             expect(generator.next().value).toEqual(
                 delay(1500)
             );
@@ -63,12 +63,12 @@ describe('notesSaga sagas', () => {
                 put(fetchNotesSuccess([]))
             );
         });
-    
-        it('Error action', () => {    
+
+        it('Error action', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, 'undefined');
 
             const generator = fetchNotes({ payload: { filterType: TEXTS.FILTER.NAME.VALUE } });
-    
+
             expect(generator.next().value).toEqual(
                 delay(1500)
             );
@@ -81,9 +81,9 @@ describe('notesSaga sagas', () => {
     describe('deleteNotes', () => {
         it('Success action', () => {
             window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(NOTES));
-    
+
             const generator = deleteNotes({ payload: { notes: NOTES } });
-    
+
             expect(generator.next().value).toEqual(
                 delay(1500)
             );
@@ -95,9 +95,9 @@ describe('notesSaga sagas', () => {
             );
         });
 
-        it('Error action', () => {        
+        it('Error action', () => {
             const generator = deleteNotes({ payload: {} });
-    
+
             expect(generator.next().value).toEqual(
                 delay(1500)
             );
@@ -106,7 +106,7 @@ describe('notesSaga sagas', () => {
             );
         });
     });
-    
+
     it('notesSaga', () => {
         const saga = notesSaga();
 

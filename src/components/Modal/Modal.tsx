@@ -3,14 +3,14 @@ import {
     ModalBackground,
     ModalContainer,
     ModalTitle,
-    ButtonsContainer, 
+    ButtonsContainer,
 } from './style';
 import Button from '../Button';
 import { BUTTON_TYPES, COLORS } from '../../constants';
 
 interface Props {
     modalText: string,
-    buttonConfirmText: string, 
+    buttonConfirmText: string,
     buttonCancelText: string,
     active: boolean,
     onClose: () => void,
@@ -26,7 +26,7 @@ export default class Modal extends Component<Props> {
 
     handleClick() {
         const {
-            action, 
+            action,
             onClose
         } = this.props;
 
@@ -34,7 +34,7 @@ export default class Modal extends Component<Props> {
         onClose();
     }
 
-	render() {
+    render() {
         const {
             modalText,
             buttonConfirmText,
@@ -43,28 +43,28 @@ export default class Modal extends Component<Props> {
             onClose,
         } = this.props;
 
-		return (
+        return (
             active ?
-            <ModalBackground>
-                <ModalContainer>
-                    <ModalTitle>{modalText}</ModalTitle>
-                    <ButtonsContainer>
-                        <Button 
-                            type={BUTTON_TYPES.BUTTON}
-                            onClick={this.handleClick}
-                            text={buttonConfirmText} 
-                            color={COLORS.BUTTON.GREEN}
-                        />
-                        <Button 
-                            type={BUTTON_TYPES.BUTTON}
-                            onClick={onClose} 
-                            text={buttonCancelText} 
-                            color={COLORS.BUTTON.RED}
-                        />
-                    </ButtonsContainer>
-                </ModalContainer>
-            </ModalBackground> :
-            null
-		);
-	}
+                <ModalBackground>
+                    <ModalContainer>
+                        <ModalTitle>{modalText}</ModalTitle>
+                        <ButtonsContainer>
+                            <Button
+                                type={BUTTON_TYPES.BUTTON}
+                                onClick={this.handleClick}
+                                text={buttonConfirmText}
+                                color={COLORS.BUTTON.GREEN}
+                            />
+                            <Button
+                                type={BUTTON_TYPES.BUTTON}
+                                onClick={onClose}
+                                text={buttonCancelText}
+                                color={COLORS.BUTTON.RED}
+                            />
+                        </ButtonsContainer>
+                    </ModalContainer>
+                </ModalBackground> :
+                null
+        );
+    }
 };

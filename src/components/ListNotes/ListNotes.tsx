@@ -11,26 +11,26 @@ interface Props {
     navigateToPage(path: string): Function,
 };
 
-export default class ListNotes extends Component<Props> { 
+export default class ListNotes extends Component<Props> {
     constructor(props) {
         super(props);
-        
+
         this.state = {};
     }
-    
+
     render() {
         const {
-            notes, 
-            selectedNotes, 
-            addSelectedNote, 
-            removeUnselectedNote, 
+            notes,
+            selectedNotes,
+            addSelectedNote,
+            removeUnselectedNote,
             navigateToPage,
         } = this.props;
-        
+
         return (
             <List>
                 {notes.map((note: INote) => (
-                    <NoteComponent 
+                    <NoteComponent
                         key={note.id}
                         note={note}
                         selectedNotes={selectedNotes}
@@ -41,5 +41,5 @@ export default class ListNotes extends Component<Props> {
                 ))}
             </List>
         );
-    } 
+    }
 }

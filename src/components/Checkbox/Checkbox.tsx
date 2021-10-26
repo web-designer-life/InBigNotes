@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
-    CheckboxContainer, 
-    Icon, 
-    HiddenCheckbox, 
-    StyledCheckbox, 
+import {
+    CheckboxContainer,
+    Icon,
+    HiddenCheckbox,
+    StyledCheckbox,
 } from './style';
 import checkMark from '../../images/check-mark.svg';
 
@@ -20,7 +20,7 @@ const Checkbox: React.FC<Props> = ({
         <CheckboxContainer>
             <HiddenCheckbox checked={checked} {...props} />
             <StyledCheckbox checked={checked}>
-                <Icon src={checkMark}/>
+                <Icon src={checkMark} />
             </StyledCheckbox>
         </CheckboxContainer>
     );

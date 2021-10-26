@@ -10,33 +10,33 @@ export const initialState = {
     error: false,
 };
 
-export default function notesReducer(state = initialState, { type, payload } : any) {
+export default function notesReducer(state = initialState, { type, payload }: any) {
     switch (type) {
         case actions.FETCH_NOTES_PENDING:
             return {
-                ...state, 
+                ...state,
                 isLoading: true,
             };
         case actions.FETCH_NOTES_SUCCESS:
             return {
-                ...state, 
-                notes: payload.notes, 
+                ...state,
+                notes: payload.notes,
                 isLoading: false,
             };
         case actions.DELETE_NOTES_PENDING:
             return {
-                ...state, 
+                ...state,
                 notes: payload.notes,
                 isLoading: true,
             };
         case actions.DELETE_NOTES_SUCCESS:
             return {
-                ...state, 
+                ...state,
                 isLoading: false,
             };
         case actions.ADD_SELECTED_NOTE:
             return {
-                ...state, 
+                ...state,
                 selectedNotes: [].concat(state.selectedNotes, payload.note.id),
             };
         case actions.REMOVE_UNSELECTED_NOTE:
@@ -46,7 +46,7 @@ export default function notesReducer(state = initialState, { type, payload } : a
             };
         case actions.SELECT_ALL_NOTES:
             return {
-                ...state, 
+                ...state,
                 selectedNotes: [].concat([], payload.notes.map((note: INote) => note.id)),
             };
         case actions.UNSELECT_ALL_NOTES:
@@ -56,7 +56,7 @@ export default function notesReducer(state = initialState, { type, payload } : a
             };
         case actions.FILTER:
             return {
-                ...state, 
+                ...state,
                 filterType: payload.filterType,
             };
         case actions.FETCH_NOTES_FAIL:
@@ -66,7 +66,7 @@ export default function notesReducer(state = initialState, { type, payload } : a
                 isLoading: false,
                 error: true,
             };
-        case actions.RESET_STORE: 
+        case actions.RESET_STORE:
             return initialState;
         default:
             return state;

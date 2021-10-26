@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../Button';
 import Modal from '../Modal';
-import { 
-    ROUTES, 
-    BUTTON_TYPES, 
-    COLORS, 
-    TEXTS, 
-    FORMS, 
+import {
+    ROUTES,
+    BUTTON_TYPES,
+    COLORS,
+    TEXTS,
+    FORMS,
 } from '../../constants';
-import { 
-    NoteForm, 
-    NoteTitle, 
-    NoteText, 
-    NoteControlsWrapper, 
-    NoteButtonsWrapper, 
+import {
+    NoteForm,
+    NoteTitle,
+    NoteText,
+    NoteControlsWrapper,
+    NoteButtonsWrapper,
 } from './style';
 import { INote } from '../../interfaces';
 
@@ -46,7 +46,7 @@ export default class Note extends Component<Props, State> {
             buttonConfirmText: '',
             buttonCancelText: '',
             active: false,
-            action: () => {},
+            action: () => { },
         };
 
         this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
@@ -59,7 +59,7 @@ export default class Note extends Component<Props, State> {
         this.handleModalSubmitButtonClick = this.handleModalSubmitButtonClick.bind(this);
         this.handleModalCancelButtonClick = this.handleModalCancelButtonClick.bind(this);
     }
-    
+
     componentDidMount() {
         this.handleCancelChanges();
     }
@@ -67,11 +67,11 @@ export default class Note extends Component<Props, State> {
     handleNavigateToHome() {
         const { navigateToPage } = this.props;
 
-		navigateToPage(ROUTES.HOME);
-	}
+        navigateToPage(ROUTES.HOME);
+    }
 
     handleChange(evt: { target: { name: string; value: any; }; }) {
-		const { name, value } = evt.target;
+        const { name, value } = evt.target;
 
         this.setState({
             [name]: value
@@ -81,10 +81,10 @@ export default class Note extends Component<Props, State> {
     handleCheckSaveOrUpdateChanges() {
         const { title, text } = this.state;
         const { note } = this.props;
-        
+
         return (
-            ((title.trim() !== '' && text.trim() !== '') 
-            && (title.trim() !== note?.title || text.trim() !== note?.text))
+            ((title.trim() !== '' && text.trim() !== '')
+                && (title.trim() !== note?.title || text.trim() !== note?.text))
         );
     }
 
@@ -99,9 +99,9 @@ export default class Note extends Component<Props, State> {
     }
 
     handleCheckButtonAction() {
-        return this.handleCheckCancelChanges() ? 
-        this.handleModalBackButtonClick() : 
-        this.handleNavigateToHome();
+        return this.handleCheckCancelChanges() ?
+            this.handleModalBackButtonClick() :
+            this.handleNavigateToHome();
     }
 
     handleCancelChanges() {
@@ -114,17 +114,17 @@ export default class Note extends Component<Props, State> {
     }
 
     handleSetAction(func: () => void) {
-		this.setState({
-			action: func,
-		} as Pick<State, keyof State>);
-	}
+        this.setState({
+            action: func,
+        } as Pick<State, keyof State>);
+    }
 
     handleModalBackButtonClick() {
         this.setState({
-			modalText: TEXTS.MODAL.BACK,
+            modalText: TEXTS.MODAL.BACK,
             buttonConfirmText: TEXTS.BUTTON.BACK,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
-		} as Pick<State, keyof State>);
+        } as Pick<State, keyof State>);
 
         this.handleSetAction(this.handleNavigateToHome);
         this.toggleModal();
@@ -134,22 +134,22 @@ export default class Note extends Component<Props, State> {
         const { typeName } = this.props;
 
         this.setState({
-			modalText: typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
+            modalText: typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
             buttonConfirmText: typeName,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
-		} as Pick<State, keyof State>);
-        
+        } as Pick<State, keyof State>);
+
         this.handleSetAction(this.onSubmit);
         this.toggleModal();
     }
 
     handleModalCancelButtonClick() {
         this.setState({
-			modalText: TEXTS.MODAL.CANCEL,
+            modalText: TEXTS.MODAL.CANCEL,
             buttonConfirmText: TEXTS.BUTTON.CONFIRM,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
-		} as Pick<State, keyof State>);
-        
+        } as Pick<State, keyof State>);
+
         this.handleSetAction(this.handleCancelChanges);
         this.toggleModal();
     }
@@ -158,7 +158,7 @@ export default class Note extends Component<Props, State> {
         const { addOrUpdateNote, note } = this.props;
         const { title, text } = this.state;
 
-        const completeNote = {                    
+        const completeNote = {
             id: note?.id || uuidv4(),
             title: title.trim(),
             text: text.trim(),
@@ -172,50 +172,50 @@ export default class Note extends Component<Props, State> {
     toggleModal() {
         const { active } = this.state;
 
-		this.setState({
-			active: !active,
-		} as Pick<State, keyof State>);
-	}
+        this.setState({
+            active: !active,
+        } as Pick<State, keyof State>);
+    }
 
     render() {
         const { typeName } = this.props;
-        const { 
-            title, 
-            text, 
+        const {
+            title,
+            text,
             modalText,
             buttonConfirmText,
             buttonCancelText,
-            active, 
-            action, 
+            active,
+            action,
         } = this.state;
 
         return (
             <>
                 <NoteForm onSubmit={this.onSubmit} id={FORMS.ADD_OR_UPDATE_NOTE_FORM}>
-                    <NoteTitle 
+                    <NoteTitle
                         type={TEXTS.INPUT_FIELD.TYPE.TEXT}
                         name={TEXTS.INPUT_FIELD.NAME.TITLE}
-                        value={title} 
-                        onChange={this.handleChange} 
+                        value={title}
+                        onChange={this.handleChange}
                         placeholder={TEXTS.INPUT_FIELD.PLACEHOLDER.TITLE}
-                        required 
+                        required
                     />
-                    <NoteText 
+                    <NoteText
                         name={TEXTS.INPUT_FIELD.NAME.TEXT}
-                        value={text} 
-                        onChange={this.handleChange} 
-                        placeholder={TEXTS.INPUT_FIELD.PLACEHOLDER.TEXT} 
-                        required 
+                        value={text}
+                        onChange={this.handleChange}
+                        placeholder={TEXTS.INPUT_FIELD.PLACEHOLDER.TEXT}
+                        required
                     />
                     <NoteControlsWrapper>
-                        <Button 
+                        <Button
                             type={BUTTON_TYPES.BUTTON}
                             text={TEXTS.BUTTON.BACK}
                             onClick={this.handleCheckButtonAction}
                             color={COLORS.BUTTON.RED}
                         />
                         <NoteButtonsWrapper>
-                            <Button 
+                            <Button
                                 form={FORMS.ADD_OR_UPDATE_NOTE_FORM}
                                 type={BUTTON_TYPES.BUTTON}
                                 disabled={!this.handleCheckSaveOrUpdateChanges()}
@@ -223,7 +223,7 @@ export default class Note extends Component<Props, State> {
                                 onClick={this.handleModalSubmitButtonClick}
                                 color={COLORS.BUTTON.GREEN}
                             />
-                            <Button               
+                            <Button
                                 type={BUTTON_TYPES.RESET}
                                 disabled={!this.handleCheckCancelChanges()}
                                 onClick={this.handleModalCancelButtonClick}
@@ -233,13 +233,13 @@ export default class Note extends Component<Props, State> {
                         </NoteButtonsWrapper>
                     </NoteControlsWrapper>
                 </NoteForm>
-                <Modal 
-                    modalText={modalText} 
-                    buttonConfirmText={buttonConfirmText} 
+                <Modal
+                    modalText={modalText}
+                    buttonConfirmText={buttonConfirmText}
                     buttonCancelText={buttonCancelText}
-                    active={active} 
-                    onClose={this.toggleModal} 
-                    action={action} 
+                    active={active}
+                    onClose={this.toggleModal}
+                    action={action}
                 />
             </>
         )

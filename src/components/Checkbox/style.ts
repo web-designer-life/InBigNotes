@@ -42,9 +42,9 @@ const StyledCheckbox = styled.div<{ checked: boolean }>`
     }
 `;
 
-export { 
-    CheckboxContainer, 
-    Icon, 
-    HiddenCheckbox, 
+export {
+    CheckboxContainer,
+    Icon,
+    HiddenCheckbox,
     StyledCheckbox,
 };

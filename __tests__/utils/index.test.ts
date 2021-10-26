@@ -1,4 +1,4 @@
-import { 
+import {
     formatValueByFilterType,
     sortByFilterType,
     formatDate,
@@ -60,14 +60,14 @@ const SORTED_NOTES = [
     {
         id: 'd012a6d2-0d4d-445d-a661-1a2ef4d499e2',
         title: 'Hobby',
-        text: 'Hobbies include collecting themed items and objects, engaging in creative and artistic pursuits, playing sports, or pursuing other amusements.',     
+        text: 'Hobbies include collecting themed items and objects, engaging in creative and artistic pursuits, playing sports, or pursuing other amusements.',
         created_at: 1632734757657,
         updated_at: 1632734757657,
     },
     {
         id: 'd012a6d2-0d4d-445d-a661-1a2ef4d499e1',
         title: 'Hot',
-        text: 'Hobbies include collecting themed items and objects, engaging in creative and artistic pursuits, playing sports, or pursuing other amusements.',     
+        text: 'Hobbies include collecting themed items and objects, engaging in creative and artistic pursuits, playing sports, or pursuing other amusements.',
         created_at: 1632734757655,
         updated_at: 1632734757655,
     },
@@ -93,7 +93,7 @@ describe('Utils', () => {
             const cloneNotes = NOTES.slice();
 
             const completeValue = sortByFilterType(cloneNotes, TEXTS.FILTER.NAME.VALUE);
-            
+
             expect(JSON.stringify(completeValue)).toEqual(JSON.stringify(SORTED_NOTES));
         });
     });
