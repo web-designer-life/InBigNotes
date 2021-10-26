@@ -42,6 +42,36 @@ const NOTES = [
         updated_at: 1632734757657,
     },
 ];
+const SORTED_NOTES = [
+    {
+        id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba3',
+        title: 'Army',
+        text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
+        created_at: 1632734670806,
+        updated_at: 1632735522467,
+    },
+    {
+        id: 'b83cbac2-d74e-458d-85c0-75bdf9c29ba4',
+        title: 'Army',
+        text: 'An army, ground force, or land force is a fighting force that fights primarily on land.',
+        created_at: 1632735522467,
+        updated_at: 1632734670806,
+    },
+    {
+        id: 'd012a6d2-0d4d-445d-a661-1a2ef4d499e2',
+        title: 'Hobby',
+        text: 'Hobbies include collecting themed items and objects, engaging in creative and artistic pursuits, playing sports, or pursuing other amusements.',     
+        created_at: 1632734757657,
+        updated_at: 1632734757657,
+    },
+    {
+        id: 'd012a6d2-0d4d-445d-a661-1a2ef4d499e1',
+        title: 'Hot',
+        text: 'Hobbies include collecting themed items and objects, engaging in creative and artistic pursuits, playing sports, or pursuing other amusements.',     
+        created_at: 1632734757655,
+        updated_at: 1632734757655,
+    },
+];
 
 describe('Utils', () => {
     describe('formatValueByFilterType', () => {
@@ -59,10 +89,12 @@ describe('Utils', () => {
     });
 
     describe('sortByFilterType', () => {
-        it('sort', () => {
-            const completeValue = sortByFilterType(NOTES, TEXTS.FILTER.NAME.VALUE);
+        it('sorted notes equal SORTED_NOTES', () => {
+            const cloneNotes = NOTES.slice();
 
-            expect(completeValue).toEqual(NOTES);
+            const completeValue = sortByFilterType(cloneNotes, TEXTS.FILTER.NAME.VALUE);
+            
+            expect(JSON.stringify(completeValue)).toEqual(JSON.stringify(SORTED_NOTES));
         });
     });
 
