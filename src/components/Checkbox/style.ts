@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
 
-const CheckboxContainer = styled.div`
+const CheckboxContainer = styled.label`
     display: inline-block;
     vertical-align: middle;
     &:hover {

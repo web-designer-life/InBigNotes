@@ -25,7 +25,7 @@ const Checkbox: React.FC<Props> = ({
         </CheckboxContainer>
     );
 
-    return <label>{content}</label>;
+    return content;
 };
 
 export default Checkbox;
