@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NoteComponent from '../NoteComponent';
-import { List } from './style';
+import List from './style';
 import { INote } from '../../interfaces';
 
 interface Props {

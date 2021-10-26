@@ -1,4 +1,4 @@
-export const TEXTS = {
+const TEXTS = {
     PROJECT_NAME: 'InBigNotes',
     LOADER: 'Loading...',
     EMPTY_STORAGE_DATA: 'You have no notes yet. Please, create one...',
@@ -49,3 +49,5 @@ export const TEXTS = {
         },
     },
 };
+
+export default TEXTS;

@@ -9,4 +9,4 @@ const List = styled.ul`
     }
 `;
 
-export { List };
+export default List;

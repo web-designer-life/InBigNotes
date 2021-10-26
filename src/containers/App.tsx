@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
-import { GlobalStyle } from '../globalStyle';
+import GlobalStyle from '../globalStyle';
 import HomeContainer from './HomeContainer';
 import NoteCreation from './NoteCreation';
 import NoteView from './NoteView';

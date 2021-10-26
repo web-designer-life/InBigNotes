@@ -1,10 +1,11 @@
 import moment from 'moment';
 import { INote } from '../interfaces';
 
+const FILTERTYPE_FORMAT = 'string';
 const DATETIME_FORMAT = 'DD.MM.YYYY HH:mm:ss';
 
 export const formatValueByFilterType = (value: any, filterType: string) => (
-    typeof value[filterType] === 'string' ? 
+    typeof value[filterType] === typeof FILTERTYPE_FORMAT ? 
     value[filterType].toLowerCase() : 
     value[filterType]
 );

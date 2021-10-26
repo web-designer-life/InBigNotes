@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     html {
         box-sizing: border-box;
         height: 100%;
@@ -45,3 +45,5 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-appearance: none;
     }
 `;
+
+export default GlobalStyle;
