@@ -21,20 +21,13 @@ interface Props {
 };
 
 export default class NoteComponent extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.handleNavigateToNote = this.handleNavigateToNote.bind(this);
-        this.handleSelectOrUnselectNote = this.handleSelectOrUnselectNote.bind(this);
-    }
-
-    handleNavigateToNote() {
+    handleNavigateToNote = () => {
         const { navigateToPage, note } = this.props;
 
         navigateToPage(`${ROUTES.NOTE}/${note.id}`);
     }
 
-    handleSelectOrUnselectNote() {
+    handleSelectOrUnselectNote = () => {
         const {
             note,
             selectedNotes,

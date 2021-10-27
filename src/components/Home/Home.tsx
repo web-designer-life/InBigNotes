@@ -50,26 +50,21 @@ export default class Home extends Component<Props, State> {
             active: false,
             action: () => { },
         };
-
-        this.handleNavigateToNoteCreator = this.handleNavigateToNoteCreator.bind(this);
-        this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
-        this.handleDeleteNotes = this.handleDeleteNotes.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
     }
 
-    handleNavigateToNoteCreator() {
+    handleNavigateToNoteCreator = () => {
         const { navigateToPage } = this.props;
 
         navigateToPage(ROUTES.NOTE_CREATE);
     }
 
-    handleSetAction(func: Function) {
+    handleSetAction = (func: Function) => {
         this.setState({
             action: func,
         } as Pick<State, keyof State>);
     }
 
-    handleModalBackButtonClick() {
+    handleModalBackButtonClick = () => {
         this.setState({
             modalText: TEXTS.MODAL.DELETE,
             buttonConfirmText: TEXTS.BUTTON.DELETE,
@@ -80,7 +75,7 @@ export default class Home extends Component<Props, State> {
         this.toggleModal();
     }
 
-    handleDeleteNotes() {
+    handleDeleteNotes = () => {
         const {
             notes,
             selectedNotes,
@@ -98,7 +93,7 @@ export default class Home extends Component<Props, State> {
         deleteNotes(completeNotes);
     }
 
-    toggleModal() {
+    toggleModal = () => {
         const { active } = this.state;
 
         this.setState({

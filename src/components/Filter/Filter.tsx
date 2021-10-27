@@ -14,15 +14,7 @@ interface Props {
 };
 
 export default class Filter extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.state = {};
-
-        this.handleChangeFilter = this.handleChangeFilter.bind(this);
-    }
-
-    handleChangeFilter(evt: { target: { value: string; }; }) {
+    handleChangeFilter = (evt: { target: { value: string; }; }) => {
         const { value } = evt.target;
         const { filterAction, fetchNotes } = this.props;
 

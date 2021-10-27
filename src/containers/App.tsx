@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import GlobalStyle from '../globalStyle';
@@ -12,28 +12,24 @@ interface Props {
     history: any,
 };
 
-export default class App extends Component<Props> {
-    constructor(props) {
-        super(props);
+const App: FunctionComponent<Props> = ({
+    history,
+}) => {
+    const content = (
+        <>
+            <GlobalStyle />
+            <ConnectedRouter history={history}>
+                <Switch>
+                    <Route path={ROUTES.NOTE_CREATE} component={NoteCreation} />
+                    <Route path={`${ROUTES.NOTE}/:noteId`} component={NoteView} />
+                    <Route path={ROUTES.HOME} exact component={HomeContainer} />
+                    <Route component={ErrorContainer} />
+                </Switch>
+            </ConnectedRouter>
+        </>
+    );
 
-        this.state = {};
-    }
-
-    render() {
-        const { history } = this.props;
-
-        return (
-            <>
-                <GlobalStyle />
-                <ConnectedRouter history={history}>
-                    <Switch>
-                        <Route path={ROUTES.NOTE_CREATE} component={NoteCreation} />
-                        <Route path={`${ROUTES.NOTE}/:noteId`} component={NoteView} />
-                        <Route path={ROUTES.HOME} exact component={HomeContainer} />
-                        <Route component={ErrorContainer} />
-                    </Switch>
-                </ConnectedRouter>
-            </>
-        );
-    }
+    return content;
 };
+
+export default App;

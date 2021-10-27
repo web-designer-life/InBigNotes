@@ -14,19 +14,13 @@ interface Props {
 };
 
 export default class NoteCreation extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    }
-
     componentWillUnmount() {
         const { resetStoreAction } = this.props;
 
         resetStoreAction();
     }
 
-    handleNavigateToHome() {
+    handleNavigateToHome = () => {
         const { navigateToPageAction } = this.props;
 
         navigateToPageAction(ROUTES.HOME);

@@ -7,13 +7,7 @@ interface Props {
 };
 
 export default class ErrorContainer extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    }
-
-    handleNavigateToHome() {
+    handleNavigateToHome = () => {
         const { navigateToPageAction } = this.props;
 
         navigateToPageAction(ROUTES.HOME);

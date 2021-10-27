@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, FunctionComponent } from 'react';
 import {
     CheckboxContainer,
     Icon,
@@ -9,10 +9,10 @@ import checkMark from '../../images/check-mark.svg';
 
 interface Props {
     checked: boolean,
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void,
 };
 
-const Checkbox: React.FC<Props> = ({
+const Checkbox: FunctionComponent<Props> = ({
     checked,
     ...props
 }) => {

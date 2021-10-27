@@ -23,12 +23,6 @@ interface Props {
 };
 
 export default class HomeContainer extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    }
-
     componentDidMount() {
         const { fetchNotesAction, filterType } = this.props;
 
@@ -41,7 +35,7 @@ export default class HomeContainer extends Component<Props> {
         resetStoreAction();
     }
 
-    handleNavigateToHome() {
+    handleNavigateToHome = () => {
         const { navigateToPageAction } = this.props;
 
         navigateToPageAction(ROUTES.HOME);

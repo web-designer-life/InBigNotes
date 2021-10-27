@@ -18,13 +18,7 @@ interface Props {
 };
 
 export default class Modal extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
+    handleClick = () => {
         const {
             action,
             onClose

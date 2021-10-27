@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import NoteComponent from '../NoteComponent';
 import List from './style';
 import { INote } from '../../interfaces';
@@ -11,35 +11,29 @@ interface Props {
     navigateToPage(path: string): Function,
 };
 
-export default class ListNotes extends Component<Props> {
-    constructor(props) {
-        super(props);
+const ListNotes: FunctionComponent<Props> = ({
+    notes,
+    selectedNotes,
+    addSelectedNote,
+    removeUnselectedNote,
+    navigateToPage,
+}) => {
+    const content = (
+        <List>
+            {notes.map((note: INote) => (
+                <NoteComponent
+                    key={note.id}
+                    note={note}
+                    selectedNotes={selectedNotes}
+                    addSelectedNote={addSelectedNote}
+                    removeUnselectedNote={removeUnselectedNote}
+                    navigateToPage={navigateToPage}
+                />
+            ))}
+        </List>
+    );
 
-        this.state = {};
-    }
+    return content;
+};
 
-    render() {
-        const {
-            notes,
-            selectedNotes,
-            addSelectedNote,
-            removeUnselectedNote,
-            navigateToPage,
-        } = this.props;
-
-        return (
-            <List>
-                {notes.map((note: INote) => (
-                    <NoteComponent
-                        key={note.id}
-                        note={note}
-                        selectedNotes={selectedNotes}
-                        addSelectedNote={addSelectedNote}
-                        removeUnselectedNote={removeUnselectedNote}
-                        navigateToPage={navigateToPage}
-                    />
-                ))}
-            </List>
-        );
-    }
-}
+export default ListNotes;

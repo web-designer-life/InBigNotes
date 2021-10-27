@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import {
     BUTTON_TYPES,
     COLORS,
@@ -11,25 +11,22 @@ interface Props {
     navigateToPage: () => void,
 };
 
-export default class Error extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
+const Error: FunctionComponent<Props> = ({
+    navigateToPage,
+}) => {
+    const content = (
+        <Container>
+            <Message>404 - Not Found!</Message>
+            <Button
+                type={BUTTON_TYPES.BUTTON}
+                onClick={navigateToPage}
+                text={TEXTS.BUTTON.HOME}
+                color={COLORS.BUTTON.GREEN}
+            />
+        </Container>
+    );
 
-        this.state = {};
-    }
-
-    render() {
-        const { navigateToPage } = this.props;
-        return (
-            <Container>
-                <Message>404 - Not Found!</Message>
-                <Button
-                    type={BUTTON_TYPES.BUTTON}
-                    onClick={navigateToPage}
-                    text={TEXTS.BUTTON.HOME}
-                    color={COLORS.BUTTON.GREEN}
-                />
-            </Container>
-        );
-    }
+    return content;
 };
+
+export default Error;

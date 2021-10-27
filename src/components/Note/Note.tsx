@@ -48,29 +48,19 @@ export default class Note extends Component<Props, State> {
             active: false,
             action: () => { },
         };
-
-        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleCheckButtonAction = this.handleCheckButtonAction.bind(this);
-        this.handleCancelChanges = this.handleCancelChanges.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
-        this.handleModalSubmitButtonClick = this.handleModalSubmitButtonClick.bind(this);
-        this.handleModalCancelButtonClick = this.handleModalCancelButtonClick.bind(this);
     }
 
     componentDidMount() {
         this.handleCancelChanges();
     }
 
-    handleNavigateToHome() {
+    handleNavigateToHome = () => {
         const { navigateToPage } = this.props;
 
         navigateToPage(ROUTES.HOME);
     }
 
-    handleChange(evt: { target: { name: string; value: any; }; }) {
+    handleChange = (evt: { target: { name: string; value: any; }; }) => {
         const { name, value } = evt.target;
 
         this.setState({
@@ -78,7 +68,7 @@ export default class Note extends Component<Props, State> {
         } as Pick<State, keyof State>);
     }
 
-    handleCheckSaveOrUpdateChanges() {
+    handleCheckSaveOrUpdateChanges = () => {
         const { title, text } = this.state;
         const { note } = this.props;
 
@@ -88,7 +78,7 @@ export default class Note extends Component<Props, State> {
         );
     }
 
-    handleCheckCancelChanges() {
+    handleCheckCancelChanges = () => {
         const { title, text } = this.state;
         const { note } = this.props;
 
@@ -98,13 +88,13 @@ export default class Note extends Component<Props, State> {
         );
     }
 
-    handleCheckButtonAction() {
-        return this.handleCheckCancelChanges() ?
+    handleCheckButtonAction = () => (
+        this.handleCheckCancelChanges() ?
             this.handleModalBackButtonClick() :
-            this.handleNavigateToHome();
-    }
+            this.handleNavigateToHome()
+    )
 
-    handleCancelChanges() {
+    handleCancelChanges = () => {
         const { note } = this.props;
 
         this.setState({
@@ -113,13 +103,13 @@ export default class Note extends Component<Props, State> {
         });
     }
 
-    handleSetAction(func: () => void) {
+    handleSetAction = (func: () => void) => {
         this.setState({
             action: func,
         } as Pick<State, keyof State>);
     }
 
-    handleModalBackButtonClick() {
+    handleModalBackButtonClick = () => {
         this.setState({
             modalText: TEXTS.MODAL.BACK,
             buttonConfirmText: TEXTS.BUTTON.BACK,
@@ -130,7 +120,7 @@ export default class Note extends Component<Props, State> {
         this.toggleModal();
     }
 
-    handleModalSubmitButtonClick() {
+    handleModalSubmitButtonClick = () => {
         const { typeName } = this.props;
 
         this.setState({
@@ -143,7 +133,7 @@ export default class Note extends Component<Props, State> {
         this.toggleModal();
     }
 
-    handleModalCancelButtonClick() {
+    handleModalCancelButtonClick = () => {
         this.setState({
             modalText: TEXTS.MODAL.CANCEL,
             buttonConfirmText: TEXTS.BUTTON.CONFIRM,
@@ -154,7 +144,7 @@ export default class Note extends Component<Props, State> {
         this.toggleModal();
     }
 
-    onSubmit() {
+    onSubmit = () => {
         const { addOrUpdateNote, note } = this.props;
         const { title, text } = this.state;
 
@@ -169,7 +159,7 @@ export default class Note extends Component<Props, State> {
         addOrUpdateNote(completeNote);
     }
 
-    toggleModal() {
+    toggleModal = () => {
         const { active } = this.state;
 
         this.setState({

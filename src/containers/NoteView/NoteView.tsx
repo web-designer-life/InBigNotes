@@ -21,12 +21,6 @@ interface Props {
 };
 
 export default class NoteView extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-    }
-
     componentDidMount() {
         const { fetchNoteAction, match } = this.props;
 
@@ -39,7 +33,7 @@ export default class NoteView extends Component<Props> {
         resetStoreAction();
     }
 
-    handleNavigateToHome() {
+    handleNavigateToHome = () => {
         const { navigateToPageAction } = this.props;
 
         navigateToPageAction(ROUTES.HOME);

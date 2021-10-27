@@ -19,13 +19,7 @@ interface Props {
 }
 
 export default class ControlPanel extends Component<Props> {
-    constructor(props: Props) {
-        super(props);
-
-        this.handleSelectOrUnselectNotes = this.handleSelectOrUnselectNotes.bind(this);
-    }
-
-    handleSelectOrUnselectNotes() {
+    handleSelectOrUnselectNotes = () => {
         const {
             notes,
             selectedNotes,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import { BUTTON_TYPES } from '../../constants';
 import StyledButton from './style';
 
@@ -11,31 +11,25 @@ interface Props {
     color: string,
 };
 
-export default class Button extends Component<Props> {
-    constructor(props) {
-        super(props);
+const Button: FunctionComponent<Props> = ({
+    type,
+    disabled,
+    onClick,
+    text,
+    color,
+}) => {
+    const content = (
+        <StyledButton
+            type={type}
+            disabled={disabled}
+            onClick={onClick}
+            color={color}
+        >
+            {text}
+        </StyledButton>
+    )
 
-        this.state = {};
-    }
-
-    render() {
-        const {
-            type,
-            disabled,
-            onClick,
-            text,
-            color,
-        } = this.props;
-
-        return (
-            <StyledButton
-                type={type}
-                disabled={disabled}
-                onClick={onClick}
-                color={color}
-            >
-                {text}
-            </StyledButton>
-        )
-    }
+    return content;
 };
+
+export default Button;
