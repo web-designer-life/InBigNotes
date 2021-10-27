@@ -1,0 +1,1205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ControlPanel component handlers handleSelectOrUnselectNotes with selectedNotes 1`] = `
+<ControlPanel
+  fetchNotes={[Function]}
+  filterAction={[Function]}
+  filterType="title"
+  notes={
+    Array [
+      Object {
+        "created_at": 1632734670806,
+        "id": "b83cbac2-d74e-458d-85c0-75bdf9c29ba3",
+        "text": "An army, ground force, or land force is a fighting force that fights primarily on land.",
+        "title": "Army",
+        "updated_at": 1632735522467,
+      },
+    ]
+  }
+  selectAllNotes={[Function]}
+  selectedNotes={
+    Array [
+      "b83cbac2-d74e-458d-85c0-75bdf9c29ba3",
+    ]
+  }
+  unselectAllNotes={[Function]}
+>
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-htoDjs",
+            "isStatic": false,
+            "lastClassName": "fMgElT",
+            "rules": Array [
+              "
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 30px;
+    gap: 20px;
+    @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0 20px;
+    }
+",
+            ],
+          },
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-htoDjs",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className="sc-htoDjs fMgElT"
+      >
+        <Filter
+          fetchNotes={[Function]}
+          filterAction={[Function]}
+          filterType="title"
+        >
+          <styled.div>
+            <StyledComponent
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-ifAKCX",
+                    "isStatic": false,
+                    "lastClassName": "dusvQB",
+                    "rules": Array [
+                      "
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @media (max-width: 500px) {
+	    flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+",
+                    ],
+                  },
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-ifAKCX",
+                  "target": "div",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+            >
+              <div
+                className="sc-ifAKCX dusvQB"
+              >
+                <styled.h2>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-EHOje",
+                          "isStatic": false,
+                          "lastClassName": "fPEhsl",
+                          "rules": Array [
+                            "
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 15px 0 0;
+    color: ",
+                            "#5A5A5A",
+                            ";
+    @media (max-width: 500px) {
+        margin: 0 0 10px 0;
+    }
+",
+                          ],
+                        },
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-EHOje",
+                        "target": "h2",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <h2
+                      className="sc-EHOje fPEhsl"
+                    >
+                      Sort by:
+                    </h2>
+                  </StyledComponent>
+                </styled.h2>
+                <styled.select
+                  onChange={[Function]}
+                  value="title"
+                >
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bZQynM",
+                          "isStatic": false,
+                          "lastClassName": "eJfewk",
+                          "rules": Array [
+                            "
+    font-family: inherit;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: ",
+                            "#5A5A5A",
+                            ";
+    background-color: ",
+                            "#FFFFFF",
+                            ";
+    border: 4px solid ",
+                            "#5A5A5A",
+                            ";
+    border-radius: 15px;
+    padding: 10px 5px 10px 5px;
+    cursor: pointer;
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
+",
+                          ],
+                        },
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bZQynM",
+                        "target": "select",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                    onChange={[Function]}
+                    value="title"
+                  >
+                    <select
+                      className="sc-bZQynM eJfewk"
+                      onChange={[Function]}
+                      value="title"
+                    >
+                      <styled.option
+                        value="title"
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "ibZhkv",
+                                "rules": Array [],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "option",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          value="title"
+                        >
+                          <option
+                            className="sc-gzVnrw ibZhkv"
+                            value="title"
+                          >
+                            Name
+                          </option>
+                        </StyledComponent>
+                      </styled.option>
+                      <styled.option
+                        value="created_at"
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "ibZhkv",
+                                "rules": Array [],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "option",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          value="created_at"
+                        >
+                          <option
+                            className="sc-gzVnrw ibZhkv"
+                            value="created_at"
+                          >
+                            Date Created
+                          </option>
+                        </StyledComponent>
+                      </styled.option>
+                      <styled.option
+                        value="updated_at"
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "ibZhkv",
+                                "rules": Array [],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "option",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          value="updated_at"
+                        >
+                          <option
+                            className="sc-gzVnrw ibZhkv"
+                            value="updated_at"
+                          >
+                            Date Modified
+                          </option>
+                        </StyledComponent>
+                      </styled.option>
+                    </select>
+                  </StyledComponent>
+                </styled.select>
+              </div>
+            </StyledComponent>
+          </styled.div>
+        </Filter>
+        <styled.div>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-dnqmqq",
+                  "isStatic": false,
+                  "lastClassName": "ibuaWq",
+                  "rules": Array [
+                    "
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+",
+                  ],
+                },
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-dnqmqq",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="sc-dnqmqq ibuaWq"
+            >
+              <styled.p>
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "sc-iwsKbI",
+                        "isStatic": false,
+                        "lastClassName": "cMppQP",
+                        "rules": Array [
+                          "
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 15px 0 0;
+    color: ",
+                          "#5A5A5A",
+                          ";
+",
+                        ],
+                      },
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "sc-iwsKbI",
+                      "target": "p",
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <p
+                    className="sc-iwsKbI cMppQP"
+                  >
+                    Select all 
+                    (1)
+                  </p>
+                </StyledComponent>
+              </styled.p>
+              <Checkbox
+                checked={true}
+                onChange={[Function]}
+              >
+                <styled.label>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bdVaJa",
+                          "isStatic": false,
+                          "lastClassName": "GkBXx",
+                          "rules": Array [
+                            "
+    display: inline-block;
+    vertical-align: middle;
+    &:hover {
+        cursor: pointer;
+    }
+",
+                          ],
+                        },
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bdVaJa",
+                        "target": "label",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <label
+                      className="sc-bdVaJa GkBXx"
+                    >
+                      <styled.input
+                        checked={true}
+                        onChange={[Function]}
+                      >
+                        <StyledComponent
+                          checked={true}
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [
+                                Object {
+                                  "type": "checkbox",
+                                },
+                              ],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-htpNat",
+                                "isStatic": false,
+                                "lastClassName": "hJwuQC",
+                                "rules": Array [
+                                  "
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+",
+                                ],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-htpNat",
+                              "target": "input",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          onChange={[Function]}
+                        >
+                          <input
+                            checked={true}
+                            className="sc-htpNat hJwuQC"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                        </StyledComponent>
+                      </styled.input>
+                      <styled.div
+                        checked={true}
+                      >
+                        <StyledComponent
+                          checked={true}
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-bxivhb",
+                                "isStatic": false,
+                                "lastClassName": "eyuFwS",
+                                "rules": Array [
+                                  "
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    background: ",
+                                  "#FFFFFF",
+                                  ";
+    border-radius: 15px;
+    border: 4px solid ",
+                                  "#0047FF",
+                                  ";
+
+    ",
+                                  ".sc-bwzfXH",
+                                  " {
+        visibility: ",
+                                  [Function],
+                                  ";
+    }
+",
+                                ],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-bxivhb",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                        >
+                          <div
+                            checked={true}
+                            className="sc-bxivhb eyuFwS"
+                          >
+                            <styled.img
+                              src="test-file-stub"
+                            >
+                              <StyledComponent
+                                forwardedComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "attrs": Array [],
+                                    "componentStyle": ComponentStyle {
+                                      "componentId": "sc-bwzfXH",
+                                      "isStatic": false,
+                                      "lastClassName": "dFPsPe",
+                                      "rules": Array [
+                                        "
+    width: 32px;
+    height: 24px;
+    fill: none;
+",
+                                      ],
+                                    },
+                                    "foldedComponentIds": Array [],
+                                    "render": [Function],
+                                    "styledComponentId": "sc-bwzfXH",
+                                    "target": "img",
+                                    "toString": [Function],
+                                    "warnTooManyClasses": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                forwardedRef={null}
+                                src="test-file-stub"
+                              >
+                                <img
+                                  className="sc-bwzfXH dFPsPe"
+                                  src="test-file-stub"
+                                />
+                              </StyledComponent>
+                            </styled.img>
+                          </div>
+                        </StyledComponent>
+                      </styled.div>
+                    </label>
+                  </StyledComponent>
+                </styled.label>
+              </Checkbox>
+            </div>
+          </StyledComponent>
+        </styled.div>
+      </div>
+    </StyledComponent>
+  </styled.div>
+</ControlPanel>
+`;
+
+exports[`ControlPanel component handlers handleSelectOrUnselectNotes without selectedNotes 1`] = `
+<ControlPanel
+  fetchNotes={[Function]}
+  filterAction={[Function]}
+  filterType="title"
+  notes={
+    Array [
+      Object {
+        "created_at": 1632734670806,
+        "id": "b83cbac2-d74e-458d-85c0-75bdf9c29ba3",
+        "text": "An army, ground force, or land force is a fighting force that fights primarily on land.",
+        "title": "Army",
+        "updated_at": 1632735522467,
+      },
+    ]
+  }
+  selectAllNotes={[Function]}
+  selectedNotes={Array []}
+  unselectAllNotes={[Function]}
+>
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-htoDjs",
+            "isStatic": false,
+            "lastClassName": "fMgElT",
+            "rules": Array [
+              "
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 30px;
+    gap: 20px;
+    @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0 20px;
+    }
+",
+            ],
+          },
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-htoDjs",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className="sc-htoDjs fMgElT"
+      >
+        <Filter
+          fetchNotes={[Function]}
+          filterAction={[Function]}
+          filterType="title"
+        >
+          <styled.div>
+            <StyledComponent
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-ifAKCX",
+                    "isStatic": false,
+                    "lastClassName": "dusvQB",
+                    "rules": Array [
+                      "
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @media (max-width: 500px) {
+	    flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+",
+                    ],
+                  },
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-ifAKCX",
+                  "target": "div",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+            >
+              <div
+                className="sc-ifAKCX dusvQB"
+              >
+                <styled.h2>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-EHOje",
+                          "isStatic": false,
+                          "lastClassName": "fPEhsl",
+                          "rules": Array [
+                            "
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 15px 0 0;
+    color: ",
+                            "#5A5A5A",
+                            ";
+    @media (max-width: 500px) {
+        margin: 0 0 10px 0;
+    }
+",
+                          ],
+                        },
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-EHOje",
+                        "target": "h2",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <h2
+                      className="sc-EHOje fPEhsl"
+                    >
+                      Sort by:
+                    </h2>
+                  </StyledComponent>
+                </styled.h2>
+                <styled.select
+                  onChange={[Function]}
+                  value="title"
+                >
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bZQynM",
+                          "isStatic": false,
+                          "lastClassName": "eJfewk",
+                          "rules": Array [
+                            "
+    font-family: inherit;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: ",
+                            "#5A5A5A",
+                            ";
+    background-color: ",
+                            "#FFFFFF",
+                            ";
+    border: 4px solid ",
+                            "#5A5A5A",
+                            ";
+    border-radius: 15px;
+    padding: 10px 5px 10px 5px;
+    cursor: pointer;
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
+",
+                          ],
+                        },
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bZQynM",
+                        "target": "select",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                    onChange={[Function]}
+                    value="title"
+                  >
+                    <select
+                      className="sc-bZQynM eJfewk"
+                      onChange={[Function]}
+                      value="title"
+                    >
+                      <styled.option
+                        value="title"
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "ibZhkv",
+                                "rules": Array [],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "option",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          value="title"
+                        >
+                          <option
+                            className="sc-gzVnrw ibZhkv"
+                            value="title"
+                          >
+                            Name
+                          </option>
+                        </StyledComponent>
+                      </styled.option>
+                      <styled.option
+                        value="created_at"
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "ibZhkv",
+                                "rules": Array [],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "option",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          value="created_at"
+                        >
+                          <option
+                            className="sc-gzVnrw ibZhkv"
+                            value="created_at"
+                          >
+                            Date Created
+                          </option>
+                        </StyledComponent>
+                      </styled.option>
+                      <styled.option
+                        value="updated_at"
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-gzVnrw",
+                                "isStatic": false,
+                                "lastClassName": "ibZhkv",
+                                "rules": Array [],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-gzVnrw",
+                              "target": "option",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          value="updated_at"
+                        >
+                          <option
+                            className="sc-gzVnrw ibZhkv"
+                            value="updated_at"
+                          >
+                            Date Modified
+                          </option>
+                        </StyledComponent>
+                      </styled.option>
+                    </select>
+                  </StyledComponent>
+                </styled.select>
+              </div>
+            </StyledComponent>
+          </styled.div>
+        </Filter>
+        <styled.div>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-dnqmqq",
+                  "isStatic": false,
+                  "lastClassName": "ibuaWq",
+                  "rules": Array [
+                    "
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+",
+                  ],
+                },
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-dnqmqq",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="sc-dnqmqq ibuaWq"
+            >
+              <styled.p>
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "sc-iwsKbI",
+                        "isStatic": false,
+                        "lastClassName": "cMppQP",
+                        "rules": Array [
+                          "
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 15px 0 0;
+    color: ",
+                          "#5A5A5A",
+                          ";
+",
+                        ],
+                      },
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "sc-iwsKbI",
+                      "target": "p",
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <p
+                    className="sc-iwsKbI cMppQP"
+                  >
+                    Select all 
+                  </p>
+                </StyledComponent>
+              </styled.p>
+              <Checkbox
+                checked={false}
+                onChange={[Function]}
+              >
+                <styled.label>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "sc-bdVaJa",
+                          "isStatic": false,
+                          "lastClassName": "GkBXx",
+                          "rules": Array [
+                            "
+    display: inline-block;
+    vertical-align: middle;
+    &:hover {
+        cursor: pointer;
+    }
+",
+                          ],
+                        },
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "sc-bdVaJa",
+                        "target": "label",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <label
+                      className="sc-bdVaJa GkBXx"
+                    >
+                      <styled.input
+                        checked={false}
+                        onChange={[Function]}
+                      >
+                        <StyledComponent
+                          checked={false}
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [
+                                Object {
+                                  "type": "checkbox",
+                                },
+                              ],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-htpNat",
+                                "isStatic": false,
+                                "lastClassName": "hJwuQC",
+                                "rules": Array [
+                                  "
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+",
+                                ],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-htpNat",
+                              "target": "input",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          onChange={[Function]}
+                        >
+                          <input
+                            checked={false}
+                            className="sc-htpNat hJwuQC"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                        </StyledComponent>
+                      </styled.input>
+                      <styled.div
+                        checked={false}
+                      >
+                        <StyledComponent
+                          checked={false}
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-bxivhb",
+                                "isStatic": false,
+                                "lastClassName": "vwYgG",
+                                "rules": Array [
+                                  "
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    background: ",
+                                  "#FFFFFF",
+                                  ";
+    border-radius: 15px;
+    border: 4px solid ",
+                                  "#0047FF",
+                                  ";
+
+    ",
+                                  ".sc-bwzfXH",
+                                  " {
+        visibility: ",
+                                  [Function],
+                                  ";
+    }
+",
+                                ],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-bxivhb",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                        >
+                          <div
+                            checked={false}
+                            className="sc-bxivhb vwYgG"
+                          >
+                            <styled.img
+                              src="test-file-stub"
+                            >
+                              <StyledComponent
+                                forwardedComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "attrs": Array [],
+                                    "componentStyle": ComponentStyle {
+                                      "componentId": "sc-bwzfXH",
+                                      "isStatic": false,
+                                      "lastClassName": "dFPsPe",
+                                      "rules": Array [
+                                        "
+    width: 32px;
+    height: 24px;
+    fill: none;
+",
+                                      ],
+                                    },
+                                    "foldedComponentIds": Array [],
+                                    "render": [Function],
+                                    "styledComponentId": "sc-bwzfXH",
+                                    "target": "img",
+                                    "toString": [Function],
+                                    "warnTooManyClasses": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                forwardedRef={null}
+                                src="test-file-stub"
+                              >
+                                <img
+                                  className="sc-bwzfXH dFPsPe"
+                                  src="test-file-stub"
+                                />
+                              </StyledComponent>
+                            </styled.img>
+                          </div>
+                        </StyledComponent>
+                      </styled.div>
+                    </label>
+                  </StyledComponent>
+                </styled.label>
+              </Checkbox>
+            </div>
+          </StyledComponent>
+        </styled.div>
+      </div>
+    </StyledComponent>
+  </styled.div>
+</ControlPanel>
+`;
+
+exports[`ControlPanel component should render ControlPanel component 1`] = `
+<styled.div>
+  <Filter
+    fetchNotes={[Function]}
+    filterAction={[Function]}
+    filterType="title"
+  />
+  <styled.div>
+    <styled.p>
+      Select all 
+      (1)
+    </styled.p>
+    <Checkbox
+      checked={true}
+      onChange={[Function]}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`ControlPanel component should render ControlPanel component without selectedNotes 1`] = `
+<styled.div>
+  <Filter
+    fetchNotes={[Function]}
+    filterAction={[Function]}
+    filterType="title"
+  />
+  <styled.div>
+    <styled.p>
+      Select all 
+    </styled.p>
+    <Checkbox
+      checked={false}
+      onChange={[Function]}
+    />
+  </styled.div>
+</styled.div>
+`;

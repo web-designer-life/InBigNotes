@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component handlers handleClick should call method 1`] = `
+<Modal
+  action={[Function]}
+  active={true}
+  buttonCancelText="Cancel"
+  buttonConfirmText="Delete"
+  modalText="Do you want to delete selected notes?"
+  onClose={[Function]}
+>
+  <styled.div>
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "QKjDi",
+            "rules": Array [
+              "
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 999;
+",
+            ],
+          },
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <div
+        className="sc-bdVaJa QKjDi"
+      >
+        <styled.div>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bwzfXH",
+                  "isStatic": false,
+                  "lastClassName": "dOjydb",
+                  "rules": Array [
+                    "
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: 400px;
+    padding: 25px;
+    margin: 25px;
+    background-color: ",
+                    "#FFFFFF",
+                    ";
+",
+                  ],
+                },
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bwzfXH",
+                "target": "div",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="sc-bwzfXH dOjydb"
+            >
+              <styled.h2>
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "sc-htpNat",
+                        "isStatic": false,
+                        "lastClassName": "fMYktG",
+                        "rules": Array [
+                          "
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+    margin: 0 0 25px 0;
+    color: ",
+                          "#5A5A5A",
+                          ";
+",
+                        ],
+                      },
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "sc-htpNat",
+                      "target": "h2",
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <h2
+                    className="sc-htpNat fMYktG"
+                  >
+                    Do you want to delete selected notes?
+                  </h2>
+                </StyledComponent>
+              </styled.h2>
+              <styled.div>
+                <StyledComponent
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "sc-bxivhb",
+                        "isStatic": false,
+                        "lastClassName": "ikbyyZ",
+                        "rules": Array [
+                          "
+	display: flex;
+	justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    @media (max-width: 989px) {
+        flex-direction: column;
+    }
+",
+                        ],
+                      },
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "sc-bxivhb",
+                      "target": "div",
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <div
+                    className="sc-bxivhb ikbyyZ"
+                  >
+                    <Button
+                      color="green"
+                      onClick={[Function]}
+                      text="Delete"
+                      type="button"
+                    >
+                      <styled.button
+                        color="green"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <StyledComponent
+                          color="green"
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-ifAKCX",
+                                "isStatic": false,
+                                "lastClassName": "kfIclL",
+                                "rules": Array [
+                                  "
+    min-width: 170px;
+    border-radius: 15px;
+    color: ",
+                                  "#FFFFFF",
+                                  ";
+    padding: 10px 25px;
+    transition-duration: .1s;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    &:hover {
+        background-color: ",
+                                  "#FFFFFF",
+                                  ";
+    }
+    &:disabled {
+        opacity: .5;
+        border: 4px solid ",
+                                  "#808080",
+                                  ";
+        background-color: ",
+                                  "#808080",
+                                  ";
+        &:hover { 
+            background-color: ",
+                                  "#808080",
+                                  ";
+            color: ",
+                                  "#FFFFFF",
+                                  ";
+            cursor: default;
+        }
+    }
+    ",
+                                  [Function],
+                                  "
+    ",
+                                  [Function],
+                                  "
+    @media (max-width: 450px) {
+        min-width: auto;
+        width: 100%;
+    }
+",
+                                ],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-ifAKCX",
+                              "target": "button",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          <button
+                            className="sc-ifAKCX cfUuCK"
+                            color="green"
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Delete
+                          </button>
+                        </StyledComponent>
+                      </styled.button>
+                    </Button>
+                    <Button
+                      color="red"
+                      onClick={[Function]}
+                      text="Cancel"
+                      type="button"
+                    >
+                      <styled.button
+                        color="red"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <StyledComponent
+                          color="red"
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "sc-ifAKCX",
+                                "isStatic": false,
+                                "lastClassName": "kfIclL",
+                                "rules": Array [
+                                  "
+    min-width: 170px;
+    border-radius: 15px;
+    color: ",
+                                  "#FFFFFF",
+                                  ";
+    padding: 10px 25px;
+    transition-duration: .1s;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    &:hover {
+        background-color: ",
+                                  "#FFFFFF",
+                                  ";
+    }
+    &:disabled {
+        opacity: .5;
+        border: 4px solid ",
+                                  "#808080",
+                                  ";
+        background-color: ",
+                                  "#808080",
+                                  ";
+        &:hover { 
+            background-color: ",
+                                  "#808080",
+                                  ";
+            color: ",
+                                  "#FFFFFF",
+                                  ";
+            cursor: default;
+        }
+    }
+    ",
+                                  [Function],
+                                  "
+    ",
+                                  [Function],
+                                  "
+    @media (max-width: 450px) {
+        min-width: auto;
+        width: 100%;
+    }
+",
+                                ],
+                              },
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "sc-ifAKCX",
+                              "target": "button",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          <button
+                            className="sc-ifAKCX kfIclL"
+                            color="red"
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Cancel
+                          </button>
+                        </StyledComponent>
+                      </styled.button>
+                    </Button>
+                  </div>
+                </StyledComponent>
+              </styled.div>
+            </div>
+          </StyledComponent>
+        </styled.div>
+      </div>
+    </StyledComponent>
+  </styled.div>
+</Modal>
+`;
+
+exports[`Modal component should render active Modal component 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.h2>
+      Do you want to delete selected notes?
+    </styled.h2>
+    <styled.div>
+      <Button
+        color="green"
+        onClick={[Function]}
+        text="Delete"
+        type="button"
+      />
+      <Button
+        color="red"
+        onClick={[Function]}
+        text="Cancel"
+        type="button"
+      />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Modal component should render inactive Modal component 1`] = `""`;

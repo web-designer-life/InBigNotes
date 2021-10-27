@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
-import ControlPanel from '../ControlPanel/ControlPanel';
-import { ListNotes } from '../Notes/ListNotes';
-import { 
-    RouterWrapper, 
-    Logo, 
+import ControlPanel from '../ControlPanel';
+import ListNotes from '../ListNotes';
+import Button from '../Button';
+import Modal from '../Modal';
+import { INote } from '../../interfaces';
+import {
+    RouterWrapper,
+    Logo,
     Wrapper,
 } from '../../containers/style';
-import Button from '../Button/Button';
-import { Note } from '../../interfaces';
 import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
-import { 
-    ROUTES, 
-    BUTTON_TYPES, 
-    COLORS, 
-    TEXTS, 
+import {
+    ROUTES,
+    BUTTON_TYPES,
+    COLORS,
+    TEXTS,
 } from '../../constants';
-import Modal from '../Modal/Modal';
 
 interface Props {
-    notes?: Note[],
-    selectedNotes?: string[],
-    filter: string,
-    fetchNotes(filter: string): Function,
-    deleteNotes(notes: Note[]): Function,
-    addSelectedNote(note: Note): Function,
-    removeUnselectedNote(note: Note): Function,
-    selectAllNotes(notes: Note[]): Function,
+    notes: INote[],
+    selectedNotes: string[],
+    filterType: string,
+    fetchNotes(filterType: string): Function,
+    deleteNotes(notes: INote[]): Function,
+    addSelectedNote(note: INote): Function,
+    removeUnselectedNote(note: INote): Function,
+    selectAllNotes(notes: INote[]): Function,
     unselectAllNotes(): Function,
-    filterAction(filter: string): Function,
+    filterAction(filterType: string): Function,
     navigateToPage(path: string): Function,
 };
 
@@ -37,7 +37,7 @@ interface State {
     buttonCancelText: string,
     active: boolean,
     action: () => void,
-}
+};
 
 export default class Home extends Component<Props, State> {
     constructor(props: Props) {
@@ -48,67 +48,66 @@ export default class Home extends Component<Props, State> {
             buttonConfirmText: '',
             buttonCancelText: '',
             active: false,
-            action: () => {},
+            action: () => { },
         };
+    }
 
-        this.handleNavigateToNoteCreator = this.handleNavigateToNoteCreator.bind(this);
-        this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
-        this.handleDeleteNotes = this.handleDeleteNotes.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-    };    
+    handleNavigateToNoteCreator = () => {
+        const { navigateToPage } = this.props;
 
-    toggleModal() {
-		this.setState({
-			active: !this.state.active,
-		} as Pick<State, keyof State>);
-	};
+        navigateToPage(ROUTES.NOTE_CREATE);
+    }
 
-    handleNavigateToNoteCreator() {
-		this.props.navigateToPage(ROUTES.NOTE_CREATE);
-	};
-
-    handleSetAction(func: Function) {
-		this.setState({
-			action: func,
-		} as Pick<State, keyof State>);
-	};
-
-    handleModalBackButtonClick() {
+    handleSetAction = (func: Function) => {
         this.setState({
-			modalText: TEXTS.MODAL.DELETE,
+            action: func,
+        } as Pick<State, keyof State>);
+    }
+
+    handleModalBackButtonClick = () => {
+        this.setState({
+            modalText: TEXTS.MODAL.DELETE,
             buttonConfirmText: TEXTS.BUTTON.DELETE,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
-		} as Pick<State, keyof State>);
+        } as Pick<State, keyof State>);
 
         this.handleSetAction(this.handleDeleteNotes);
         this.toggleModal();
     }
 
-    handleDeleteNotes() {
+    handleDeleteNotes = () => {
         const {
-            notes, 
-            selectedNotes, 
-            unselectAllNotes, 
+            notes,
+            selectedNotes,
+            unselectAllNotes,
             deleteNotes,
         } = this.props;
 
-        const completeNotes = notes?.filter(
-            (note: Note) => !selectedNotes?.some(
+        const completeNotes = notes.filter(
+            (note: INote) => !selectedNotes.some(
                 (selectedNote: String) => note.id === selectedNote
             )
-        ) || [];
+        );
 
         unselectAllNotes();
         deleteNotes(completeNotes);
-    };
-    
+    }
+
+    toggleModal = () => {
+        const { active } = this.state;
+
+        this.setState({
+            active: !active,
+        } as Pick<State, keyof State>);
+    }
+
     render() {
-        const { 
-            notes, 
+        const {
+            notes,
             selectedNotes,
-            filter,
+            filterType,
             fetchNotes,
-            addSelectedNote, 
+            addSelectedNote,
             removeUnselectedNote,
             selectAllNotes,
             unselectAllNotes,
@@ -117,93 +116,93 @@ export default class Home extends Component<Props, State> {
         } = this.props;
 
         const {
-            modalText, 
+            modalText,
             buttonConfirmText,
             buttonCancelText,
-            active, 
+            active,
             action,
         } = this.state;
 
         return (
-            (notes && notes.length !== 0) ? 
-            <>
-                <RouterWrapper>
-                    <Logo>{TEXTS.PROJECT_NAME}</Logo>
-                    <Wrapper>
-                        <Button 
-                            type={BUTTON_TYPES.BUTTON}
-                            disabled={!!selectedNotes?.length}
-                            onClick={this.handleNavigateToNoteCreator}
-                            text={TEXTS.BUTTON.CREATE}
-                            color={COLORS.BUTTON.GREEN}
-                        />
-                        <Button 
-                            type={BUTTON_TYPES.BUTTON}
-                            disabled={!selectedNotes?.length}
-                            onClick={this.handleModalBackButtonClick}
-                            text={TEXTS.BUTTON.DELETE}
-                            color={COLORS.BUTTON.RED}
-                        />
-                    </Wrapper>
-                </RouterWrapper>
-                <ControlPanel 
-                    notes={notes}
-                    selectedNotes={selectedNotes}
-                    filter={filter}
-                    fetchNotes={fetchNotes}
-                    selectAllNotes={selectAllNotes}
-                    unselectAllNotes={unselectAllNotes}
-                    filterAction={filterAction}
-                />
-                <ListNotes 
-                    notes={notes}
-                    selectedNotes={selectedNotes}
-                    addSelectedNote={addSelectedNote}
-                    removeUnselectedNote={removeUnselectedNote}
-                    navigateToPage={navigateToPage}
-                />
-                <Modal 
-                    modalText={modalText} 
-                    buttonConfirmText={buttonConfirmText} 
-                    buttonCancelText={buttonCancelText}
-                    active={active} 
-                    onClose={this.toggleModal} 
-                    action={action} 
-                />
-            </>
-            :
-            <>
-                <RouterWrapper>
-                    <Logo>{TEXTS.PROJECT_NAME}</Logo>
-                    <Wrapper>
-                        <Button 
-                            type={BUTTON_TYPES.BUTTON}
-                            disabled={!!selectedNotes?.length}
-                            onClick={this.handleNavigateToNoteCreator}
-                            text={TEXTS.BUTTON.CREATE}
-                            color={COLORS.BUTTON.GREEN}
-                        />
-                        <Button
-                            type={BUTTON_TYPES.BUTTON}
-                            disabled={!selectedNotes?.length}
-                            onClick={this.handleModalBackButtonClick}
-                            text={TEXTS.BUTTON.DELETE}
-                            color={COLORS.BUTTON.RED}
-                        />
-                    </Wrapper>
-                </RouterWrapper>
-                <EmptyListNotesWrapper>
-                    <EmptyListNotesText>{TEXTS.EMPTY_STORAGE_DATA}</EmptyListNotesText>
-                </EmptyListNotesWrapper>
-                <Modal 
-                    modalText={modalText} 
-                    buttonConfirmText={buttonConfirmText} 
-                    buttonCancelText={buttonCancelText}
-                    active={active} 
-                    onClose={this.toggleModal} 
-                    action={action} 
-                />
-            </>
+            (notes && notes.length !== 0) ?
+                <>
+                    <RouterWrapper>
+                        <Logo>{TEXTS.PROJECT_NAME}</Logo>
+                        <Wrapper>
+                            <Button
+                                type={BUTTON_TYPES.BUTTON}
+                                disabled={!!selectedNotes.length}
+                                onClick={this.handleNavigateToNoteCreator}
+                                text={TEXTS.BUTTON.CREATE}
+                                color={COLORS.BUTTON.GREEN}
+                            />
+                            <Button
+                                type={BUTTON_TYPES.BUTTON}
+                                disabled={!selectedNotes.length}
+                                onClick={this.handleModalBackButtonClick}
+                                text={TEXTS.BUTTON.DELETE}
+                                color={COLORS.BUTTON.RED}
+                            />
+                        </Wrapper>
+                    </RouterWrapper>
+                    <ControlPanel
+                        notes={notes}
+                        selectedNotes={selectedNotes}
+                        filterType={filterType}
+                        fetchNotes={fetchNotes}
+                        selectAllNotes={selectAllNotes}
+                        unselectAllNotes={unselectAllNotes}
+                        filterAction={filterAction}
+                    />
+                    <ListNotes
+                        notes={notes}
+                        selectedNotes={selectedNotes}
+                        addSelectedNote={addSelectedNote}
+                        removeUnselectedNote={removeUnselectedNote}
+                        navigateToPage={navigateToPage}
+                    />
+                    <Modal
+                        modalText={modalText}
+                        buttonConfirmText={buttonConfirmText}
+                        buttonCancelText={buttonCancelText}
+                        active={active}
+                        onClose={this.toggleModal}
+                        action={action}
+                    />
+                </>
+                :
+                <>
+                    <RouterWrapper>
+                        <Logo>{TEXTS.PROJECT_NAME}</Logo>
+                        <Wrapper>
+                            <Button
+                                type={BUTTON_TYPES.BUTTON}
+                                disabled={!!selectedNotes.length}
+                                onClick={this.handleNavigateToNoteCreator}
+                                text={TEXTS.BUTTON.CREATE}
+                                color={COLORS.BUTTON.GREEN}
+                            />
+                            <Button
+                                type={BUTTON_TYPES.BUTTON}
+                                disabled={!selectedNotes.length}
+                                onClick={this.handleModalBackButtonClick}
+                                text={TEXTS.BUTTON.DELETE}
+                                color={COLORS.BUTTON.RED}
+                            />
+                        </Wrapper>
+                    </RouterWrapper>
+                    <EmptyListNotesWrapper>
+                        <EmptyListNotesText>{TEXTS.EMPTY_STORAGE_DATA}</EmptyListNotesText>
+                    </EmptyListNotesWrapper>
+                    <Modal
+                        modalText={modalText}
+                        buttonConfirmText={buttonConfirmText}
+                        buttonCancelText={buttonCancelText}
+                        active={active}
+                        onClose={this.toggleModal}
+                        action={action}
+                    />
+                </>
         )
     }
 };

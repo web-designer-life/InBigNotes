@@ -1,45 +1,45 @@
 import actions from '../actions';
 
-const initialState = {
-    isLoading: false,
+export const initialState = {
     note: {},
+    isLoading: false,
     error: false,
 };
 
-export default function rootReducer(state = initialState, { type, payload } : any) {
+export default function noteReducer(state = initialState, { type, payload }: any) {
     switch (type) {
         case actions.FETCH_NOTE_PENDING:
             return {
-                ...state, 
+                ...state,
                 id: payload.id,
                 isLoading: true,
             };
         case actions.FETCH_NOTE_SUCCESS:
             return {
-                ...state, 
-                note: payload.note, 
+                ...state,
+                note: payload.note,
                 isLoading: false,
             };
         case actions.ADD_NOTE_PENDING:
             return {
-                ...state, 
+                ...state,
                 note: payload.note,
                 isLoading: true,
             };
         case actions.ADD_NOTE_SUCCESS:
             return {
-                ...state, 
+                ...state,
                 isLoading: false,
             };
         case actions.UPDATE_NOTE_PENDING:
             return {
-                ...state, 
+                ...state,
                 note: payload.note,
                 isLoading: true,
             };
         case actions.UPDATE_NOTE_SUCCESS:
             return {
-                ...state, 
+                ...state,
                 isLoading: false,
             };
         case actions.FETCH_NOTE_FAIL:
@@ -50,7 +50,7 @@ export default function rootReducer(state = initialState, { type, payload } : an
                 isLoading: false,
                 error: true,
             };
-        case actions.RESET_STORE: 
+        case actions.RESET_STORE:
             return initialState;
         default:
             return state;

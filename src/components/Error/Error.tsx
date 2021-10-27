@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../constants';
-import { 
-    Container, 
-    Message, 
-    BackLink,
-} from './style';
+import React, { FunctionComponent } from 'react';
+import {
+    BUTTON_TYPES,
+    COLORS,
+    TEXTS,
+} from '../../constants';
+import Button from '../Button';
+import { Container, Message } from './style';
 
-export default class Error extends Component {
-	render() {
-        return (
-            <Container>
-                <Message>404 - Not Found!</Message>
-                <Link to={ROUTES.HOME}>
-                    <BackLink>Go home</BackLink>
-                </Link>
-            </Container>
-        );
-    };
+interface Props {
+    navigateToPage: () => void,
 };
+
+const Error: FunctionComponent<Props> = ({
+    navigateToPage,
+}) => {
+    const content = (
+        <Container>
+            <Message>404 - Not Found!</Message>
+            <Button
+                type={BUTTON_TYPES.BUTTON}
+                onClick={navigateToPage}
+                text={TEXTS.BUTTON.HOME}
+                color={COLORS.BUTTON.GREEN}
+            />
+        </Container>
+    );
+
+    return content;
+};
+
+export default Error;

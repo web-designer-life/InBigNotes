@@ -1,41 +1,52 @@
 import React, { Component } from 'react';
-import Loader from '../../components/Loader/Loader';
-import Error from '../../components/Error/Error';
-import Home from '../../components/Home/Home';
-import { Note } from '../../interfaces';
+import Loader from '../../components/Loader';
+import Error from '../../components/Error';
+import Home from '../../components/Home';
+import { INote } from '../../interfaces';
+import { ROUTES } from '../../constants';
 
 interface Props {
-    notes?: Note[],
+    notes: INote[],
     isLoading: boolean,
-    selectedNotes?: string[],
-    filter: string,
+    selectedNotes: string[],
+    filterType: string,
     error: boolean,
-    fetchNotesAction(filter: string): Function,
-    deleteNotesAction(notes: Note[]): Function,
-    addSelectedNoteAction(note: Note): Function,
-    removeUnselectedNoteAction(note: Note): Function,
-    selectAllNotesAction(notes: Note[]): Function,
+    fetchNotesAction(filterType: string): Function,
+    deleteNotesAction(notes: INote[]): Function,
+    addSelectedNoteAction(note: INote): Function,
+    removeUnselectedNoteAction(note: INote): Function,
+    selectAllNotesAction(notes: INote[]): Function,
     unselectAllNotesAction(): Function,
-    filterAction(filter: string): Function,
+    filterAction(filterType: string): Function,
     navigateToPageAction(path: string): Function,
     resetStoreAction(): Function,
 };
 
-export default class HomeContainer extends Component<Props> {  
+export default class HomeContainer extends Component<Props> {
     componentDidMount() {
-        this.props.fetchNotesAction(this.props.filter);
-    };
-    
+        const { fetchNotesAction, filterType } = this.props;
+
+        fetchNotesAction(filterType);
+    }
+
     componentWillUnmount() {
-        this.props.resetStoreAction();
-    };
+        const { resetStoreAction } = this.props;
+
+        resetStoreAction();
+    }
+
+    handleNavigateToHome = () => {
+        const { navigateToPageAction } = this.props;
+
+        navigateToPageAction(ROUTES.HOME);
+    }
 
     render() {
         const {
             notes,
-            isLoading, 
+            isLoading,
             selectedNotes,
-            filter,
+            filterType,
             error,
             fetchNotesAction,
             deleteNotesAction,
@@ -48,27 +59,27 @@ export default class HomeContainer extends Component<Props> {
         } = this.props;
 
         if (error) {
-			return <Error />;
-		}
-        
+            return <Error navigateToPage={this.handleNavigateToHome} />;
+        }
+
         return (
             <>
-                {   
+                {
                     isLoading ?
-                    <Loader /> :
-                    <Home 
-                        notes={notes}
-                        selectedNotes={selectedNotes}
-                        filter={filter}
-                        fetchNotes={fetchNotesAction}
-                        deleteNotes={deleteNotesAction}
-                        addSelectedNote={addSelectedNoteAction}
-                        removeUnselectedNote={removeUnselectedNoteAction}
-                        selectAllNotes={selectAllNotesAction}
-                        unselectAllNotes={unselectAllNotesAction}
-                        navigateToPage={navigateToPageAction}
-                        filterAction={filterAction}
-                    />
+                        <Loader /> :
+                        <Home
+                            notes={notes}
+                            selectedNotes={selectedNotes}
+                            filterType={filterType}
+                            fetchNotes={fetchNotesAction}
+                            deleteNotes={deleteNotesAction}
+                            addSelectedNote={addSelectedNoteAction}
+                            removeUnselectedNote={removeUnselectedNoteAction}
+                            selectAllNotes={selectAllNotesAction}
+                            unselectAllNotes={unselectAllNotesAction}
+                            navigateToPage={navigateToPageAction}
+                            filterAction={filterAction}
+                        />
                 }
             </>
         );

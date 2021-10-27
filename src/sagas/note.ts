@@ -1,87 +1,94 @@
-import { 
-    delay, 
-    put, 
-    all, 
+import {
+    delay,
+    put,
     takeEvery,
-    call, 
+    all,
 } from 'redux-saga/effects';
-import { history } from '../store/store';
-import { ROUTES, TEXTS } from '../constants';
-import actions from '../actions';
-import { Note } from '../interfaces';
-import { 
-    addNoteFail, 
-    addNoteSuccess, 
-    fetchNoteFail, 
-    fetchNoteSuccess, 
-    updateNoteFail, 
-    updateNoteSuccess, 
+import { push } from 'connected-react-router';
+import {
+    fetchNoteSuccess,
+    fetchNoteFail,
+    addNoteSuccess,
+    addNoteFail,
+    updateNoteSuccess,
+    updateNoteFail,
 } from '../actionCreators/note';
+import { INote } from '../interfaces';
+import actions from '../actions';
+import { ROUTES, TEXTS } from '../constants';
 
-function* fetchNote({ payload } : any) {
+export function* fetchNote({ payload }: any) {
     const { id } = payload;
 
     try {
         yield delay(1500);
-        
-        const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
-        
-        const note = notes.find((note: Note) => note.id === id);
+
+        const notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
+
+        const note = notes.find((currentNote: INote) => currentNote.id === id);
 
         if (!note) {
             throw new Error('No note');
         }
 
         yield put(fetchNoteSuccess(note));
-	} catch (e) {
-		yield put(fetchNoteFail());
-	}
+    } catch (e) {
+        yield put(fetchNoteFail());
+    }
 };
 
-function* addNote({ payload } : any) { 
+export function* addNote({ payload }: any) {
     const { note } = payload;
 
     try {
-        yield call(history.push, ROUTES.HOME);
-        
+        yield put(push(ROUTES.HOME));
+
         yield delay(1500);
 
-        const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
+        if (!note) {
+            throw new Error('No note');
+        }
+
+        const notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
 
         notes.push(note);
 
-        localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
+        window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
 
         yield put(addNoteSuccess());
-	} catch (e) {
-		yield put(addNoteFail());
-	}
+    } catch (e) {
+        yield put(addNoteFail());
+    }
 };
 
-function* updateNote({ payload } : any) { 
+export function* updateNote({ payload }: any) {
     const { note } = payload;
-    
+
     try {
-		yield call(history.push, ROUTES.HOME);
+        yield put(push(ROUTES.HOME));
 
         yield delay(1500);
 
-        const notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
+        if (!note) {
+            throw new Error('No note');
+        }
 
-        const modifiedNotes = notes.filter((elem: Note) => elem.id !== note.id);
+        const notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
+
+        const modifiedNotes = notes.filter((elem: INote) => elem.id !== note.id);
 
         modifiedNotes.push(note);
 
-        localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(modifiedNotes));
+        window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(modifiedNotes));
 
         yield put(updateNoteSuccess());
-	} catch (e) {
-		yield put(updateNoteFail());
-	}
+    } catch (e) {
+        yield put(updateNoteFail());
+    }
 };
 
 export default function noteSaga() {
-    return all([ 
+    return all([
         takeEvery(actions.FETCH_NOTE_PENDING, fetchNote),
         takeEvery(actions.ADD_NOTE_PENDING, addNote),
         takeEvery(actions.UPDATE_NOTE_PENDING, updateNote),

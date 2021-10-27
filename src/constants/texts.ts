@@ -1,4 +1,4 @@
-export const TEXTS = {
+const TEXTS = {
     PROJECT_NAME: 'InBigNotes',
     LOADER: 'Loading...',
     EMPTY_STORAGE_DATA: 'You have no notes yet. Please, create one...',
@@ -11,6 +11,7 @@ export const TEXTS = {
         UPDATE: 'Update',
         CANCEL: 'Cancel',
         CONFIRM: 'Confirm',
+        HOME: 'Go home',
     },
     MODAL: {
         DELETE: 'Do you want to delete selected notes?',
@@ -18,6 +19,19 @@ export const TEXTS = {
         SAVE: 'Do you want to save your note?',
         UPDATE: 'Do you want to update your note?',
         CANCEL: 'You have changes in your note. Do you want to cancel the changes?',
+    },
+    INPUT_FIELD: {
+        TYPE: {
+            TEXT: 'text',
+        },
+        NAME: {
+            TITLE: 'title',
+            TEXT: 'text',
+        },
+        PLACEHOLDER: {
+            TITLE: 'Title',
+            TEXT: 'Text',
+        },
     },
     FILTER: {
         TITLE: 'Sort by:',
@@ -33,5 +47,7 @@ export const TEXTS = {
             TEXT: 'Date Modified',
             VALUE: 'updated_at',
         },
-    }
+    },
 };
+
+export default TEXTS;

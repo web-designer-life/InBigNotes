@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Note from '../../components/Note/Note';
-import Loader from '../../components/Loader/Loader';
-import Error from '../../components/Error/Error';
-import { Note as INote } from '../../interfaces';
-import { ACTIONS } from '../../constants';
+import Note from '../../components/Note';
+import Loader from '../../components/Loader';
+import Error from '../../components/Error';
+import { INote } from '../../interfaces';
+import { ACTIONS, ROUTES } from '../../constants';
 
 interface Props {
     isLoading: boolean,
@@ -15,29 +15,37 @@ interface Props {
 
 export default class NoteCreation extends Component<Props> {
     componentWillUnmount() {
-        this.props.resetStoreAction();
-    };
+        const { resetStoreAction } = this.props;
+
+        resetStoreAction();
+    }
+
+    handleNavigateToHome = () => {
+        const { navigateToPageAction } = this.props;
+
+        navigateToPageAction(ROUTES.HOME);
+    }
 
     render() {
-        const { 
-            isLoading, 
+        const {
+            isLoading,
             error,
             addNoteAction,
             navigateToPageAction,
         } = this.props;
 
         if (error) {
-			return <Error />;
-		}
+            return <Error navigateToPage={this.handleNavigateToHome} />;
+        }
 
         return (
             isLoading ?
-            <Loader /> :
-            <Note 
-                typeName={ACTIONS.SAVE}
-                navigateToPage={navigateToPageAction}
-                addOrUpdateNote={addNoteAction}
-            />
+                <Loader /> :
+                <Note
+                    typeName={ACTIONS.SAVE}
+                    navigateToPage={navigateToPageAction}
+                    addOrUpdateNote={addNoteAction}
+                />
         );
     }
 };

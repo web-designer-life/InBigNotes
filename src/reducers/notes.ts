@@ -1,42 +1,42 @@
 import { TEXTS } from '../constants';
-import { Note } from '../interfaces';
+import { INote } from '../interfaces';
 import actions from '../actions';
 
-const initialState = {
-    notes: [],
+export const initialState = {
+    notes: [] as any,
     isLoading: false,
-    selectedNotes: [],
-    filter: TEXTS.FILTER.NAME.VALUE,
+    selectedNotes: [] as any,
+    filterType: TEXTS.FILTER.NAME.VALUE,
     error: false,
 };
 
-export default function rootReducer(state = initialState, { type, payload } : any) {
+export default function notesReducer(state = initialState, { type, payload }: any) {
     switch (type) {
         case actions.FETCH_NOTES_PENDING:
             return {
-                ...state, 
+                ...state,
                 isLoading: true,
             };
         case actions.FETCH_NOTES_SUCCESS:
             return {
-                ...state, 
-                notes: payload.notes, 
+                ...state,
+                notes: payload.notes,
                 isLoading: false,
             };
         case actions.DELETE_NOTES_PENDING:
             return {
-                ...state, 
+                ...state,
                 notes: payload.notes,
                 isLoading: true,
             };
         case actions.DELETE_NOTES_SUCCESS:
             return {
-                ...state, 
+                ...state,
                 isLoading: false,
             };
         case actions.ADD_SELECTED_NOTE:
             return {
-                ...state, 
+                ...state,
                 selectedNotes: [].concat(state.selectedNotes, payload.note.id),
             };
         case actions.REMOVE_UNSELECTED_NOTE:
@@ -46,8 +46,8 @@ export default function rootReducer(state = initialState, { type, payload } : an
             };
         case actions.SELECT_ALL_NOTES:
             return {
-                ...state, 
-                selectedNotes: [].concat([], payload.notes.map((note: Note) => note.id)),
+                ...state,
+                selectedNotes: [].concat([], payload.notes.map((note: INote) => note.id)),
             };
         case actions.UNSELECT_ALL_NOTES:
             return {
@@ -56,8 +56,8 @@ export default function rootReducer(state = initialState, { type, payload } : an
             };
         case actions.FILTER:
             return {
-                ...state, 
-                filter: payload.filter,
+                ...state,
+                filterType: payload.filterType,
             };
         case actions.FETCH_NOTES_FAIL:
         case actions.DELETE_NOTES_FAIL:
@@ -66,7 +66,7 @@ export default function rootReducer(state = initialState, { type, payload } : an
                 isLoading: false,
                 error: true,
             };
-        case actions.RESET_STORE: 
+        case actions.RESET_STORE:
             return initialState;
         default:
             return state;

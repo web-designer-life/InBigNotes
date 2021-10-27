@@ -8,41 +8,30 @@ import {
 } from './style';
 
 interface Props {
-    filter: string,
-    fetchNotes(filter: string): Function,
-    filterAction(filter: string): Function,
+    filterType: string,
+    fetchNotes(filterType: string): Function,
+    filterAction(filterType: string): Function,
 };
 
-interface State {
-    filter: string,
-};
-
-export default class Filter extends Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        
-        this.state = {
-            filter: this.props.filter,
-        };
-
-        this.handleChangeFilter = this.handleChangeFilter.bind(this);
-    };
-
-    handleChangeFilter(evt: { target: { value: string; }; }) {
+export default class Filter extends Component<Props> {
+    handleChangeFilter = (evt: { target: { value: string; }; }) => {
         const { value } = evt.target;
+        const { filterAction, fetchNotes } = this.props;
 
-        this.props.filterAction(value);
-        this.props.fetchNotes(value);
-    };
-      
+        filterAction(value);
+        fetchNotes(value);
+    }
+
     render() {
+        const { filterType } = this.props;
+
         return (
             <FilterContainer>
                 <FilterTitle>{TEXTS.FILTER.TITLE}</FilterTitle>
                 <FilterList
                     onChange={this.handleChangeFilter}
-                    value={this.props.filter}
-                >                 
+                    value={filterType}
+                >
                     <FilterListItem value={TEXTS.FILTER.NAME.VALUE}>{TEXTS.FILTER.NAME.TEXT}</FilterListItem>
                     <FilterListItem value={TEXTS.FILTER.DATE_CREATED.VALUE}>{TEXTS.FILTER.DATE_CREATED.TEXT}</FilterListItem>
                     <FilterListItem value={TEXTS.FILTER.DATE_MODIFIED.VALUE}>{TEXTS.FILTER.DATE_MODIFIED.TEXT}</FilterListItem>

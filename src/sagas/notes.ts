@@ -1,54 +1,54 @@
-import { 
-    delay, 
-    put, 
-    all, 
-    takeEvery, 
+import {
+    all,
+    delay,
+    put,
+    takeEvery,
 } from 'redux-saga/effects';
-import { TEXTS } from '../constants';
+import {
+    fetchNotesSuccess,
+    fetchNotesFail,
+    deleteNotesSuccess,
+    deleteNotesFail,
+} from '../actionCreators/notes';
 import { sortByFilterType } from '../utils';
 import actions from '../actions';
-import { 
-    deleteNotesFail, 
-    deleteNotesSuccess, 
-    fetchNotesFail, 
-    fetchNotesSuccess,
-} from '../actionCreators/notes';
+import { TEXTS } from '../constants';
 
-function* fetchNotes({ payload } : any) {
-    const { filter } = payload;
-    
+export function* fetchNotes({ payload }: any) {
+    const { filterType } = payload;
+
     try {
         yield delay(1500);
-    
-        let notes = JSON.parse(localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
-    
+
+        let notes = JSON.parse(window.localStorage.getItem(TEXTS.STORAGE_NAME)!) || [];
+
         if (notes.length) {
-            notes = sortByFilterType(notes, filter);
+            notes = sortByFilterType(notes, filterType);
         }
 
         yield put(fetchNotesSuccess(notes));
-	} catch (e) {
-		yield put(fetchNotesFail());
-	}
+    } catch (e) {
+        yield put(fetchNotesFail());
+    }
 };
 
-function* deleteNotes({ payload } : any) {
+export function* deleteNotes({ payload }: any) {
     const { notes } = payload;
 
     try {
         yield delay(1500);
-    
-        localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
-    
+
+        window.localStorage.setItem(TEXTS.STORAGE_NAME, JSON.stringify(notes));
+
         yield put(deleteNotesSuccess());
-        yield put(fetchNotesSuccess(notes));        
-	} catch (e) {
-		yield put(deleteNotesFail());
-	}
+        yield put(fetchNotesSuccess(notes));
+    } catch (e) {
+        yield put(deleteNotesFail());
+    }
 };
 
 export default function notesSaga() {
-    return all([ 
+    return all([
         takeEvery(actions.FETCH_NOTES_PENDING, fetchNotes),
         takeEvery(actions.DELETE_NOTES_PENDING, deleteNotes),
     ]);

@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Note as INote } from '../../interfaces';
-import { 
-    NoteForm, 
-    NoteTitle, 
-    NoteText, 
-    NoteControlsWrapper, 
-    NoteButtonsWrapper, 
-} from './style';
-import Button from '../Button/Button';
-import { 
-    ROUTES, 
-    BUTTON_TYPES, 
-    COLORS, TEXTS, 
-    FORMS, 
+import Button from '../Button';
+import Modal from '../Modal';
+import {
+    ROUTES,
+    BUTTON_TYPES,
+    COLORS,
+    TEXTS,
+    FORMS,
 } from '../../constants';
-import Modal from '../Modal/Modal';
+import {
+    NoteForm,
+    NoteTitle,
+    NoteText,
+    NoteControlsWrapper,
+    NoteButtonsWrapper,
+} from './style';
+import { INote } from '../../interfaces';
 
 interface Props {
     typeName: string,
@@ -45,47 +46,39 @@ export default class Note extends Component<Props, State> {
             buttonConfirmText: '',
             buttonCancelText: '',
             active: false,
-            action: () => {},
+            action: () => { },
         };
+    }
 
-        this.handleNavigateToHome = this.handleNavigateToHome.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleCheckButtonAction = this.handleCheckButtonAction.bind(this);
-        this.handleCancelChanges = this.handleCancelChanges.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleModalBackButtonClick = this.handleModalBackButtonClick.bind(this);
-        this.handleModalSubmitButtonClick = this.handleModalSubmitButtonClick.bind(this);
-        this.handleModalCancelButtonClick = this.handleModalCancelButtonClick.bind(this);
-    };
-    
     componentDidMount() {
         this.handleCancelChanges();
-    };
+    }
 
-    handleNavigateToHome() {
-		this.props.navigateToPage(ROUTES.HOME);
-	};
+    handleNavigateToHome = () => {
+        const { navigateToPage } = this.props;
 
-    handleChange(evt: { target: { name: string; value: any; }; }) {
-		const { name, value } = evt.target;
+        navigateToPage(ROUTES.HOME);
+    }
+
+    handleChange = (evt: { target: { name: string; value: any; }; }) => {
+        const { name, value } = evt.target;
 
         this.setState({
             [name]: value
         } as Pick<State, keyof State>);
-    };
+    }
 
-    handleCheckSaveOrUpdateChanges() {
+    handleCheckSaveOrUpdateChanges = () => {
         const { title, text } = this.state;
         const { note } = this.props;
 
         return (
-            ((title.trim() !== '' && text.trim() !== '') 
-            && (title.trim() !== note?.title || text.trim() !== note?.text))
+            ((title.trim() !== '' && text.trim() !== '')
+                && (title.trim() !== note?.title || text.trim() !== note?.text))
         );
-    };
+    }
 
-    handleCheckCancelChanges() {
+    handleCheckCancelChanges = () => {
         const { title, text } = this.state;
         const { note } = this.props;
 
@@ -93,122 +86,126 @@ export default class Note extends Component<Props, State> {
             ((title.trim() !== note?.title && note?.title) || (text.trim() !== note?.text && note?.text))
             || ((title.trim() !== '' && !note?.title) || (text.trim() !== '' && !note?.text))
         );
-    };
+    }
 
-    handleCheckButtonAction() {
-        this.handleCheckCancelChanges() ? 
-        this.handleModalBackButtonClick() : 
-        this.handleNavigateToHome();
-    };
+    handleCheckButtonAction = () => (
+        this.handleCheckCancelChanges() ?
+            this.handleModalBackButtonClick() :
+            this.handleNavigateToHome()
+    )
 
-    handleCancelChanges() {
+    handleCancelChanges = () => {
         const { note } = this.props;
 
         this.setState({
             title: note?.title || '',
             text: note?.text || '',
         });
-    };
+    }
 
-    toggleModal() {
-		this.setState({
-			active: !this.state.active,
-		} as Pick<State, keyof State>);
-	};
-
-    handleSetAction(func: () => void) {
-		this.setState({
-			action: func,
-		} as Pick<State, keyof State>);
-	};
-
-    handleModalBackButtonClick() {
+    handleSetAction = (func: () => void) => {
         this.setState({
-			modalText: TEXTS.MODAL.BACK,
+            action: func,
+        } as Pick<State, keyof State>);
+    }
+
+    handleModalBackButtonClick = () => {
+        this.setState({
+            modalText: TEXTS.MODAL.BACK,
             buttonConfirmText: TEXTS.BUTTON.BACK,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
-		} as Pick<State, keyof State>);
+        } as Pick<State, keyof State>);
 
         this.handleSetAction(this.handleNavigateToHome);
         this.toggleModal();
-    };
+    }
 
-    handleModalSubmitButtonClick() {
+    handleModalSubmitButtonClick = () => {
+        const { typeName } = this.props;
+
         this.setState({
-			modalText: this.props.typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
-            buttonConfirmText: this.props.typeName,
+            modalText: typeName === TEXTS.BUTTON.SAVE ? TEXTS.MODAL.SAVE : TEXTS.MODAL.UPDATE,
+            buttonConfirmText: typeName,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
-		} as Pick<State, keyof State>);
-        
+        } as Pick<State, keyof State>);
+
         this.handleSetAction(this.onSubmit);
         this.toggleModal();
-    };
+    }
 
-    handleModalCancelButtonClick() {
+    handleModalCancelButtonClick = () => {
         this.setState({
-			modalText: TEXTS.MODAL.CANCEL,
+            modalText: TEXTS.MODAL.CANCEL,
             buttonConfirmText: TEXTS.BUTTON.CONFIRM,
             buttonCancelText: TEXTS.BUTTON.CANCEL,
-		} as Pick<State, keyof State>);
-        
+        } as Pick<State, keyof State>);
+
         this.handleSetAction(this.handleCancelChanges);
         this.toggleModal();
-    };
+    }
 
-    onSubmit() {
-        const { addOrUpdateNote } = this.props;
+    onSubmit = () => {
+        const { addOrUpdateNote, note } = this.props;
         const { title, text } = this.state;
 
-        const note = {                    
-            id: this.props.note?.id || uuidv4(),
+        const completeNote = {
+            id: note?.id || uuidv4(),
             title: title.trim(),
             text: text.trim(),
-            created_at: this.props.note?.created_at || Date.now(),
+            created_at: note?.created_at || Date.now(),
             updated_at: Date.now(),
         };
 
-        addOrUpdateNote(note);
-    };
+        addOrUpdateNote(completeNote);
+    }
+
+    toggleModal = () => {
+        const { active } = this.state;
+
+        this.setState({
+            active: !active,
+        } as Pick<State, keyof State>);
+    }
 
     render() {
         const { typeName } = this.props;
-        const { 
-            title, 
-            text, 
+        const {
+            title,
+            text,
             modalText,
             buttonConfirmText,
             buttonCancelText,
-            active, 
-            action, 
+            active,
+            action,
         } = this.state;
 
         return (
             <>
                 <NoteForm onSubmit={this.onSubmit} id={FORMS.ADD_OR_UPDATE_NOTE_FORM}>
-                    <NoteTitle 
-                        type="text"
-                        name="title"
-                        value={title} 
-                        onChange={this.handleChange} 
-                        placeholder="Title" 
-                        required 
+                    <NoteTitle
+                        type={TEXTS.INPUT_FIELD.TYPE.TEXT}
+                        name={TEXTS.INPUT_FIELD.NAME.TITLE}
+                        value={title}
+                        onChange={this.handleChange}
+                        placeholder={TEXTS.INPUT_FIELD.PLACEHOLDER.TITLE}
+                        required
                     />
-                    <NoteText 
-                        name="text"
-                        value={text} 
-                        onChange={this.handleChange} 
-                        placeholder="Text" 
-                        required 
+                    <NoteText
+                        name={TEXTS.INPUT_FIELD.NAME.TEXT}
+                        value={text}
+                        onChange={this.handleChange}
+                        placeholder={TEXTS.INPUT_FIELD.PLACEHOLDER.TEXT}
+                        required
                     />
                     <NoteControlsWrapper>
-                        <Button 
+                        <Button
                             type={BUTTON_TYPES.BUTTON}
                             text={TEXTS.BUTTON.BACK}
                             onClick={this.handleCheckButtonAction}
                             color={COLORS.BUTTON.RED}
                         />
                         <NoteButtonsWrapper>
-                            <Button 
+                            <Button
                                 form={FORMS.ADD_OR_UPDATE_NOTE_FORM}
                                 type={BUTTON_TYPES.BUTTON}
                                 disabled={!this.handleCheckSaveOrUpdateChanges()}
@@ -216,7 +213,7 @@ export default class Note extends Component<Props, State> {
                                 onClick={this.handleModalSubmitButtonClick}
                                 color={COLORS.BUTTON.GREEN}
                             />
-                            <Button               
+                            <Button
                                 type={BUTTON_TYPES.RESET}
                                 disabled={!this.handleCheckCancelChanges()}
                                 onClick={this.handleModalCancelButtonClick}
@@ -226,13 +223,13 @@ export default class Note extends Component<Props, State> {
                         </NoteButtonsWrapper>
                     </NoteControlsWrapper>
                 </NoteForm>
-                <Modal 
-                    modalText={modalText} 
-                    buttonConfirmText={buttonConfirmText} 
+                <Modal
+                    modalText={modalText}
+                    buttonConfirmText={buttonConfirmText}
                     buttonCancelText={buttonCancelText}
-                    active={active} 
-                    onClose={this.toggleModal} 
-                    action={action} 
+                    active={active}
+                    onClose={this.toggleModal}
+                    action={action}
                 />
             </>
         )

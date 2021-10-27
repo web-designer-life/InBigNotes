@@ -29,8 +29,8 @@ const Title = styled.p`
     color: ${COLORS.STEEL_GRAY};
 `;
 
-export { 
-    Wrapper, 
-    SelectAllWrapper, 
+export {
+    Wrapper,
+    SelectAllWrapper,
     Title,
 };

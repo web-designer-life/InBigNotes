@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Note from '../../components/Note/Note';
-import Loader from '../../components/Loader/Loader';
-import Error from '../../components/Error/Error';
-import { Note as INote } from '../../interfaces';
-import { ACTIONS } from '../../constants';
+import Note from '../../components/Note';
+import Loader from '../../components/Loader';
+import Error from '../../components/Error';
+import { INote } from '../../interfaces';
+import { ACTIONS, ROUTES } from '../../constants';
 
 interface Props {
     match: {
@@ -22,35 +22,45 @@ interface Props {
 
 export default class NoteView extends Component<Props> {
     componentDidMount() {
-        this.props.fetchNoteAction(this.props.match.params.noteId);
-    };
+        const { fetchNoteAction, match } = this.props;
+
+        fetchNoteAction(match.params.noteId);
+    }
 
     componentWillUnmount() {
-        this.props.resetStoreAction();
-    };
+        const { resetStoreAction } = this.props;
+
+        resetStoreAction();
+    }
+
+    handleNavigateToHome = () => {
+        const { navigateToPageAction } = this.props;
+
+        navigateToPageAction(ROUTES.HOME);
+    }
 
     render() {
-        const { 
+        const {
             note,
-            isLoading, 
+            isLoading,
             error,
             updateNoteAction,
             navigateToPageAction,
         } = this.props;
 
         if (error) {
-			return <Error />;
-		}
+            return <Error navigateToPage={this.handleNavigateToHome} />;
+        }
 
         return (
             isLoading ?
-            <Loader /> :
-            <Note 
-                typeName={ACTIONS.UPDATE}
-                note={note}
-                navigateToPage={navigateToPageAction}
-                addOrUpdateNote={updateNoteAction}
-            />
+                <Loader /> :
+                <Note
+                    typeName={ACTIONS.UPDATE}
+                    note={note}
+                    navigateToPage={navigateToPageAction}
+                    addOrUpdateNote={updateNoteAction}
+                />
         );
     }
 };

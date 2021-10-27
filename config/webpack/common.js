@@ -1,9 +1,7 @@
-const paths = require('../paths');
 const webpack = require('webpack');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const { CheckerPlugin } = require('awesome-typescript-loader');
+const paths = require('../paths');
 
 module.exports = {
   entry: `${paths.src}/index.tsx`,
@@ -20,8 +18,8 @@ module.exports = {
       const: true,
       destructuring: true,
       dynamicImport: false,
-      forOf: true
-    }
+      forOf: true,
+    },
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -29,7 +27,7 @@ module.exports = {
   devtool: 'source-map',
   experiments: {
     topLevelAwait: true,
-    outputModule: true
+    outputModule: true,
   },
   module: {
     rules: [
@@ -45,11 +43,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: { presets: ['@babel/env'] }
+        options: { presets: ['@babel/env'] },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|jp2|webp|svg)$/,
@@ -57,18 +55,18 @@ module.exports = {
         options: {
           name: 'images/[name].[ext]',
         },
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: `${paths.public}/index.html`,
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new webpack.ProvidePlugin({
-      React: 'react'
+      React: 'react',
     }),
-    new CheckerPlugin()
-  ]
-}
+    new CheckerPlugin(),
+  ],
+};

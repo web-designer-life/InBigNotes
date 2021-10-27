@@ -1,4 +1,4 @@
-export const COLORS = {
+const COLORS = {
     BUTTON: {
         GREEN: 'green',
         RED: 'red',
@@ -11,3 +11,5 @@ export const COLORS = {
     GREEN: '#00AB00',
     BLUE: '#0047FF',
 };
+
+export default COLORS;

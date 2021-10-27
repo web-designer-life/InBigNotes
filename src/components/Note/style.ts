@@ -73,10 +73,10 @@ const NoteButtonsWrapper = styled.div`
     }
 `;
 
-export { 
-    NoteForm, 
-    NoteTitle, 
-    NoteText, 
-    NoteControlsWrapper, 
-    NoteButtonsWrapper, 
+export {
+    NoteForm,
+    NoteTitle,
+    NoteText,
+    NoteControlsWrapper,
+    NoteButtonsWrapper,
 };

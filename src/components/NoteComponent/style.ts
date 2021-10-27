@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
 
-const List = styled.ul`
-    display: flex;
-    flex-direction: column;
-    padding: 30px 30px 20px 30px;
-    @media (max-width: 500px) {
-        padding: 20px 20px 0 20px;
-    }
-`;
-
 const Note = styled.li`
     display: flex;
     justify-content: space-between;
@@ -79,11 +70,10 @@ const DateInfo = styled.p`
     color: ${COLORS.STEEL_GRAY};
 `;
 
-export { 
-    List, 
-    Note, 
-    NoteInfo, 
-    Title, 
+export {
+    Note,
+    NoteInfo,
+    Title,
     Text,
     DateInfo,
     Appearance,
