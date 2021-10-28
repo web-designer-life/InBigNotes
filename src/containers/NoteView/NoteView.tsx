@@ -10,14 +10,14 @@ interface Props {
         params: {
             noteId: string,
         }
-    },
-    note: INote,
-    isLoading: boolean,
-    error: boolean,
-    fetchNoteAction(id: string): Function,
-    updateNoteAction(note: INote): Function,
-    navigateToPageAction(path: string): Function,
-    resetStoreAction(): Function,
+    };
+    note: INote;
+    isLoading: boolean;
+    error: boolean;
+    fetchNoteAction(id: string): Function;
+    updateNoteAction(note: INote): Function;
+    navigateToPageAction(path: string): Function;
+    resetStoreAction(): Function;
 };
 
 export default class NoteView extends Component<Props> {

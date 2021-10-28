@@ -46,10 +46,6 @@ module.exports = {
         options: { presets: ['@babel/env'] },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.(png|jpe?g|gif|jp2|webp|svg)$/,
         loader: 'file-loader',
         options: {

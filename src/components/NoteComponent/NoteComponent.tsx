@@ -13,11 +13,11 @@ import { ROUTES } from '../../constants';
 import { formatDate } from '../../utils';
 
 interface Props {
-    note: INote,
-    selectedNotes: string[],
-    addSelectedNote(note: INote): Function,
-    removeUnselectedNote(note: INote): Function,
-    navigateToPage(path: string): Function,
+    note: INote;
+    selectedNotes: string[];
+    addSelectedNote(note: INote): Function;
+    removeUnselectedNote(note: INote): Function;
+    navigateToPage(path: string): Function;
 };
 
 export default class NoteComponent extends Component<Props> {

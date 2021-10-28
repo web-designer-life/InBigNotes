@@ -4,11 +4,11 @@ import List from './style';
 import { INote } from '../../interfaces';
 
 interface Props {
-    notes: INote[],
-    selectedNotes: string[],
-    addSelectedNote(note: INote): Function,
-    removeUnselectedNote(note: INote): Function,
-    navigateToPage(path: string): Function,
+    notes: INote[];
+    selectedNotes: string[];
+    addSelectedNote(note: INote): Function;
+    removeUnselectedNote(note: INote): Function;
+    navigateToPage(path: string): Function;
 };
 
 const ListNotes: FunctionComponent<Props> = ({
@@ -17,23 +17,19 @@ const ListNotes: FunctionComponent<Props> = ({
     addSelectedNote,
     removeUnselectedNote,
     navigateToPage,
-}) => {
-    const content = (
-        <List>
-            {notes.map((note: INote) => (
-                <NoteComponent
-                    key={note.id}
-                    note={note}
-                    selectedNotes={selectedNotes}
-                    addSelectedNote={addSelectedNote}
-                    removeUnselectedNote={removeUnselectedNote}
-                    navigateToPage={navigateToPage}
-                />
-            ))}
-        </List>
-    );
-
-    return content;
-};
+}) => (
+    <List>
+        {notes.map((note: INote) => (
+            <NoteComponent
+                key={note.id}
+                note={note}
+                selectedNotes={selectedNotes}
+                addSelectedNote={addSelectedNote}
+                removeUnselectedNote={removeUnselectedNote}
+                navigateToPage={navigateToPage}
+            />
+        ))}
+    </List>
+);
 
 export default ListNotes;

@@ -4,14 +4,14 @@ import { INote } from '../interfaces';
 const FILTERTYPE_FORMAT = 'string';
 const DATETIME_FORMAT = 'DD.MM.YYYY HH:mm:ss';
 
-export const formatValueByFilterType = (value: any, filterType: string) => (
+export const formatValueByFilterType = (value: INote, filterType: string) => (
     typeof value[filterType] === typeof FILTERTYPE_FORMAT ?
         value[filterType].toLowerCase() :
         value[filterType]
 );
 
 export const sortByFilterType = (notes: INote[], filterType: string) => (
-    notes.sort((prev: any, next: any) => {
+    notes.sort((prev: INote, next: INote) => {
         const prevNote = formatValueByFilterType(prev, filterType);
         const nextNote = formatValueByFilterType(next, filterType);
 
@@ -21,4 +21,4 @@ export const sortByFilterType = (notes: INote[], filterType: string) => (
     })
 );
 
-export const formatDate = (date: any) => moment(date).format(DATETIME_FORMAT);
+export const formatDate = (date: Date) => moment(date).format(DATETIME_FORMAT);

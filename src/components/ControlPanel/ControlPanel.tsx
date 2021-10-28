@@ -9,13 +9,13 @@ import {
 } from './style';
 
 interface Props {
-    notes: INote[],
-    selectedNotes: string[],
-    filterType: string,
-    fetchNotes(filterType: string): Function,
-    selectAllNotes(notes: INote[]): Function,
-    unselectAllNotes(): Function,
-    filterAction(filterType: string): Function,
+    notes: INote[];
+    selectedNotes: string[];
+    filterType: string;
+    fetchNotes(filterType: string): Function;
+    selectAllNotes(notes: INote[]): Function;
+    unselectAllNotes(): Function;
+    filterAction(filterType: string): Function;
 }
 
 export default class ControlPanel extends Component<Props> {

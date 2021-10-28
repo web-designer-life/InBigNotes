@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import BUTTON_TYPES from '../Button/types';
+import Button from '../Button';
 import ControlPanel from '../ControlPanel';
 import ListNotes from '../ListNotes';
-import Button from '../Button';
 import Modal from '../Modal';
 import { INote } from '../../interfaces';
 import {
@@ -12,31 +13,30 @@ import {
 import { EmptyListNotesWrapper, EmptyListNotesText } from './style';
 import {
     ROUTES,
-    BUTTON_TYPES,
     COLORS,
     TEXTS,
 } from '../../constants';
 
 interface Props {
-    notes: INote[],
-    selectedNotes: string[],
-    filterType: string,
-    fetchNotes(filterType: string): Function,
-    deleteNotes(notes: INote[]): Function,
-    addSelectedNote(note: INote): Function,
-    removeUnselectedNote(note: INote): Function,
-    selectAllNotes(notes: INote[]): Function,
-    unselectAllNotes(): Function,
-    filterAction(filterType: string): Function,
-    navigateToPage(path: string): Function,
+    notes: INote[];
+    selectedNotes: string[];
+    filterType: string;
+    fetchNotes(filterType: string): Function;
+    deleteNotes(notes: INote[]): Function;
+    addSelectedNote(note: INote): Function;
+    removeUnselectedNote(note: INote): Function;
+    selectAllNotes(notes: INote[]): Function;
+    unselectAllNotes(): Function;
+    filterAction(filterType: string): Function;
+    navigateToPage(path: string): Function;
 };
 
 interface State {
-    modalText: string,
-    buttonConfirmText: string,
-    buttonCancelText: string,
-    active: boolean,
-    action: () => void,
+    modalText: string;
+    buttonConfirmText: string;
+    buttonCancelText: string;
+    active: boolean;
+    action: () => void;
 };
 
 export default class Home extends Component<Props, State> {

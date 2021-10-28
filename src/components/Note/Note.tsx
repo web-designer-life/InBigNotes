@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import BUTTON_TYPES from '../Button/types';
 import Button from '../Button';
 import Modal from '../Modal';
 import {
     ROUTES,
-    BUTTON_TYPES,
     COLORS,
     TEXTS,
     FORMS,
@@ -19,20 +19,20 @@ import {
 import { INote } from '../../interfaces';
 
 interface Props {
-    typeName: string,
-    note?: INote,
-    addOrUpdateNote(note: INote): Function,
-    navigateToPage(path: string): Function,
+    typeName: string;
+    note?: INote;
+    addOrUpdateNote(note: INote): Function;
+    navigateToPage(path: string): Function;
 };
 
 interface State {
-    title: string,
-    text: string,
-    modalText: string,
-    buttonConfirmText: string,
-    buttonCancelText: string,
-    active: boolean,
-    action: () => void,
+    title: string;
+    text: string;
+    modalText: string;
+    buttonConfirmText: string;
+    buttonCancelText: string;
+    active: boolean;
+    action: () => void;
 };
 
 export default class Note extends Component<Props, State> {
@@ -60,7 +60,7 @@ export default class Note extends Component<Props, State> {
         navigateToPage(ROUTES.HOME);
     }
 
-    handleChange = (evt: { target: { name: string; value: any; }; }) => {
+    handleChange = (evt: { target: { name: string; value: unknown | string; }; }) => {
         const { name, value } = evt.target;
 
         this.setState({
@@ -200,13 +200,13 @@ export default class Note extends Component<Props, State> {
                     <NoteControlsWrapper>
                         <Button
                             type={BUTTON_TYPES.BUTTON}
+                            disabled={false}
                             text={TEXTS.BUTTON.BACK}
                             onClick={this.handleCheckButtonAction}
                             color={COLORS.BUTTON.RED}
                         />
                         <NoteButtonsWrapper>
                             <Button
-                                form={FORMS.ADD_OR_UPDATE_NOTE_FORM}
                                 type={BUTTON_TYPES.BUTTON}
                                 disabled={!this.handleCheckSaveOrUpdateChanges()}
                                 text={typeName}

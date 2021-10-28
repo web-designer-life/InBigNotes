@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import 'jest-styled-components';
+import BUTTON_TYPES from '../../src/components/Button/types';
 import Button from '../../src/components/Button';
 import {
-    BUTTON_TYPES,
     COLORS,
     TEXTS,
 } from '../../src/constants';

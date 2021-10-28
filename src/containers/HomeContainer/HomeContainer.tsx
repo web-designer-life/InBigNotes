@@ -6,20 +6,20 @@ import { INote } from '../../interfaces';
 import { ROUTES } from '../../constants';
 
 interface Props {
-    notes: INote[],
-    isLoading: boolean,
-    selectedNotes: string[],
-    filterType: string,
-    error: boolean,
-    fetchNotesAction(filterType: string): Function,
-    deleteNotesAction(notes: INote[]): Function,
-    addSelectedNoteAction(note: INote): Function,
-    removeUnselectedNoteAction(note: INote): Function,
-    selectAllNotesAction(notes: INote[]): Function,
-    unselectAllNotesAction(): Function,
-    filterAction(filterType: string): Function,
-    navigateToPageAction(path: string): Function,
-    resetStoreAction(): Function,
+    notes: INote[];
+    isLoading: boolean;
+    selectedNotes: string[];
+    filterType: string;
+    error: boolean;
+    fetchNotesAction(filterType: string): Function;
+    deleteNotesAction(notes: INote[]): Function;
+    addSelectedNoteAction(note: INote): Function;
+    removeUnselectedNoteAction(note: INote): Function;
+    selectAllNotesAction(notes: INote[]): Function;
+    unselectAllNotesAction(): Function;
+    filterAction(filterType: string): Function;
+    navigateToPageAction(path: string): Function;
+    resetStoreAction(): Function;
 };
 
 export default class HomeContainer extends Component<Props> {

@@ -6,11 +6,11 @@ import { INote } from '../../interfaces';
 import { ACTIONS, ROUTES } from '../../constants';
 
 interface Props {
-    isLoading: boolean,
-    error: boolean,
-    addNoteAction(note: INote): Function,
-    navigateToPageAction(path: string): Function,
-    resetStoreAction(): Function,
+    isLoading: boolean;
+    error: boolean;
+    addNoteAction(note: INote): Function;
+    navigateToPageAction(path: string): Function;
+    resetStoreAction(): Function;
 };
 
 export default class NoteCreation extends Component<Props> {

@@ -8,9 +8,9 @@ import {
 } from './style';
 
 interface Props {
-    filterType: string,
-    fetchNotes(filterType: string): Function,
-    filterAction(filterType: string): Function,
+    filterType: string;
+    fetchNotes(filterType: string): Function;
+    filterAction(filterType: string): Function;
 };
 
 export default class Filter extends Component<Props> {

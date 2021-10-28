@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import BUTTON_TYPES from '../Button/types';
+import Button from '../Button';
+import { COLORS } from '../../constants';
 import {
     ModalBackground,
     ModalContainer,
     ModalTitle,
     ButtonsContainer,
 } from './style';
-import Button from '../Button';
-import { BUTTON_TYPES, COLORS } from '../../constants';
 
 interface Props {
-    modalText: string,
-    buttonConfirmText: string,
-    buttonCancelText: string,
-    active: boolean,
-    onClose: () => void,
-    action: () => void,
+    modalText: string;
+    buttonConfirmText: string;
+    buttonCancelText: string;
+    active: boolean;
+    onClose: () => void;
+    action: () => void;
 };
 
 export default class Modal extends Component<Props> {
@@ -45,12 +46,14 @@ export default class Modal extends Component<Props> {
                         <ButtonsContainer>
                             <Button
                                 type={BUTTON_TYPES.BUTTON}
+                                disabled={false}
                                 onClick={this.handleClick}
                                 text={buttonConfirmText}
                                 color={COLORS.BUTTON.GREEN}
                             />
                             <Button
                                 type={BUTTON_TYPES.BUTTON}
+                                disabled={false}
                                 onClick={onClose}
                                 text={buttonCancelText}
                                 color={COLORS.BUTTON.RED}

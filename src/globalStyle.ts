@@ -5,6 +5,21 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         height: 100%;
     }
+    body {
+        font-family: 'Lora', 'Arial', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #root {
+        display: flex;
+        flex-direction: column;
+        max-width: 1280px;
+        height: 100%;
+        margin: auto;
+    }
     *,
     *::before,
     *::after {

@@ -9,27 +9,23 @@ import ErrorContainer from './ErrorContainer';
 import { ROUTES } from '../constants';
 
 interface Props {
-    history: any,
+    history: any;
 };
 
 const App: FunctionComponent<Props> = ({
     history,
-}) => {
-    const content = (
-        <>
-            <GlobalStyle />
-            <ConnectedRouter history={history}>
-                <Switch>
-                    <Route path={ROUTES.NOTE_CREATE} component={NoteCreation} />
-                    <Route path={`${ROUTES.NOTE}/:noteId`} component={NoteView} />
-                    <Route path={ROUTES.HOME} exact component={HomeContainer} />
-                    <Route component={ErrorContainer} />
-                </Switch>
-            </ConnectedRouter>
-        </>
-    );
-
-    return content;
-};
+}) => (
+    <>
+        <GlobalStyle />
+        <ConnectedRouter history={history}>
+            <Switch>
+                <Route path={ROUTES.NOTE_CREATE} component={NoteCreation} />
+                <Route path={`${ROUTES.NOTE}/:noteId`} component={NoteView} />
+                <Route path={ROUTES.HOME} exact component={HomeContainer} />
+                <Route component={ErrorContainer} />
+            </Switch>
+        </ConnectedRouter>
+    </>
+);
 
 export default App;

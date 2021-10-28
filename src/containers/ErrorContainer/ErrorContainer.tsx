@@ -3,7 +3,7 @@ import Error from '../../components/Error';
 import { ROUTES } from '../../constants';
 
 interface Props {
-    navigateToPageAction(path: string): Function,
+    navigateToPageAction(path: string): Function;
 };
 
 export default class ErrorContainer extends Component<Props> {

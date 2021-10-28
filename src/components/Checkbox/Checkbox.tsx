@@ -8,24 +8,20 @@ import {
 import checkMark from '../../images/check-mark.svg';
 
 interface Props {
-    checked: boolean,
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void,
+    checked: boolean;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Checkbox: FunctionComponent<Props> = ({
     checked,
     ...props
-}) => {
-    const content = (
-        <CheckboxContainer>
-            <HiddenCheckbox checked={checked} {...props} />
-            <StyledCheckbox checked={checked}>
-                <Icon src={checkMark} />
-            </StyledCheckbox>
-        </CheckboxContainer>
-    );
-
-    return content;
-};
+}) => (
+    <CheckboxContainer>
+        <HiddenCheckbox checked={checked} {...props} />
+        <StyledCheckbox checked={checked}>
+            <Icon src={checkMark} />
+        </StyledCheckbox>
+    </CheckboxContainer>
+);
 
 export default Checkbox;
