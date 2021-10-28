@@ -99,7 +99,7 @@ describe('Utils', () => {
 
     describe('formatDate', () => {
         it('Date', () => {
-            const completeValue = formatDate(NOTE.created_at);
+            const completeValue = formatDate(new Date(NOTE.created_at));
 
             expect(completeValue).toEqual('27.09.2021 12:24:30');
         });
