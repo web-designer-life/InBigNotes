@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox component should render active Checkbox component 1`] = `
+<label
+  className="sc-bdVaJa GkBXx"
+>
+  <input
+    checked={true}
+    className="sc-htpNat hJwuQC"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <div
+    checked={true}
+    className="sc-bxivhb eyuFwS"
+  >
+    <img
+      className="sc-bwzfXH dFPsPe"
+      src="test-file-stub"
+    />
+  </div>
+</label>
+`;
+
+exports[`Checkbox component should render inactive Checkbox component 1`] = `
+<label
+  className="sc-bdVaJa GkBXx"
+>
+  <input
+    checked={false}
+    className="sc-htpNat hJwuQC"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <div
+    checked={false}
+    className="sc-bxivhb vwYgG"
+  >
+    <img
+      className="sc-bwzfXH dFPsPe"
+      src="test-file-stub"
+    />
+  </div>
+</label>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error component should render Error component 1`] = `
+<styled.div>
+  <styled.h1>
+    404 - Not Found!
+  </styled.h1>
+  <Button
+    color="green"
+    disabled={false}
+    onClick={[Function]}
+    text="Go home"
+    type="button"
+  />
+</styled.div>
+`;

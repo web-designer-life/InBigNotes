@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorContainer handlers handleNavigateToHome should call method 1`] = `
+<ErrorContainer
+  navigateToPageAction={[Function]}
+>
+  <Error
+    navigateToPage={[Function]}
+  >
+    <styled.div>
+      <StyledComponent
+        forwardedComponent={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "lastClassName": "dWzAHZ",
+              "rules": Array [
+                "
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
+",
+              ],
+            },
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": "div",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        forwardedRef={null}
+      >
+        <div
+          className="sc-bwzfXH dWzAHZ"
+        >
+          <styled.h1>
+            <StyledComponent
+              forwardedComponent={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-htpNat",
+                    "isStatic": false,
+                    "lastClassName": "jTDBgV",
+                    "rules": Array [
+                      "
+    margin: 10px;
+",
+                    ],
+                  },
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-htpNat",
+                  "target": "h1",
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+            >
+              <h1
+                className="sc-htpNat jTDBgV"
+              >
+                404 - Not Found!
+              </h1>
+            </StyledComponent>
+          </styled.h1>
+          <Button
+            color="green"
+            disabled={false}
+            onClick={[Function]}
+            text="Go home"
+            type="button"
+          >
+            <styled.button
+              color="green"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <StyledComponent
+                color="green"
+                disabled={false}
+                forwardedComponent={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-bdVaJa",
+                      "isStatic": false,
+                      "lastClassName": "mScxf",
+                      "rules": Array [
+                        "
+    min-width: 170px;
+    border-radius: 15px;
+    color: ",
+                        "#FFFFFF",
+                        ";
+    padding: 10px 25px;
+    transition-duration: .1s;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    &:hover {
+        background-color: ",
+                        "#FFFFFF",
+                        ";
+    }
+    &:disabled {
+        opacity: .5;
+        border: 4px solid ",
+                        "#808080",
+                        ";
+        background-color: ",
+                        "#808080",
+                        ";
+        &:hover { 
+            background-color: ",
+                        "#808080",
+                        ";
+            color: ",
+                        "#FFFFFF",
+                        ";
+            cursor: default;
+        }
+    }
+    ",
+                        [Function],
+                        "
+    ",
+                        [Function],
+                        "
+    @media (max-width: 450px) {
+        min-width: auto;
+        width: 100%;
+    }
+",
+                      ],
+                    },
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-bdVaJa",
+                    "target": "button",
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+                type="button"
+              >
+                <button
+                  className="sc-bdVaJa mScxf"
+                  color="green"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Go home
+                </button>
+              </StyledComponent>
+            </styled.button>
+          </Button>
+        </div>
+      </StyledComponent>
+    </styled.div>
+  </Error>
+</ErrorContainer>
+`;
+
+exports[`ErrorContainer should render ErrorContainer 1`] = `
+<Error
+  navigateToPage={[Function]}
+/>
+`;
