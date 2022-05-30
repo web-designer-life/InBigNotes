@@ -63,25 +63,21 @@ export default class HomeContainer extends Component<Props> {
         }
 
         return (
-            <>
-                {
-                    isLoading ?
-                        <Loader /> :
-                        <Home
-                            notes={notes}
-                            selectedNotes={selectedNotes}
-                            filterType={filterType}
-                            fetchNotes={fetchNotesAction}
-                            deleteNotes={deleteNotesAction}
-                            addSelectedNote={addSelectedNoteAction}
-                            removeUnselectedNote={removeUnselectedNoteAction}
-                            selectAllNotes={selectAllNotesAction}
-                            unselectAllNotes={unselectAllNotesAction}
-                            navigateToPage={navigateToPageAction}
-                            filterAction={filterAction}
-                        />
-                }
-            </>
+            isLoading ?
+                <Loader /> :
+                <Home
+                    notes={notes}
+                    selectedNotes={selectedNotes}
+                    filterType={filterType}
+                    fetchNotes={fetchNotesAction}
+                    deleteNotes={deleteNotesAction}
+                    addSelectedNote={addSelectedNoteAction}
+                    removeUnselectedNote={removeUnselectedNoteAction}
+                    selectAllNotes={selectAllNotesAction}
+                    unselectAllNotes={unselectAllNotesAction}
+                    navigateToPage={navigateToPageAction}
+                    filterAction={filterAction}
+                />
         );
     }
 };
