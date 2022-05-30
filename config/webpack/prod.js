@@ -15,7 +15,7 @@ module.exports = merge(common, {
   devtool: false,
   output: {
     filename: 'js/[name].[contenthash].bundle.js',
-    publicPath: '',
+    publicPath: './',
   },
   plugins: [
     new ImageminPlugin({
